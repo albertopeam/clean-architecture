@@ -1,7 +1,6 @@
 # Clean Architecture
 
-The intention of this repo is to show the more common practices when build an
-app using clean architecture
+The intention of this repo is to show the more common practices when you build a mobile app using clean architecture
 
 Remember: WORK IN PROGRESS
 
