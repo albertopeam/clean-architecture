@@ -6,12 +6,8 @@
 //  Copyright © 2018 Alberto. All rights reserved.
 //
 
-import Foundation
-
-//TODO: falta el input...
-//TODO: quitar dependencia de NSObject
-class Work:NSObject{
-    var input:Any?
-    func run(resolve:@escaping Resolve, reject:@escaping Reject) throws {}
+//TODO: add generics
+protocol Work {
+    func run(params:Any?, resolve:@escaping Resolve, reject:@escaping Reject) throws
 }
 

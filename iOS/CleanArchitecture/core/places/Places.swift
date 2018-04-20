@@ -51,8 +51,7 @@ class Places:PlacesProtocol {
     func nearby(output: PlacesOutputProtocol) {
         Promise(work: locationGateway)
         .then { (location) -> Promise in
-            self.placesGateway.input = location as! Location
-            return Promise(work: self.placesGateway)
+            return Promise(work: self.placesGateway, params:location)
         }.finally { (places) in
             output.onNearby(places: places as! Array<Place>)
         }.error { (error) in

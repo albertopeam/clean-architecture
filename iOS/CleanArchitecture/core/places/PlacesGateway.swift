@@ -8,9 +8,10 @@
 
 import Foundation
 
-class PlacesGateway:Work {
-    override func run(resolve: @escaping (Any) -> Void, reject: @escaping Reject) throws {
-        let location:Location = input as! Location
+class PlacesGateway:NSObject, Work {
+    
+    func run(params:Any?, resolve: @escaping (Any) -> Void, reject: @escaping Reject) throws {
+        let location:Location = params as! Location
         let urlString = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=AIzaSyAt1VaTyKui6zmYs5kGrEUjbe79erbKNjw&radius=150&types=restaurant&location=\(location.latitude),\(location.longitude)"
         let url = URL(string: urlString)
         URLSession.shared.dataTask(with: url!) { (data, response, error) in
@@ -49,4 +50,5 @@ class PlacesGateway:Work {
             }
             }.resume()
     }
+    
 }

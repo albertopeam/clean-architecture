@@ -5,6 +5,8 @@
 //  Created by Penas Amor, Alberto on 18/4/18.
 //  Copyright © 2018 Alberto. All rights reserved.
 //
+
+//TODO: add generics
 import Foundation
 
 typealias Reject = (_ error:Error) -> Void
@@ -15,10 +17,9 @@ typealias FinalThenable = (_ data:Any) -> Void
 enum PromiseState {
     case pending, fulfilled, rejected
 }
-//TODO: states, el then devuelve nil(si devuelve otra cosa, no va a funcionar)
 //TODO: spec: https://github.com/promises-aplus/promises-spec
-//meter params...???
 //TODO: quitar dependencia de main thread...
+
 class Promise {
     
     private var thens:Array<Thenable>
@@ -26,11 +27,13 @@ class Promise {
     private var reject:Reject?
     private var state:PromiseState
     private let work:Work
+    private var params:Any?
     
-    init(work:Work) {
+    init(work:Work, params:Any? = nil) {
         self.thens = Array()
         self.state = .pending
         self.work = work
+        self.params = params
     }
     
     func then(resolve:@escaping Thenable) -> Promise {
@@ -64,13 +67,11 @@ class Promise {
     
     private func start() {
         print("deferred")
-        //TODO: puta mierda main!!!!, a ver como se desacopla
-        //If works with 0 better than 0.001, OJO OJO OJO, IGUAL NO FUNCIONA SIEMPRE... HABRÁ QUE ASEGURAR COMO FUNCIONA EL RUNLOOP DE APPLE
-        //TODO: RUN LOOP https://stackoverflow.com/questions/3731881/why-is-my-cllocationmanager-delegate-not-getting-called
+        //TODO: revisar como funcoina el RUN LOOP https://stackoverflow.com/questions/3731881/why-is-my-cllocationmanager-delegate-not-getting-called
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()) {
             do{
                 print("start")
-                try self.work.run(resolve: self.innerResolver, reject: self.innerReject)
+                try self.work.run(params: self.params, resolve: self.innerResolver, reject: self.innerReject)
             }catch {
                 print("start catched error: \(error)")
                 self.innerReject(error: error)
@@ -78,7 +79,6 @@ class Promise {
         }
     }
     
-    //Ojo este inner resolver debbe ser diff
     private func innerResolver(_ data:Any) -> Void {
         if state != .pending{
             print("innerResolver returning with state \(state)")

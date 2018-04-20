@@ -8,7 +8,8 @@
 
 import CoreLocation
 
-class LocationGateway:Work, CLLocationManagerDelegate {
+//TODO: decouple from CoreLocation, inject a custom protocol LocationManager{ ... } that bypass it
+class LocationGateway:NSObject, Work, CLLocationManagerDelegate {
     
     private var resolve:Resolve?
     private var reject:Reject?
@@ -18,7 +19,7 @@ class LocationGateway:Work, CLLocationManagerDelegate {
         self.locationManager = locationManager
     }
     
-    override func run(resolve: @escaping (Any) -> Void, reject: @escaping Reject) throws {
+    func run(params:Any?, resolve: @escaping (Any) -> Void, reject: @escaping Reject) throws {
         self.resolve = resolve
         self.reject = reject
         switch CLLocationManager.authorizationStatus() {
