@@ -13,7 +13,12 @@ Remember: WORK IN PROGRESS
 
 ### Pending
 * iOS
-  * app/places: add support for generics
+  * core/places:
+    * add support for generics
+    * decouple LocationGateway from CoreLocation
+ * app/places
+    * draw tableview
+    * goto detail
 
 ## Tests
 * iOS
