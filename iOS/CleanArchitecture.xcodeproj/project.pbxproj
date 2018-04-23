@@ -20,7 +20,7 @@
 		C3FA42382087AEC200B63221 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3FA42362087AEC200B63221 /* Main.storyboard */; };
 		C3FA423A2087AEC200B63221 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3FA42392087AEC200B63221 /* Assets.xcassets */; };
 		C3FA423D2087AEC200B63221 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3FA423B2087AEC200B63221 /* LaunchScreen.storyboard */; };
-		C3FA42482087AEC200B63221 /* CleanArchitectureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FA42472087AEC200B63221 /* CleanArchitectureTests.swift */; };
+		C3FA42482087AEC200B63221 /* PromiseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FA42472087AEC200B63221 /* PromiseTests.swift */; };
 		C3FA42562087AF6A00B63221 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3FA42552087AF6A00B63221 /* MapKit.framework */; };
 		C3FA425A2087AF8B00B63221 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FA42582087AF8B00B63221 /* AppDelegate.swift */; };
 		C3FA425B2087AF8B00B63221 /* NearbyPlacesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FA42592087AF8B00B63221 /* NearbyPlacesViewController.swift */; };
@@ -58,7 +58,7 @@
 		C3FA423C2087AEC200B63221 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C3FA423E2087AEC200B63221 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C3FA42432087AEC200B63221 /* CleanArchitectureTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CleanArchitectureTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C3FA42472087AEC200B63221 /* CleanArchitectureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CleanArchitectureTests.swift; sourceTree = "<group>"; };
+		C3FA42472087AEC200B63221 /* PromiseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromiseTests.swift; sourceTree = "<group>"; };
 		C3FA42492087AEC200B63221 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C3FA42552087AF6A00B63221 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		C3FA42582087AF8B00B63221 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = CleanArchitecture/app/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
@@ -155,7 +155,7 @@
 		C3FA42462087AEC200B63221 /* CleanArchitectureTests */ = {
 			isa = PBXGroup;
 			children = (
-				C3FA42472087AEC200B63221 /* CleanArchitectureTests.swift */,
+				C3FA42472087AEC200B63221 /* PromiseTests.swift */,
 				C3FA42492087AEC200B63221 /* Info.plist */,
 			);
 			path = CleanArchitectureTests;
@@ -257,7 +257,6 @@
 					C3FA42422087AEC200B63221 = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
-						TestTargetID = C3FA422E2087AEC200B63221;
 					};
 				};
 			};
@@ -329,7 +328,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C3FA42482087AEC200B63221 /* CleanArchitectureTests.swift in Sources */,
+				C3FA42482087AEC200B63221 /* PromiseTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -507,7 +506,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 494NZHD989;
 				INFOPLIST_FILE = CleanArchitectureTests/Info.plist;
@@ -516,7 +514,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CleanArchitecture.app/CleanArchitecture";
 			};
 			name = Debug;
 		};
@@ -524,7 +521,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 494NZHD989;
 				INFOPLIST_FILE = CleanArchitectureTests/Info.plist;
@@ -533,7 +529,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CleanArchitecture.app/CleanArchitecture";
 			};
 			name = Release;
 		};
