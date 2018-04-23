@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		C3178208208DE4CA00CB8FAE /* LocationManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3178207208DE4CA00CB8FAE /* LocationManagerProtocol.swift */; };
 		C317820A208DE56600CB8FAE /* LocationManagerBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3178209208DE56600CB8FAE /* LocationManagerBridge.swift */; };
+		C317820C208DF45600CB8FAE /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = C317820B208DF45500CB8FAE /* README.md */; };
 		C3332EE92088A86E00FF73FF /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3332EE82088A86E00FF73FF /* Error.swift */; };
 		C3332EEB2088E1DE00FF73FF /* NearbyPlacesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3332EEA2088E1DE00FF73FF /* NearbyPlacesPresenter.swift */; };
 		C3332EEE2088E43C00FF73FF /* NearbyPlacesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3332EED2088E43C00FF73FF /* NearbyPlacesView.xib */; };
@@ -43,6 +44,7 @@
 /* Begin PBXFileReference section */
 		C3178207208DE4CA00CB8FAE /* LocationManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManagerProtocol.swift; sourceTree = "<group>"; };
 		C3178209208DE56600CB8FAE /* LocationManagerBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManagerBridge.swift; sourceTree = "<group>"; };
+		C317820B208DF45500CB8FAE /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		C3332EE82088A86E00FF73FF /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		C3332EEA2088E1DE00FF73FF /* NearbyPlacesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearbyPlacesPresenter.swift; sourceTree = "<group>"; };
 		C3332EED2088E43C00FF73FF /* NearbyPlacesView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NearbyPlacesView.xib; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 		C3FA42262087AEC200B63221 = {
 			isa = PBXGroup;
 			children = (
+				C317820B208DF45500CB8FAE /* README.md */,
 				C3FA42312087AEC200B63221 /* CleanArchitecture */,
 				C3FA42462087AEC200B63221 /* CleanArchitectureTests */,
 				C3FA42302087AEC200B63221 /* Products */,
@@ -282,6 +285,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C317820C208DF45600CB8FAE /* README.md in Resources */,
 				C3FA423D2087AEC200B63221 /* LaunchScreen.storyboard in Resources */,
 				C3332EEE2088E43C00FF73FF /* NearbyPlacesView.xib in Resources */,
 				C3FA423A2087AEC200B63221 /* Assets.xcassets in Resources */,
