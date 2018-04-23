@@ -50,7 +50,7 @@ class NearbyPlacesViewController: UIViewController, NearbyPlacesView {
             self.mapView.showAnnotations(locations, animated: true)
         }
         if let error = viewModel.error {
-            //TODO:
+            //TODO: handle cases
             switch error{
             case LocationError.noLocationPermission:
                 locationManager.delegate = self
@@ -58,7 +58,7 @@ class NearbyPlacesViewController: UIViewController, NearbyPlacesView {
                 break
             case LocationError.deniedLocationUsage: break
             case LocationError.restrictedLocationUsage: break
-            case LocationError.noLocationEnabled: break
+            case LocationError.noLocationEnabled:break
             case LocationError.noLocation: break
             case PlacesError.noNetwork: break
             case PlacesError.decoding: break

@@ -30,7 +30,6 @@ class PlacesGateway:NSObject, Work {
                             let icon = item["icon"] as! String
                             var openNow = false
                             if let opening = item["opening_hours"] as? NSDictionary {
-                                //let opening = item["opening_hours"] as! NSDictionary
                                 openNow = opening["open_now"] as! Bool
                             }
                             let rating = item["rating"] as! Double

@@ -8,9 +8,8 @@
 import CoreLocation
 
 class PlacesAssembler {
-    static func assemble() -> PlacesProtocol {
-        //TODO: cagada lo del location manager, core no debe tener deps de iOS
-        let locationGateway = LocationGateway(locationManager: CLLocationManager())
+    static func assemble(locationManager:LocationManagerProtocol) -> PlacesProtocol {
+        let locationGateway = LocationGateway(locationManager: locationManager)
         let placesGateway = PlacesGateway()
         return Places(locationGateway: locationGateway, placesGateway: placesGateway)
     }

@@ -6,17 +6,12 @@
 //  Copyright © 2018 Alberto. All rights reserved.
 //
 
-public enum LocationError:Error {
+enum LocationError:Error {
     case noLocationPermission, restrictedLocationUsage, noLocationEnabled, deniedLocationUsage, noLocation
 }
 
 enum PlacesError:Error {
     case noNetwork, decoding, timeout, noPlaces
-}
-
-struct Location {
-    let latitude:Double
-    let longitude:Double
 }
 
 struct Place {

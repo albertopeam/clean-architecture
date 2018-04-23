@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C3178208208DE4CA00CB8FAE /* LocationManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3178207208DE4CA00CB8FAE /* LocationManagerProtocol.swift */; };
+		C317820A208DE56600CB8FAE /* LocationManagerBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3178209208DE56600CB8FAE /* LocationManagerBridge.swift */; };
 		C3332EE92088A86E00FF73FF /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3332EE82088A86E00FF73FF /* Error.swift */; };
 		C3332EEB2088E1DE00FF73FF /* NearbyPlacesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3332EEA2088E1DE00FF73FF /* NearbyPlacesPresenter.swift */; };
 		C3332EEE2088E43C00FF73FF /* NearbyPlacesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3332EED2088E43C00FF73FF /* NearbyPlacesView.xib */; };
@@ -39,6 +41,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C3178207208DE4CA00CB8FAE /* LocationManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManagerProtocol.swift; sourceTree = "<group>"; };
+		C3178209208DE56600CB8FAE /* LocationManagerBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManagerBridge.swift; sourceTree = "<group>"; };
 		C3332EE82088A86E00FF73FF /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		C3332EEA2088E1DE00FF73FF /* NearbyPlacesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearbyPlacesPresenter.swift; sourceTree = "<group>"; };
 		C3332EED2088E43C00FF73FF /* NearbyPlacesView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NearbyPlacesView.xib; sourceTree = "<group>"; };
@@ -83,6 +87,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C3178206208DE47E00CB8FAE /* assets */ = {
+			isa = PBXGroup;
+			children = (
+				C3FA42362087AEC200B63221 /* Main.storyboard */,
+				C3FA42392087AEC200B63221 /* Assets.xcassets */,
+				C3FA423B2087AEC200B63221 /* LaunchScreen.storyboard */,
+			);
+			path = assets;
+			sourceTree = "<group>";
+		};
 		C3332EE72088A84A00FF73FF /* extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -100,6 +114,7 @@
 				C3332EEF2088E45600FF73FF /* NearbyPlacesAssembler.swift */,
 				C3332EF32088EBD700FF73FF /* NearbyPlaceCell.xib */,
 				C3332EF52088F0B800FF73FF /* NearbyPlaceCell.swift */,
+				C3178209208DE56600CB8FAE /* LocationManagerBridge.swift */,
 			);
 			path = places;
 			sourceTree = "<group>";
@@ -126,11 +141,9 @@
 		C3FA42312087AEC200B63221 /* CleanArchitecture */ = {
 			isa = PBXGroup;
 			children = (
+				C3178206208DE47E00CB8FAE /* assets */,
 				C3FA425C2087AF9800B63221 /* core */,
 				C3FA42572087AF7500B63221 /* app */,
-				C3FA42362087AEC200B63221 /* Main.storyboard */,
-				C3FA42392087AEC200B63221 /* Assets.xcassets */,
-				C3FA423B2087AEC200B63221 /* LaunchScreen.storyboard */,
 				C3FA423E2087AEC200B63221 /* Info.plist */,
 			);
 			path = CleanArchitecture;
@@ -176,10 +189,11 @@
 		C3FA42612087AFB600B63221 /* places */ = {
 			isa = PBXGroup;
 			children = (
-				C3FA42622087AFEC00B63221 /* LocationGateway.swift */,
-				C3FA42632087AFEC00B63221 /* PlacesGateway.swift */,
 				C3FA42662087B04200B63221 /* Places.swift */,
 				C3332EF12088E4D300FF73FF /* PlacesAssembler.swift */,
+				C3FA42622087AFEC00B63221 /* LocationGateway.swift */,
+				C3FA42632087AFEC00B63221 /* PlacesGateway.swift */,
+				C3178207208DE4CA00CB8FAE /* LocationManagerProtocol.swift */,
 			);
 			path = places;
 			sourceTree = "<group>";
@@ -301,7 +315,9 @@
 				C3FA425A2087AF8B00B63221 /* AppDelegate.swift in Sources */,
 				C3FA425F2087AFA800B63221 /* Promise.swift in Sources */,
 				C3332EF62088F0B800FF73FF /* NearbyPlaceCell.swift in Sources */,
+				C317820A208DE56600CB8FAE /* LocationManagerBridge.swift in Sources */,
 				C3332EF02088E45600FF73FF /* NearbyPlacesAssembler.swift in Sources */,
+				C3178208208DE4CA00CB8FAE /* LocationManagerProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
