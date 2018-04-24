@@ -21,7 +21,6 @@ Remember: WORK IN PROGRESS
 
 ## Tests
 * iOS
-  * test promise
 
 ## License
 Copyright (c) 2018 Alberto Penas Amor
