@@ -82,6 +82,8 @@ class Work1:NSObject, Work {
 | :---         | :---           | 
 | Avoid callback hell | Understand the promise concept and how it works |
 | The code is more easy to read and mantain  | | 
+| Better error handling(unified) | |
+|||
 
 * Examples:
     * [Swift](https://github.com/albertopeam/clean-architecture/blob/master/iOS/CleanArchitecture/core/places/Places.swift)
