@@ -4,6 +4,10 @@ The intention of this repo is to show the more common practices when you build a
 
 Remember: WORK IN PROGRESS
 
+## Before start
+* iOS
+    * To run the project you should add a Google Api Key in [Constants](https://github.com/albertopeam/clean-architecture/blob/master/iOS/CleanArchitecture/app/Constants.swift)
+
 ## Project structure
 * iOS folder -> Swift iOS project
 

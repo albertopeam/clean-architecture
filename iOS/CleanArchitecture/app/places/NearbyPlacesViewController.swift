@@ -64,6 +64,7 @@ class NearbyPlacesViewController: UIViewController, NearbyPlacesView {
             case PlacesError.decoding: break
             case PlacesError.timeout: break
             case PlacesError.noPlaces: break
+            case PlacesError.badStatus: break
             default: break
                 
             }

@@ -11,7 +11,7 @@ enum LocationError:Error {
 }
 
 enum PlacesError:Error {
-    case noNetwork, decoding, timeout, noPlaces
+    case noNetwork, decoding, timeout, noPlaces, badStatus
 }
 
 struct Place {

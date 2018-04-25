@@ -8,9 +8,9 @@
 import CoreLocation
 
 class PlacesAssembler {
-    static func assemble(locationManager:LocationManagerProtocol) -> PlacesProtocol {
+    static func assemble(locationManager:LocationManagerProtocol, apiKey:String) -> PlacesProtocol {
         let locationGateway = LocationGateway(locationManager: locationManager)
-        let placesGateway = PlacesGateway()
+        let placesGateway = PlacesGateway(apiKey: apiKey)
         return Places(locationGateway: locationGateway, placesGateway: placesGateway)
     }
 }

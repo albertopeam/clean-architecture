@@ -10,9 +10,15 @@ import Foundation
 
 class PlacesGateway:NSObject, Work {
     
+    let apiKey:String
+    
+    init(apiKey:String) {
+        self.apiKey = apiKey
+    }
+    
     func run(params:Any?, resolve: @escaping (Any) -> Void, reject: @escaping Reject) throws {
         let location:Location = params as! Location
-        let urlString = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=AIzaSyAt1VaTyKui6zmYs5kGrEUjbe79erbKNjw&radius=150&types=restaurant&location=\(location.latitude),\(location.longitude)"
+        let urlString = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=\(apiKey)&radius=150&types=restaurant&location=\(location.latitude),\(location.longitude)"
         let url = URL(string: urlString)
         URLSession.shared.dataTask(with: url!) { (data, response, error) in
             if error != nil {
@@ -41,7 +47,12 @@ class PlacesGateway:NSObject, Work {
                         })
                         resolve(places)
                     }else{
-                        reject(PlacesError.noPlaces)
+                        print(json)
+                        if json["status"] as! String == "REQUEST_DENIED"{
+                            reject(PlacesError.badStatus)
+                        }else{
+                            reject(PlacesError.noPlaces)
+                        }
                     }
                 }catch {
                     reject(error)
