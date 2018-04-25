@@ -8,19 +8,79 @@ Remember: WORK IN PROGRESS
 * iOS folder -> Swift iOS project
 
 ## Development
-* iOS
-  * app/places: shows a list of places near your current location
+* app/places: shows a list of places near your current location
 
 ### Pending
 * iOS
-  * core/places:
-    * add support for generics
  * app/places
     * draw tableview
     * goto detail
 
 ## Tests
 * iOS
+
+## Patterns
+### Promise
+* Problem: 
+One of the most commnon pitfalls of developers who use asynchronous frameworks is callback hell.
+Sometimes the nature of the libraries or the framework that we use instigate us to nest async code. At the start maybe we can manage it, but when 
+the system become more and more big it will be a problem because the code will be complex to read and understand.
+ ```swift
+func fetchData(callback:Callback){
+    let url = URL(string: urlString)
+    URLSession.shared.dataTask(with: url!) { (data, response, error) in
+        if error != nil {
+            callback.error(nil, error)
+        }else{            
+            let url2 = URL(string: urlString2)
+            URLSession.shared.dataTask(with: url2!) { (data, response, error) in
+                if error != nil {
+                    callback.error(nil, error)
+                }else{
+                    callback.success(data, nil)
+                }
+            }.resume()
+        }
+    }.resume()
+}
+ ```
+* Solution: apply a pattern that allows us to hide the complexity of the asynchronous operations and provide a way to handle them as if they were synchronous. 
+A promise represents the eventual result of an asynchronous operation, we can chain as many promises as we want in a synchronous way.
+```swift
+let fetchWork1:Work1
+let fetchWork2:Work2
+
+func fetchData(callback:Callback) {
+    Promise(work: fetchWork1)
+    .then { (result) -> Promise in
+        return Promise(work: fetchWork2, params:result)
+    }.finally { (result) in
+        callback.success(result: result)
+    }.error { (error) in
+        callback.error(error: error)
+    }
+}
+
+class Work1:NSObject, Work {
+    func run(params:Any?, resolve: @escaping (Any) -> Void, reject: @escaping Reject) throws {
+        let url = URL(string: urlString)
+        URLSession.shared.dataTask(with: url!) { (data, response, error) in
+            if error != nil {
+                reject(error!)
+            }else{
+                resolve(data!)
+            }
+        }.resume()
+    }
+}
+```
+| *PROS* | *CONS* | 
+| :---         | :---           | 
+| Avoid callback hell | Understand the promise concept and how it works |
+| The code is more easy to read and mantain  | | 
+
+* Examples:
+    * [Swift](https://github.com/albertopeam/clean-architecture/blob/master/iOS/CleanArchitecture/core/places/Places.swift)
 
 ## License
 Copyright (c) 2018 Alberto Penas Amor
