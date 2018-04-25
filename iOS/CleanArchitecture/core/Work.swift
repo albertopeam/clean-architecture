@@ -6,7 +6,6 @@
 //  Copyright © 2018 Alberto. All rights reserved.
 //
 
-//TODO: add generics
 protocol Work {
     func run(params:Any?, resolve:@escaping Resolve, reject:@escaping Reject) throws
 }
