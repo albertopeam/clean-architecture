@@ -16,6 +16,7 @@ class NearbyPlacesViewController: UIViewController, NearbyPlacesView {
     @IBOutlet weak var reloadNearbyButton: UIButton!
     let locationManager:CLLocationManager
     let presenter:NearbyPlacesPresenterProtocol
+    var places:Array<Place> = Array()
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) is not supported")
@@ -29,7 +30,8 @@ class NearbyPlacesViewController: UIViewController, NearbyPlacesView {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Nearby places"
+        title = "Nearby places"
+        placesTableView.register(UINib(nibName: "NearbyPlaceCell", bundle: nil), forCellReuseIdentifier: "nearby_place_cell")
         nearbyPlaces(reloadNearbyButton)
     }
     
@@ -39,15 +41,17 @@ class NearbyPlacesViewController: UIViewController, NearbyPlacesView {
     
     func newState(viewModel: NearbyPlacesViewModel) {
         if let places = viewModel.places {
+            self.places = places
             var locations = Array<MKPointAnnotation>()
             for place in places {
                 let location = MKPointAnnotation()
                 location.coordinate = CLLocationCoordinate2D(latitude: place.location.latitude, longitude: place.location.longitude)
                 location.title = place.name
-                self.mapView.addAnnotation(location)
+                mapView.addAnnotation(location)
                 locations.append(location)
             }
-            self.mapView.showAnnotations(locations, animated: true)
+            mapView.showAnnotations(locations, animated: true)
+            placesTableView.reloadData()
         }
         if let error = viewModel.error {
             //TODO: handle cases
@@ -79,5 +83,19 @@ extension NearbyPlacesViewController:CLLocationManagerDelegate{
             nearbyPlaces(reloadNearbyButton)
         }
     }
+}
+
+extension NearbyPlacesViewController:UITableViewDataSource{
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return places.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "nearby_place_cell") as! NearbyPlaceCell
+        cell.draw(place:places[indexPath.row])
+        return cell
+    }
+
 }
 

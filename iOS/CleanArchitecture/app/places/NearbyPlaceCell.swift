@@ -10,9 +10,14 @@ import UIKit
 
 class NearbyPlaceCell: UITableViewCell {
 
+    
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var iconImageView: UIImageView!
+    @IBOutlet weak var ratingLabel: UILabel!
+    @IBOutlet weak var openLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -20,5 +25,13 @@ class NearbyPlaceCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    func draw(place:Place) {
+        nameLabel.text = place.name
+        ratingLabel.text = "\(place.rating)"
+        openLabel.text = place.openNow ? "OPEN":"!OPEN"
+        //iconImageView.image
+    }
 
+    
 }
