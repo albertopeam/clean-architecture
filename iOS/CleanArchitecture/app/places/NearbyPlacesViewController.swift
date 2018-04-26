@@ -51,6 +51,7 @@ class NearbyPlacesViewController: UIViewController, NearbyPlacesView {
                 locations.append(location)
             }
             mapView.showAnnotations(locations, animated: true)
+            mapView.delegate = self
             placesTableView.reloadData()
         }
         if let error = viewModel.error {
@@ -77,6 +78,7 @@ class NearbyPlacesViewController: UIViewController, NearbyPlacesView {
 }
 
 extension NearbyPlacesViewController:CLLocationManagerDelegate{
+    
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         //TODO: test
         if status == .authorizedWhenInUse {
@@ -95,6 +97,22 @@ extension NearbyPlacesViewController:UITableViewDataSource{
         let cell = tableView.dequeueReusableCell(withIdentifier: "nearby_place_cell") as! NearbyPlaceCell
         cell.draw(place:places[indexPath.row])
         return cell
+    }
+
+}
+
+extension NearbyPlacesViewController:MKMapViewDelegate{
+
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        if let i = places.index(where: { $0.name == view.annotation!.title! }) {
+            placesTableView.selectRow(at: IndexPath(row: i, section: 0), animated: true, scrollPosition: .middle)
+        }
+    }
+    
+    func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
+        if let indexPath = placesTableView.indexPathForSelectedRow {
+            placesTableView.deselectRow(at: indexPath, animated: true)
+        }
     }
 
 }

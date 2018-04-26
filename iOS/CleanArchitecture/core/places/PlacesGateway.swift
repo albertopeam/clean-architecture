@@ -23,7 +23,7 @@ class PlacesGateway:NSObject, Work {
         URLSession.shared.dataTask(with: url!) { (data, response, error) in
             if error != nil {
                 print(error!.localizedDescription)
-                reject(error!)
+                self.rejectIt(reject: reject, error: error!)
             }else{
                 do{
                     let json = try JSONSerialization.jsonObject(with: data!, options:[]) as! NSDictionary
@@ -45,20 +45,32 @@ class PlacesGateway:NSObject, Work {
                             let longitude = location["lng"] as! Double
                             return Place(id: id, placeId: placeId, name: name, icon: icon, openNow: openNow, rating: rating, location: Location(latitude: latitude, longitude: longitude))
                         })
-                        resolve(places)
+                        self.resolveIt(resolve: resolve, data: places)
                     }else{
-                        print(json)
                         if json["status"] as! String == "REQUEST_DENIED"{
-                            reject(PlacesError.badStatus)
+                            self.rejectIt(reject: reject, error: PlacesError.badStatus)
                         }else{
-                            reject(PlacesError.noPlaces)
+                            self.rejectIt(reject: reject, error: PlacesError.noPlaces)
                         }
                     }
                 }catch {
-                    reject(error)
+                    self.rejectIt(reject: reject, error: error)
                 }
             }
-            }.resume()
+        }.resume()
+    }
+    
+
+    private func rejectIt(reject: @escaping Reject, error:Error) {
+        DispatchQueue.main.sync {
+            reject(error)
+        }
+    }
+    
+    private func resolveIt(resolve: @escaping (Any) -> Void, data:Any) {
+        DispatchQueue.main.sync {
+            resolve(data)
+        }
     }
     
 }

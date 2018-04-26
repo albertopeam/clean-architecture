@@ -24,8 +24,9 @@ Remember: WORK IN PROGRESS
 * iOS
 
 ## Patterns
-### Promise
-* Problem: 
+### <u>Promise</u>
+* Problem:
+
 One of the most commnon pitfalls of developers who use asynchronous frameworks is callback hell.
 Sometimes the nature of the libraries or the framework that we use instigate us to nest async code. At the start maybe we can manage it, but when 
 the system become more and more big it will be a problem because the code will be complex to read and understand.
@@ -34,21 +35,27 @@ func fetchData(callback:Callback){
     let url = URL(string: urlString)
     URLSession.shared.dataTask(with: url!) { (data, response, error) in
         if error != nil {
-            callback.error(nil, error)
-        }else{            
+            DispatchQueue.main.sync {
+                callback.error(nil, error)
+            }
+        }else{
             let url2 = URL(string: urlString2)
             URLSession.shared.dataTask(with: url2!) { (data, response, error) in
-                if error != nil {
-                    callback.error(nil, error)
-                }else{
-                    callback.success(data, nil)
+                DispatchQueue.main.sync {
+                    if error != nil {
+                        callback.error(nil, error)
+                    }else{
+                        callback.success(data, nil)
+                    }
                 }
             }.resume()
         }
     }.resume()
 }
  ```
-* Solution: apply a pattern that allows us to hide the complexity of the asynchronous operations and provide a way to handle them as if they were synchronous. 
+* Solution: 
+
+Apply a pattern that allows us to hide the complexity of the asynchronous operations and provide a way to handle them as if they were synchronous. 
 A promise represents the eventual result of an asynchronous operation, we can chain as many promises as we want in a synchronous way.
 ```swift
 let fetchWork1:Work1
@@ -69,10 +76,12 @@ class Work1:NSObject, Work {
     func run(params:Any?, resolve: @escaping (Any) -> Void, reject: @escaping Reject) throws {
         let url = URL(string: urlString)
         URLSession.shared.dataTask(with: url!) { (data, response, error) in
-            if error != nil {
-                reject(error!)
-            }else{
-                resolve(data!)
+            DispatchQueue.main.sync {
+                if error != nil {
+                    reject(error!)
+                }else{
+                    resolve(data!)
+                }
             }
         }.resume()
     }
