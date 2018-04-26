@@ -50,8 +50,7 @@ iOS/.build/
 # Carthage
 #
 # Add this line if you want to avoid checking in source code from Carthage dependencies.
-# Carthage/Checkouts
-
+iOS/Carthage/Checkouts
 iOS/Carthage/Build
 
 # fastlane
