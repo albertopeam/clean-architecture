@@ -47,7 +47,7 @@ class Places:PlacesProtocol {
         Promise(work: locationGateway)
         .then { (location) -> Promise in
             return Promise(work: self.placesGateway, params:location)
-        }.finally { (places) in
+        }.then { (places) in
             output.onNearby(places: places as! Array<Place>)
         }.error { (error) in
             output.onNearbyError(error: error)

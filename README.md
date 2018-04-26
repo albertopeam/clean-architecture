@@ -20,6 +20,10 @@ Remember: WORK IN PROGRESS
     * draw tableview
     * goto detail
 
+### Next
+* iOS
+    * observer
+
 ## Tests
 * iOS
 
@@ -65,7 +69,7 @@ func fetchData(callback:Callback) {
     Promise(work: fetchWork1)
     .then { (result) -> Promise in
         return Promise(work: fetchWork2, params:result)
-    }.finally { (result) in
+    }.then { (result) in
         callback.success(result: result)
     }.error { (error) in
         callback.error(error: error)
