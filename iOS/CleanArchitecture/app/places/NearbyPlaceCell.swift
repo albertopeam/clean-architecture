@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class NearbyPlaceCell: UITableViewCell {
 
@@ -30,7 +31,8 @@ class NearbyPlaceCell: UITableViewCell {
         nameLabel.text = place.name
         ratingLabel.text = "\(place.rating)"
         openLabel.text = place.openNow ? "OPEN":"!OPEN"
-        //iconImageView.image
+        let url = URL(string: place.icon)
+        iconImageView.kf.setImage(with: url)
     }
 
     
