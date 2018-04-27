@@ -18,14 +18,19 @@ class PromiseTest: XCTestCase {
         continueAfterFailure = false
     }
     
+    override func tearDown() {
+        super.tearDown()
+        sut = nil
+    }
+    
     func testGivenSuccessWorkWhenPromiseCompleteInvokeFinally() {
         let expectation = XCTestExpectation(description: "testGivenSuccessWorkWhenPromiseCompleteInvokeFinally")
         let params = "params"
         sut = Promise(work:MockSuccessFinallyWork(), params: params)
-        sut!.finally { (any) in
+        sut!.then(finally: { (any) in
             XCTAssertEqual(params, any as! String)
             expectation.fulfill()
-        }.error { (error) in
+        }).error { (error) in
             XCTAssert(false, "testGivenSuccessWorkWhenPromiseCompleteInvokeFinally throw an error")
         }
         wait(for: [expectation], timeout: 0.1)
@@ -35,13 +40,13 @@ class PromiseTest: XCTestCase {
         let expectation = XCTestExpectation(description: "testGivenSuccessWorkWhenPromisesCompleteThenInvokeFinally")
         let params = "params"
         sut = Promise(work:MockSuccessFinallyWork(), params: params)
-        sut!.then { (any) in
+        sut!.then(resolve: { (any) -> Promise in
             XCTAssertEqual(params, any as! String)
             return Promise(work:MockSuccessFinallyWork(), params: params)
-        }.finally { (any) in
+        }).then(finally: { (any) in
             XCTAssertEqual(params, any as! String)
             expectation.fulfill()
-        }.error { (error) in
+        }).error { (error) in
             XCTAssert(false, "testGivenSuccessWorkWhenPromisesCompleteThenInvokeFinally throw an error")
         }
         wait(for: [expectation], timeout: 0.1)
@@ -54,7 +59,7 @@ class PromiseTest: XCTestCase {
         sut!.then{ (any) -> Promise in
             XCTAssert(false, "testGivenErrorWorkWhenPromiseFailThenInvokeError invoked then")
             return Promise(work: MockNonResolvableWork())
-        }.finally { (any) in
+        }.then { (any) in
             XCTAssert(false, "testGivenErrorWorkWhenPromiseFailThenInvokeError invoked finally")
         }.error { (error) in
             XCTAssertEqual(params, error as NSError)
@@ -69,14 +74,14 @@ class PromiseTest: XCTestCase {
         let params = "params"
         sut = Promise(work:MockSuccessTwiceFinallyWork(), params: params)
         var times = 0
-        sut!.finally { (any) in
+        sut!.then(finally: { (any) in
             times += 1
             if (times == 2){
                 XCTAssert(false, "testGivenWorkThatInvokeTwiceFinallyWhenPromiseCompleteThenInvokeFinallyOnce invoked twice")
             }
             XCTAssertEqual(params, any as! String)
             expectation.fulfill()
-        }.error { (error) in
+        }).error { (error) in
             XCTAssert(false, "testGivenWorkThatInvokeTwiceFinallyWhenPromiseCompleteThenInvokeFinallyOnce throw an error")
         }
         wait(for: [expectation], timeout: 0.1)
@@ -87,10 +92,10 @@ class PromiseTest: XCTestCase {
         let params = NSError(domain: "error", code: 0)
         sut = Promise(work:MockErrorTwiceWork(), params: params)
         var times = 0
-        sut?.then{ (any) -> Promise in
+        sut!.then{ (any) -> Promise in
             XCTAssert(false, "testGivenWorkThatInvokeTwiceFinallyWhenPromiseErrorThenInvokeErrorOnce invoked then")
             return Promise(work: MockNonResolvableWork())
-        }.finally { (any) in
+        }.then { (any) in
             XCTAssert(false, "testGivenWorkThatInvokeTwiceFinallyWhenPromiseErrorThenInvokeErrorOnce invoked finally")
         }.error { (error) in
             times += 1
@@ -106,10 +111,10 @@ class PromiseTest: XCTestCase {
     func testGivenWorkThatThrowsWhenPromiseErrorThenInvokeError(){
         let expectation = XCTestExpectation(description: "testGivenWorkThatThrowsWhenPromiseErrorThenInvokeError")
         sut = Promise(work:MockThrowWhileRunningWork())
-        sut?.then{ (any) -> Promise in
+        sut!.then{ (any) -> Promise in
             XCTAssert(false, "testGivenWorkThatThrowsWhenPromiseErrorThenInvokeError invoked then")
             return Promise(work: MockNonResolvableWork())
-        }.finally { (any) in
+        }.then { (any) in
             XCTAssert(false, "testGivenWorkThatThrowsWhenPromiseErrorThenInvokeError invoked finally")
         }.error { (error) in
             let throwed = error as NSError
@@ -124,16 +129,16 @@ class PromiseTest: XCTestCase {
         let expectation = XCTestExpectation(description: "testGivenSuccessWorksWhenChainTwoThensAndPromiseCompleteInvokeFinally")
         let params = "params"
         sut = Promise(work:MockSuccessFinallyWork(), params: params)
-        sut!.then{ (any) -> Promise in
+        sut!.then(resolve: { (any) -> Promise in
             XCTAssertEqual(params, any as! String)
             return Promise(work:MockSuccessFinallyWork(), params: params)
-        }.then{ (any) -> Promise in
+        }).then(resolve: { (any) -> Promise in
             XCTAssertEqual(params, any as! String)
             return Promise(work:MockSuccessFinallyWork(), params: params)
-        }.finally { (any) in
+        }).then(finally: { (any) in
             XCTAssertEqual(params, any as! String)
             expectation.fulfill()
-        }.error { (error) in
+        }).error { (error) in
             XCTAssert(false, "testGivenSuccessWorksWhenChainTwoThensAndPromiseCompleteInvokeFinally throw an error")
         }
         wait(for: [expectation], timeout: 0.1)

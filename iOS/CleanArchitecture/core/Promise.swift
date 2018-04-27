@@ -43,11 +43,11 @@ class Promise {
         return self
     }
     
-    func then(resolveFinal:@escaping FinalThenable) -> Promise {
+    func then(finally:@escaping FinalThenable) -> Promise {
         if self.finalThen != nil {
             assertionFailure("finally can only be called once per promise")
         }
-        self.finalThen = resolveFinal
+        self.finalThen = finally
         if thens.isEmpty {
             start()
         }
