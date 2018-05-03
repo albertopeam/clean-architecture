@@ -16,7 +16,8 @@ protocol NearbyPlacesView {
 
 struct NearbyPlacesViewModel {
     var places:Array<Place>?
-    var error:Error?
+    var error:String?
+    var requestPermission:Bool
 }
 
 class NearbyPlacesPresenter:NearbyPlacesPresenterProtocol, PlacesOutputProtocol {
@@ -35,15 +36,49 @@ class NearbyPlacesPresenter:NearbyPlacesPresenterProtocol, PlacesOutputProtocol 
     }
     
     func onNearby(places: Array<Place>) {
-        //TODO: modify according results
         viewModel.error = nil
+        viewModel.requestPermission = false
         viewModel.places = places
         view?.newState(viewModel: viewModel)
     }
     
     func onNearbyError(error: Error) {
-        //TODO: modify according error
-        viewModel.error = error
+        viewModel.requestPermission = false
+        viewModel.error = nil
+        switch error{
+            case LocationError.noLocationPermission:
+                viewModel.requestPermission = true
+                break
+            case LocationError.deniedLocationUsage:
+                viewModel.error = "Denied location usage"
+                break
+            case LocationError.restrictedLocationUsage:
+                viewModel.error = "Restricted location usage"
+                break
+            case LocationError.noLocationEnabled:
+                viewModel.error = "No location enabled"
+                break
+            case LocationError.noLocation:
+                viewModel.error = "No location available"
+                break
+            case PlacesError.noNetwork:
+                viewModel.error = "No network"
+                break
+            case PlacesError.decoding:
+                viewModel.error = "Internal error"
+                break
+            case PlacesError.timeout:
+                viewModel.error = "Try again, timeout"
+                break
+            case PlacesError.noPlaces:
+                viewModel.error = "No results"
+                break
+            case PlacesError.badStatus:
+                viewModel.error = "Interal problem, Google API request denied"
+                break
+        default:
+            break
+        }
         view?.newState(viewModel: viewModel)
     }
 }

@@ -31,6 +31,7 @@ class NearbyPlacesViewController: UIViewController, NearbyPlacesView {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Nearby places"
+        reloadNearbyButton.layer.cornerRadius = 15
         placesTableView.register(UINib(nibName: "NearbyPlaceCell", bundle: nil), forCellReuseIdentifier: "nearby_place_cell")
         nearbyPlaces(reloadNearbyButton)
     }
@@ -55,24 +56,13 @@ class NearbyPlacesViewController: UIViewController, NearbyPlacesView {
             placesTableView.reloadData()
         }
         if let error = viewModel.error {
-            //TODO: handle cases
-            switch error{
-            case LocationError.noLocationPermission:
-                locationManager.delegate = self
-                locationManager.requestWhenInUseAuthorization()
-                break
-            case LocationError.deniedLocationUsage: break
-            case LocationError.restrictedLocationUsage: break
-            case LocationError.noLocationEnabled:break
-            case LocationError.noLocation: break
-            case PlacesError.noNetwork: break
-            case PlacesError.decoding: break
-            case PlacesError.timeout: break
-            case PlacesError.noPlaces: break
-            case PlacesError.badStatus: break
-            default: break
-                
-            }
+            let alert = UIAlertController(title: "Error", message: error, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+        if viewModel.requestPermission {
+            locationManager.delegate = self
+            locationManager.requestWhenInUseAuthorization()
         }
     }
 }
@@ -80,7 +70,6 @@ class NearbyPlacesViewController: UIViewController, NearbyPlacesView {
 extension NearbyPlacesViewController:CLLocationManagerDelegate{
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        //TODO: test
         if status == .authorizedWhenInUse {
             nearbyPlaces(reloadNearbyButton)
         }

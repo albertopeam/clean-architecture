@@ -7,14 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C3178208208DE4CA00CB8FAE /* LocationManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3178207208DE4CA00CB8FAE /* LocationManagerProtocol.swift */; };
-		C317820A208DE56600CB8FAE /* LocationManagerBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3178209208DE56600CB8FAE /* LocationManagerBridge.swift */; };
 		C317820C208DF45600CB8FAE /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = C317820B208DF45500CB8FAE /* README.md */; };
 		C3332EE92088A86E00FF73FF /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3332EE82088A86E00FF73FF /* Error.swift */; };
 		C3332EEB2088E1DE00FF73FF /* NearbyPlacesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3332EEA2088E1DE00FF73FF /* NearbyPlacesPresenter.swift */; };
 		C3332EEE2088E43C00FF73FF /* NearbyPlacesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3332EED2088E43C00FF73FF /* NearbyPlacesView.xib */; };
 		C3332EF02088E45600FF73FF /* NearbyPlacesAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3332EEF2088E45600FF73FF /* NearbyPlacesAssembler.swift */; };
-		C3332EF22088E4D300FF73FF /* PlacesAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3332EF12088E4D300FF73FF /* PlacesAssembler.swift */; };
+		C3332EF22088E4D300FF73FF /* PlacesComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3332EF12088E4D300FF73FF /* PlacesComponent.swift */; };
 		C3332EF42088EBD700FF73FF /* NearbyPlaceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3332EF32088EBD700FF73FF /* NearbyPlaceCell.xib */; };
 		C3332EF62088F0B800FF73FF /* NearbyPlaceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3332EF52088F0B800FF73FF /* NearbyPlaceCell.swift */; };
 		C33EE73D2091FB5A00712672 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33EE73C2091FB5A00712672 /* Kingfisher.framework */; };
@@ -47,14 +45,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		C3178207208DE4CA00CB8FAE /* LocationManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManagerProtocol.swift; sourceTree = "<group>"; };
-		C3178209208DE56600CB8FAE /* LocationManagerBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManagerBridge.swift; sourceTree = "<group>"; };
 		C317820B208DF45500CB8FAE /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		C3332EE82088A86E00FF73FF /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		C3332EEA2088E1DE00FF73FF /* NearbyPlacesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearbyPlacesPresenter.swift; sourceTree = "<group>"; };
 		C3332EED2088E43C00FF73FF /* NearbyPlacesView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NearbyPlacesView.xib; sourceTree = "<group>"; };
 		C3332EEF2088E45600FF73FF /* NearbyPlacesAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearbyPlacesAssembler.swift; sourceTree = "<group>"; };
-		C3332EF12088E4D300FF73FF /* PlacesAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesAssembler.swift; sourceTree = "<group>"; };
+		C3332EF12088E4D300FF73FF /* PlacesComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesComponent.swift; sourceTree = "<group>"; };
 		C3332EF32088EBD700FF73FF /* NearbyPlaceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NearbyPlaceCell.xib; sourceTree = "<group>"; };
 		C3332EF52088F0B800FF73FF /* NearbyPlaceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearbyPlaceCell.swift; sourceTree = "<group>"; };
 		C33EE73C2091FB5A00712672 /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
@@ -125,7 +121,6 @@
 				C3332EEF2088E45600FF73FF /* NearbyPlacesAssembler.swift */,
 				C3332EF32088EBD700FF73FF /* NearbyPlaceCell.xib */,
 				C3332EF52088F0B800FF73FF /* NearbyPlaceCell.swift */,
-				C3178209208DE56600CB8FAE /* LocationManagerBridge.swift */,
 			);
 			path = places;
 			sourceTree = "<group>";
@@ -205,10 +200,9 @@
 			isa = PBXGroup;
 			children = (
 				C3FA42662087B04200B63221 /* Places.swift */,
-				C3332EF12088E4D300FF73FF /* PlacesAssembler.swift */,
-				C3FA42622087AFEC00B63221 /* LocationGateway.swift */,
+				C3332EF12088E4D300FF73FF /* PlacesComponent.swift */,
 				C3FA42632087AFEC00B63221 /* PlacesGateway.swift */,
-				C3178207208DE4CA00CB8FAE /* LocationManagerProtocol.swift */,
+				C3FA42622087AFEC00B63221 /* LocationGateway.swift */,
 			);
 			path = places;
 			sourceTree = "<group>";
@@ -340,7 +334,7 @@
 			files = (
 				C3332EE92088A86E00FF73FF /* Error.swift in Sources */,
 				C3FA42602087AFA800B63221 /* Work.swift in Sources */,
-				C3332EF22088E4D300FF73FF /* PlacesAssembler.swift in Sources */,
+				C3332EF22088E4D300FF73FF /* PlacesComponent.swift in Sources */,
 				C3FA425B2087AF8B00B63221 /* NearbyPlacesViewController.swift in Sources */,
 				C3332EEB2088E1DE00FF73FF /* NearbyPlacesPresenter.swift in Sources */,
 				C3FA42652087AFEC00B63221 /* PlacesGateway.swift in Sources */,
@@ -351,9 +345,7 @@
 				C3FA425F2087AFA800B63221 /* Promise.swift in Sources */,
 				C3332EF62088F0B800FF73FF /* NearbyPlaceCell.swift in Sources */,
 				C3DA814F208F419500AF9ABE /* main.swift in Sources */,
-				C317820A208DE56600CB8FAE /* LocationManagerBridge.swift in Sources */,
 				C3332EF02088E45600FF73FF /* NearbyPlacesAssembler.swift in Sources */,
-				C3178208208DE4CA00CB8FAE /* LocationManagerProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

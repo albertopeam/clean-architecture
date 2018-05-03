@@ -6,5 +6,5 @@
 //  Copyright © 2018 Alberto. All rights reserved.
 //
 class Constants {
-    static let googleApiKey = "add-your-own-key"
+    static let googleApiKey = "AIzaSyDs1msJi0GoJ6X6egd0-qQcXDATHurZAYU"
 }

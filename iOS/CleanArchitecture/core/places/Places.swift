@@ -24,6 +24,12 @@ struct Place {
     let location:Location
 }
 
+struct Location {
+    let latitude:Double
+    let longitude:Double
+}
+
+
 protocol PlacesProtocol {
     func nearby(output:PlacesOutputProtocol)
 }

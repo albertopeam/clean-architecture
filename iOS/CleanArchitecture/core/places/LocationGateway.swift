@@ -5,21 +5,24 @@
 //  Created by Penas Amor, Alberto on 18/4/18.
 //  Copyright © 2018 Alberto. All rights reserved.
 //
+import CoreLocation
 
-class LocationGateway: Work, LocationManagerDelegate {
+class LocationGateway: NSObject, Work {
     
     private var resolve:Resolve?
     private var reject:Reject?
-    private var locationManager:LocationManagerProtocol
+    private let locationManager:CLLocationManager
+    private let accuracy:CLLocationAccuracy
     
-    init(locationManager:LocationManagerProtocol) {
+    init(locationManager:CLLocationManager = CLLocationManager(), accuracy:CLLocationAccuracy = kCLLocationAccuracyBest) {
         self.locationManager = locationManager
+        self.accuracy = accuracy
     }
     
     func run(params:Any?, resolve: @escaping (Any) -> Void, reject: @escaping Reject) throws {
         self.resolve = resolve
         self.reject = reject
-        switch locationManager.authorizationStatus() {
+        switch CLLocationManager.authorizationStatus() {
         case .notDetermined:
             reject(LocationError.noLocationPermission)
             return
@@ -27,10 +30,13 @@ class LocationGateway: Work, LocationManagerDelegate {
             reject(LocationError.restrictedLocationUsage)
             return
         case .denied:
-            reject(LocationError.deniedLocationUsage)
-            return
-        case .notEnabled:
-            reject(LocationError.noLocationEnabled)
+            if !CLLocationManager.locationServicesEnabled() {
+                if !CLLocationManager.locationServicesEnabled() {
+                    reject(LocationError.noLocationEnabled)
+                }else{
+                    reject(LocationError.deniedLocationUsage)
+                }
+            }
             return
         case .authorizedAlways:
             break
@@ -39,18 +45,21 @@ class LocationGateway: Work, LocationManagerDelegate {
         
         }
         locationManager.delegate = self
-        locationManager.accuracy = .best;
+        locationManager.desiredAccuracy = accuracy;
         locationManager.startUpdatingLocation()
     }
-    
-    func locationManager(didUpdateLocations locations: [Location]) {
+}
+
+extension LocationGateway:CLLocationManagerDelegate{
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if locations.count > 0 {
             locationManager.stopUpdatingLocation()
-            resolve?(locations.first!)
+            let location:CLLocation = locations.first!
+            resolve?(Location(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude))
         }
     }
     
-    func locationManager(didFailWithError error: Error) {
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         locationManager.stopUpdatingLocation()
         if error.code == 0 && error.domain == "kCLErrorDomain"{
             reject?(LocationError.noLocation)
