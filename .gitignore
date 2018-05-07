@@ -66,4 +66,4 @@ iOS/fastlane/screenshots
 iOS/fastlane/test_output
 
 # google api key
-iOS/CleanArchitecture/app/Constants
+iOS/CleanArchitecture/app/Constants.swift
