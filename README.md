@@ -2,11 +2,16 @@
 
 The intention of this repo is to show the more common practices when you build a mobile app using clean architecture
 
-Remember: WORK IN PROGRESS
+WORK IN PROGRESS
 
 ## Before start
 * iOS
-    * To run the project you should add a Google Api Key in [Constants](https://github.com/albertopeam/clean-architecture/blob/master/iOS/CleanArchitecture/app/Constants.swift)
+* To run the project you should create a file called Constants with your own Google Api Key. For more [info](https://developers.google.com/places/web-service/search)
+```
+    class Constants {
+        static let googleApiKey = "add-your-own-key"
+    }
+```
 
 ## Project structure
 * iOS folder -> Swift iOS project
