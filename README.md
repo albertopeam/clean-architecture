@@ -16,9 +16,8 @@ Remember: WORK IN PROGRESS
 
 ### Pending
 * iOS
- * app/places
-    * draw tableview
-    * goto detail
+    * Places testing
+    * UI testing
 
 ### Next
 * iOS
