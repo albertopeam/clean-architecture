@@ -17,6 +17,8 @@
 		C3332EF62088F0B800FF73FF /* NearbyPlaceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3332EF52088F0B800FF73FF /* NearbyPlaceCell.swift */; };
 		C33EE73D2091FB5A00712672 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33EE73C2091FB5A00712672 /* Kingfisher.framework */; };
 		C36DD7832090C7A30045E114 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36DD7822090C7A30045E114 /* Constants.swift */; };
+		C3D8AD8C20A05DE000868FF9 /* PlacesTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D8AD8B20A05DE000868FF9 /* PlacesTest.swift */; };
+		C3D8AD8D20A0625D00868FF9 /* Places.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FA42662087B04200B63221 /* Places.swift */; };
 		C3DA814F208F419500AF9ABE /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DA814E208F419500AF9ABE /* main.swift */; };
 		C3DA8150208F43BD00AF9ABE /* Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FA425D2087AFA800B63221 /* Promise.swift */; };
 		C3DA8151208F43C900AF9ABE /* Work.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FA425E2087AFA800B63221 /* Work.swift */; };
@@ -55,6 +57,7 @@
 		C3332EF52088F0B800FF73FF /* NearbyPlaceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearbyPlaceCell.swift; sourceTree = "<group>"; };
 		C33EE73C2091FB5A00712672 /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
 		C36DD7822090C7A30045E114 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		C3D8AD8B20A05DE000868FF9 /* PlacesTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesTest.swift; sourceTree = "<group>"; };
 		C3DA814E208F419500AF9ABE /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		C3FA422F2087AEC200B63221 /* CleanArchitecture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CleanArchitecture.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3FA42372087AEC200B63221 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -125,6 +128,23 @@
 			path = places;
 			sourceTree = "<group>";
 		};
+		C3D8AD8920A05DB100868FF9 /* core */ = {
+			isa = PBXGroup;
+			children = (
+				C3FA42472087AEC200B63221 /* PromiseTest.swift */,
+				C3D8AD8A20A05DBC00868FF9 /* places */,
+			);
+			path = core;
+			sourceTree = "<group>";
+		};
+		C3D8AD8A20A05DBC00868FF9 /* places */ = {
+			isa = PBXGroup;
+			children = (
+				C3D8AD8B20A05DE000868FF9 /* PlacesTest.swift */,
+			);
+			path = places;
+			sourceTree = "<group>";
+		};
 		C3FA42262087AEC200B63221 = {
 			isa = PBXGroup;
 			children = (
@@ -160,7 +180,7 @@
 		C3FA42462087AEC200B63221 /* CleanArchitectureTests */ = {
 			isa = PBXGroup;
 			children = (
-				C3FA42472087AEC200B63221 /* PromiseTest.swift */,
+				C3D8AD8920A05DB100868FF9 /* core */,
 				C3FA42492087AEC200B63221 /* Info.plist */,
 			);
 			path = CleanArchitectureTests;
@@ -353,9 +373,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3D8AD8D20A0625D00868FF9 /* Places.swift in Sources */,
 				C3FA42482087AEC200B63221 /* PromiseTest.swift in Sources */,
 				C3DA8150208F43BD00AF9ABE /* Promise.swift in Sources */,
 				C3DA8151208F43C900AF9ABE /* Work.swift in Sources */,
+				C3D8AD8C20A05DE000868FF9 /* PlacesTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

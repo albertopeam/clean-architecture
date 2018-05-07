@@ -6,7 +6,7 @@
 //  Copyright © 2018 Alberto. All rights reserved.
 //
 
-enum LocationError:Error {
+enum LocationError:Error, Equatable {
     case noLocationPermission, restrictedLocationUsage, noLocationEnabled, deniedLocationUsage, noLocation
 }
 
