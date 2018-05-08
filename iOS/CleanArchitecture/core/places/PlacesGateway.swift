@@ -10,15 +10,15 @@ import Foundation
 
 class PlacesGateway:NSObject, Work {
     
-    let apiKey:String
+    let targetUrl:String
     
-    init(apiKey:String) {
-        self.apiKey = apiKey
+    init(url:String) {
+        self.targetUrl = url
     }
     
     func run(params:Any?, resolve: @escaping (Any) -> Void, reject: @escaping Reject) throws {
         let location:Location = params as! Location
-        let urlString = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=\(apiKey)&radius=150&types=restaurant&location=\(location.latitude),\(location.longitude)"
+        let urlString:String = targetUrl.replacingOccurrences(of: "{{location}}", with: "\(location.latitude),\(location.longitude)")
         let url = URL(string: urlString)
         URLSession.shared.dataTask(with: url!) { (data, response, error) in
             if error != nil {
@@ -29,7 +29,7 @@ class PlacesGateway:NSObject, Work {
                     let json = try JSONSerialization.jsonObject(with: data!, options:[]) as! NSDictionary
                     let results = json["results"] as! [NSDictionary]
                     if results.count > 0 {
-                        let places = results.map({ (item) -> Place in
+                        let places:Array<Place> = results.map({ (item) -> Place in
                             let id = item["id"] as! String
                             let placeId = item["place_id"] as! String
                             let name = item["name"] as! String

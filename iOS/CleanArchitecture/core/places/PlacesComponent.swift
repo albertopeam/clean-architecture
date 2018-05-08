@@ -8,6 +8,7 @@
 
 class PlacesComponent {
     static func assemble(apiKey:String) -> PlacesProtocol {
-        return Places(locationGateway: LocationGateway(), placesGateway: PlacesGateway(apiKey: apiKey))
+        let url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=\(apiKey)&radius=150&types=restaurant&location={{location}}"
+        return Places(locationGateway: LocationGateway(), placesGateway: PlacesGateway(url: url))
     }
 }

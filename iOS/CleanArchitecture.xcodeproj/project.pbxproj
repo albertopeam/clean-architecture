@@ -15,13 +15,19 @@
 		C3332EF22088E4D300FF73FF /* PlacesComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3332EF12088E4D300FF73FF /* PlacesComponent.swift */; };
 		C3332EF42088EBD700FF73FF /* NearbyPlaceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3332EF32088EBD700FF73FF /* NearbyPlaceCell.xib */; };
 		C3332EF62088F0B800FF73FF /* NearbyPlaceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3332EF52088F0B800FF73FF /* NearbyPlaceCell.swift */; };
+		C33884B920A09C9800ED3D49 /* Swifter.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C3CC23F420A09C0000BA01F6 /* Swifter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C33884BB20A0A07400ED3D49 /* nearby-success.json in Resources */ = {isa = PBXBuildFile; fileRef = C33884BA20A0A07400ED3D49 /* nearby-success.json */; };
 		C33EE73D2091FB5A00712672 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33EE73C2091FB5A00712672 /* Kingfisher.framework */; };
 		C36DD7832090C7A30045E114 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36DD7822090C7A30045E114 /* Constants.swift */; };
+		C3CC23F520A09C0000BA01F6 /* Swifter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3CC23F420A09C0000BA01F6 /* Swifter.framework */; };
+		C3CC23FA20A09C3100BA01F6 /* PlacesGatewayTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CC23F920A09C3100BA01F6 /* PlacesGatewayTest.swift */; };
 		C3D8AD8C20A05DE000868FF9 /* PlacesTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D8AD8B20A05DE000868FF9 /* PlacesTest.swift */; };
 		C3D8AD8D20A0625D00868FF9 /* Places.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FA42662087B04200B63221 /* Places.swift */; };
 		C3DA814F208F419500AF9ABE /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DA814E208F419500AF9ABE /* main.swift */; };
 		C3DA8150208F43BD00AF9ABE /* Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FA425D2087AFA800B63221 /* Promise.swift */; };
 		C3DA8151208F43C900AF9ABE /* Work.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FA425E2087AFA800B63221 /* Work.swift */; };
+		C3E24B2020A19CB10062D4E7 /* PlacesGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FA42632087AFEC00B63221 /* PlacesGateway.swift */; };
+		C3E24B2220A1BE250062D4E7 /* nearby-success-noplaces.json in Resources */ = {isa = PBXBuildFile; fileRef = C3E24B2120A1BE250062D4E7 /* nearby-success-noplaces.json */; };
 		C3FA42382087AEC200B63221 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3FA42362087AEC200B63221 /* Main.storyboard */; };
 		C3FA423A2087AEC200B63221 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3FA42392087AEC200B63221 /* Assets.xcassets */; };
 		C3FA423D2087AEC200B63221 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3FA423B2087AEC200B63221 /* LaunchScreen.storyboard */; };
@@ -46,6 +52,19 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		C3CC23F620A09C0A00BA01F6 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				C33884B920A09C9800ED3D49 /* Swifter.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		C317820B208DF45500CB8FAE /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		C3332EE82088A86E00FF73FF /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
@@ -55,10 +74,14 @@
 		C3332EF12088E4D300FF73FF /* PlacesComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesComponent.swift; sourceTree = "<group>"; };
 		C3332EF32088EBD700FF73FF /* NearbyPlaceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NearbyPlaceCell.xib; sourceTree = "<group>"; };
 		C3332EF52088F0B800FF73FF /* NearbyPlaceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearbyPlaceCell.swift; sourceTree = "<group>"; };
+		C33884BA20A0A07400ED3D49 /* nearby-success.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "nearby-success.json"; sourceTree = "<group>"; };
 		C33EE73C2091FB5A00712672 /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
 		C36DD7822090C7A30045E114 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		C3CC23F420A09C0000BA01F6 /* Swifter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Swifter.framework; path = Carthage/Build/iOS/Swifter.framework; sourceTree = "<group>"; };
+		C3CC23F920A09C3100BA01F6 /* PlacesGatewayTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacesGatewayTest.swift; sourceTree = "<group>"; };
 		C3D8AD8B20A05DE000868FF9 /* PlacesTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesTest.swift; sourceTree = "<group>"; };
 		C3DA814E208F419500AF9ABE /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		C3E24B2120A1BE250062D4E7 /* nearby-success-noplaces.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "nearby-success-noplaces.json"; sourceTree = "<group>"; };
 		C3FA422F2087AEC200B63221 /* CleanArchitecture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CleanArchitecture.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3FA42372087AEC200B63221 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C3FA42392087AEC200B63221 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -91,6 +114,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3CC23F520A09C0000BA01F6 /* Swifter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,6 +164,9 @@
 		C3D8AD8A20A05DBC00868FF9 /* places */ = {
 			isa = PBXGroup;
 			children = (
+				C3E24B2120A1BE250062D4E7 /* nearby-success-noplaces.json */,
+				C33884BA20A0A07400ED3D49 /* nearby-success.json */,
+				C3CC23F920A09C3100BA01F6 /* PlacesGatewayTest.swift */,
 				C3D8AD8B20A05DE000868FF9 /* PlacesTest.swift */,
 			);
 			path = places;
@@ -189,6 +216,7 @@
 		C3FA42542087AF6900B63221 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C3CC23F420A09C0000BA01F6 /* Swifter.framework */,
 				C33EE73C2091FB5A00712672 /* Kingfisher.framework */,
 				C3FA42552087AF6A00B63221 /* MapKit.framework */,
 			);
@@ -255,6 +283,7 @@
 				C3FA423F2087AEC200B63221 /* Sources */,
 				C3FA42402087AEC200B63221 /* Frameworks */,
 				C3FA42412087AEC200B63221 /* Resources */,
+				C3CC23F620A09C0A00BA01F6 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -325,6 +354,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C33884BB20A0A07400ED3D49 /* nearby-success.json in Resources */,
+				C3E24B2220A1BE250062D4E7 /* nearby-success-noplaces.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -375,6 +406,8 @@
 			files = (
 				C3D8AD8D20A0625D00868FF9 /* Places.swift in Sources */,
 				C3FA42482087AEC200B63221 /* PromiseTest.swift in Sources */,
+				C3CC23FA20A09C3100BA01F6 /* PlacesGatewayTest.swift in Sources */,
+				C3E24B2020A19CB10062D4E7 /* PlacesGateway.swift in Sources */,
 				C3DA8150208F43BD00AF9ABE /* Promise.swift in Sources */,
 				C3DA8151208F43C900AF9ABE /* Work.swift in Sources */,
 				C3D8AD8C20A05DE000868FF9 /* PlacesTest.swift in Sources */,
@@ -568,6 +601,10 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 494NZHD989;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = CleanArchitectureTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.albertopeam.CleanArchitectureTests;
@@ -585,6 +622,10 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 494NZHD989;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = CleanArchitectureTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.albertopeam.CleanArchitectureTests;

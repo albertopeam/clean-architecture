@@ -6,12 +6,16 @@ WORK IN PROGRESS
 
 ## Before start
 * iOS
-* To run the project you should create a file called Constants with your own Google Api Key. For more [info](https://developers.google.com/places/web-service/search)
-```
-    class Constants {
-        static let googleApiKey = "add-your-own-key"
-    }
-```
+    * Resolve Carthage dependencies. For more [info](https://github.com/Carthage/Carthage)
+    ```
+    carthage update --platform iOS
+    ```
+    * To run the project you should create a file called Constants with your own Google Api Key. For more [info](https://developers.google.com/places/web-service/search)
+    ```
+        class Constants {
+            static let googleApiKey = "add-your-own-key"
+        }
+    ```
 
 ## Project structure
 * iOS folder -> Swift iOS project
@@ -23,6 +27,7 @@ WORK IN PROGRESS
 * iOS
     * Places testing
     * UI testing
+    * move PlacesComponents to a module to avoid publish internal dependencies(do another entry with the explanation)
 
 ### Next
 * iOS
