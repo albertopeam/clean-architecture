@@ -25,7 +25,6 @@ WORK IN PROGRESS
 
 ### Pending
 * iOS
-    * Places testing
     * UI testing
     * move PlacesComponents to a module to avoid publish internal dependencies(do another entry with the explanation)
 
