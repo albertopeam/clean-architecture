@@ -11,10 +11,10 @@ class LocationGateway: NSObject, Work {
     
     private var resolve:Resolve?
     private var reject:Reject?
-    private let locationManager:CLLocationManager
+    private let locationManager:LocationManager
     private let accuracy:CLLocationAccuracy
     
-    init(locationManager:CLLocationManager = CLLocationManager(), accuracy:CLLocationAccuracy = kCLLocationAccuracyBest) {
+    init(locationManager:LocationManager = LocationManager(), accuracy:CLLocationAccuracy = kCLLocationAccuracyBest) {
         self.locationManager = locationManager
         self.accuracy = accuracy
     }
@@ -22,7 +22,7 @@ class LocationGateway: NSObject, Work {
     func run(params:Any?, resolve: @escaping (Any) -> Void, reject: @escaping Reject) throws {
         self.resolve = resolve
         self.reject = reject
-        switch CLLocationManager.authorizationStatus() {
+        switch locationManager.authorizationStatus() {
         case .notDetermined:
             reject(LocationError.noLocationPermission)
             return

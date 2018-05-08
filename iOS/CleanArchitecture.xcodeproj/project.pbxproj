@@ -22,12 +22,17 @@
 		C3CC23F520A09C0000BA01F6 /* Swifter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3CC23F420A09C0000BA01F6 /* Swifter.framework */; };
 		C3CC23FA20A09C3100BA01F6 /* PlacesGatewayTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CC23F920A09C3100BA01F6 /* PlacesGatewayTest.swift */; };
 		C3D8AD8C20A05DE000868FF9 /* PlacesTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D8AD8B20A05DE000868FF9 /* PlacesTest.swift */; };
-		C3D8AD8D20A0625D00868FF9 /* Places.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FA42662087B04200B63221 /* Places.swift */; };
 		C3DA814F208F419500AF9ABE /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DA814E208F419500AF9ABE /* main.swift */; };
 		C3DA8150208F43BD00AF9ABE /* Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FA425D2087AFA800B63221 /* Promise.swift */; };
 		C3DA8151208F43C900AF9ABE /* Work.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FA425E2087AFA800B63221 /* Work.swift */; };
 		C3E24B2020A19CB10062D4E7 /* PlacesGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FA42632087AFEC00B63221 /* PlacesGateway.swift */; };
 		C3E24B2220A1BE250062D4E7 /* nearby-success-noplaces.json in Resources */ = {isa = PBXBuildFile; fileRef = C3E24B2120A1BE250062D4E7 /* nearby-success-noplaces.json */; };
+		C3E24B2420A1CC330062D4E7 /* LocationGatewayTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E24B2320A1CC330062D4E7 /* LocationGatewayTest.swift */; };
+		C3E24B2620A1D40F0062D4E7 /* Places.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FA42662087B04200B63221 /* Places.swift */; };
+		C3E24B2720A1D4180062D4E7 /* LocationGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FA42622087AFEC00B63221 /* LocationGateway.swift */; };
+		C3E24B2820A1D47F0062D4E7 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3332EE82088A86E00FF73FF /* Error.swift */; };
+		C3E24B2A20A1D7420062D4E7 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E24B2920A1D7420062D4E7 /* LocationManager.swift */; };
+		C3E24B2B20A1D7480062D4E7 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E24B2920A1D7420062D4E7 /* LocationManager.swift */; };
 		C3FA42382087AEC200B63221 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3FA42362087AEC200B63221 /* Main.storyboard */; };
 		C3FA423A2087AEC200B63221 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3FA42392087AEC200B63221 /* Assets.xcassets */; };
 		C3FA423D2087AEC200B63221 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3FA423B2087AEC200B63221 /* LaunchScreen.storyboard */; };
@@ -82,6 +87,8 @@
 		C3D8AD8B20A05DE000868FF9 /* PlacesTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesTest.swift; sourceTree = "<group>"; };
 		C3DA814E208F419500AF9ABE /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		C3E24B2120A1BE250062D4E7 /* nearby-success-noplaces.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "nearby-success-noplaces.json"; sourceTree = "<group>"; };
+		C3E24B2320A1CC330062D4E7 /* LocationGatewayTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationGatewayTest.swift; sourceTree = "<group>"; };
+		C3E24B2920A1D7420062D4E7 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		C3FA422F2087AEC200B63221 /* CleanArchitecture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CleanArchitecture.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3FA42372087AEC200B63221 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C3FA42392087AEC200B63221 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -168,6 +175,7 @@
 				C33884BA20A0A07400ED3D49 /* nearby-success.json */,
 				C3CC23F920A09C3100BA01F6 /* PlacesGatewayTest.swift */,
 				C3D8AD8B20A05DE000868FF9 /* PlacesTest.swift */,
+				C3E24B2320A1CC330062D4E7 /* LocationGatewayTest.swift */,
 			);
 			path = places;
 			sourceTree = "<group>";
@@ -251,6 +259,7 @@
 				C3332EF12088E4D300FF73FF /* PlacesComponent.swift */,
 				C3FA42632087AFEC00B63221 /* PlacesGateway.swift */,
 				C3FA42622087AFEC00B63221 /* LocationGateway.swift */,
+				C3E24B2920A1D7420062D4E7 /* LocationManager.swift */,
 			);
 			path = places;
 			sourceTree = "<group>";
@@ -385,6 +394,7 @@
 			files = (
 				C3332EE92088A86E00FF73FF /* Error.swift in Sources */,
 				C3FA42602087AFA800B63221 /* Work.swift in Sources */,
+				C3E24B2A20A1D7420062D4E7 /* LocationManager.swift in Sources */,
 				C3332EF22088E4D300FF73FF /* PlacesComponent.swift in Sources */,
 				C3FA425B2087AF8B00B63221 /* NearbyPlacesViewController.swift in Sources */,
 				C3332EEB2088E1DE00FF73FF /* NearbyPlacesPresenter.swift in Sources */,
@@ -404,13 +414,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C3D8AD8D20A0625D00868FF9 /* Places.swift in Sources */,
 				C3FA42482087AEC200B63221 /* PromiseTest.swift in Sources */,
+				C3E24B2720A1D4180062D4E7 /* LocationGateway.swift in Sources */,
 				C3CC23FA20A09C3100BA01F6 /* PlacesGatewayTest.swift in Sources */,
+				C3E24B2B20A1D7480062D4E7 /* LocationManager.swift in Sources */,
 				C3E24B2020A19CB10062D4E7 /* PlacesGateway.swift in Sources */,
 				C3DA8150208F43BD00AF9ABE /* Promise.swift in Sources */,
 				C3DA8151208F43C900AF9ABE /* Work.swift in Sources */,
 				C3D8AD8C20A05DE000868FF9 /* PlacesTest.swift in Sources */,
+				C3E24B2420A1CC330062D4E7 /* LocationGatewayTest.swift in Sources */,
+				C3E24B2820A1D47F0062D4E7 /* Error.swift in Sources */,
+				C3E24B2620A1D40F0062D4E7 /* Places.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

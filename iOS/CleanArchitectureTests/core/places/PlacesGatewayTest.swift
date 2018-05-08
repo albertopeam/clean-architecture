@@ -18,10 +18,11 @@ class PlacesGatewayTest: XCTestCase {
     
     override func setUp(){
         super.setUp()
+        continueAfterFailure = false
         mockServer = HttpServer()
         do {
             try mockServer!.start()
-            //TODO: ojo tiene un start con QUEUE, quizás se pueda usar la cola del thread para no usar expectations
+            //TODO: HttpServer has a start method who accepts a QUEUE, check if we can use the test thread QUEUE and avoid the use of expectations
         } catch {
             XCTFail("Mock HttpServer couldn't start")
         }
@@ -29,6 +30,8 @@ class PlacesGatewayTest: XCTestCase {
     
     override func tearDown() {
         mockServer!.stop()
+        mockServer = nil
+        sut = nil
         super.tearDown()
     }
     
