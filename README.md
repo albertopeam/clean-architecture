@@ -106,8 +106,11 @@ class Work1:NSObject, Work {
 | Better error handling(unified) | |
 | Asynchronous API for sync and async operations  | |
 
-* Examples:
+* Example:
     * [Swift](https://github.com/albertopeam/clean-architecture/blob/master/iOS/CleanArchitecture/core/places/Places.swift)
+
+* How to test:
+    * [Swift](https://github.com/albertopeam/clean-architecture/blob/master/iOS/CleanArchitectureTests/core/places/PlacesTest.swift)
 
 ## License
 Copyright (c) 2018 Alberto Penas Amor
