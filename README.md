@@ -101,8 +101,8 @@ class Work1:NSObject, Work {
 ```
 | *PROS* | *CONS* | 
 | :---         | :---           | 
-| Avoid callback hell | Understand the promise concept and how it works |
-| The code is more easy to read and mantain  | | 
+| Avoid callback hell | Use of casts in completion blocks |
+| The code is more easy to read and mantain  | |
 | Better error handling(unified) | |
 | Asynchronous API for sync and async operations  | |
 
