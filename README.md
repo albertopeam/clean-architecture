@@ -1,6 +1,7 @@
+VENDER
 # Clean Architecture
 
-The intention of this repo is to show the more common practices when you build a mobile app using clean architecture
+The intention of this repository is to show some of the more common practices when building a mobile app using clean architecture.
 
 WORK IN PROGRESS
 
@@ -26,10 +27,13 @@ WORK IN PROGRESS
 ### Pending
 * iOS
     * UI testing
-    * move PlacesComponents to a module to avoid publish internal dependencies(do another entry with the explanation)
+    * move PlacesComponents to a module to avoid publishing internal dependencies(create another entry with the explanation)
+    * ViewModel to reduce complexity between view-presenter
+    * ViewStateMachine for complex UIs
 
 ### Next
 * iOS
+change name from work to worker
     * observer
 
 ## Tests
@@ -39,9 +43,9 @@ WORK IN PROGRESS
 ### <u>Promise</u>
 * Problem:
 
-One of the most commnon pitfalls of developers who use asynchronous frameworks is callback hell.
-Sometimes the nature of the libraries or the framework that we use instigate us to nest async code. At the start maybe we can manage it, but when 
-the system become more and more big it will be a problem because the code will be complex to read and understand.
+One of the most commnon pitfalls which developers who use asynchronous APIS can find is callback hell.
+Sometimes the nature of the APIS that we use instigate us to nest async code. At the start maybe we can manage it, but when 
+the system becomes bigger and bigger it will become a problem because the code will be too complex to read and test.
  ```swift
 func fetchData(callback:Callback){
     let url = URL(string: urlString)
@@ -67,8 +71,8 @@ func fetchData(callback:Callback){
  ```
 * Solution: 
 
-Apply a pattern that allows us to hide the complexity of the asynchronous operations and provide a way to handle them as if they were synchronous. 
-A promise represents the eventual result of an asynchronous operation, we can chain as many promises as we want in a synchronous way.
+To apply a pattern that allows us to hide the complexity of the asynchronous operations and provide a way to handle them as if they were synchronous. 
+A promise represents the eventual result of an asynchronous operation; we can chain as many promises as we want in a synchronous way.
 ```swift
 let fetchWork1:Work1
 let fetchWork2:Work2
@@ -102,7 +106,7 @@ class Work1:NSObject, Work {
 | *PROS* | *CONS* | 
 | :---         | :---           | 
 | Avoid callback hell | Use of casts in completion blocks |
-| The code is more easy to read and mantain  | |
+| The code is easier to read and mantain  | |
 | Better error handling(unified) | |
 | Asynchronous API for sync and async operations  | |
 
