@@ -5,6 +5,7 @@
 //  Created by Penas Amor, Alberto on 19/4/18.
 //  Copyright © 2018 Alberto. All rights reserved.
 //
+import CleanArchitectureCore
 
 protocol NearbyPlacesPresenterProtocol {
     func nearbyPlaces()

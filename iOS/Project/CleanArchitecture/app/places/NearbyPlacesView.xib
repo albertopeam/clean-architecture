@@ -24,16 +24,16 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EdA-Mz-bZg">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="192"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="400"/>
                     <subviews>
                         <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="RdC-mg-j01">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="192"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="400"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="192" id="BJT-EC-0G7"/>
+                                <constraint firstAttribute="height" constant="400" id="BJT-EC-0G7"/>
                             </constraints>
                         </mapView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tuj-3c-Vr4">
-                            <rect key="frame" x="300" y="159" width="67" height="30"/>
+                            <rect key="frame" x="300" y="354" width="67" height="30"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="XIg-yT-Yfb"/>
@@ -48,17 +48,17 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="192" id="GwH-Qh-dql"/>
+                        <constraint firstAttribute="height" constant="400" id="GwH-Qh-dql"/>
                         <constraint firstItem="RdC-mg-j01" firstAttribute="leading" secondItem="EdA-Mz-bZg" secondAttribute="leading" id="Lpf-Tv-9wk"/>
                         <constraint firstAttribute="trailing" secondItem="RdC-mg-j01" secondAttribute="trailing" id="VI4-k1-G1r"/>
                         <constraint firstAttribute="trailing" secondItem="Tuj-3c-Vr4" secondAttribute="trailing" constant="8" id="hC9-8H-TXO"/>
                         <constraint firstItem="RdC-mg-j01" firstAttribute="top" secondItem="EdA-Mz-bZg" secondAttribute="top" id="m45-vA-dq4"/>
-                        <constraint firstAttribute="bottom" secondItem="Tuj-3c-Vr4" secondAttribute="bottom" constant="3" id="m83-2u-e2F"/>
+                        <constraint firstAttribute="bottom" secondItem="Tuj-3c-Vr4" secondAttribute="bottom" constant="16" id="m83-2u-e2F"/>
                         <constraint firstAttribute="bottom" secondItem="RdC-mg-j01" secondAttribute="bottom" id="v1A-9v-HbT"/>
                     </constraints>
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="80" estimatedRowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="u7e-ol-0p6">
-                    <rect key="frame" x="0.0" y="192" width="375" height="474"/>
+                    <rect key="frame" x="0.0" y="400" width="375" height="266"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="jmn-Qj-DTC"/>

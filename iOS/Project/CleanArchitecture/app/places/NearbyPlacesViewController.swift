@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import CleanArchitectureCore
 
 class NearbyPlacesViewController: UIViewController, NearbyPlacesView {
 
@@ -51,6 +52,7 @@ class NearbyPlacesViewController: UIViewController, NearbyPlacesView {
                 mapView.addAnnotation(location)
                 locations.append(location)
             }
+            mapView.removeAnnotations(mapView.annotations)
             mapView.showAnnotations(locations, animated: true)
             mapView.delegate = self
             placesTableView.reloadData()
@@ -74,6 +76,7 @@ extension NearbyPlacesViewController:CLLocationManagerDelegate{
             nearbyPlaces(reloadNearbyButton)
         }
     }
+    
 }
 
 extension NearbyPlacesViewController:UITableViewDataSource{
@@ -88,6 +91,16 @@ extension NearbyPlacesViewController:UITableViewDataSource{
         return cell
     }
 
+}
+
+extension NearbyPlacesViewController:UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let annotation = mapView.annotations.first(where: {$0.title! == places[indexPath.row].name}) {
+            mapView.selectAnnotation(annotation, animated: true)
+        }
+    }
+    
 }
 
 extension NearbyPlacesViewController:MKMapViewDelegate{

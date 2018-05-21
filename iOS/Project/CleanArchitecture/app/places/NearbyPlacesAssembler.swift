@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CleanArchitectureCore
 
 class NearbyPlacesAssembler {
     static func assemble() -> UIViewController {

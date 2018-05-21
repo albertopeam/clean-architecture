@@ -3,34 +3,52 @@
 # gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
 
 ## Build generated
-iOS/build/
-iOS/DerivedData/
+iOS/Project/build/
+iOS/Project/DerivedData/
+iOS/Core/build/
+iOS/Core/DerivedData/
 
 ## Various settings
-iOS/*.pbxuser
-iOS/!default.pbxuser
-iOS/*.mode1v3
-iOS/!default.mode1v3
-iOS/*.mode2v3
-iOS/!default.mode2v3
-iOS/*.perspectivev3
-iOS/!default.perspectivev3
-iOS/xcuserdata/
+iOS/Project/*.pbxuser
+iOS/Project/!default.pbxuser
+iOS/Project/*.mode1v3
+iOS/Project/!default.mode1v3
+iOS/Project/*.mode2v3
+iOS/Project/!default.mode2v3
+iOS/Project/*.perspectivev3
+iOS/Project/!default.perspectivev3
+iOS/Project/xcuserdata/
+iOS/Core/*.pbxuser
+iOS/Core/!default.pbxuser
+iOS/Core/*.mode1v3
+iOS/Core/!default.mode1v3
+iOS/Core/*.mode2v3
+iOS/Core/!default.mode2v3
+iOS/Core/*.perspectivev3
+iOS/Core/!default.perspectivev3
+iOS/Core/xcuserdata/
 
 ## Other
-iOS/*.moved-aside
-iOS/*.xccheckout
-iOS/*.xcscmblueprint
+iOS/Project/*.moved-aside
+iOS/Project/*.xccheckout
+iOS/Project/*.xcscmblueprint
+iOS/Core/*.moved-aside
+iOS/Core/*.xccheckout
+iOS/Core/*.xcscmblueprint
 
 ## Obj-C/Swift specific
-iOS/*.hmap
-iOS/*.ipa
-iOS/*.dSYM.zip
-iOS/*.dSYM
+iOS/Project/*.hmap
+iOS/Project/*.ipa
+iOS/Project/*.dSYM.zip
+iOS/Project/*.dSYM
+iOS/Core/*.hmap
+iOS/Core/*.ipa
+iOS/Core/*.dSYM.zip
+iOS/Core/*.dSYM
 
 ## Playgrounds
-iOS/timeline.xctimeline
-iOS/playground.xcworkspace
+#iOS/timeline.xctimeline
+#iOS/playground.xcworkspace
 
 # Swift Package Manager
 #
@@ -50,8 +68,10 @@ iOS/.build/
 # Carthage
 #
 # Add this line if you want to avoid checking in source code from Carthage dependencies.
-iOS/Carthage/Checkouts
-iOS/Carthage/Build
+iOS/Project/Carthage/Checkouts
+iOS/Project/Carthage/Build
+iOS/Core/Carthage/Checkouts
+iOS/Core/Carthage/Build
 
 # fastlane
 #
@@ -60,10 +80,10 @@ iOS/Carthage/Build
 # For more information about the recommended setup visit:
 # https://docs.fastlane.tools/best-practices/source-control/#source-control
 
-iOS/fastlane/report.xml
-iOS/fastlane/Preview.html
-iOS/fastlane/screenshots
-iOS/fastlane/test_output
+#iOS/fastlane/report.xml
+#iOS/fastlane/Preview.html
+#iOS/fastlane/screenshots
+#iOS/fastlane/test_output
 
 # google api key
-iOS/CleanArchitecture/app/Constants.swift
+iOS/Project/CleanArchitecture/app/Constants.swift

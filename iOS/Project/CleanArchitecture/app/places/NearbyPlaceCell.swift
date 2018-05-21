@@ -8,6 +8,7 @@
 
 import UIKit
 import Kingfisher
+import CleanArchitectureCore
 
 class NearbyPlaceCell: UITableViewCell {
 
@@ -23,8 +24,6 @@ class NearbyPlaceCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
     func draw(place:Place) {
