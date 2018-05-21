@@ -111,10 +111,10 @@ class Work1:NSObject, Work {
 | Asynchronous API for sync and async operations  | |
 
 * Example:
-    * [Swift](https://github.com/albertopeam/clean-architecture/blob/master/iOS/CleanArchitecture/core/places/Places.swift)
+    * [Swift](https://github.com/albertopeam/clean-architecture/blob/master/iOS/Core/CleanArchitectureCore/places/Places.swift)
 
 * How to test:
-    * [Swift](https://github.com/albertopeam/clean-architecture/blob/master/iOS/CleanArchitectureTests/core/places/PlacesTest.swift)
+    * [Swift](https://github.com/albertopeam/clean-architecture/blob/master/iOS/Core/CleanArchitectureCoreTests/places/PlacesTest.swift)
 
 ## License
 Copyright (c) 2018 Alberto Penas Amor
