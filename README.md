@@ -1,4 +1,3 @@
-VENDER
 # Clean Architecture
 
 The intention of this repository is to show some of the more common practices when building a mobile app using clean architecture.
@@ -109,6 +108,11 @@ class Work1:NSObject, Work {
 | The code is easier to read and mantain  | |
 | Better error handling(unified) | |
 | Asynchronous API for sync and async operations  | |
+| High scalability when using multiple workers | |
+| Can be used with any third party async and sync APIs | |
+| Custom solution(this is a pattern) that avoid the usage of third party lib | |
+| Produce easy and complete testable code | |
+| Helps for decoupling between use cases and data gateways | |
 
 * Example:
     * [Swift](https://github.com/albertopeam/clean-architecture/blob/master/iOS/CleanArchitecture/core/places/Places.swift)
