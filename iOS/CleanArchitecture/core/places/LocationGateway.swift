@@ -54,6 +54,7 @@ extension LocationGateway:CLLocationManagerDelegate{
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if locations.count > 0 {
             locationManager.stopUpdatingLocation()
+            locationManager.delegate = nil
             let location:CLLocation = locations.first!
             resolve?(Location(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude))
         }
@@ -61,6 +62,7 @@ extension LocationGateway:CLLocationManagerDelegate{
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         locationManager.stopUpdatingLocation()
+        locationManager.delegate = nil
         if error.code == 0 && error.domain == "kCLErrorDomain"{
             reject?(LocationError.noLocation)
         }
