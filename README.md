@@ -42,7 +42,7 @@ change name from work to worker
 ### <u>Promise</u>
 * Problem:
 
-One of the most commnon pitfalls which developers who use asynchronous APIS can find is callback hell.
+One of the most common pitfalls which developers who use asynchronous APIS can find is callback hell.
 Sometimes the nature of the APIS that we use instigate us to nest async code. At the start maybe we can manage it, but when 
 the system becomes bigger and bigger it will become a problem because the code will be too complex to read and test.
  ```swift
@@ -70,8 +70,8 @@ func fetchData(callback:Callback){
  ```
 * Solution: 
 
-To apply a pattern that allows us to hide the complexity of the asynchronous operations and provide a way to handle them as if they were synchronous. 
-A promise represents the eventual result of an asynchronous operation; we can chain as many promises as we want in a synchronous way.
+To apply a pattern that allows us to hide the complexity of multiple asynchronous operations and provide a way to handle them avoiding nesting blocks. 
+A promise represents the eventual result of an asynchronous operation; we can chain as many promises as we want.
 ```swift
 let fetchWork1:Work1
 let fetchWork2:Work2
@@ -102,6 +102,7 @@ class Work1:NSObject, Work {
     }
 }
 ```
+
 | *PROS* | *CONS* | 
 | :---         | :---           | 
 | Avoid callback hell | Use of casts in completion blocks |
@@ -114,10 +115,14 @@ class Work1:NSObject, Work {
 | Produce easy and complete testable code | |
 | Helps for decoupling between use cases and data gateways | |
 
+* UML
+
+     ![Alt layer](art/PROMISE.png)
+
 * Example:
     * [Swift](https://github.com/albertopeam/clean-architecture/blob/master/iOS/CleanArchitecture/core/places/Places.swift)
 
-* How to test:
+* How to do testing:
     * [Swift](https://github.com/albertopeam/clean-architecture/blob/master/iOS/CleanArchitectureTests/core/places/PlacesTest.swift)
 
 ## License
