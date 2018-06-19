@@ -22,6 +22,8 @@
 		C3CC23F520A09C0000BA01F6 /* Swifter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3CC23F420A09C0000BA01F6 /* Swifter.framework */; };
 		C3CC23FA20A09C3100BA01F6 /* PlacesGatewayTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CC23F920A09C3100BA01F6 /* PlacesGatewayTest.swift */; };
 		C3D8AD8C20A05DE000868FF9 /* PlacesTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D8AD8B20A05DE000868FF9 /* PlacesTest.swift */; };
+		C3D9D98920D14CAB004EC19A /* Promises.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D9D98820D14CAB004EC19A /* Promises.swift */; };
+		C3D9D98D20D14D59004EC19A /* PromiseOnce.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D9D98C20D14D59004EC19A /* PromiseOnce.swift */; };
 		C3DA814F208F419500AF9ABE /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DA814E208F419500AF9ABE /* main.swift */; };
 		C3DA8150208F43BD00AF9ABE /* Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FA425D2087AFA800B63221 /* Promise.swift */; };
 		C3DA8151208F43C900AF9ABE /* Work.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FA425E2087AFA800B63221 /* Work.swift */; };
@@ -45,6 +47,10 @@
 		C3FA42642087AFEC00B63221 /* LocationGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FA42622087AFEC00B63221 /* LocationGateway.swift */; };
 		C3FA42652087AFEC00B63221 /* PlacesGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FA42632087AFEC00B63221 /* PlacesGateway.swift */; };
 		C3FA42672087B04200B63221 /* Places.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FA42662087B04200B63221 /* Places.swift */; };
+		C3FC18BF20D9265300393EBB /* Promises.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D9D98820D14CAB004EC19A /* Promises.swift */; };
+		C3FC18C020D9265600393EBB /* PromiseOnce.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D9D98C20D14D59004EC19A /* PromiseOnce.swift */; };
+		C3FC18C220D9292A00393EBB /* PromiseAll.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FC18C120D9292A00393EBB /* PromiseAll.swift */; };
+		C3FC18C320D9292A00393EBB /* PromiseAll.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FC18C120D9292A00393EBB /* PromiseAll.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +91,8 @@
 		C3CC23F420A09C0000BA01F6 /* Swifter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Swifter.framework; path = Carthage/Build/iOS/Swifter.framework; sourceTree = "<group>"; };
 		C3CC23F920A09C3100BA01F6 /* PlacesGatewayTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacesGatewayTest.swift; sourceTree = "<group>"; };
 		C3D8AD8B20A05DE000868FF9 /* PlacesTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesTest.swift; sourceTree = "<group>"; };
+		C3D9D98820D14CAB004EC19A /* Promises.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Promises.swift; sourceTree = "<group>"; };
+		C3D9D98C20D14D59004EC19A /* PromiseOnce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromiseOnce.swift; sourceTree = "<group>"; };
 		C3DA814E208F419500AF9ABE /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		C3E24B2120A1BE250062D4E7 /* nearby-success-noplaces.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "nearby-success-noplaces.json"; sourceTree = "<group>"; };
 		C3E24B2320A1CC330062D4E7 /* LocationGatewayTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationGatewayTest.swift; sourceTree = "<group>"; };
@@ -105,6 +113,7 @@
 		C3FA42622087AFEC00B63221 /* LocationGateway.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationGateway.swift; path = CleanArchitecture/core/places/LocationGateway.swift; sourceTree = SOURCE_ROOT; };
 		C3FA42632087AFEC00B63221 /* PlacesGateway.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlacesGateway.swift; path = CleanArchitecture/core/places/PlacesGateway.swift; sourceTree = SOURCE_ROOT; };
 		C3FA42662087B04200B63221 /* Places.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Places.swift; path = CleanArchitecture/core/places/Places.swift; sourceTree = SOURCE_ROOT; };
+		C3FC18C120D9292A00393EBB /* PromiseAll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromiseAll.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -248,6 +257,9 @@
 				C3FA42612087AFB600B63221 /* places */,
 				C3FA425D2087AFA800B63221 /* Promise.swift */,
 				C3FA425E2087AFA800B63221 /* Work.swift */,
+				C3D9D98820D14CAB004EC19A /* Promises.swift */,
+				C3D9D98C20D14D59004EC19A /* PromiseOnce.swift */,
+				C3FC18C120D9292A00393EBB /* PromiseAll.swift */,
 			);
 			path = core;
 			sourceTree = "<group>";
@@ -403,10 +415,13 @@
 				C36DD7832090C7A30045E114 /* Constants.swift in Sources */,
 				C3FA42642087AFEC00B63221 /* LocationGateway.swift in Sources */,
 				C3FA425A2087AF8B00B63221 /* AppDelegate.swift in Sources */,
+				C3D9D98920D14CAB004EC19A /* Promises.swift in Sources */,
+				C3D9D98D20D14D59004EC19A /* PromiseOnce.swift in Sources */,
 				C3FA425F2087AFA800B63221 /* Promise.swift in Sources */,
 				C3332EF62088F0B800FF73FF /* NearbyPlaceCell.swift in Sources */,
 				C3DA814F208F419500AF9ABE /* main.swift in Sources */,
 				C3332EF02088E45600FF73FF /* NearbyPlacesAssembler.swift in Sources */,
+				C3FC18C220D9292A00393EBB /* PromiseAll.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -416,7 +431,10 @@
 			files = (
 				C3FA42482087AEC200B63221 /* PromiseTest.swift in Sources */,
 				C3E24B2720A1D4180062D4E7 /* LocationGateway.swift in Sources */,
+				C3FC18C020D9265600393EBB /* PromiseOnce.swift in Sources */,
+				C3FC18C320D9292A00393EBB /* PromiseAll.swift in Sources */,
 				C3CC23FA20A09C3100BA01F6 /* PlacesGatewayTest.swift in Sources */,
+				C3FC18BF20D9265300393EBB /* Promises.swift in Sources */,
 				C3E24B2B20A1D7480062D4E7 /* LocationManager.swift in Sources */,
 				C3E24B2020A19CB10062D4E7 /* PlacesGateway.swift in Sources */,
 				C3DA8150208F43BD00AF9ABE /* Promise.swift in Sources */,

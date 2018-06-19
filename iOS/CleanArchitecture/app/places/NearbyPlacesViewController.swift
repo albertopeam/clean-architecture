@@ -51,6 +51,7 @@ class NearbyPlacesViewController: UIViewController, NearbyPlacesView {
                 mapView.addAnnotation(location)
                 locations.append(location)
             }
+            mapView.removeAnnotations(mapView.annotations)
             mapView.showAnnotations(locations, animated: true)
             mapView.delegate = self
             placesTableView.reloadData()
@@ -90,6 +91,16 @@ extension NearbyPlacesViewController:UITableViewDataSource{
 
 }
 
+extension NearbyPlacesViewController:UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let annotation = mapView.annotations.first(where: {$0.title! == places[indexPath.row].name}) {
+            mapView.selectAnnotation(annotation, animated: true)
+        }
+    }
+    
+}
+
 extension NearbyPlacesViewController:MKMapViewDelegate{
 
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
@@ -105,4 +116,3 @@ extension NearbyPlacesViewController:MKMapViewDelegate{
     }
 
 }
-
