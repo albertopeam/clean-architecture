@@ -16,7 +16,7 @@ class WeatherViewController: UIViewController, WeatherOutputProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.register(WeatherTableViewCell.self, forCellReuseIdentifier: "weather_cell")
+        tableView.register(UINib(nibName: "WeatherTableViewCell", bundle: nil), forCellReuseIdentifier: "weather_cell")
         let weather = WeatherComponent.assemble(apiKey: Constants.openWeatherApiKey, cities: ["A Coruña", "Lugo", "Ourense", "Pontevedra"])
         weather.current(output: self)
     }
@@ -36,7 +36,7 @@ class WeatherViewController: UIViewController, WeatherOutputProtocol {
 
 extension WeatherViewController:UITableViewDataSource{
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {        
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell : WeatherTableViewCell! = tableView.dequeueReusableCell(withIdentifier: "weather_cell", for: indexPath) as! WeatherTableViewCell
         let weather = items[indexPath.row]
         cell.draw(weather: weather)
@@ -49,5 +49,12 @@ extension WeatherViewController:UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return items.count
+    }
+    
+}
+
+extension WeatherViewController:UITableViewDelegate{
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 108
     }
 }

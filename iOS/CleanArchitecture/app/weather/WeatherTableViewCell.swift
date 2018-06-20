@@ -31,7 +31,7 @@ class WeatherTableViewCell: UITableViewCell {
     func draw(weather:InstantWeather)  {
         cityLabel.text = weather.name
         descriptionLabel.text = weather.description
-        temperatureLabel.text = "\(weather.temp)K"
+        temperatureLabel.text = "\(weather.temp)k"
         pressureLabel.text = "\(weather.pressure)hPa"
         humidityLabel.text = "\(weather.humidity)%"
         windSpeedLabel.text = "\(weather.windSpeed)m/s"

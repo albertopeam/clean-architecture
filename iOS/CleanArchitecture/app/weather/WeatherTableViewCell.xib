@@ -20,17 +20,17 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="London" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="noQ-vB-gaS">
-                        <rect key="frame" x="16" y="15" width="213" height="21"/>
+                        <rect key="frame" x="16" y="15" width="180" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="150K" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mdy-4k-Xgf">
-                        <rect key="frame" x="237" y="11" width="67" height="29"/>
+                        <rect key="frame" x="204" y="11" width="100" height="26.5"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="67" id="oGo-qQ-Yxe"/>
+                            <constraint firstAttribute="width" constant="100" id="oGo-qQ-Yxe"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -79,7 +79,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="cityLabel" destination="noQ-vB-gaS" id="wzG-JR-otE"/>
+                <outlet property="cityLabel" destination="noQ-vB-gaS" id="MDq-kF-xyU"/>
                 <outlet property="descriptionLabel" destination="Zbi-Km-NqN" id="Mnq-ig-HAV"/>
                 <outlet property="humidityLabel" destination="Qth-YX-Lvf" id="YYk-mV-1Ge"/>
                 <outlet property="pressureLabel" destination="QLn-Aa-h3P" id="PaI-KU-XRP"/>
