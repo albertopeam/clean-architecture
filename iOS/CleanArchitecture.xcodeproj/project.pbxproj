@@ -283,8 +283,8 @@
 		C3FA425C2087AF9800B63221 /* core */ = {
 			isa = PBXGroup;
 			children = (
-				C3FC18D420D9469B00393EBB /* weather */,
 				C3332EE72088A84A00FF73FF /* extensions */,
+				C3FC18D420D9469B00393EBB /* weather */,
 				C3FA42612087AFB600B63221 /* places */,
 				C3FA425D2087AFA800B63221 /* Promise.swift */,
 				C3FA425E2087AFA800B63221 /* Work.swift */,
