@@ -15,7 +15,7 @@ class PromiseAll {
     private var state:PromiseState
     private let workers:Array<Worker>
     private var params:Any?
-    private var responses:Array<Any>
+    private var responses:Array<WorkerResponse>
     
     init(workers:Array<Worker>, params:Any? = nil) {
         self.completables = Array()
@@ -29,18 +29,21 @@ class PromiseAll {
         if state != .pending{
             return
         }
-        if responses.count < workers.count {
+        responses.append(WorkerResponse(worker: worker, response: data))
+        if responses.count < workers.count {            
             return
         }
         if self.completables.count > 0 {
             let completable:Completable = self.completables[0]
             self.completables.removeFirst(1)
-            let nextPromise:PromiseInternalProtocol = completable(data) as! PromiseInternalProtocol
+            let response = sortResponses()
+            let nextPromise:PromiseInternalProtocol = completable(response) as! PromiseInternalProtocol
             nextPromise.copy(completables: self.completables, finalizable: self.finalizable, rejectable: self.rejectable)
             nextPromise.start()
             state = .fulfilled
         }else if let final = finalizable {
-            final(data)
+            let response = sortResponses()
+            final(response)
             state = .fulfilled
         }
     }
@@ -51,6 +54,19 @@ class PromiseAll {
         }
         self.rejectable?(error)
         state = .rejected
+    }
+    
+    private func sortResponses() -> Array<Any> {
+        var sorted = Array<Any>()
+        for worker in workers {
+            for response in responses {
+                if (worker as AnyObject) === (response.worker as AnyObject) {
+                    sorted.append(response.response)
+                    break
+                }
+            }
+        }
+        return sorted
     }
 }
 
@@ -102,4 +118,9 @@ extension PromiseAll:PromiseProtocol{
     func error(rejectable:@escaping Rejectable){
         self.rejectable = rejectable
     }
+}
+
+struct WorkerResponse {
+    let worker:Worker
+    let response:Any
 }

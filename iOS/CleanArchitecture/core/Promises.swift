@@ -10,10 +10,10 @@ public class Promises {
     static func once(worker:Worker, params:Any?) -> PromiseProtocol {
         return PromiseOnce(worker: worker, params: params)
     }
-    //TODO:
-//    static func all(works:Array<Work>) -> PromiseProtocol {
-//        return nil
-//    }
+
+    static func all(workers:Array<Worker>) -> PromiseProtocol {
+        return PromiseAll(workers: workers)
+    }
 }
 
 typealias Rejectable = (_ error:Error) -> Void
