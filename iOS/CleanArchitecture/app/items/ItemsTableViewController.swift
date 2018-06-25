@@ -19,7 +19,7 @@ class ItemsTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        items = [Item(name: "Places", target: NearbyPlacesAssembler.assemble()), Item(name: "Weather",target: WeatherViewController())]
+        items = [Item(name: "Places", target: NearbyPlacesAssembler.assemble()), Item(name: "Weather", target: WeatherAssembler.assemble())]
         self.tableView.reloadData()
     }
 

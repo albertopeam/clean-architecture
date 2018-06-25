@@ -8,31 +8,40 @@
 
 import UIKit
 
-class WeatherViewController: UIViewController, WeatherOutputProtocol {
-    
+class WeatherViewController: UIViewController, WeatherViewProtocol {
     
     @IBOutlet weak var tableView: UITableView!
     private var items:Array<InstantWeather> = []
+    private let presenter:WeatherPresenterProtocol
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) is not supported")
+    }
+    
+    init(presenter:WeatherPresenterProtocol) {
+        self.presenter = presenter
+        super.init(nibName: "WeatherViewController", bundle: nil)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(UINib(nibName: "WeatherTableViewCell", bundle: nil), forCellReuseIdentifier: "weather_cell")
-        let weather = WeatherComponent.assemble(apiKey: Constants.openWeatherApiKey, cities: ["A Coruña", "Lugo", "Ourense", "Pontevedra"])
-        weather.current(output: self)
-    }
-
-    func onWeather(items: Array<InstantWeather>) {
-        self.items = items
-        tableView.reloadData()
+        presenter.weathers()
     }
     
-    func onWeatherError(error: Error) {
-        let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
+    func newState(viewModel: WeatherViewModel) {
+        if let weathers = viewModel.weathers {
+            self.items = weathers
+            tableView.reloadData()
+        }
+        if let error = viewModel.error {
+            let alert = UIAlertController(title: "Error", message: error, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
     }
-}
 
+}
 
 extension WeatherViewController:UITableViewDataSource{
     
