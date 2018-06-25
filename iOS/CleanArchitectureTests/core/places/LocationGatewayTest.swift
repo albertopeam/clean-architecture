@@ -32,12 +32,12 @@ class LocationGatewayTest: XCTestCase {
         mockLocationManager!.mockedStatus = .authorizedWhenInUse
         mockLocationManager!.result = CLLocation(latitude: 43.0, longitude: -8.0)
         sut = LocationGateway(locationManager: mockLocationManager!)
-        try sut!.run(params: nil, resolve: { (location) in
-            let result = location as! Location
+        try sut!.run(params: nil, resolve: { (worker, result) in
+            let result = result as! Location
             XCTAssertEqual(result.latitude, 43.0)
             XCTAssertEqual(result.longitude, -8.0)
             expectation.fulfill()
-        }) { (error) in
+        }) { (worker, error) in
             XCTFail("testGivenLocationAvailableWhenStartThenReceiveLocation rejected")
         }
         wait(for: [expectation], timeout: 0.1)
@@ -45,11 +45,11 @@ class LocationGatewayTest: XCTestCase {
     
     func testGivenNoLocationPermissionWhenStartThenReceiveError() throws {
         let expectation = XCTestExpectation(description: "testGivenNoLocationPermissionWhenStartThenReceiveError")
-        mockLocationManager!.mockedStatus = .notDetermined        
+        mockLocationManager!.mockedStatus = .notDetermined
         sut = LocationGateway(locationManager: mockLocationManager!)
-        try sut!.run(params: nil, resolve: { (location) in
+        try sut!.run(params: nil, resolve: { (worker, location) in
             XCTFail("testGivenNoLocationPermissionWhenStartThenReceiveError rejected")
-        }) { (error) in
+        }) { (worker, error) in
             if case LocationError.noLocationPermission = error {
                 //ok
             }else{
@@ -65,9 +65,9 @@ class LocationGatewayTest: XCTestCase {
         mockLocationManager!.mockedStatus = .authorizedWhenInUse
         mockLocationManager!.result = NSError(domain: "kCLErrorDomain", code: 0, userInfo: nil)
         sut = LocationGateway(locationManager: mockLocationManager!)
-        try sut!.run(params: nil, resolve: { (location) in
+        try sut!.run(params: nil, resolve: { (worker, location) in
             XCTFail("testGivenNoLocationWhenStartThenReceiveError rejected")
-        }) { (error) in
+        }) { (worker, error) in
             if case LocationError.noLocation = error {
                 //ok
             }else{

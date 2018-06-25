@@ -52,9 +52,9 @@ class PlacesGatewayTest: XCTestCase {
         }
         let expectation = XCTestExpectation(description: "testGivenValidInputWhenGetNearbyThenReturnSuccess")
         sut = PlacesGateway(url: absoluteUrl)
-        try sut!.run(params: location, resolve: { (places) in
-            XCTAssertNotNil(places)
-            let result:Array<Place> = places as! Array<Place>
+        try sut!.run(params: location, resolve: { (worker, result) in
+            XCTAssertNotNil(result)
+            let result:Array<Place> = result as! Array<Place>
             XCTAssertEqual(result.count, 1)
             let place = result.first!
             XCTAssertEqual("Sporting Club Casino", place.name)
@@ -66,7 +66,7 @@ class PlacesGatewayTest: XCTestCase {
             XCTAssertEqual(43.3690192, place.location.latitude)
             XCTAssertEqual(-8.401833199999999, place.location.longitude)
             expectation.fulfill()
-        }, reject: { (error) in
+        }, reject: { (worker, error) in
             XCTFail("testGivenValidInputWhenGetNearbyThenReturnSuccess rejected")
         })
         wait(for: [expectation], timeout: 1)
@@ -89,17 +89,17 @@ class PlacesGatewayTest: XCTestCase {
         }
         let expectation = XCTestExpectation(description: "testGivenValidInputWhenGetNearbyThenReturnSuccess")
         sut = PlacesGateway(url: absoluteUrl)
-        try sut!.run(params: location, resolve: { (places) in
+        try sut!.run(params: location, resolve: { (worker, result) in
             XCTFail("testGivenInvalidInputWhenGetNearbyThenReturnNoPlaces resolved")
             expectation.fulfill()
-        }, reject: { (error) in
+        }, reject: { (worker, error) in
             if case PlacesError.noPlaces = error {
                 //ok
             }else{
                 XCTFail("testGivenInvalidInputWhenGetNearbyThenReturnNoPlaces, expected: PlacesError.noPlaces actual:\(String(describing: error.self))")
             }
             expectation.fulfill()
-        })
+        });
         wait(for: [expectation], timeout: 1)
     }
 }

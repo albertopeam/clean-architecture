@@ -17,6 +17,10 @@ enum PromiseState {
 }
 
 //TODO: spec: https://github.com/promises-aplus/promises-spec
+/**
+ * @deprecated
+ * @note Please use instead static factory @code Promises.once(...) or Promises.all(...) @endcode .
+ */
 class Promise {
     
     private var thens:Array<Thenable>
