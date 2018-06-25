@@ -32,6 +32,8 @@
 		C379400720E119C2004C723B /* NearbyPlaceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3332EF52088F0B800FF73FF /* NearbyPlaceCell.swift */; };
 		C379400820E11C65004C723B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36DD7822090C7A30045E114 /* Constants.swift */; };
 		C379400920E11CAE004C723B /* PlacesComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3332EF12088E4D300FF73FF /* PlacesComponent.swift */; };
+		C379400B20E12A06004C723B /* PromiseOnceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C379400A20E12A06004C723B /* PromiseOnceTest.swift */; };
+		C379400D20E12A17004C723B /* PromiseAllTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C379400C20E12A17004C723B /* PromiseAllTest.swift */; };
 		C391460B20DA564E00013336 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = C391460A20DA564E00013336 /* Item.swift */; };
 		C391460C20DA564E00013336 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = C391460A20DA564E00013336 /* Item.swift */; };
 		C3CC23F520A09C0000BA01F6 /* Swifter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3CC23F420A09C0000BA01F6 /* Swifter.framework */; };
@@ -121,6 +123,8 @@
 		C36DD7822090C7A30045E114 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C3793FFD20E11296004C723B /* WeatherPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherPresenter.swift; sourceTree = "<group>"; };
 		C3793FFF20E11483004C723B /* WeatherAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAssembler.swift; sourceTree = "<group>"; };
+		C379400A20E12A06004C723B /* PromiseOnceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromiseOnceTest.swift; sourceTree = "<group>"; };
+		C379400C20E12A17004C723B /* PromiseAllTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromiseAllTest.swift; sourceTree = "<group>"; };
 		C391460A20DA564E00013336 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		C3CC23F420A09C0000BA01F6 /* Swifter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Swifter.framework; path = Carthage/Build/iOS/Swifter.framework; sourceTree = "<group>"; };
 		C3CC23F920A09C3100BA01F6 /* PlacesGatewayTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacesGatewayTest.swift; sourceTree = "<group>"; };
@@ -213,6 +217,8 @@
 			isa = PBXGroup;
 			children = (
 				C3FA42472087AEC200B63221 /* PromiseTest.swift */,
+				C379400A20E12A06004C723B /* PromiseOnceTest.swift */,
+				C379400C20E12A17004C723B /* PromiseAllTest.swift */,
 				C3D8AD8A20A05DBC00868FF9 /* places */,
 			);
 			path = core;
@@ -537,6 +543,7 @@
 				C3CC23FA20A09C3100BA01F6 /* PlacesGatewayTest.swift in Sources */,
 				C3FC18BF20D9265300393EBB /* Promises.swift in Sources */,
 				C3E24B2B20A1D7480062D4E7 /* LocationManager.swift in Sources */,
+				C379400D20E12A17004C723B /* PromiseAllTest.swift in Sources */,
 				C379400720E119C2004C723B /* NearbyPlaceCell.swift in Sources */,
 				C3E24B2020A19CB10062D4E7 /* PlacesGateway.swift in Sources */,
 				C3DA8150208F43BD00AF9ABE /* Promise.swift in Sources */,
@@ -544,6 +551,7 @@
 				C3DA8151208F43C900AF9ABE /* Work.swift in Sources */,
 				C3D8AD8C20A05DE000868FF9 /* PlacesTest.swift in Sources */,
 				C3E24B2420A1CC330062D4E7 /* LocationGatewayTest.swift in Sources */,
+				C379400B20E12A06004C723B /* PromiseOnceTest.swift in Sources */,
 				C379400920E11CAE004C723B /* PlacesComponent.swift in Sources */,
 				C379400420E119B9004C723B /* NearbyPlacesAssembler.swift in Sources */,
 				C379400520E119BC004C723B /* NearbyPlacesViewController.swift in Sources */,
