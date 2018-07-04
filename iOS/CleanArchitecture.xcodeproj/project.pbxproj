@@ -38,6 +38,7 @@
 		C391460C20DA564E00013336 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = C391460A20DA564E00013336 /* Item.swift */; };
 		C3CC23F520A09C0000BA01F6 /* Swifter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3CC23F420A09C0000BA01F6 /* Swifter.framework */; };
 		C3CC23FA20A09C3100BA01F6 /* PlacesGatewayTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CC23F920A09C3100BA01F6 /* PlacesGatewayTest.swift */; };
+		C3D2893520ECDBBF001DE077 /* MockWorkers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D2893420ECDBBF001DE077 /* MockWorkers.swift */; };
 		C3D8AD8C20A05DE000868FF9 /* PlacesTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D8AD8B20A05DE000868FF9 /* PlacesTest.swift */; };
 		C3D9D98920D14CAB004EC19A /* Promises.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D9D98820D14CAB004EC19A /* Promises.swift */; };
 		C3D9D98D20D14D59004EC19A /* PromiseOnce.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D9D98C20D14D59004EC19A /* PromiseOnce.swift */; };
@@ -128,6 +129,7 @@
 		C391460A20DA564E00013336 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		C3CC23F420A09C0000BA01F6 /* Swifter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Swifter.framework; path = Carthage/Build/iOS/Swifter.framework; sourceTree = "<group>"; };
 		C3CC23F920A09C3100BA01F6 /* PlacesGatewayTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacesGatewayTest.swift; sourceTree = "<group>"; };
+		C3D2893420ECDBBF001DE077 /* MockWorkers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockWorkers.swift; sourceTree = "<group>"; };
 		C3D8AD8B20A05DE000868FF9 /* PlacesTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesTest.swift; sourceTree = "<group>"; };
 		C3D9D98820D14CAB004EC19A /* Promises.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Promises.swift; sourceTree = "<group>"; };
 		C3D9D98C20D14D59004EC19A /* PromiseOnce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromiseOnce.swift; sourceTree = "<group>"; };
@@ -216,6 +218,7 @@
 		C3D8AD8920A05DB100868FF9 /* core */ = {
 			isa = PBXGroup;
 			children = (
+				C3D2893420ECDBBF001DE077 /* MockWorkers.swift */,
 				C3FA42472087AEC200B63221 /* PromiseTest.swift */,
 				C379400A20E12A06004C723B /* PromiseOnceTest.swift */,
 				C379400C20E12A17004C723B /* PromiseAllTest.swift */,
@@ -529,6 +532,7 @@
 				C379400320E1198E004C723B /* WeatherTableViewCell.swift in Sources */,
 				C391460C20DA564E00013336 /* Item.swift in Sources */,
 				C379400220E1198B004C723B /* WeatherPresenter.swift in Sources */,
+				C3D2893520ECDBBF001DE077 /* MockWorkers.swift in Sources */,
 				C3FA42482087AEC200B63221 /* PromiseTest.swift in Sources */,
 				C3FC18E220D9630800393EBB /* WeatherViewController.swift in Sources */,
 				C3E24B2720A1D4180062D4E7 /* LocationGateway.swift in Sources */,
