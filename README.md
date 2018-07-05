@@ -233,7 +233,7 @@ class Weather:WeatherProtocol {
 
 * Usefull links:
     * [Serial promises: places component](https://github.com/albertopeam/clean-architecture/blob/master/iOS/CleanArchitecture/core/places/Places.swift)
-    * [Parallel promises: weather component](https://github.com/albertopeam/clean-architecture/blob/master/iOS/Core/CleanArchitecture/weather/Weather.swift)
+    * [Parallel promises: weather component](https://github.com/albertopeam/clean-architecture/blob/master/iOS/CleanArchitecture/core/weather/Weather.swift)
     * [How to test: places component](https://github.com/albertopeam/clean-architecture/blob/master/iOS/CleanArchitectureTests/core/places/PlacesTest.swift)
 
 
