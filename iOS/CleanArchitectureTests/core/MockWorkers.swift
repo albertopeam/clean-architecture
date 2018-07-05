@@ -24,4 +24,15 @@ class MockWorkers {
             reject(self, NSError(domain: "MockWorkers.Reject", code: 0, userInfo: nil))
         }
     }
+    class SuccessTwice:Worker{
+        func run(params: Any?, resolve: @escaping ResolvableWorker, reject: @escaping RejectableWorker) throws {
+            resolve(self, params!)
+            resolve(self, params!)
+        }
+    }
+    class Throw:Worker{
+        func run(params: Any?, resolve: @escaping ResolvableWorker, reject: @escaping RejectableWorker) throws {
+            throw NSError(domain: "MockWorkers.Throw", code: 0, userInfo: nil)
+        }
+    }
 }
