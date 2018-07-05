@@ -9,7 +9,7 @@ So, be carefull, this is a WORK IN PROGRESS...
 2. [What do you expect to see soon?](#What-do-you-expect-to-see-soon?)
 3. [Architecture](#Architecture)
 4. [Patterns](#Patterns)
-    1. [Promises](#<u>Promise</u>)
+    1. [Promises](#Promises)
         1. [Legacy](#Swift:-Legacy)
         2. [Serial](#Swift:-Serial-work)
         3. [Parallel](#Swift:-Parallel-work)
@@ -138,7 +138,7 @@ func onNearbyError(error: Error) {
 -->
 
 ## Patterns
-### <u>Promise</u>
+### Promises
 * Problem:
 
 One of the most common pitfalls which developers who use asynchronous APIS can find is callback hell.
