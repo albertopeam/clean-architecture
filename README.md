@@ -5,14 +5,14 @@ The intention of this repository is to show some of the more common practices wh
 So, be carefull, this is a WORK IN PROGRESS...
 
 ## Table of Contents
-1. [Before start](#Before-start)
-2. [What do you expect to see soon?](#What-do-you-expect-to-see-soon?)
-3. [Architecture](#Architecture)
-4. [Patterns](#Patterns)
-    1. [Promises](#Promises)
-        1. [Legacy](#Swift:-Legacy)
-        2. [Serial](#Swift:-Serial-work)
-        3. [Parallel](#Swift:-Parallel-work)
+1. [Before start](#before-start)
+2. [What do you expect to see soon?](#what-do-you-expect-to-see-soon?)
+3. [Architecture](#architecture)
+4. [Patterns](#patterns)
+    1. [Promises](#promises)
+        1. [Legacy](#swift:-Legacy)
+        2. [Serial](#swift:-Serial-work)
+        3. [Parallel](#swift:-Parallel-work)
 
 ## Before start
 * iOS
