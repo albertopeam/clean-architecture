@@ -187,7 +187,5 @@ class PromiseAllTest: XCTestCase {
         }
         wait(for: [expectation], timeout: 0.1)
     }
-    
-    //todo: replace mock workers in promise once by MockeWorkers class
-    //todo: faltan los 3 últimos, de todas formas anan;izar cobertura y ver si faltan casos. IGUAL NO HACE FALTA Más
+
 }

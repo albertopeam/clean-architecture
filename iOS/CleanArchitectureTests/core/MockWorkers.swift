@@ -35,4 +35,7 @@ class MockWorkers {
             throw NSError(domain: "MockWorkers.Throw", code: 0, userInfo: nil)
         }
     }
+    class NoAction:Worker{
+        func run(params: Any?, resolve: @escaping ResolvableWorker, reject: @escaping RejectableWorker) throws {}
+    }
 }

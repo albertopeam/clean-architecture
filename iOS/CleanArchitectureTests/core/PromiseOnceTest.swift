@@ -26,7 +26,7 @@ class PromiseOnceTest: XCTestCase {
     func testGivenSuccessWorkerWhenPromiseOnceCompleteThenInvokeFinally() {
         let expectation = XCTestExpectation(description: "testGivenSuccessWorkWhenPromiseCompleteInvokeFinally")
         let params = "params"
-        sut = PromiseOnce(worker: MockSuccessFinallyWork(), params: params)
+        sut = PromiseOnce(worker: MockWorkers.Success(), params: params)
         sut!.then(finalizable: { (result) in
             XCTAssertEqual(params, result as! String)
             expectation.fulfill()
@@ -39,10 +39,10 @@ class PromiseOnceTest: XCTestCase {
     func testGivenSuccessWorkWhenPromisesCompleteThenInvokeFinally() {
         let expectation = XCTestExpectation(description: "testGivenSuccessWorkWhenPromisesCompleteThenInvokeFinally")
         let params = "params"
-        sut = PromiseOnce(worker:MockSuccessFinallyWork(), params: params)
+        sut = PromiseOnce(worker:MockWorkers.Success(), params: params)
         sut!.then(completable: { (any) -> PromiseProtocol in
             XCTAssertEqual(params, any as! String)
-            return PromiseOnce(worker:MockSuccessFinallyWork(), params: params)
+            return PromiseOnce(worker:MockWorkers.Success(), params: params)
         }).then(finalizable: { (any) in
             XCTAssertEqual(params, any as! String)
             expectation.fulfill()
@@ -54,15 +54,16 @@ class PromiseOnceTest: XCTestCase {
     
     func testGivenErrorWorkWhenPromiseFailThenInvokeError() {
         let expectation = XCTestExpectation(description: "testGivenErrorWorkWhenPromiseFailThenInvokeError")
-        let params = NSError(domain: "error", code: 0)
-        sut = PromiseOnce(worker:MockErrorWork(), params: params)
+        sut = PromiseOnce(worker:MockWorkers.Reject(), params: nil)
         sut!.then{ (any) -> PromiseProtocol in
             XCTAssert(false, "testGivenErrorWorkWhenPromiseFailThenInvokeError invoked then")
-            return PromiseOnce(worker: MockNonResolvableWork())
+            return PromiseOnce(worker: MockWorkers.NoAction())
         }.then { (any) in
             XCTAssert(false, "testGivenErrorWorkWhenPromiseFailThenInvokeError invoked finally")
         }.error { (error) in
-            XCTAssertEqual(params, error as NSError)
+            XCTAssertNotNil(error)
+            let theError = error as NSError
+            XCTAssertEqual(theError.domain, "MockWorkers.Reject")
             expectation.fulfill()
         }
         wait(for: [expectation], timeout: 0.1)
@@ -72,7 +73,7 @@ class PromiseOnceTest: XCTestCase {
     func testGivenWorkThatInvokeTwiceFinallyWhenPromiseCompleteThenInvokeFinallyOnce(){
         let expectation = XCTestExpectation(description: "testGivenWorkThatInvokeTwiceFinallyWhenPromiseCompleteThenInvokeFinallyOnce")
         let params = "params"
-        sut = PromiseOnce(worker:MockSuccessTwiceFinallyWork(), params: params)
+        sut = PromiseOnce(worker:MockWorkers.SuccessTwice(), params: params)
         var times = 0
         sut!.then(finalizable: { (any) in
             times += 1
@@ -89,12 +90,11 @@ class PromiseOnceTest: XCTestCase {
     
     func testGivenWorkThatInvokeTwiceFinallyWhenPromiseErrorThenInvokeErrorOnce(){
         let expectation = XCTestExpectation(description: "testGivenWorkThatInvokeTwiceFinallyWhenPromiseErrorThenInvokeErrorOnce")
-        let params = NSError(domain: "error", code: 0)
-        sut = PromiseOnce(worker:MockErrorTwiceWork(), params: params)
+        sut = PromiseOnce(worker:MockWorkers.RejectTwice(), params: nil)
         var times = 0
         sut!.then(completable: { (any) -> PromiseProtocol in
             XCTAssert(false, "testGivenWorkThatInvokeTwiceFinallyWhenPromiseErrorThenInvokeErrorOnce invoked then")
-            return PromiseOnce(worker: MockNonResolvableWork())
+            return PromiseOnce(worker: MockWorkers.NoAction())
         }).then { (any) in
             XCTAssert(false, "testGivenWorkThatInvokeTwiceFinallyWhenPromiseErrorThenInvokeErrorOnce invoked finally")
         }.error { (error) in
@@ -102,7 +102,9 @@ class PromiseOnceTest: XCTestCase {
             if (times == 2){
                 XCTAssert(false, "testGivenWorkThatInvokeTwiceFinallyWhenPromiseErrorThenInvokeErrorOnce invoked twice")
             }
-            XCTAssertEqual(params, error as NSError)
+            XCTAssertNotNil(error)
+            let theError = error as NSError
+            XCTAssertEqual(theError.domain, "MockWorkers.Reject")
             expectation.fulfill()
         }
         wait(for: [expectation], timeout: 0.1)
@@ -110,16 +112,15 @@ class PromiseOnceTest: XCTestCase {
     
     func testGivenWorkThatThrowsWhenPromiseErrorThenInvokeError(){
         let expectation = XCTestExpectation(description: "testGivenWorkThatThrowsWhenPromiseErrorThenInvokeError")
-        sut = PromiseOnce(worker:MockThrowWhileRunningWork())
+        sut = PromiseOnce(worker:MockWorkers.Throw())
         sut!.then(completable: { (any) -> PromiseProtocol in
             XCTAssert(false, "testGivenWorkThatThrowsWhenPromiseErrorThenInvokeError invoked then")
-            return PromiseOnce(worker: MockNonResolvableWork())
+            return PromiseOnce(worker: MockWorkers.NoAction())
         }).then { (any) in
             XCTAssert(false, "testGivenWorkThatThrowsWhenPromiseErrorThenInvokeError invoked finally")
         }.error { (error) in
             let throwed = error as NSError
-            XCTAssertEqual("MockThrowWhileRunningWork", throwed.domain)
-            XCTAssertEqual(0, throwed.code)
+            XCTAssertEqual("MockWorkers.Throw", throwed.domain)
             expectation.fulfill()
         }
         wait(for: [expectation], timeout: 0.1)
@@ -128,13 +129,13 @@ class PromiseOnceTest: XCTestCase {
     func testGivenSuccessWorksWhenChainTwoThensAndPromiseCompleteThenInvokeFinally() {
         let expectation = XCTestExpectation(description: "testGivenSuccessWorksWhenChainTwoThensAndPromiseCompleteInvokeFinally")
         let params = "params"
-        sut = PromiseOnce(worker:MockSuccessFinallyWork(), params: params)
+        sut = PromiseOnce(worker:MockWorkers.Success(), params: params)
         sut!.then(completable: { (any) -> PromiseProtocol in
             XCTAssertEqual(params, any as! String)
-            return PromiseOnce(worker:MockSuccessFinallyWork(), params: params)
+            return PromiseOnce(worker:MockWorkers.Success(), params: params)
         }).then(completable: { (any) -> PromiseProtocol in
             XCTAssertEqual(params, any as! String)
-            return PromiseOnce(worker:MockSuccessFinallyWork(), params: params)
+            return PromiseOnce(worker:MockWorkers.Success(), params: params)
         }).then(finalizable: { (any) in
             XCTAssertEqual(params, any as! String)
             expectation.fulfill()
@@ -142,41 +143,5 @@ class PromiseOnceTest: XCTestCase {
             XCTAssert(false, "testGivenSuccessWorksWhenChainTwoThensAndPromiseCompleteInvokeFinally throw an error")
         }
         wait(for: [expectation], timeout: 0.1)
-    }
-}
-
-private class MockSuccessFinallyWork:Worker{
-    func run(params: Any?, resolve: @escaping ResolvableWorker, reject: @escaping RejectableWorker) throws {
-        resolve(self, params!)
-    }
-}
-
-private class MockSuccessTwiceFinallyWork:Worker{
-    func run(params: Any?, resolve: @escaping ResolvableWorker, reject: @escaping RejectableWorker) throws {
-        resolve(self, params!)
-        resolve(self, params!)
-    }
-}
-
-private class MockErrorTwiceWork:Worker{
-    func run(params: Any?, resolve: @escaping ResolvableWorker, reject: @escaping RejectableWorker) throws {
-        reject(self, params! as! Error)
-        reject(self, params! as! Error)
-    }
-}
-
-private class MockErrorWork:Worker{
-    func run(params: Any?, resolve: @escaping ResolvableWorker, reject: @escaping RejectableWorker) throws {
-        reject(self, params! as! Error)
-    }
-}
-
-private class MockNonResolvableWork:Worker{
-    func run(params: Any?, resolve: @escaping ResolvableWorker, reject: @escaping RejectableWorker) throws {}
-}
-
-private class MockThrowWhileRunningWork:Worker{
-    func run(params: Any?, resolve: @escaping ResolvableWorker, reject: @escaping RejectableWorker) throws {
-        throw NSError(domain: "MockThrowWhileRunningWork", code: 0, userInfo: nil)
     }
 }
