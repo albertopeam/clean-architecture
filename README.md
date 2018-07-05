@@ -141,7 +141,7 @@ One of the most common pitfalls which developers who use asynchronous APIS can f
 Sometimes the nature of the APIS that we use instigate us to nest async code. At the start maybe we can manage it, but when 
 the system becomes bigger and bigger it will become a problem because the code will be too complex to read and test.
 
-<b>Swift</b>
+<b>Swift: Legacy</b>
 
  ```swift
 func fetchData(callback:Callback){
@@ -171,32 +171,36 @@ func fetchData(callback:Callback){
 To apply a pattern that allows us to hide the complexity of multiple asynchronous operations and provide a way to handle them avoiding nesting blocks. 
 A promise represents the eventual result of an asynchronous operation; we can chain as many promises as we want.
 
-<b>Swift</b>
+<b>Swift: Serial work</b>
 
 ```swift
-let fetchWork1:Worker
-let fetchWork2:Worker
+class Places:PlacesProtocol {
 
-func fetchData(callback:Callback) {
-    Promises.once(worker: fetchWork1)
-    .then(completable: { (result) -> PromiseProtocol in
-        return Promises.once(worker: fetchWork2, params:result)
-    }).then(finalizable: { (result) in
-        callback.success(result: result)
-    }).error { (error) in
-        callback.error(error: error)
+    private let locationGateway:Worker
+    private let placesGateway:Worker
+    
+    func nearby(output: PlacesOutputProtocol) {
+        Promises.once(worker: locationGateway, params: nil)
+        .then(completable: { (location) -> PromiseProtocol in
+            return Promises.once(worker: self.placesGateway, params:location)
+        }).then(finalizable: { (places) in
+            output.onNearby(places: places as! Array<Place>)
+        }).error(rejectable: { (error) in
+            output.onNearbyError(error: error)
+        })
     }
 }
 
-class Work1:NSObject, Work {
+class PlacesGateway:NSObject, Worker {    
     func run(params:Any?, resolve: @escaping ResolvableWorker, reject: @escaping RejectableWorker) throws {
-        let url = URL(string: urlString)
         URLSession.shared.dataTask(with: url!) { (data, response, error) in
-            DispatchQueue.main.sync {
-                if error != nil {
-                    reject(self, error!)
-                }else{
-                    resolve(self, data!)
+            if error != nil {
+                DispatchQueue.main.sync {
+                    reject(self, error)
+                }
+            }else{
+                DispatchQueue.main.sync {
+                    resolve(self, data)
                 }
             }
         }.resume()
@@ -204,9 +208,29 @@ class Work1:NSObject, Work {
 }
 ```
 
+If you need to dispatch N requests or do something in parallel you can use promises also. For that use Promises.all method in Promises class. The promise will return when all the request will be executed, if some of them fails the it will dispatch an error.
+
+<b>Swift: Parallel work</b>
+```swift
+class Weather:WeatherProtocol {
+    
+    private let currentWeatherWorkers:Array<Worker>
+    
+    func current(output: WeatherOutputProtocol) {
+        Promises.all(workers:currentWeatherWorkers)
+        .then(finalizable: { (items) in
+            output.onWeather(items: items as! Array<InstantWeather>)
+        }).error(rejectable: { (error) in
+            output.onWeatherError(error: error)
+        })
+    }
+}
+```
+
 * Usefull links:
-    * [Full example](https://github.com/albertopeam/clean-architecture/blob/master/iOS/Core/CleanArchitectureCore/places/Places.swift)
-    * [How to test places component](https://github.com/albertopeam/clean-architecture/blob/master/iOS/Core/CleanArchitectureCoreTests/places/PlacesTest.swift)
+    * [Serial promises: places component](https://github.com/albertopeam/clean-architecture/blob/master/iOS/CleanArchitecture/core/places/Places.swift)
+    * [Parallel promises: weather component](https://github.com/albertopeam/clean-architecture/blob/master/iOS/Core/CleanArchitecture/weather/Weather.swift)
+    * [How to test: places component](https://github.com/albertopeam/clean-architecture/blob/master/iOS/CleanArchitectureTests/core/places/PlacesTest.swift)
 
 
 | *PROS* | *CONS* | 

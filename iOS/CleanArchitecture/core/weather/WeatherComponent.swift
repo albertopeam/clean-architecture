@@ -6,7 +6,7 @@
 //  Copyright © 2018 Alberto. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 class WeatherComponent: NSObject {
     
