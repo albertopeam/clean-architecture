@@ -10,9 +10,9 @@ So, be carefull, this is a WORK IN PROGRESS...
 3. [Architecture](#architecture)
 4. [Patterns](#patterns)
     1. [Promises](#promises)
-        1. [Legacy](#swift:-Legacy)
-        2. [Serial](#swift:-Serial-work)
-        3. [Parallel](#swift:-Parallel-work)
+        * [Legacy](#swift:-Legacy)
+        * [Serial](#swift:-Serial-work)
+        * [Parallel](#swift:-Parallel-work)
 
 ## Before start
 * iOS
