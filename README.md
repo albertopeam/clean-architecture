@@ -9,7 +9,10 @@ So, be carefull, this is a WORK IN PROGRESS...
 2. [What do you expect to see soon?](#What-do-you-expect-to-see-soon?)
 3. [Architecture](#Architecture)
 4. [Patterns](#Patterns)
-    1. [Promise](#<u>Promise</u>)
+    1. [Promises](#<u>Promise</u>)
+        1. [Legacy](#Swift:-Legacy)
+        2. [Serial](#Swift:-Serial-work)
+        3. [Parallel](#Swift:-Parallel-work)
 
 ## Before start
 * iOS
@@ -40,8 +43,9 @@ So, be carefull, this is a WORK IN PROGRESS...
 --->
 ## What do you expect to see soon?
 ### Next
-* iOS
+* iOS    
     * create a core module to show how to do it. The idea is avoid publishing internal dependencies
+    * add architecture explanation, guidelines
     * example with promises all. rewrite promise once        
     * ViewModel to reduce complexity between view-presenter
     * ViewStateMachine for complex UIs
@@ -141,7 +145,7 @@ One of the most common pitfalls which developers who use asynchronous APIS can f
 Sometimes the nature of the APIS that we use instigate us to nest async code. At the start maybe we can manage it, but when 
 the system becomes bigger and bigger it will become a problem because the code will be too complex to read and test.
 
-<b>Swift: Legacy</b>
+#### Swift: Legacy
 
  ```swift
 func fetchData(callback:Callback){
@@ -171,7 +175,7 @@ func fetchData(callback:Callback){
 To apply a pattern that allows us to hide the complexity of multiple asynchronous operations and provide a way to handle them avoiding nesting blocks. 
 A promise represents the eventual result of an asynchronous operation; we can chain as many promises as we want.
 
-<b>Swift: Serial work</b>
+#### Swift: Serial work
 
 ```swift
 class Places:PlacesProtocol {
@@ -210,7 +214,7 @@ class PlacesGateway:NSObject, Worker {
 
 If you need to dispatch N requests or do something in parallel you can use promises also. For that use Promises.all method in Promises class. The promise will return when all the request will be executed, if some of them fails the it will dispatch an error.
 
-<b>Swift: Parallel work</b>
+#### Swift: Parallel work
 ```swift
 class Weather:WeatherProtocol {
     
