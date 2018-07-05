@@ -8,7 +8,7 @@
 
 import Foundation
 
-class PlacesGateway:NSObject, Work {
+class PlacesGateway:NSObject, Worker {
     
     let targetUrl:String
     
@@ -16,7 +16,7 @@ class PlacesGateway:NSObject, Work {
         self.targetUrl = url
     }
     
-    func run(params:Any?, resolve: @escaping (Any) -> Void, reject: @escaping Reject) throws {
+    func run(params:Any?, resolve: @escaping ResolvableWorker, reject: @escaping RejectableWorker) throws {
         let location:Location = params as! Location
         let urlString:String = targetUrl.replacingOccurrences(of: "{{location}}", with: "\(location.latitude),\(location.longitude)")
         let url = URL(string: urlString)
@@ -61,15 +61,15 @@ class PlacesGateway:NSObject, Work {
     }
     
 
-    private func rejectIt(reject: @escaping Reject, error:Error) {
+    private func rejectIt(reject: @escaping RejectableWorker, error:Error) {
         DispatchQueue.main.sync {
-            reject(error)
+            reject(self, error)
         }
     }
     
-    private func resolveIt(resolve: @escaping (Any) -> Void, data:Any) {
+    private func resolveIt(resolve: @escaping ResolvableWorker, data:Any) {
         DispatchQueue.main.sync {
-            resolve(data)
+            resolve(self, data)
         }
     }
     

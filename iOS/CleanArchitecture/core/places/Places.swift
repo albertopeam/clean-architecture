@@ -40,23 +40,23 @@ protocol PlacesOutputProtocol {
 }
 
 class Places:PlacesProtocol {
+
+    private let locationGateway:Worker
+    private let placesGateway:Worker
     
-    private let locationGateway:Work
-    private let placesGateway:Work
-    
-    init(locationGateway:Work, placesGateway:Work) {
+    init(locationGateway:Worker, placesGateway:Worker) {
         self.locationGateway = locationGateway
         self.placesGateway = placesGateway
     }
     
     func nearby(output: PlacesOutputProtocol) {
-        Promise(work: locationGateway)
-        .then { (location) -> Promise in
-            return Promise(work: self.placesGateway, params:location)
-        }.then { (places) in
+        Promises.once(worker: locationGateway, params: nil)
+        .then(completable: { (location) -> PromiseProtocol in
+            return Promises.once(worker: self.placesGateway, params:location)
+        }).then(finalizable: { (places) in
             output.onNearby(places: places as! Array<Place>)
-        }.error { (error) in
+        }).error(rejectable: { (error) in
             output.onNearbyError(error: error)
-        }
+        })
     }
 }

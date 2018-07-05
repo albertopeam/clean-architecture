@@ -7,10 +7,10 @@
 //
 import CoreLocation
 
-class LocationGateway: NSObject, Work {
+class LocationGateway: NSObject, Worker {
     
-    private var resolve:Resolve?
-    private var reject:Reject?
+    private var resolve:ResolvableWorker?
+    private var reject:RejectableWorker?
     private let locationManager:LocationManager
     private let accuracy:CLLocationAccuracy
     
@@ -19,22 +19,22 @@ class LocationGateway: NSObject, Work {
         self.accuracy = accuracy
     }
     
-    func run(params:Any?, resolve: @escaping (Any) -> Void, reject: @escaping Reject) throws {
+    func run(params:Any?, resolve: @escaping ResolvableWorker, reject: @escaping RejectableWorker) throws {
         self.resolve = resolve
         self.reject = reject
         switch locationManager.authorizationStatus() {
         case .notDetermined:
-            reject(LocationError.noLocationPermission)
+            reject(self, LocationError.noLocationPermission)
             return
         case .restricted:
-            reject(LocationError.restrictedLocationUsage)
+            reject(self, LocationError.restrictedLocationUsage)
             return
         case .denied:
             if !CLLocationManager.locationServicesEnabled() {
                 if !CLLocationManager.locationServicesEnabled() {
-                    reject(LocationError.noLocationEnabled)
+                    reject(self, LocationError.noLocationEnabled)
                 }else{
-                    reject(LocationError.deniedLocationUsage)
+                    reject(self, LocationError.deniedLocationUsage)
                 }
             }
             return
@@ -56,7 +56,7 @@ extension LocationGateway:CLLocationManagerDelegate{
             locationManager.stopUpdatingLocation()
             locationManager.delegate = nil
             let location:CLLocation = locations.first!
-            resolve?(Location(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude))
+            resolve?(self, Location(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude))
         }
     }
     
@@ -64,7 +64,7 @@ extension LocationGateway:CLLocationManagerDelegate{
         locationManager.stopUpdatingLocation()
         locationManager.delegate = nil
         if error.code == 0 && error.domain == "kCLErrorDomain"{
-            reject?(LocationError.noLocation)
+            reject?(self, LocationError.noLocation)
         }
     }
 }

@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().tintColor = .black
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.black]
         UINavigationBar.appearance().isTranslucent = false
-        let navController = UINavigationController(rootViewController: NearbyPlacesAssembler.assemble())
+        let navController = UINavigationController(rootViewController: ItemsTableViewController())
         window!.rootViewController = navController
         window!.makeKeyAndVisible()
         return true

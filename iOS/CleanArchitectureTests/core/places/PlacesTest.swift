@@ -59,23 +59,23 @@ class MockExpectation{
     }
 }
 
-class MockNoLocationPermissionWork: MockExpectation, Work {
-    func run(params: Any?, resolve: @escaping Resolve, reject: @escaping Reject) throws {
-        reject(LocationError.noLocationPermission)
+class MockNoLocationPermissionWork: MockExpectation, Worker {
+    func run(params: Any?, resolve: @escaping ResolvableWorker, reject: @escaping RejectableWorker) throws {
+        reject(self, LocationError.noLocationPermission)
         expectation.fulfill()
     }
 }
 
-class MockSuccessLocationWork: MockExpectation, Work {
-    func run(params: Any?, resolve: @escaping Resolve, reject: @escaping Reject) throws {
-        resolve(Location(latitude: 43.0, longitude: -8.0))
+class MockSuccessLocationWork: MockExpectation, Worker {
+    func run(params: Any?, resolve: @escaping ResolvableWorker, reject: @escaping RejectableWorker) throws {
+        resolve(self, Location(latitude: 43.0, longitude: -8.0))
         expectation.fulfill()
     }
 }
 
-class MockSuccessPlacesWork:MockExpectation, Work{
-    func run(params: Any?, resolve: @escaping Resolve, reject: @escaping Reject) throws {
-        resolve([Place(id: "1", placeId: "1", name: "place", icon:"icon", openNow: false, rating: 5.0, location: params as! Location)])
+class MockSuccessPlacesWork:MockExpectation, Worker {
+    func run(params: Any?, resolve: @escaping ResolvableWorker, reject: @escaping RejectableWorker) throws {
+        resolve(self, [Place(id: "1", placeId: "1", name: "place", icon:"icon", openNow: false, rating: 5.0, location: params as! Location)])
         expectation.fulfill()
     }
 }
