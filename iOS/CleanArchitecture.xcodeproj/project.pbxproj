@@ -43,8 +43,6 @@
 		C3D9D98920D14CAB004EC19A /* Promises.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D9D98820D14CAB004EC19A /* Promises.swift */; };
 		C3D9D98D20D14D59004EC19A /* PromiseOnce.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D9D98C20D14D59004EC19A /* PromiseOnce.swift */; };
 		C3DA814F208F419500AF9ABE /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DA814E208F419500AF9ABE /* main.swift */; };
-		C3DA8150208F43BD00AF9ABE /* Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FA425D2087AFA800B63221 /* Promise.swift */; };
-		C3DA8151208F43C900AF9ABE /* Work.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FA425E2087AFA800B63221 /* Work.swift */; };
 		C3E24B2020A19CB10062D4E7 /* PlacesGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FA42632087AFEC00B63221 /* PlacesGateway.swift */; };
 		C3E24B2220A1BE250062D4E7 /* nearby-success-noplaces.json in Resources */ = {isa = PBXBuildFile; fileRef = C3E24B2120A1BE250062D4E7 /* nearby-success-noplaces.json */; };
 		C3E24B2420A1CC330062D4E7 /* LocationGatewayTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E24B2320A1CC330062D4E7 /* LocationGatewayTest.swift */; };
@@ -56,12 +54,9 @@
 		C3FA42382087AEC200B63221 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3FA42362087AEC200B63221 /* Main.storyboard */; };
 		C3FA423A2087AEC200B63221 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3FA42392087AEC200B63221 /* Assets.xcassets */; };
 		C3FA423D2087AEC200B63221 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3FA423B2087AEC200B63221 /* LaunchScreen.storyboard */; };
-		C3FA42482087AEC200B63221 /* PromiseTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FA42472087AEC200B63221 /* PromiseTest.swift */; };
 		C3FA42562087AF6A00B63221 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3FA42552087AF6A00B63221 /* MapKit.framework */; };
 		C3FA425A2087AF8B00B63221 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FA42582087AF8B00B63221 /* AppDelegate.swift */; };
 		C3FA425B2087AF8B00B63221 /* NearbyPlacesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FA42592087AF8B00B63221 /* NearbyPlacesViewController.swift */; };
-		C3FA425F2087AFA800B63221 /* Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FA425D2087AFA800B63221 /* Promise.swift */; };
-		C3FA42602087AFA800B63221 /* Work.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FA425E2087AFA800B63221 /* Work.swift */; };
 		C3FA42642087AFEC00B63221 /* LocationGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FA42622087AFEC00B63221 /* LocationGateway.swift */; };
 		C3FA42652087AFEC00B63221 /* PlacesGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FA42632087AFEC00B63221 /* PlacesGateway.swift */; };
 		C3FA42672087B04200B63221 /* Places.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FA42662087B04200B63221 /* Places.swift */; };
@@ -143,13 +138,10 @@
 		C3FA423C2087AEC200B63221 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C3FA423E2087AEC200B63221 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C3FA42432087AEC200B63221 /* CleanArchitectureTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CleanArchitectureTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C3FA42472087AEC200B63221 /* PromiseTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromiseTest.swift; sourceTree = "<group>"; };
 		C3FA42492087AEC200B63221 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C3FA42552087AF6A00B63221 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		C3FA42582087AF8B00B63221 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = CleanArchitecture/app/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
 		C3FA42592087AF8B00B63221 /* NearbyPlacesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NearbyPlacesViewController.swift; path = CleanArchitecture/app/places/NearbyPlacesViewController.swift; sourceTree = SOURCE_ROOT; };
-		C3FA425D2087AFA800B63221 /* Promise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Promise.swift; path = CleanArchitecture/core/Promise.swift; sourceTree = SOURCE_ROOT; };
-		C3FA425E2087AFA800B63221 /* Work.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Work.swift; path = CleanArchitecture/core/Work.swift; sourceTree = SOURCE_ROOT; };
 		C3FA42622087AFEC00B63221 /* LocationGateway.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationGateway.swift; path = CleanArchitecture/core/places/LocationGateway.swift; sourceTree = SOURCE_ROOT; };
 		C3FA42632087AFEC00B63221 /* PlacesGateway.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlacesGateway.swift; path = CleanArchitecture/core/places/PlacesGateway.swift; sourceTree = SOURCE_ROOT; };
 		C3FA42662087B04200B63221 /* Places.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Places.swift; path = CleanArchitecture/core/places/Places.swift; sourceTree = SOURCE_ROOT; };
@@ -219,7 +211,6 @@
 			isa = PBXGroup;
 			children = (
 				C3D2893420ECDBBF001DE077 /* MockWorkers.swift */,
-				C3FA42472087AEC200B63221 /* PromiseTest.swift */,
 				C379400A20E12A06004C723B /* PromiseOnceTest.swift */,
 				C379400C20E12A17004C723B /* PromiseAllTest.swift */,
 				C3D8AD8A20A05DBC00868FF9 /* places */,
@@ -308,8 +299,6 @@
 				C3332EE72088A84A00FF73FF /* extensions */,
 				C3FC18D420D9469B00393EBB /* weather */,
 				C3FA42612087AFB600B63221 /* places */,
-				C3FA425D2087AFA800B63221 /* Promise.swift */,
-				C3FA425E2087AFA800B63221 /* Work.swift */,
 				C3D9D98820D14CAB004EC19A /* Promises.swift */,
 				C3D9D98C20D14D59004EC19A /* PromiseOnce.swift */,
 				C3FC18C120D9292A00393EBB /* PromiseAll.swift */,
@@ -496,7 +485,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C3332EE92088A86E00FF73FF /* Error.swift in Sources */,
-				C3FA42602087AFA800B63221 /* Work.swift in Sources */,
 				C3E24B2A20A1D7420062D4E7 /* LocationManager.swift in Sources */,
 				C379400020E11483004C723B /* WeatherAssembler.swift in Sources */,
 				C3332EF22088E4D300FF73FF /* PlacesComponent.swift in Sources */,
@@ -510,7 +498,6 @@
 				C3FA425A2087AF8B00B63221 /* AppDelegate.swift in Sources */,
 				C3D9D98920D14CAB004EC19A /* Promises.swift in Sources */,
 				C3D9D98D20D14D59004EC19A /* PromiseOnce.swift in Sources */,
-				C3FA425F2087AFA800B63221 /* Promise.swift in Sources */,
 				C343D5F920DA7F140072CE0D /* WeatherTableViewCell.swift in Sources */,
 				C3332EF62088F0B800FF73FF /* NearbyPlaceCell.swift in Sources */,
 				C3FC18D620D946B000393EBB /* Weather.swift in Sources */,
@@ -533,7 +520,6 @@
 				C391460C20DA564E00013336 /* Item.swift in Sources */,
 				C379400220E1198B004C723B /* WeatherPresenter.swift in Sources */,
 				C3D2893520ECDBBF001DE077 /* MockWorkers.swift in Sources */,
-				C3FA42482087AEC200B63221 /* PromiseTest.swift in Sources */,
 				C3FC18E220D9630800393EBB /* WeatherViewController.swift in Sources */,
 				C3E24B2720A1D4180062D4E7 /* LocationGateway.swift in Sources */,
 				C3FC18E920D9643100393EBB /* ItemsTableViewController.swift in Sources */,
@@ -550,9 +536,7 @@
 				C379400D20E12A17004C723B /* PromiseAllTest.swift in Sources */,
 				C379400720E119C2004C723B /* NearbyPlaceCell.swift in Sources */,
 				C3E24B2020A19CB10062D4E7 /* PlacesGateway.swift in Sources */,
-				C3DA8150208F43BD00AF9ABE /* Promise.swift in Sources */,
 				C379400120E11986004C723B /* WeatherAssembler.swift in Sources */,
-				C3DA8151208F43C900AF9ABE /* Work.swift in Sources */,
 				C3D8AD8C20A05DE000868FF9 /* PlacesTest.swift in Sources */,
 				C3E24B2420A1CC330062D4E7 /* LocationGatewayTest.swift in Sources */,
 				C379400B20E12A06004C723B /* PromiseOnceTest.swift in Sources */,

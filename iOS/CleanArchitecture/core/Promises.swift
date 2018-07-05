@@ -38,4 +38,6 @@ protocol Worker {
     func run(params:Any?, resolve:@escaping ResolvableWorker, reject:@escaping RejectableWorker) throws
 }
 
-
+enum PromiseState {
+    case pending, fulfilled, rejected
+}
