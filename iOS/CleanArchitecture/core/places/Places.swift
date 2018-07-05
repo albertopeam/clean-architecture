@@ -49,18 +49,6 @@ class Places:PlacesProtocol {
         self.placesGateway = placesGateway
     }
     
-    //TODO: old promise
-//    func nearby(output: PlacesOutputProtocol) {
-//        Promise(work: locationGateway)
-//        .then { (location) -> Promise in
-//            return Promise(work: self.placesGateway, params:location)
-//        }.then { (places) in
-//            output.onNearby(places: places as! Array<Place>)
-//        }.error { (error) in
-//            output.onNearbyError(error: error)
-//        }
-//    }
-    
     func nearby(output: PlacesOutputProtocol) {
         Promises.once(worker: locationGateway, params: nil)
         .then(completable: { (location) -> PromiseProtocol in
