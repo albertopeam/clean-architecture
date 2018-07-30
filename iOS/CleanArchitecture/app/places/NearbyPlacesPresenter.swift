@@ -10,7 +10,7 @@ protocol NearbyPlacesPresenterProtocol {
     func nearbyPlaces()
 }
 
-protocol NearbyPlacesView {
+protocol NearbyPlacesViewProtocol {
     func newState(viewModel:NearbyPlacesViewModel)
 }
 
@@ -24,11 +24,12 @@ class NearbyPlacesPresenter:NearbyPlacesPresenterProtocol, PlacesOutputProtocol 
     
     let places:PlacesProtocol
     var viewModel:NearbyPlacesViewModel
-    var view:NearbyPlacesView?
+    var view:NearbyPlacesViewProtocol?
     
-    init(places:PlacesProtocol, viewModel:NearbyPlacesViewModel) {
+    init(places:PlacesProtocol, viewModel:NearbyPlacesViewModel, view:NearbyPlacesViewProtocol? = nil) {
         self.places = places
         self.viewModel = viewModel
+        self.view = view
     }
     
     func nearbyPlaces() {

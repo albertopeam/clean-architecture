@@ -38,7 +38,7 @@ class PlacesGateway:NSObject, Worker {
                             if let opening = item["opening_hours"] as? NSDictionary {
                                 openNow = opening["open_now"] as! Bool
                             }
-                            let rating = item["rating"] as! Double
+                            let rating = item["rating"] != nil ? item["rating"] as! Double : 0
                             let geometry = item["geometry"] as! NSDictionary
                             let location = geometry["location"] as! NSDictionary
                             let latitude = location["lat"] as! Double

@@ -44,6 +44,16 @@
                </Test>
             </SkippedTests>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "C3C74A0A210204E20037C598"
+               BuildableName = "CleanArchitectureUITests.xctest"
+               BlueprintName = "CleanArchitectureUITests"
+               ReferencedContainer = "container:CleanArchitecture.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

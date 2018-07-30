@@ -21,13 +21,14 @@ struct WeatherViewModel {
 
 class WeatherPresenter: WeatherPresenterProtocol, WeatherOutputProtocol {
     
-    let weather:WeatherProtocol
-    var viewModel:WeatherViewModel
+    private let weather:WeatherProtocol
+    private var viewModel:WeatherViewModel
     var view:WeatherViewProtocol?
     
-    init(weather:WeatherProtocol, viewModel:WeatherViewModel) {
+    init(weather:WeatherProtocol, viewModel:WeatherViewModel, view:WeatherViewProtocol? = nil) {
         self.weather = weather
         self.viewModel = viewModel
+        self.view = view
     }
     
     func weathers() {
@@ -42,7 +43,7 @@ class WeatherPresenter: WeatherPresenterProtocol, WeatherOutputProtocol {
     
     func onWeatherError(error: Error) {
         viewModel.weathers = nil
-        viewModel.error = error.localizedDescription
+        viewModel.error = error.domain
         view?.newState(viewModel: viewModel)
     }
 

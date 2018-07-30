@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NearbyPlacesAssembler {
+class NearbyPlacesViewControllerBuilder {
     static func assemble() -> UIViewController {
         let viewModel = NearbyPlacesViewModel(places: nil, error: nil, requestPermission: false)
         let places = PlacesComponent.assemble(apiKey: Constants.googleApiKey)

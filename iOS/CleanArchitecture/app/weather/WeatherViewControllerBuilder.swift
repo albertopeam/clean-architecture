@@ -7,7 +7,7 @@
 //
 import UIKit
 
-class WeatherAssembler {
+class WeatherViewControllerBuilder {
     static func assemble() -> UIViewController {
         let viewModel = WeatherViewModel(weathers: nil, error: nil)
         let weather = WeatherComponent.assemble(apiKey: Constants.openWeatherApiKey, cities: ["A Coruña", "Lugo", "Ourense", "Pontevedra"])

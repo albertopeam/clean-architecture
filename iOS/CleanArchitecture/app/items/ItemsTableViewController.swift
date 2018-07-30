@@ -11,15 +11,25 @@ import UIKit
 class ItemsTableViewController: UITableViewController {
     
     var items:Array<Item> = []
+    var tableview: UITableView?
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) is not supported")
+    }
+    
+    init() {
+        super.init(nibName: "ItemsTableViewController", bundle: nil)
+    }
         
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Items"
+        self.tableview = tableView
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        items = [Item(name: "Places", target: NearbyPlacesAssembler.assemble()), Item(name: "Weather", target: WeatherAssembler.assemble())]
+        items = [Item(name: "Places", target: NearbyPlacesViewControllerBuilder.assemble()), Item(name: "Weather", target: WeatherViewControllerBuilder.assemble())]
         self.tableView.reloadData()
     }
 
@@ -34,7 +44,7 @@ extension ItemsTableViewController {
         return items.count
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {        
         var cell : UITableViewCell! = tableView.dequeueReusableCell(withIdentifier: "cell_id")
         if cell == nil {
             cell = UITableViewCell(style: .default, reuseIdentifier: "cell_id")

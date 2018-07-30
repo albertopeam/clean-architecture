@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class NearbyPlacesViewController: UIViewController, NearbyPlacesView {
+class NearbyPlacesViewController: UIViewController, NearbyPlacesViewProtocol {
 
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var placesTableView: UITableView!
@@ -84,7 +84,7 @@ extension NearbyPlacesViewController:UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "nearby_place_cell") as! NearbyPlaceCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "nearby_place_cell", for: indexPath) as! NearbyPlaceCell
         cell.draw(place:places[indexPath.row])
         return cell
     }
