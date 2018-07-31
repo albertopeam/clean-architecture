@@ -10,6 +10,7 @@ import UIKit
 
 class WeatherViewController: UIViewController, WeatherViewProtocol {
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var tableView: UITableView!
     private var items:Array<InstantWeather> = []
     private let presenter:WeatherPresenterProtocol
@@ -30,6 +31,11 @@ class WeatherViewController: UIViewController, WeatherViewProtocol {
     }
     
     func newState(viewModel: WeatherViewModel) {
+        if viewModel.loading {
+            activityIndicator.isHidden = false
+        }else{
+            activityIndicator.isHidden = true
+        }
         if let weathers = viewModel.weathers {
             self.items = weathers
             tableView.reloadData()

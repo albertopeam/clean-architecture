@@ -18,7 +18,7 @@ class WeatherPresenterTest: XCTestCase {
     override func setUp() {
         super.setUp()
         continueAfterFailure = false
-        vm = WeatherViewModel()
+        vm = WeatherViewModel(loading: true, weathers: nil, error: nil)
         spyView = Spy.WeatherView()
     }
     
@@ -34,6 +34,7 @@ class WeatherPresenterTest: XCTestCase {
         sut?.weathers()
         XCTAssertNotNil(spyView!.vm)
         let targets = spyView!.vm!
+        XCTAssertFalse(targets.loading)
         XCTAssertNil(targets.error)
         XCTAssertNotNil(targets.weathers)
         XCTAssertEqual(targets.weathers!.count, 1)

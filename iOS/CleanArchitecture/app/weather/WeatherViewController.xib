@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WeatherViewController" customModule="CleanArchitecture" customModuleProvider="target">
             <connections>
+                <outlet property="activityIndicator" destination="ou9-cp-hec" id="O41-Cr-6RI"/>
                 <outlet property="tableView" destination="ZiZ-GE-BbA" id="boN-qj-TAh"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -29,12 +30,17 @@
                         <outlet property="delegate" destination="-1" id="7dM-Y2-bdX"/>
                     </connections>
                 </tableView>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="ou9-cp-hec">
+                    <rect key="frame" x="177" y="401" width="20" height="20"/>
+                </activityIndicatorView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="ZiZ-GE-BbA" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Nnp-7k-xFQ"/>
                 <constraint firstItem="ZiZ-GE-BbA" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" constant="34" id="VtI-T7-A9H"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="ZiZ-GE-BbA" secondAttribute="trailing" id="fWM-cm-7D4"/>
+                <constraint firstItem="ou9-cp-hec" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="qzJ-nd-fLb"/>
+                <constraint firstItem="ou9-cp-hec" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="shq-dT-Dzh"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="top" secondItem="ZiZ-GE-BbA" secondAttribute="top" id="vQT-Yc-bt3"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>

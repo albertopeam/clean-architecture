@@ -15,6 +15,7 @@ protocol WeatherPresenterProtocol {
 }
 
 struct WeatherViewModel {
+    var loading:Bool
     var weathers:Array<InstantWeather>?
     var error:String?
 }
@@ -36,12 +37,14 @@ class WeatherPresenter: WeatherPresenterProtocol, WeatherOutputProtocol {
     }
     
     func onWeather(items: Array<InstantWeather>) {
+        viewModel.loading = false
         viewModel.weathers = items
         viewModel.error = nil
         view?.newState(viewModel: viewModel)
     }
     
     func onWeatherError(error: Error) {
+        viewModel.loading = false
         viewModel.weathers = nil
         viewModel.error = error.domain
         view?.newState(viewModel: viewModel)

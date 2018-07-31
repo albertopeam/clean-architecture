@@ -25,9 +25,12 @@ class CurrentWeatherWorker:NSObject, Worker {
                 let result:CloudResponse? = try? JSONDecoder().decode(CloudResponse.self, from: data!)
                 if result?.cod == 200 {
                     let cr:CloudWeatherResponse? = try? JSONDecoder().decode(CloudWeatherResponse.self, from: data!)
-                    
-                    let weather = InstantWeather(name: cr!.name, description: cr!.weather[0].description, icon: cr!.weather[0].icon, temp: cr!.main.temp, pressure: 0/*cr!.main.pressure*/, humidity: cr!.main.humidity, windSpeed: cr!.wind.speed, windDegrees: cr!.wind.deg, datetime: cr!.dt)
-                    self.resolveIt(resolve: resolve, data: weather)
+                    if cr != nil {
+                        let weather = InstantWeather(name: cr!.name, description: cr!.weather[0].description, icon: cr!.weather[0].icon, temp: cr!.main.temp, pressure: 0/*cr!.main.pressure*/, humidity: cr!.main.humidity, windSpeed: cr!.wind.speed, windDegrees: cr!.wind.deg, datetime: cr!.dt)
+                        self.resolveIt(resolve: resolve, data: weather)
+                    }else{
+                        self.rejectIt(reject: reject, error: WeatherError.decoding)
+                    }
                 }else{
                     if result?.cod == 401{
                         self.rejectIt(reject: reject, error: WeatherError.unauthorized)
