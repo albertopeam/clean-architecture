@@ -10,10 +10,10 @@ import XCTest
 import Swifter
 @testable import CleanArchitecture
 
-class PlacesGatewayTest: XCTestCase {
+class PlacesWorkerTest: XCTestCase {
     
     var mockServer:HttpServer?
-    var sut:PlacesGateway?
+    var sut:PlacesWorker?
     let apiKey = "TESTApiKey"
     
     override func setUp(){
@@ -51,7 +51,7 @@ class PlacesGatewayTest: XCTestCase {
             })
         }
         let expectation = XCTestExpectation(description: "testGivenValidInputWhenGetNearbyThenReturnSuccess")
-        sut = PlacesGateway(url: absoluteUrl)
+        sut = PlacesWorker(url: absoluteUrl)
         try sut!.run(params: location, resolve: { (worker, result) in
             XCTAssertNotNil(result)
             let result:Array<Place> = result as! Array<Place>
@@ -88,7 +88,7 @@ class PlacesGatewayTest: XCTestCase {
             })
         }
         let expectation = XCTestExpectation(description: "testGivenValidInputWhenGetNearbyThenReturnSuccess")
-        sut = PlacesGateway(url: absoluteUrl)
+        sut = PlacesWorker(url: absoluteUrl)
         try sut!.run(params: location, resolve: { (worker, result) in
             XCTFail("testGivenInvalidInputWhenGetNearbyThenReturnNoPlaces resolved")
             expectation.fulfill()

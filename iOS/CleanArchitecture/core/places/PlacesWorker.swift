@@ -8,7 +8,7 @@
 
 import Foundation
 
-class PlacesGateway:NSObject, Worker {
+class PlacesWorker:NSObject, Worker {
     
     let targetUrl:String
     

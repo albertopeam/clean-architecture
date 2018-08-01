@@ -28,7 +28,7 @@ class PlacesTest: XCTestCase {
     
     func testGivenNoLocationPermissionWhenGetNearbyThrowError() {
         let expectation = XCTestExpectation(description: "testGivenNoLocationPermissionWhenGetNearbyThrowError")
-        sut = Places(locationGateway:MockNoLocationPermissionWork(expectation: expectation), placesGateway:MockSuccessPlacesWork(expectation: XCTestExpectation(description: "not used expectation")))
+        sut = Places(locationWorker:MockNoLocationPermissionWork(expectation: expectation), placesGateway:MockSuccessPlacesWork(expectation: XCTestExpectation(description: "not used expectation")))
         sut!.nearby(output: spy!)
         wait(for: [expectation], timeout: 0.1)
         XCTAssertNil(spy!.places)
@@ -43,7 +43,7 @@ class PlacesTest: XCTestCase {
     func testGivenLocationWhenGetNearbyThenReturnOne() {
         let expectationLocation = XCTestExpectation(description: "testGivenNoLocationPermissionWhenGetNearbyThrowError - location")
         let expectationNearby = XCTestExpectation(description: "testGivenNoLocationPermissionWhenGetNearbyThrowError - nearby")
-        sut = Places(locationGateway:MockSuccessLocationWork(expectation: expectationLocation), placesGateway:MockSuccessPlacesWork(expectation: expectationNearby))
+        sut = Places(locationWorker:MockSuccessLocationWork(expectation: expectationLocation), placesGateway:MockSuccessPlacesWork(expectation: expectationNearby))
         sut!.nearby(output: spy!)
         wait(for: [expectationLocation, expectationNearby], timeout: 0.1)
         XCTAssertNil(spy!.error)

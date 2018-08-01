@@ -13,6 +13,8 @@ So, be carefull, this is a WORK IN PROGRESS...
         * [Legacy](#swift:-Legacy)
         * [Serial](#swift:-Serial-work)
         * [Parallel](#swift:-Parallel-work)
+    2. [MVVM](#mvvm)
+5. [Testing](#testing)
 
 ## Before start
 * iOS
@@ -180,11 +182,11 @@ A promise represents the eventual result of an asynchronous operation; we can ch
 ```swift
 class Places:PlacesProtocol {
 
-    private let locationGateway:Worker
+    private let locationWorker:Worker
     private let placesGateway:Worker
     
     func nearby(output: PlacesOutputProtocol) {
-        Promises.once(worker: locationGateway, params: nil)
+        Promises.once(worker: locationWorker, params: nil)
         .then(completable: { (location) -> PromiseProtocol in
             return Promises.once(worker: self.placesGateway, params:location)
         }).then(finalizable: { (places) in
@@ -252,6 +254,18 @@ class Weather:WeatherProtocol {
 * UML
 
      ![Alt layer](art/PROMISE.png)
+    
+### MVVM
+under dev
+
+## Testing
+* under development
+    * unit docu
+    * UI: docu
+        pending:
+            KIF+Snapshot 
+            https://github.com/kif-framework/KIF
+            https://github.com/uber/ios-snapshot-test-case/
 
 ## License
 Copyright (c) 2018 Alberto Penas Amor

@@ -1,5 +1,5 @@
 //
-//  LocationGatewayTest.swift
+//  LocationWorkerTest.swift
 //  CleanArchitectureTests
 //
 //  Created by Penas Amor, Alberto on 8/5/18.
@@ -10,9 +10,9 @@ import XCTest
 import CoreLocation
 @testable import CleanArchitecture
 
-class LocationGatewayTest: XCTestCase {
+class LocationWorkerTest: XCTestCase {
     
-    private var sut:LocationGateway?
+    private var sut:LocationWorker?
     private var mockLocationManager:MockLocationManager?
     
     override func setUp() {
@@ -31,7 +31,7 @@ class LocationGatewayTest: XCTestCase {
         let expectation = XCTestExpectation(description: "testGivenLocationAvailableWhenStartThenReceiveLocation")
         mockLocationManager!.mockedStatus = .authorizedWhenInUse
         mockLocationManager!.result = CLLocation(latitude: 43.0, longitude: -8.0)
-        sut = LocationGateway(locationManager: mockLocationManager!)
+        sut = LocationWorker(locationManager: mockLocationManager!)
         try sut!.run(params: nil, resolve: { (worker, result) in
             let result = result as! Location
             XCTAssertEqual(result.latitude, 43.0)
@@ -46,7 +46,7 @@ class LocationGatewayTest: XCTestCase {
     func testGivenNoLocationPermissionWhenStartThenReceiveError() throws {
         let expectation = XCTestExpectation(description: "testGivenNoLocationPermissionWhenStartThenReceiveError")
         mockLocationManager!.mockedStatus = .notDetermined
-        sut = LocationGateway(locationManager: mockLocationManager!)
+        sut = LocationWorker(locationManager: mockLocationManager!)
         try sut!.run(params: nil, resolve: { (worker, location) in
             XCTFail("testGivenNoLocationPermissionWhenStartThenReceiveError rejected")
         }) { (worker, error) in
@@ -64,7 +64,7 @@ class LocationGatewayTest: XCTestCase {
         let expectation = XCTestExpectation(description: "testGivenNoLocationWhenStartThenReceiveError")
         mockLocationManager!.mockedStatus = .authorizedWhenInUse
         mockLocationManager!.result = NSError(domain: "kCLErrorDomain", code: 0, userInfo: nil)
-        sut = LocationGateway(locationManager: mockLocationManager!)
+        sut = LocationWorker(locationManager: mockLocationManager!)
         try sut!.run(params: nil, resolve: { (worker, location) in
             XCTFail("testGivenNoLocationWhenStartThenReceiveError rejected")
         }) { (worker, error) in

@@ -8,6 +8,23 @@
 
 /* Begin PBXBuildFile section */
 		C317820C208DF45600CB8FAE /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = C317820B208DF45500CB8FAE /* README.md */; };
+		C32634D72111C08F0023E58C /* UVIndexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32634D52111C08F0023E58C /* UVIndexViewController.swift */; };
+		C32634D82111C08F0023E58C /* UVIndexViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C32634D62111C08F0023E58C /* UVIndexViewController.xib */; };
+		C32634DA2111C0A10023E58C /* UVIndexViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32634D92111C0A10023E58C /* UVIndexViewModel.swift */; };
+		C32634DD2111C0C30023E58C /* UVIndexComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32634DC2111C0C30023E58C /* UVIndexComponent.swift */; };
+		C32634E02111C11F0023E58C /* UVIndexWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32634DF2111C11F0023E58C /* UVIndexWorker.swift */; };
+		C32634E22111C1510023E58C /* UVIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32634E12111C1510023E58C /* UVIndex.swift */; };
+		C32634E42111C2570023E58C /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32634E32111C2570023E58C /* Location.swift */; };
+		C32634E52111C4E50023E58C /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32634E32111C2570023E58C /* Location.swift */; };
+		C32634E62111C4E50023E58C /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32634E32111C2570023E58C /* Location.swift */; };
+		C32634E82111C7500023E58C /* LocationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32634E72111C7500023E58C /* LocationError.swift */; };
+		C32634E92111C7500023E58C /* LocationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32634E72111C7500023E58C /* LocationError.swift */; };
+		C32634EC2111CE1F0023E58C /* JSONDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32634EB2111CE1F0023E58C /* JSONDecoder.swift */; };
+		C32634ED2111CE1F0023E58C /* JSONDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32634EB2111CE1F0023E58C /* JSONDecoder.swift */; };
+		C32634EF2111D7D40023E58C /* UVIndexViewControllerBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32634EE2111D7D40023E58C /* UVIndexViewControllerBuilder.swift */; };
+		C32634F02111D7D40023E58C /* UVIndexViewControllerBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32634EE2111D7D40023E58C /* UVIndexViewControllerBuilder.swift */; };
+		C32634F22111E0D50023E58C /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32634F12111E0D50023E58C /* Observable.swift */; };
+		C32634F92111FDDD0023E58C /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C32634F82111FDDD0023E58C /* Colors.xcassets */; };
 		C3332EE92088A86E00FF73FF /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3332EE82088A86E00FF73FF /* Error.swift */; };
 		C3332EEB2088E1DE00FF73FF /* NearbyPlacesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3332EEA2088E1DE00FF73FF /* NearbyPlacesPresenter.swift */; };
 		C3332EEE2088E43C00FF73FF /* NearbyPlacesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3332EED2088E43C00FF73FF /* NearbyPlacesView.xib */; };
@@ -53,8 +70,8 @@
 		C3C74A2921020A8F0037C598 /* WeatherComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FC18DB20D959DE00393EBB /* WeatherComponent.swift */; };
 		C3C74A2A21020A940037C598 /* Places.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FA42662087B04200B63221 /* Places.swift */; };
 		C3C74A2B21020A940037C598 /* PlacesComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3332EF12088E4D300FF73FF /* PlacesComponent.swift */; };
-		C3C74A2C21020A940037C598 /* PlacesGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FA42632087AFEC00B63221 /* PlacesGateway.swift */; };
-		C3C74A2D21020A940037C598 /* LocationGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FA42622087AFEC00B63221 /* LocationGateway.swift */; };
+		C3C74A2C21020A940037C598 /* PlacesWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FA42632087AFEC00B63221 /* PlacesWorker.swift */; };
+		C3C74A2D21020A940037C598 /* LocationWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FA42622087AFEC00B63221 /* LocationWorker.swift */; };
 		C3C74A2E21020A940037C598 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E24B2920A1D7420062D4E7 /* LocationManager.swift */; };
 		C3C74A2F21020A9C0037C598 /* Promises.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D9D98820D14CAB004EC19A /* Promises.swift */; };
 		C3C74A3021020A9C0037C598 /* PromiseOnce.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D9D98C20D14D59004EC19A /* PromiseOnce.swift */; };
@@ -69,11 +86,11 @@
 		C3D9D98920D14CAB004EC19A /* Promises.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D9D98820D14CAB004EC19A /* Promises.swift */; };
 		C3D9D98D20D14D59004EC19A /* PromiseOnce.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D9D98C20D14D59004EC19A /* PromiseOnce.swift */; };
 		C3DA814F208F419500AF9ABE /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DA814E208F419500AF9ABE /* main.swift */; };
-		C3E24B2020A19CB10062D4E7 /* PlacesGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FA42632087AFEC00B63221 /* PlacesGateway.swift */; };
+		C3E24B2020A19CB10062D4E7 /* PlacesWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FA42632087AFEC00B63221 /* PlacesWorker.swift */; };
 		C3E24B2220A1BE250062D4E7 /* nearby-success-noplaces.json in Resources */ = {isa = PBXBuildFile; fileRef = C3E24B2120A1BE250062D4E7 /* nearby-success-noplaces.json */; };
-		C3E24B2420A1CC330062D4E7 /* LocationGatewayTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E24B2320A1CC330062D4E7 /* LocationGatewayTest.swift */; };
+		C3E24B2420A1CC330062D4E7 /* LocationWorkerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E24B2320A1CC330062D4E7 /* LocationWorkerTest.swift */; };
 		C3E24B2620A1D40F0062D4E7 /* Places.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FA42662087B04200B63221 /* Places.swift */; };
-		C3E24B2720A1D4180062D4E7 /* LocationGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FA42622087AFEC00B63221 /* LocationGateway.swift */; };
+		C3E24B2720A1D4180062D4E7 /* LocationWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FA42622087AFEC00B63221 /* LocationWorker.swift */; };
 		C3E24B2820A1D47F0062D4E7 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3332EE82088A86E00FF73FF /* Error.swift */; };
 		C3E24B2A20A1D7420062D4E7 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E24B2920A1D7420062D4E7 /* LocationManager.swift */; };
 		C3E24B2B20A1D7480062D4E7 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E24B2920A1D7420062D4E7 /* LocationManager.swift */; };
@@ -91,8 +108,8 @@
 		C3FA42562087AF6A00B63221 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3FA42552087AF6A00B63221 /* MapKit.framework */; };
 		C3FA425A2087AF8B00B63221 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FA42582087AF8B00B63221 /* AppDelegate.swift */; };
 		C3FA425B2087AF8B00B63221 /* NearbyPlacesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FA42592087AF8B00B63221 /* NearbyPlacesViewController.swift */; };
-		C3FA42642087AFEC00B63221 /* LocationGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FA42622087AFEC00B63221 /* LocationGateway.swift */; };
-		C3FA42652087AFEC00B63221 /* PlacesGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FA42632087AFEC00B63221 /* PlacesGateway.swift */; };
+		C3FA42642087AFEC00B63221 /* LocationWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FA42622087AFEC00B63221 /* LocationWorker.swift */; };
+		C3FA42652087AFEC00B63221 /* PlacesWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FA42632087AFEC00B63221 /* PlacesWorker.swift */; };
 		C3FA42672087B04200B63221 /* Places.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FA42662087B04200B63221 /* Places.swift */; };
 		C3FC18BF20D9265300393EBB /* Promises.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D9D98820D14CAB004EC19A /* Promises.swift */; };
 		C3FC18C020D9265600393EBB /* PromiseOnce.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D9D98C20D14D59004EC19A /* PromiseOnce.swift */; };
@@ -144,6 +161,18 @@
 
 /* Begin PBXFileReference section */
 		C317820B208DF45500CB8FAE /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		C32634D52111C08F0023E58C /* UVIndexViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UVIndexViewController.swift; sourceTree = "<group>"; };
+		C32634D62111C08F0023E58C /* UVIndexViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UVIndexViewController.xib; sourceTree = "<group>"; };
+		C32634D92111C0A10023E58C /* UVIndexViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UVIndexViewModel.swift; sourceTree = "<group>"; };
+		C32634DC2111C0C30023E58C /* UVIndexComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UVIndexComponent.swift; sourceTree = "<group>"; };
+		C32634DF2111C11F0023E58C /* UVIndexWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UVIndexWorker.swift; sourceTree = "<group>"; };
+		C32634E12111C1510023E58C /* UVIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UVIndex.swift; sourceTree = "<group>"; };
+		C32634E32111C2570023E58C /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		C32634E72111C7500023E58C /* LocationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationError.swift; sourceTree = "<group>"; };
+		C32634EB2111CE1F0023E58C /* JSONDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONDecoder.swift; sourceTree = "<group>"; };
+		C32634EE2111D7D40023E58C /* UVIndexViewControllerBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UVIndexViewControllerBuilder.swift; sourceTree = "<group>"; };
+		C32634F12111E0D50023E58C /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		C32634F82111FDDD0023E58C /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		C3332EE82088A86E00FF73FF /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		C3332EEA2088E1DE00FF73FF /* NearbyPlacesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearbyPlacesPresenter.swift; sourceTree = "<group>"; };
 		C3332EED2088E43C00FF73FF /* NearbyPlacesView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NearbyPlacesView.xib; sourceTree = "<group>"; };
@@ -174,7 +203,7 @@
 		C3D9D98C20D14D59004EC19A /* PromiseOnce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromiseOnce.swift; sourceTree = "<group>"; };
 		C3DA814E208F419500AF9ABE /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		C3E24B2120A1BE250062D4E7 /* nearby-success-noplaces.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "nearby-success-noplaces.json"; sourceTree = "<group>"; };
-		C3E24B2320A1CC330062D4E7 /* LocationGatewayTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationGatewayTest.swift; sourceTree = "<group>"; };
+		C3E24B2320A1CC330062D4E7 /* LocationWorkerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationWorkerTest.swift; sourceTree = "<group>"; };
 		C3E24B2920A1D7420062D4E7 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		C3E352462105F1FD0091CFDD /* UITestNavigationTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestNavigationTool.swift; sourceTree = "<group>"; };
 		C3E352482105F8F80091CFDD /* UITestNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestNavigationViewController.swift; sourceTree = "<group>"; };
@@ -192,8 +221,8 @@
 		C3FA42552087AF6A00B63221 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		C3FA42582087AF8B00B63221 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = CleanArchitecture/app/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
 		C3FA42592087AF8B00B63221 /* NearbyPlacesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NearbyPlacesViewController.swift; path = CleanArchitecture/app/places/NearbyPlacesViewController.swift; sourceTree = SOURCE_ROOT; };
-		C3FA42622087AFEC00B63221 /* LocationGateway.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationGateway.swift; path = CleanArchitecture/core/places/LocationGateway.swift; sourceTree = SOURCE_ROOT; };
-		C3FA42632087AFEC00B63221 /* PlacesGateway.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlacesGateway.swift; path = CleanArchitecture/core/places/PlacesGateway.swift; sourceTree = SOURCE_ROOT; };
+		C3FA42622087AFEC00B63221 /* LocationWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationWorker.swift; path = CleanArchitecture/core/location/LocationWorker.swift; sourceTree = SOURCE_ROOT; };
+		C3FA42632087AFEC00B63221 /* PlacesWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlacesWorker.swift; path = CleanArchitecture/core/places/PlacesWorker.swift; sourceTree = SOURCE_ROOT; };
 		C3FA42662087B04200B63221 /* Places.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Places.swift; path = CleanArchitecture/core/places/Places.swift; sourceTree = SOURCE_ROOT; };
 		C3FC18C120D9292A00393EBB /* PromiseAll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromiseAll.swift; sourceTree = "<group>"; };
 		C3FC18D520D946B000393EBB /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
@@ -240,8 +269,50 @@
 				C3FA42362087AEC200B63221 /* Main.storyboard */,
 				C3FA42392087AEC200B63221 /* Assets.xcassets */,
 				C3FA423B2087AEC200B63221 /* LaunchScreen.storyboard */,
+				C32634F82111FDDD0023E58C /* Colors.xcassets */,
 			);
 			path = assets;
+			sourceTree = "<group>";
+		};
+		C32634D42111C0530023E58C /* uvindex */ = {
+			isa = PBXGroup;
+			children = (
+				C32634EE2111D7D40023E58C /* UVIndexViewControllerBuilder.swift */,
+				C32634D52111C08F0023E58C /* UVIndexViewController.swift */,
+				C32634D92111C0A10023E58C /* UVIndexViewModel.swift */,
+				C32634F12111E0D50023E58C /* Observable.swift */,
+				C32634D62111C08F0023E58C /* UVIndexViewController.xib */,
+			);
+			path = uvindex;
+			sourceTree = "<group>";
+		};
+		C32634DB2111C0B00023E58C /* uvindex */ = {
+			isa = PBXGroup;
+			children = (
+				C32634DC2111C0C30023E58C /* UVIndexComponent.swift */,
+				C32634E12111C1510023E58C /* UVIndex.swift */,
+				C32634DF2111C11F0023E58C /* UVIndexWorker.swift */,
+			);
+			path = uvindex;
+			sourceTree = "<group>";
+		};
+		C32634DE2111C0D20023E58C /* location */ = {
+			isa = PBXGroup;
+			children = (
+				C3FA42622087AFEC00B63221 /* LocationWorker.swift */,
+				C3E24B2920A1D7420062D4E7 /* LocationManager.swift */,
+				C32634E32111C2570023E58C /* Location.swift */,
+				C32634E72111C7500023E58C /* LocationError.swift */,
+			);
+			path = location;
+			sourceTree = "<group>";
+		};
+		C32634EA2111CDF50023E58C /* network */ = {
+			isa = PBXGroup;
+			children = (
+				C32634EB2111CE1F0023E58C /* JSONDecoder.swift */,
+			);
+			path = network;
 			sourceTree = "<group>";
 		};
 		C3332EE72088A84A00FF73FF /* extensions */ = {
@@ -332,7 +403,7 @@
 				C33884BA20A0A07400ED3D49 /* nearby-success.json */,
 				C3CC23F920A09C3100BA01F6 /* PlacesGatewayTest.swift */,
 				C3D8AD8B20A05DE000868FF9 /* PlacesTest.swift */,
-				C3E24B2320A1CC330062D4E7 /* LocationGatewayTest.swift */,
+				C3E24B2320A1CC330062D4E7 /* LocationWorkerTest.swift */,
 			);
 			path = places;
 			sourceTree = "<group>";
@@ -428,6 +499,7 @@
 				C3FC18E520D963EA00393EBB /* items */,
 				C3332EEC2088E1E300FF73FF /* places */,
 				C3FC18DE20D962ED00393EBB /* weather */,
+				C32634D42111C0530023E58C /* uvindex */,
 				C3FA42582087AF8B00B63221 /* AppDelegate.swift */,
 				C36DD7822090C7A30045E114 /* Constants.swift */,
 			);
@@ -437,9 +509,12 @@
 		C3FA425C2087AF9800B63221 /* core */ = {
 			isa = PBXGroup;
 			children = (
+				C32634EA2111CDF50023E58C /* network */,
 				C3332EE72088A84A00FF73FF /* extensions */,
 				C3FC18D420D9469B00393EBB /* weather */,
 				C3FA42612087AFB600B63221 /* places */,
+				C32634DB2111C0B00023E58C /* uvindex */,
+				C32634DE2111C0D20023E58C /* location */,
 				C3D9D98820D14CAB004EC19A /* Promises.swift */,
 				C3D9D98C20D14D59004EC19A /* PromiseOnce.swift */,
 				C3FC18C120D9292A00393EBB /* PromiseAll.swift */,
@@ -452,9 +527,7 @@
 			children = (
 				C3FA42662087B04200B63221 /* Places.swift */,
 				C3332EF12088E4D300FF73FF /* PlacesComponent.swift */,
-				C3FA42632087AFEC00B63221 /* PlacesGateway.swift */,
-				C3FA42622087AFEC00B63221 /* LocationGateway.swift */,
-				C3E24B2920A1D7420062D4E7 /* LocationManager.swift */,
+				C3FA42632087AFEC00B63221 /* PlacesWorker.swift */,
 			);
 			path = places;
 			sourceTree = "<group>";
@@ -463,8 +536,8 @@
 			isa = PBXGroup;
 			children = (
 				C3FC18D520D946B000393EBB /* Weather.swift */,
-				C3FC18D820D9595700393EBB /* CurrentWeatherWorker.swift */,
 				C3FC18DB20D959DE00393EBB /* WeatherComponent.swift */,
+				C3FC18D820D9595700393EBB /* CurrentWeatherWorker.swift */,
 			);
 			path = weather;
 			sourceTree = "<group>";
@@ -611,12 +684,14 @@
 			files = (
 				C317820C208DF45600CB8FAE /* README.md in Resources */,
 				C3FA423D2087AEC200B63221 /* LaunchScreen.storyboard in Resources */,
+				C32634F92111FDDD0023E58C /* Colors.xcassets in Resources */,
 				C3332EEE2088E43C00FF73FF /* NearbyPlacesView.xib in Resources */,
 				C3FA423A2087AEC200B63221 /* Assets.xcassets in Resources */,
 				C3FA42382087AEC200B63221 /* Main.storyboard in Resources */,
 				C3332EF42088EBD700FF73FF /* NearbyPlaceCell.xib in Resources */,
 				C3FC18EA20D9643100393EBB /* ItemsTableViewController.xib in Resources */,
 				C343D5FA20DA7F150072CE0D /* WeatherTableViewCell.xib in Resources */,
+				C32634D82111C08F0023E58C /* UVIndexViewController.xib in Resources */,
 				C3FC18E320D9630800393EBB /* WeatherViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -656,6 +731,7 @@
 			files = (
 				C3C74A2921020A8F0037C598 /* WeatherComponent.swift in Sources */,
 				C3C74A2121020A190037C598 /* WeatherTableViewCell.swift in Sources */,
+				C32634E62111C4E50023E58C /* Location.swift in Sources */,
 				C3C74A3121020A9C0037C598 /* PromiseAll.swift in Sources */,
 				C3C74A2221020A1D0037C598 /* WeatherPresenter.swift in Sources */,
 				C3C74A1E21020A100037C598 /* NearbyPlacesPresenter.swift in Sources */,
@@ -663,13 +739,13 @@
 				C3C74A342102100B0037C598 /* UITestTool.swift in Sources */,
 				C3F2B31C2110AE9800239458 /* WeatherViewControllerUITest.swift in Sources */,
 				C3C74A2821020A8B0037C598 /* CurrentWeatherWorker.swift in Sources */,
-				C3C74A2D21020A940037C598 /* LocationGateway.swift in Sources */,
+				C3C74A2D21020A940037C598 /* LocationWorker.swift in Sources */,
 				C3E3525121060FA50091CFDD /* WeatherViewControllerBuilder.swift in Sources */,
 				C3C74A2B21020A940037C598 /* PlacesComponent.swift in Sources */,
 				C3C74A2621020A840037C598 /* Error.swift in Sources */,
 				C3E35253210618380091CFDD /* PlacesViewControllerUITest.swift in Sources */,
 				C3C74A2F21020A9C0037C598 /* Promises.swift in Sources */,
-				C3C74A2C21020A940037C598 /* PlacesGateway.swift in Sources */,
+				C3C74A2C21020A940037C598 /* PlacesWorker.swift in Sources */,
 				C3C74A1C21020A080037C598 /* WeatherViewController.swift in Sources */,
 				C3C74A1D21020A0D0037C598 /* NearbyPlacesViewController.swift in Sources */,
 				C3C74A2E21020A940037C598 /* LocationManager.swift in Sources */,
@@ -695,28 +771,38 @@
 				C3332EE92088A86E00FF73FF /* Error.swift in Sources */,
 				C3E24B2A20A1D7420062D4E7 /* LocationManager.swift in Sources */,
 				C379400020E11483004C723B /* WeatherViewControllerBuilder.swift in Sources */,
+				C32634E22111C1510023E58C /* UVIndex.swift in Sources */,
 				C3332EF22088E4D300FF73FF /* PlacesComponent.swift in Sources */,
 				C391460B20DA564E00013336 /* Item.swift in Sources */,
 				C3FA425B2087AF8B00B63221 /* NearbyPlacesViewController.swift in Sources */,
 				C3332EEB2088E1DE00FF73FF /* NearbyPlacesPresenter.swift in Sources */,
-				C3FA42652087AFEC00B63221 /* PlacesGateway.swift in Sources */,
+				C3FA42652087AFEC00B63221 /* PlacesWorker.swift in Sources */,
 				C3FA42672087B04200B63221 /* Places.swift in Sources */,
 				C36DD7832090C7A30045E114 /* Constants.swift in Sources */,
-				C3FA42642087AFEC00B63221 /* LocationGateway.swift in Sources */,
+				C3FA42642087AFEC00B63221 /* LocationWorker.swift in Sources */,
 				C3FA425A2087AF8B00B63221 /* AppDelegate.swift in Sources */,
 				C3D9D98920D14CAB004EC19A /* Promises.swift in Sources */,
 				C3D9D98D20D14D59004EC19A /* PromiseOnce.swift in Sources */,
 				C343D5F920DA7F140072CE0D /* WeatherTableViewCell.swift in Sources */,
 				C3332EF62088F0B800FF73FF /* NearbyPlaceCell.swift in Sources */,
+				C32634E82111C7500023E58C /* LocationError.swift in Sources */,
 				C3FC18D620D946B000393EBB /* Weather.swift in Sources */,
 				C3DA814F208F419500AF9ABE /* main.swift in Sources */,
+				C32634D72111C08F0023E58C /* UVIndexViewController.swift in Sources */,
 				C3793FFE20E11296004C723B /* WeatherPresenter.swift in Sources */,
+				C32634E02111C11F0023E58C /* UVIndexWorker.swift in Sources */,
+				C32634DA2111C0A10023E58C /* UVIndexViewModel.swift in Sources */,
+				C32634EF2111D7D40023E58C /* UVIndexViewControllerBuilder.swift in Sources */,
 				C3332EF02088E45600FF73FF /* NearbyPlacesViewControllerBuilder.swift in Sources */,
 				C3FC18E820D9643100393EBB /* ItemsTableViewController.swift in Sources */,
 				C3FC18DC20D959DE00393EBB /* WeatherComponent.swift in Sources */,
+				C32634EC2111CE1F0023E58C /* JSONDecoder.swift in Sources */,
 				C3FC18D920D9595700393EBB /* CurrentWeatherWorker.swift in Sources */,
 				C3FC18C220D9292A00393EBB /* PromiseAll.swift in Sources */,
+				C32634F22111E0D50023E58C /* Observable.swift in Sources */,
+				C32634E42111C2570023E58C /* Location.swift in Sources */,
 				C3FC18E120D9630800393EBB /* WeatherViewController.swift in Sources */,
+				C32634DD2111C0C30023E58C /* UVIndexComponent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -726,14 +812,16 @@
 			files = (
 				C379400320E1198E004C723B /* WeatherTableViewCell.swift in Sources */,
 				C3C74A4121022ED00037C598 /* WeatherPresenterTest.swift in Sources */,
+				C32634E52111C4E50023E58C /* Location.swift in Sources */,
 				C391460C20DA564E00013336 /* Item.swift in Sources */,
 				C379400220E1198B004C723B /* WeatherPresenter.swift in Sources */,
 				C3D2893520ECDBBF001DE077 /* MockWorkers.swift in Sources */,
 				C3FC18E220D9630800393EBB /* WeatherViewController.swift in Sources */,
-				C3E24B2720A1D4180062D4E7 /* LocationGateway.swift in Sources */,
+				C3E24B2720A1D4180062D4E7 /* LocationWorker.swift in Sources */,
 				C3FC18E920D9643100393EBB /* ItemsTableViewController.swift in Sources */,
 				C3FC18DA20D9595700393EBB /* CurrentWeatherWorker.swift in Sources */,
 				C3FC18C020D9265600393EBB /* PromiseOnce.swift in Sources */,
+				C32634F02111D7D40023E58C /* UVIndexViewControllerBuilder.swift in Sources */,
 				C379400620E119BF004C723B /* NearbyPlacesPresenter.swift in Sources */,
 				C3FC18C320D9292A00393EBB /* PromiseAll.swift in Sources */,
 				C379400820E11C65004C723B /* Constants.swift in Sources */,
@@ -741,14 +829,16 @@
 				C3FC18DD20D959DE00393EBB /* WeatherComponent.swift in Sources */,
 				C3FC18D720D946B000393EBB /* Weather.swift in Sources */,
 				C3CC23FA20A09C3100BA01F6 /* PlacesGatewayTest.swift in Sources */,
+				C32634ED2111CE1F0023E58C /* JSONDecoder.swift in Sources */,
 				C3FC18BF20D9265300393EBB /* Promises.swift in Sources */,
 				C3E24B2B20A1D7480062D4E7 /* LocationManager.swift in Sources */,
 				C379400D20E12A17004C723B /* PromiseAllTest.swift in Sources */,
 				C379400720E119C2004C723B /* NearbyPlaceCell.swift in Sources */,
-				C3E24B2020A19CB10062D4E7 /* PlacesGateway.swift in Sources */,
+				C3E24B2020A19CB10062D4E7 /* PlacesWorker.swift in Sources */,
 				C379400120E11986004C723B /* WeatherViewControllerBuilder.swift in Sources */,
+				C32634E92111C7500023E58C /* LocationError.swift in Sources */,
 				C3D8AD8C20A05DE000868FF9 /* PlacesTest.swift in Sources */,
-				C3E24B2420A1CC330062D4E7 /* LocationGatewayTest.swift in Sources */,
+				C3E24B2420A1CC330062D4E7 /* LocationWorkerTest.swift in Sources */,
 				C379400B20E12A06004C723B /* PromiseOnceTest.swift in Sources */,
 				C379400920E11CAE004C723B /* PlacesComponent.swift in Sources */,
 				C379400420E119B9004C723B /* NearbyPlacesViewControllerBuilder.swift in Sources */,

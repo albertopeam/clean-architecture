@@ -6,10 +6,6 @@
 //  Copyright © 2018 Alberto. All rights reserved.
 //
 
-enum LocationError:Error, Equatable {
-    case noLocationPermission, restrictedLocationUsage, noLocationEnabled, deniedLocationUsage, noLocation
-}
-
 enum PlacesError:Error {
     case noNetwork, decoding, timeout, noPlaces, badStatus
 }
@@ -24,12 +20,6 @@ struct Place {
     let location:Location
 }
 
-struct Location {
-    let latitude:Double
-    let longitude:Double
-}
-
-
 protocol PlacesProtocol {
     func nearby(output:PlacesOutputProtocol)
 }
@@ -41,16 +31,16 @@ protocol PlacesOutputProtocol {
 
 class Places:PlacesProtocol {
 
-    private let locationGateway:Worker
+    private let locationWorker:Worker
     private let placesGateway:Worker
     
-    init(locationGateway:Worker, placesGateway:Worker) {
-        self.locationGateway = locationGateway
+    init(locationWorker:Worker, placesGateway:Worker) {
+        self.locationWorker = locationWorker
         self.placesGateway = placesGateway
     }
     
     func nearby(output: PlacesOutputProtocol) {
-        Promises.once(worker: locationGateway, params: nil)
+        Promises.once(worker: locationWorker, params: nil)
         .then(completable: { (location) -> PromiseProtocol in
             return Promises.once(worker: self.placesGateway, params:location)
         }).then(finalizable: { (places) in
