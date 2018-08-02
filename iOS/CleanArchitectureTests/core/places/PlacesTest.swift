@@ -52,13 +52,6 @@ class PlacesTest: XCTestCase {
     }
 }
 
-class MockExpectation{
-    let expectation:XCTestExpectation
-    init(expectation:XCTestExpectation) {
-        self.expectation = expectation
-    }
-}
-
 class MockNoLocationPermissionWork: MockExpectation, Worker {
     func run(params: Any?, resolve: @escaping ResolvableWorker, reject: @escaping RejectableWorker) throws {
         reject(self, LocationError.noLocationPermission)

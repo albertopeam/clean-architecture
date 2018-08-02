@@ -34,8 +34,8 @@ enum UVIndexError:Error {
 
 class UVIndex:UVIndexProtocol {
     
-    let locationWorker:Worker
-    let uvIndexWorker:Worker
+    private let locationWorker:Worker
+    private let uvIndexWorker:Worker
     
     init(locationWorker:Worker, uvIndexWorker:Worker) {
         self.locationWorker = locationWorker

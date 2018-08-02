@@ -19,8 +19,8 @@
 		C32634E62111C4E50023E58C /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32634E32111C2570023E58C /* Location.swift */; };
 		C32634E82111C7500023E58C /* LocationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32634E72111C7500023E58C /* LocationError.swift */; };
 		C32634E92111C7500023E58C /* LocationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32634E72111C7500023E58C /* LocationError.swift */; };
-		C32634EC2111CE1F0023E58C /* JSONDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32634EB2111CE1F0023E58C /* JSONDecoder.swift */; };
-		C32634ED2111CE1F0023E58C /* JSONDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32634EB2111CE1F0023E58C /* JSONDecoder.swift */; };
+		C32634EC2111CE1F0023E58C /* JsonDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32634EB2111CE1F0023E58C /* JsonDecoder.swift */; };
+		C32634ED2111CE1F0023E58C /* JsonDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32634EB2111CE1F0023E58C /* JsonDecoder.swift */; };
 		C32634EF2111D7D40023E58C /* UVIndexViewControllerBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32634EE2111D7D40023E58C /* UVIndexViewControllerBuilder.swift */; };
 		C32634F02111D7D40023E58C /* UVIndexViewControllerBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32634EE2111D7D40023E58C /* UVIndexViewControllerBuilder.swift */; };
 		C32634F22111E0D50023E58C /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32634F12111E0D50023E58C /* Observable.swift */; };
@@ -123,6 +123,9 @@
 		C3F1C19C21133F460007DF50 /* NetworkTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F1C19B21133F460007DF50 /* NetworkTestCase.swift */; };
 		C3F1C19E211352AA0007DF50 /* WeatherTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F1C19D211352AA0007DF50 /* WeatherTest.swift */; };
 		C3F1C1A0211352B70007DF50 /* CurrentWeatherWorkerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F1C19F211352B70007DF50 /* CurrentWeatherWorkerTest.swift */; };
+		C3F1C1A2211357370007DF50 /* MockLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F1C1A1211357370007DF50 /* MockLocation.swift */; };
+		C3F1C1A421135D1B0007DF50 /* MockExpectation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F1C1A321135D1B0007DF50 /* MockExpectation.swift */; };
+		C3F1C1A621135E670007DF50 /* JsonDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32634EB2111CE1F0023E58C /* JsonDecoder.swift */; };
 		C3F2B31C2110AE9800239458 /* WeatherViewControllerUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F2B31B2110AE9800239458 /* WeatherViewControllerUITest.swift */; };
 		C3FA42382087AEC200B63221 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3FA42362087AEC200B63221 /* Main.storyboard */; };
 		C3FA423A2087AEC200B63221 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3FA42392087AEC200B63221 /* Assets.xcassets */; };
@@ -191,7 +194,7 @@
 		C32634E12111C1510023E58C /* UVIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UVIndex.swift; sourceTree = "<group>"; };
 		C32634E32111C2570023E58C /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		C32634E72111C7500023E58C /* LocationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationError.swift; sourceTree = "<group>"; };
-		C32634EB2111CE1F0023E58C /* JSONDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONDecoder.swift; sourceTree = "<group>"; };
+		C32634EB2111CE1F0023E58C /* JsonDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonDecoder.swift; sourceTree = "<group>"; };
 		C32634EE2111D7D40023E58C /* UVIndexViewControllerBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UVIndexViewControllerBuilder.swift; sourceTree = "<group>"; };
 		C32634F12111E0D50023E58C /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		C32634F82111FDDD0023E58C /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
@@ -240,6 +243,8 @@
 		C3F1C19B21133F460007DF50 /* NetworkTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTestCase.swift; sourceTree = "<group>"; };
 		C3F1C19D211352AA0007DF50 /* WeatherTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherTest.swift; sourceTree = "<group>"; };
 		C3F1C19F211352B70007DF50 /* CurrentWeatherWorkerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherWorkerTest.swift; sourceTree = "<group>"; };
+		C3F1C1A1211357370007DF50 /* MockLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockLocation.swift; sourceTree = "<group>"; };
+		C3F1C1A321135D1B0007DF50 /* MockExpectation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockExpectation.swift; sourceTree = "<group>"; };
 		C3F2B31B2110AE9800239458 /* WeatherViewControllerUITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewControllerUITest.swift; sourceTree = "<group>"; };
 		C3FA422F2087AEC200B63221 /* CleanArchitecture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CleanArchitecture.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3FA42372087AEC200B63221 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -340,7 +345,7 @@
 		C32634EA2111CDF50023E58C /* network */ = {
 			isa = PBXGroup;
 			children = (
-				C32634EB2111CE1F0023E58C /* JSONDecoder.swift */,
+				C32634EB2111CE1F0023E58C /* JsonDecoder.swift */,
 			);
 			path = network;
 			sourceTree = "<group>";
@@ -505,6 +510,7 @@
 			isa = PBXGroup;
 			children = (
 				C3E24B2320A1CC330062D4E7 /* LocationWorkerTest.swift */,
+				C3F1C1A1211357370007DF50 /* MockLocation.swift */,
 			);
 			path = location;
 			sourceTree = "<group>";
@@ -515,6 +521,14 @@
 				C3F1C19B21133F460007DF50 /* NetworkTestCase.swift */,
 			);
 			path = network;
+			sourceTree = "<group>";
+		};
+		C3F1C1A521135D520007DF50 /* test */ = {
+			isa = PBXGroup;
+			children = (
+				C3F1C1A321135D1B0007DF50 /* MockExpectation.swift */,
+			);
+			path = test;
 			sourceTree = "<group>";
 		};
 		C3FA42262087AEC200B63221 = {
@@ -554,6 +568,7 @@
 		C3FA42462087AEC200B63221 /* CleanArchitectureTests */ = {
 			isa = PBXGroup;
 			children = (
+				C3F1C1A521135D520007DF50 /* test */,
 				C3D8AD8920A05DB100868FF9 /* core */,
 				C3C74A3E21022E710037C598 /* app */,
 				C3FA42492087AEC200B63221 /* Info.plist */,
@@ -822,6 +837,7 @@
 				C3C74A2821020A8B0037C598 /* CurrentWeatherWorker.swift in Sources */,
 				C3C74A2D21020A940037C598 /* LocationWorker.swift in Sources */,
 				C3E3525121060FA50091CFDD /* WeatherViewControllerBuilder.swift in Sources */,
+				C3F1C1A621135E670007DF50 /* JsonDecoder.swift in Sources */,
 				C3C74A2B21020A940037C598 /* PlacesComponent.swift in Sources */,
 				C3C74A2621020A840037C598 /* Error.swift in Sources */,
 				C38421C521130CF90051E28B /* Observable.swift in Sources */,
@@ -884,7 +900,7 @@
 				C3332EF02088E45600FF73FF /* NearbyPlacesViewControllerBuilder.swift in Sources */,
 				C3FC18E820D9643100393EBB /* ItemsTableViewController.swift in Sources */,
 				C3FC18DC20D959DE00393EBB /* WeatherComponent.swift in Sources */,
-				C32634EC2111CE1F0023E58C /* JSONDecoder.swift in Sources */,
+				C32634EC2111CE1F0023E58C /* JsonDecoder.swift in Sources */,
 				C3FC18D920D9595700393EBB /* CurrentWeatherWorker.swift in Sources */,
 				C3FC18C220D9292A00393EBB /* PromiseAll.swift in Sources */,
 				C32634F22111E0D50023E58C /* Observable.swift in Sources */,
@@ -900,6 +916,7 @@
 			files = (
 				C3F1C1A0211352B70007DF50 /* CurrentWeatherWorkerTest.swift in Sources */,
 				C379400320E1198E004C723B /* WeatherTableViewCell.swift in Sources */,
+				C3F1C1A421135D1B0007DF50 /* MockExpectation.swift in Sources */,
 				C3C74A4121022ED00037C598 /* WeatherPresenterTest.swift in Sources */,
 				C32634E52111C4E50023E58C /* Location.swift in Sources */,
 				C391460C20DA564E00013336 /* Item.swift in Sources */,
@@ -922,7 +939,7 @@
 				C3F1C19E211352AA0007DF50 /* WeatherTest.swift in Sources */,
 				C3FC18D720D946B000393EBB /* Weather.swift in Sources */,
 				C3CC23FA20A09C3100BA01F6 /* PlacesWorkerTest.swift in Sources */,
-				C32634ED2111CE1F0023E58C /* JSONDecoder.swift in Sources */,
+				C32634ED2111CE1F0023E58C /* JsonDecoder.swift in Sources */,
 				C3FC18BF20D9265300393EBB /* Promises.swift in Sources */,
 				C3E24B2B20A1D7480062D4E7 /* LocationManager.swift in Sources */,
 				C379400D20E12A17004C723B /* PromiseAllTest.swift in Sources */,
@@ -945,6 +962,7 @@
 				C3E24B2820A1D47F0062D4E7 /* Error.swift in Sources */,
 				C3F1C19C21133F460007DF50 /* NetworkTestCase.swift in Sources */,
 				C3E24B2620A1D40F0062D4E7 /* Places.swift in Sources */,
+				C3F1C1A2211357370007DF50 /* MockLocation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

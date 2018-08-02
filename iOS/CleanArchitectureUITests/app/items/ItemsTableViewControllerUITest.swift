@@ -29,10 +29,10 @@ class ItemsTableViewControllerUITest: XCTestCase {
     func testGivenViewDidLoadThenMatchesModel() {
         let tableview = sut.tableview!
         let items = sut.items
-        XCTAssertEqual(sut.items.count, 2)
+        XCTAssertEqual(sut.items.count, 3)
         XCTAssertNotNil(tableview)
         XCTAssertEqual(tableview.numberOfSections, 1)
-        XCTAssertEqual(tableview.numberOfRows(inSection: 0), 2)
+        XCTAssertEqual(tableview.numberOfRows(inSection: 0), 3)
         for (index, element) in items.enumerated() {
             let cell = tableview.cellForRow(at: IndexPath(row: index, section: 0))
             XCTAssertEqual(cell?.textLabel?.text, element.name)
