@@ -49,8 +49,10 @@ class UVIndexViewModel:UVIndexViewModelProtocol, UVIndexOutputProtocol {
         viewStateObservable.value = .success
         let date = Date(timeIntervalSince1970:Double(ultravioletIndex.timestamp))
         let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .medium
-        dateFormatter.timeStyle = .short
+        dateFormatter.dateStyle = .full
+        dateFormatter.timeStyle = .medium
+        dateFormatter.locale = Locale.current
+        dateFormatter.timeZone = TimeZone.init(identifier: "UTC")
         dateObservable.value = dateFormatter.string(from: date)
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
@@ -82,22 +84,42 @@ class UVIndexViewModel:UVIndexViewModelProtocol, UVIndexOutputProtocol {
     
     func onUVIndexError(error: Error) {
         viewStateObservable.value = .error
-        errorObservable.value = error.domain
+        errorObservable.value = error.domain        
         switch error {
         case LocationError.noLocationPermission:
             locationPermissionObservable.value = false
             errorObservable.value = "Location services require permission"
             break
+        case LocationError.restrictedLocationUsage:
+            errorObservable.value = "Location services restricted usage"
+            break
         case LocationError.noLocationEnabled:
             errorObservable.value = "Location services not available"
             break;
         case LocationError.deniedLocationUsage:
-            errorObservable.value = "Location services doesn't have permission"
+            errorObservable.value = "Location servs. doesn't have permission"
             break;
-        //TODO: handle all error cases
+        case LocationError.noLocation:
+            errorObservable.value = "Location not available"
+            break;
+        case UVIndexError.noNetwork:
+            errorObservable.value = "Network isn't available, check connection"
+            break
+        case UVIndexError.decoding:
+            errorObservable.value = "Network internal error"
+            break
+        case UVIndexError.timeout:
+            errorObservable.value = "Network timeout"
+            break
+        case UVIndexError.unauthorized:
+            errorObservable.value = "Network operation is not authorized"
+            break
+        case UVIndexError.other:
+            errorObservable.value = "Internal error"
+            break
         default:
+            errorObservable.value = "Unknow error"
             break;
         }
-        //TODO: testing de UVIndex
     }
 }

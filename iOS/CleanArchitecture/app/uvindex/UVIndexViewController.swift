@@ -49,10 +49,10 @@ class UVIndexViewController: UIViewController {
     }
     
     private func bind(){
-        viewModel.uvIndexObservable.bind { (newValue) in
+        viewModel.uvIndexObservable.bind { [unowned self] (newValue) in
             self.ultravioletIndexLabel.text = newValue
         }
-        viewModel.viewStateObservable.bind { (newValue) in
+        viewModel.viewStateObservable.bind { [unowned self] (newValue) in
             switch newValue {
             case .success:
                 self.errorView.isHidden = true
@@ -71,16 +71,16 @@ class UVIndexViewController: UIViewController {
                 break
             }
         }
-        viewModel.descriptionObservable.bind { (newValue) in
+        viewModel.descriptionObservable.bind { [unowned self] (newValue) in
             self.descriptionLabel.text = newValue
         }
-        viewModel.dateObservable.bind { (newValue) in
+        viewModel.dateObservable.bind { [unowned self] (newValue) in
             self.dateLabel.text = newValue
         }
-        viewModel.uvIndexColorObservable.bind { (newValue) in
+        viewModel.uvIndexColorObservable.bind { [unowned self] (newValue) in
             self.ultravioletIndexLabel.textColor = UIColor(named: newValue)!
         }
-        viewModel.locationObservable.bind { (newValue) in
+        viewModel.locationObservable.bind { [unowned self] (newValue) in
             var locations = Array<MKPointAnnotation>()
             let location = MKPointAnnotation()
             location.coordinate = CLLocationCoordinate2D(latitude: newValue.latitude, longitude: newValue.longitude)
@@ -89,13 +89,13 @@ class UVIndexViewController: UIViewController {
             self.mapView.removeAnnotations(self.mapView.annotations)
             self.mapView.showAnnotations(locations, animated: true)
         }
-        viewModel.locationPermissionObservable.bind { (newValue) in
+        viewModel.locationPermissionObservable.bind { [unowned self] (newValue) in
             if !newValue {
                 self.locationManager.delegate = self
                 self.locationManager.requestWhenInUseAuthorization()
             }
         }
-        viewModel.errorObservable.bind { (newValue) in
+        viewModel.errorObservable.bind { [unowned self] (newValue) in
             if !newValue.isEmpty {
                 self.errorMessageLabel.text = newValue
             }

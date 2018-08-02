@@ -23,9 +23,16 @@ class UVIndexWorker: Worker {
         let targetUrl = URL(string: self.url);
         URLSession.shared.dataTask(with: targetUrl!) { (data, response, error) in
             if error != nil {
-                //TODO: quitar network y handlear error en viewmodel
-                //TODO: check error types codes and return enum error
-                self.rejectIt(reject: reject, error: error!)
+                switch error!.code {
+                case NSURLErrorNotConnectedToInternet:
+                    self.rejectIt(reject: reject, error: UVIndexError.noNetwork)
+                    break
+                case NSURLErrorTimedOut:
+                    self.rejectIt(reject: reject, error: UVIndexError.timeout)
+                    break
+                default:
+                    self.rejectIt(reject: reject, error: UVIndexError.other)
+                }
             } else {
                 let response = JsonDecoder<CloudUltravioletIndex>.decode(data: data!)
                 if let response = response {

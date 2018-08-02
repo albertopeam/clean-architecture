@@ -65,9 +65,10 @@ extension LocationWorker:CLLocationManagerDelegate{
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         locationManager.stopUpdatingLocation()
         locationManager.delegate = nil
-        //TODO: revisar los posibles errores que pueda dar, pq si no queda un agujero que nunca contesta
-        if error.code == 0 && error.domain == "kCLErrorDomain"{
+        if error.code == 0 && error.domain == "kCLErrorDomain" {
             reject?(self, LocationError.noLocation)
+        }else{
+            reject?(self, error)
         }
     }
 }
