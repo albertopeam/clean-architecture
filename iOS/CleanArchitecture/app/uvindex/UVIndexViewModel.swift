@@ -83,8 +83,7 @@ class UVIndexViewModel:UVIndexViewModelProtocol, UVIndexOutputProtocol {
     }
     
     func onUVIndexError(error: Error) {
-        viewStateObservable.value = .error
-        errorObservable.value = error.domain        
+        viewStateObservable.value = .error    
         switch error {
         case LocationError.noLocationPermission:
             locationPermissionObservable.value = false

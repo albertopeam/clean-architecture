@@ -51,6 +51,16 @@
 		C379400920E11CAE004C723B /* PlacesComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3332EF12088E4D300FF73FF /* PlacesComponent.swift */; };
 		C379400B20E12A06004C723B /* PromiseOnceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C379400A20E12A06004C723B /* PromiseOnceTest.swift */; };
 		C379400D20E12A17004C723B /* PromiseAllTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C379400C20E12A17004C723B /* PromiseAllTest.swift */; };
+		C38421BF21130CED0051E28B /* UVIndexViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32634D92111C0A10023E58C /* UVIndexViewModel.swift */; };
+		C38421C021130CF00051E28B /* UVIndexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32634D52111C08F0023E58C /* UVIndexViewController.swift */; };
+		C38421C121130CF00051E28B /* UVIndexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32634D52111C08F0023E58C /* UVIndexViewController.swift */; };
+		C38421C221130CF20051E28B /* UVIndexViewControllerBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32634EE2111D7D40023E58C /* UVIndexViewControllerBuilder.swift */; };
+		C38421C321130CF70051E28B /* UVIndexViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32634D92111C0A10023E58C /* UVIndexViewModel.swift */; };
+		C38421C421130CF90051E28B /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32634F12111E0D50023E58C /* Observable.swift */; };
+		C38421C521130CF90051E28B /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32634F12111E0D50023E58C /* Observable.swift */; };
+		C38421C8211338900051E28B /* UVIndexViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38421C7211338900051E28B /* UVIndexViewControllerTest.swift */; };
+		C38421CB211339210051E28B /* UVIndexTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38421CA211339210051E28B /* UVIndexTest.swift */; };
+		C38421CD211339310051E28B /* UVIndexWorkerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38421CC211339310051E28B /* UVIndexWorkerTest.swift */; };
 		C391460B20DA564E00013336 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = C391460A20DA564E00013336 /* Item.swift */; };
 		C391460C20DA564E00013336 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = C391460A20DA564E00013336 /* Item.swift */; };
 		C3C74A0E210204E20037C598 /* ItemsTableViewControllerUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C74A0D210204E20037C598 /* ItemsTableViewControllerUITest.swift */; };
@@ -82,6 +92,14 @@
 		C3CC23F520A09C0000BA01F6 /* Swifter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3CC23F420A09C0000BA01F6 /* Swifter.framework */; };
 		C3CC23FA20A09C3100BA01F6 /* PlacesGatewayTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CC23F920A09C3100BA01F6 /* PlacesGatewayTest.swift */; };
 		C3D2893520ECDBBF001DE077 /* MockWorkers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D2893420ECDBBF001DE077 /* MockWorkers.swift */; };
+		C3D56B4D2113086D00947F2D /* UVIndexViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D56B4C2113086D00947F2D /* UVIndexViewModelTest.swift */; };
+		C3D56B4E21130B8300947F2D /* LocationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32634E72111C7500023E58C /* LocationError.swift */; };
+		C3D56B4F21130B8D00947F2D /* UVIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32634E12111C1510023E58C /* UVIndex.swift */; };
+		C3D56B5021130B9000947F2D /* UVIndexComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32634DC2111C0C30023E58C /* UVIndexComponent.swift */; };
+		C3D56B5121130B9000947F2D /* UVIndexComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32634DC2111C0C30023E58C /* UVIndexComponent.swift */; };
+		C3D56B5221130B9300947F2D /* UVIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32634E12111C1510023E58C /* UVIndex.swift */; };
+		C3D56B5321130B9500947F2D /* UVIndexWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32634DF2111C11F0023E58C /* UVIndexWorker.swift */; };
+		C3D56B5421130B9500947F2D /* UVIndexWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32634DF2111C11F0023E58C /* UVIndexWorker.swift */; };
 		C3D8AD8C20A05DE000868FF9 /* PlacesTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D8AD8B20A05DE000868FF9 /* PlacesTest.swift */; };
 		C3D9D98920D14CAB004EC19A /* Promises.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D9D98820D14CAB004EC19A /* Promises.swift */; };
 		C3D9D98D20D14D59004EC19A /* PromiseOnce.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D9D98C20D14D59004EC19A /* PromiseOnce.swift */; };
@@ -189,6 +207,9 @@
 		C3793FFF20E11483004C723B /* WeatherViewControllerBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewControllerBuilder.swift; sourceTree = "<group>"; };
 		C379400A20E12A06004C723B /* PromiseOnceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromiseOnceTest.swift; sourceTree = "<group>"; };
 		C379400C20E12A17004C723B /* PromiseAllTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromiseAllTest.swift; sourceTree = "<group>"; };
+		C38421C7211338900051E28B /* UVIndexViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UVIndexViewControllerTest.swift; sourceTree = "<group>"; };
+		C38421CA211339210051E28B /* UVIndexTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UVIndexTest.swift; sourceTree = "<group>"; };
+		C38421CC211339310051E28B /* UVIndexWorkerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UVIndexWorkerTest.swift; sourceTree = "<group>"; };
 		C391460A20DA564E00013336 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		C3C74A0B210204E20037C598 /* CleanArchitectureUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CleanArchitectureUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3C74A0D210204E20037C598 /* ItemsTableViewControllerUITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsTableViewControllerUITest.swift; sourceTree = "<group>"; };
@@ -198,6 +219,7 @@
 		C3CC23F420A09C0000BA01F6 /* Swifter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Swifter.framework; path = Carthage/Build/iOS/Swifter.framework; sourceTree = "<group>"; };
 		C3CC23F920A09C3100BA01F6 /* PlacesGatewayTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacesGatewayTest.swift; sourceTree = "<group>"; };
 		C3D2893420ECDBBF001DE077 /* MockWorkers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockWorkers.swift; sourceTree = "<group>"; };
+		C3D56B4C2113086D00947F2D /* UVIndexViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UVIndexViewModelTest.swift; sourceTree = "<group>"; };
 		C3D8AD8B20A05DE000868FF9 /* PlacesTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesTest.swift; sourceTree = "<group>"; };
 		C3D9D98820D14CAB004EC19A /* Promises.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Promises.swift; sourceTree = "<group>"; };
 		C3D9D98C20D14D59004EC19A /* PromiseOnce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromiseOnce.swift; sourceTree = "<group>"; };
@@ -336,6 +358,23 @@
 			path = places;
 			sourceTree = "<group>";
 		};
+		C38421C62113386E0051E28B /* uvindex */ = {
+			isa = PBXGroup;
+			children = (
+				C38421C7211338900051E28B /* UVIndexViewControllerTest.swift */,
+			);
+			path = uvindex;
+			sourceTree = "<group>";
+		};
+		C38421C9211338AF0051E28B /* uvindex */ = {
+			isa = PBXGroup;
+			children = (
+				C38421CA211339210051E28B /* UVIndexTest.swift */,
+				C38421CC211339310051E28B /* UVIndexWorkerTest.swift */,
+			);
+			path = uvindex;
+			sourceTree = "<group>";
+		};
 		C3C74A0C210204E20037C598 /* CleanArchitectureUITests */ = {
 			isa = PBXGroup;
 			children = (
@@ -354,6 +393,7 @@
 				C3C74A162102051C0037C598 /* items */,
 				C3E3524D210606340091CFDD /* places */,
 				C3E3524C2106062D0091CFDD /* weather */,
+				C38421C62113386E0051E28B /* uvindex */,
 			);
 			path = app;
 			sourceTree = "<group>";
@@ -372,6 +412,7 @@
 			children = (
 				C3E3524E210606460091CFDD /* places */,
 				C3C74A3F21022EA60037C598 /* weather */,
+				C3D56B4B2113084300947F2D /* uvindex */,
 			);
 			path = app;
 			sourceTree = "<group>";
@@ -384,6 +425,14 @@
 			path = weather;
 			sourceTree = "<group>";
 		};
+		C3D56B4B2113084300947F2D /* uvindex */ = {
+			isa = PBXGroup;
+			children = (
+				C3D56B4C2113086D00947F2D /* UVIndexViewModelTest.swift */,
+			);
+			path = uvindex;
+			sourceTree = "<group>";
+		};
 		C3D8AD8920A05DB100868FF9 /* core */ = {
 			isa = PBXGroup;
 			children = (
@@ -392,6 +441,7 @@
 				C379400C20E12A17004C723B /* PromiseAllTest.swift */,
 				C3E352452105C3480091CFDD /* weather */,
 				C3D8AD8A20A05DBC00868FF9 /* places */,
+				C38421C9211338AF0051E28B /* uvindex */,
 			);
 			path = core;
 			sourceTree = "<group>";
@@ -732,8 +782,10 @@
 				C3C74A2921020A8F0037C598 /* WeatherComponent.swift in Sources */,
 				C3C74A2121020A190037C598 /* WeatherTableViewCell.swift in Sources */,
 				C32634E62111C4E50023E58C /* Location.swift in Sources */,
+				C3D56B5221130B9300947F2D /* UVIndex.swift in Sources */,
 				C3C74A3121020A9C0037C598 /* PromiseAll.swift in Sources */,
 				C3C74A2221020A1D0037C598 /* WeatherPresenter.swift in Sources */,
+				C38421C221130CF20051E28B /* UVIndexViewControllerBuilder.swift in Sources */,
 				C3C74A1E21020A100037C598 /* NearbyPlacesPresenter.swift in Sources */,
 				C3C74A1A2102083D0037C598 /* AppDelegate.swift in Sources */,
 				C3C74A342102100B0037C598 /* UITestTool.swift in Sources */,
@@ -743,8 +795,10 @@
 				C3E3525121060FA50091CFDD /* WeatherViewControllerBuilder.swift in Sources */,
 				C3C74A2B21020A940037C598 /* PlacesComponent.swift in Sources */,
 				C3C74A2621020A840037C598 /* Error.swift in Sources */,
+				C38421C521130CF90051E28B /* Observable.swift in Sources */,
 				C3E35253210618380091CFDD /* PlacesViewControllerUITest.swift in Sources */,
 				C3C74A2F21020A9C0037C598 /* Promises.swift in Sources */,
+				C38421C8211338900051E28B /* UVIndexViewControllerTest.swift in Sources */,
 				C3C74A2C21020A940037C598 /* PlacesWorker.swift in Sources */,
 				C3C74A1C21020A080037C598 /* WeatherViewController.swift in Sources */,
 				C3C74A1D21020A0D0037C598 /* NearbyPlacesViewController.swift in Sources */,
@@ -753,14 +807,19 @@
 				C3C74A2721020A880037C598 /* Weather.swift in Sources */,
 				C3C74A1F21020A120037C598 /* NearbyPlacesViewControllerBuilder.swift in Sources */,
 				C3C74A18210207790037C598 /* Item.swift in Sources */,
+				C38421C121130CF00051E28B /* UVIndexViewController.swift in Sources */,
+				C3D56B4E21130B8300947F2D /* LocationError.swift in Sources */,
 				C3E3524B2105FF2F0091CFDD /* ItemsTableViewControllerNavigationUITest.swift in Sources */,
 				C3C74A3021020A9C0037C598 /* PromiseOnce.swift in Sources */,
 				C3E352492105F8F80091CFDD /* UITestNavigationViewController.swift in Sources */,
 				C3C74A0E210204E20037C598 /* ItemsTableViewControllerUITest.swift in Sources */,
+				C38421C321130CF70051E28B /* UVIndexViewModel.swift in Sources */,
+				C3D56B5121130B9000947F2D /* UVIndexComponent.swift in Sources */,
 				C3E352472105F1FD0091CFDD /* UITestNavigationTool.swift in Sources */,
 				C3C74A2A21020A940037C598 /* Places.swift in Sources */,
 				C3E35257210623E10091CFDD /* NearbyPlaceCell.swift in Sources */,
 				C3C74A3221020AA10037C598 /* Constants.swift in Sources */,
+				C3D56B5421130B9500947F2D /* UVIndexWorker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -820,9 +879,12 @@
 				C3E24B2720A1D4180062D4E7 /* LocationWorker.swift in Sources */,
 				C3FC18E920D9643100393EBB /* ItemsTableViewController.swift in Sources */,
 				C3FC18DA20D9595700393EBB /* CurrentWeatherWorker.swift in Sources */,
+				C38421C421130CF90051E28B /* Observable.swift in Sources */,
 				C3FC18C020D9265600393EBB /* PromiseOnce.swift in Sources */,
 				C32634F02111D7D40023E58C /* UVIndexViewControllerBuilder.swift in Sources */,
 				C379400620E119BF004C723B /* NearbyPlacesPresenter.swift in Sources */,
+				C38421CB211339210051E28B /* UVIndexTest.swift in Sources */,
+				C3D56B5021130B9000947F2D /* UVIndexComponent.swift in Sources */,
 				C3FC18C320D9292A00393EBB /* PromiseAll.swift in Sources */,
 				C379400820E11C65004C723B /* Constants.swift in Sources */,
 				C3E352502106066A0091CFDD /* PlacesPresenterTest.swift in Sources */,
@@ -833,15 +895,21 @@
 				C3FC18BF20D9265300393EBB /* Promises.swift in Sources */,
 				C3E24B2B20A1D7480062D4E7 /* LocationManager.swift in Sources */,
 				C379400D20E12A17004C723B /* PromiseAllTest.swift in Sources */,
+				C38421BF21130CED0051E28B /* UVIndexViewModel.swift in Sources */,
 				C379400720E119C2004C723B /* NearbyPlaceCell.swift in Sources */,
+				C3D56B4D2113086D00947F2D /* UVIndexViewModelTest.swift in Sources */,
 				C3E24B2020A19CB10062D4E7 /* PlacesWorker.swift in Sources */,
+				C3D56B4F21130B8D00947F2D /* UVIndex.swift in Sources */,
+				C38421C021130CF00051E28B /* UVIndexViewController.swift in Sources */,
 				C379400120E11986004C723B /* WeatherViewControllerBuilder.swift in Sources */,
 				C32634E92111C7500023E58C /* LocationError.swift in Sources */,
 				C3D8AD8C20A05DE000868FF9 /* PlacesTest.swift in Sources */,
+				C38421CD211339310051E28B /* UVIndexWorkerTest.swift in Sources */,
 				C3E24B2420A1CC330062D4E7 /* LocationWorkerTest.swift in Sources */,
 				C379400B20E12A06004C723B /* PromiseOnceTest.swift in Sources */,
 				C379400920E11CAE004C723B /* PlacesComponent.swift in Sources */,
 				C379400420E119B9004C723B /* NearbyPlacesViewControllerBuilder.swift in Sources */,
+				C3D56B5321130B9500947F2D /* UVIndexWorker.swift in Sources */,
 				C379400520E119BC004C723B /* NearbyPlacesViewController.swift in Sources */,
 				C3E24B2820A1D47F0062D4E7 /* Error.swift in Sources */,
 				C3E24B2620A1D40F0062D4E7 /* Places.swift in Sources */,
