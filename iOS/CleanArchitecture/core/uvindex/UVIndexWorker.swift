@@ -10,10 +10,10 @@ import Foundation
 
 class UVIndexWorker: Worker {
     
-    var url = "https://api.openweathermap.org/data/2.5/uvi?lat={{lat}}&lon={{lon}}&appid={{appId}}"
+    var url:String
     
-    init(apiKey:String) {
-        self.url = url.replacingOccurrences(of: "{{appId}}", with: apiKey)
+    init(url:String) {
+        self.url = url
     }
     
     func run(params: Any?, resolve: @escaping ResolvableWorker, reject: @escaping RejectableWorker) throws {
@@ -22,7 +22,9 @@ class UVIndexWorker: Worker {
         self.url = url.replacingOccurrences(of: "{{lon}}", with: "\(location.longitude)")
         let targetUrl = URL(string: self.url);
         URLSession.shared.dataTask(with: targetUrl!) { (data, response, error) in
-            if error != nil {
+            if (response as! HTTPURLResponse).statusCode > 299 {
+                self.rejectIt(reject: reject, error: UVIndexError.other)
+            } else if error != nil {
                 switch error!.code {
                 case NSURLErrorNotConnectedToInternet:
                     self.rejectIt(reject: reject, error: UVIndexError.noNetwork)

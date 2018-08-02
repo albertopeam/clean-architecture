@@ -10,48 +10,26 @@ import XCTest
 import Swifter
 @testable import CleanArchitecture
 
-class PlacesWorkerTest: XCTestCase {
+class PlacesWorkerTest: NetworkTestCase {
     
-    var mockServer:HttpServer?
     var sut:PlacesWorker?
-    let apiKey = "TESTApiKey"
     
     override func setUp(){
         super.setUp()
         continueAfterFailure = false
-        mockServer = HttpServer()
-        do {
-            try mockServer!.start()
-            //TODO: HttpServer has a start method who accepts a QUEUE, check if we can use the test thread QUEUE and avoid the use of expectations
-        } catch {
-            XCTFail("Mock HttpServer couldn't start")
-        }
     }
     
     override func tearDown() {
-        mockServer!.stop()
-        mockServer = nil
         sut = nil
         super.tearDown()
     }
     
     func testGivenValidInputWhenGetNearbyThenReturnSuccess() throws {
         let location = Location(latitude: 43.0, longitude: -8)
-        let absoluteUrl = "http://localhost:8080/?key=TestApiKey&radius=150&types=restaurant&location=\(location.latitude),\(location.longitude)"
-        let relativeUrl = absoluteUrl.replacingOccurrences(of: "http://localhost:8080", with: "")
-        mockServer![relativeUrl] = { r in     
-            return HttpResponse.raw(200, "OK", ["Content-Type": "application/json"], { (writter:HttpResponseBodyWriter) in
-                let testBundle = Bundle(for: type(of: self))
-                XCTAssertNotNil(testBundle)
-                let fileURL = testBundle.url(forResource: "nearby-success", withExtension: "json")
-                XCTAssertNotNil(fileURL)
-                let data:NSData = try NSData(contentsOf: fileURL!)
-                XCTAssertNotNil(data)
-                try writter.write(data)
-            })
-        }
-        let expectation = XCTestExpectation(description: "testGivenValidInputWhenGetNearbyThenReturnSuccess")
+        let absoluteUrl = "\(serverUrl())?key=TestApiKey&radius=150&types=restaurant&location=\(location.latitude),\(location.longitude)"
+        dispatchResponseToGetRequest(url: absoluteUrl, fileName: "nearby-success")
         sut = PlacesWorker(url: absoluteUrl)
+        let expectation = XCTestExpectation(description: "testGivenValidInputWhenGetNearbyThenReturnSuccess")
         try sut!.run(params: location, resolve: { (worker, result) in
             XCTAssertNotNil(result)
             let result:Array<Place> = result as! Array<Place>
@@ -74,19 +52,8 @@ class PlacesWorkerTest: XCTestCase {
     
     func testGivenInvalidInputWhenGetNearbyThenReturnNoPlaces() throws {
         let location = Location(latitude: 43.0, longitude: -8)
-        let absoluteUrl = "http://localhost:8080/?key=TestApiKey&radius=150&types=restaurant&location=\(location.latitude),\(location.longitude)"
-        let relativeUrl = absoluteUrl.replacingOccurrences(of: "http://localhost:8080", with: "")
-        mockServer![relativeUrl] = { r in
-            return HttpResponse.raw(200, "OK", ["Content-Type": "application/json"], { (writter:HttpResponseBodyWriter) in
-                let testBundle = Bundle(for: type(of: self))
-                XCTAssertNotNil(testBundle)
-                let fileURL = testBundle.url(forResource: "nearby-success-noplaces", withExtension: "json")
-                XCTAssertNotNil(fileURL)
-                let data:NSData = try NSData(contentsOf: fileURL!)
-                XCTAssertNotNil(data)
-                try writter.write(data)
-            })
-        }
+        let absoluteUrl = "\(serverUrl())?key=TestApiKey&radius=150&types=restaurant&location=\(location.latitude),\(location.longitude)"
+        dispatchResponseToGetRequest(url: absoluteUrl, fileName: "nearby-success-noplaces")
         let expectation = XCTestExpectation(description: "testGivenValidInputWhenGetNearbyThenReturnSuccess")
         sut = PlacesWorker(url: absoluteUrl)
         try sut!.run(params: location, resolve: { (worker, result) in

@@ -22,49 +22,81 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "CleanArchitecture/core/uvindex/UVIndexWorker.swift"
-            timestampString = "554896474.467024"
+            filePath = "Carthage/Checkouts/swifter/Sources/HttpServerIO.swift"
+            timestampString = "554913021.084667"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "24"
-            endingLineNumber = "24"
-            landmarkName = "run(params:resolve:reject:)"
+            startingLineNumber = "124"
+            endingLineNumber = "124"
+            landmarkName = "handleConnection(_:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "CleanArchitecture.UVIndexWorker.run(params: Swift.Optional&lt;Any&gt;, resolve: (CleanArchitecture.Worker, Any) -&gt; (), reject: (CleanArchitecture.Worker, Swift.Error) -&gt; ()) throws -&gt; ()"
-                  moduleName = "CleanArchitecture"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/alberto.penas.amor/Documents/ios/clean-architecture/iOS/CleanArchitecture/core/uvindex/UVIndexWorker.swift"
-                  timestampString = "554894169.598078"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "24"
-                  endingLineNumber = "24"
-                  offsetFromSymbolStart = "2010">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__ObjC.URLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in CleanArchitecture.UVIndexWorker.run(params: Swift.Optional&lt;Any&gt;, resolve: (CleanArchitecture.Worker, Any) -&gt; (), reject: (CleanArchitecture.Worker, Swift.Error) -&gt; ()) throws -&gt; ()"
-                  moduleName = "CleanArchitecture"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/alberto.penas.amor/Documents/ios/clean-architecture/iOS/CleanArchitecture/core/uvindex/UVIndexWorker.swift"
-                  timestampString = "554894169.601005"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "24"
-                  endingLineNumber = "24"
-                  offsetFromSymbolStart = "72">
-               </Location>
-            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Carthage/Checkouts/swifter/Sources/HttpServerIO.swift"
+            timestampString = "554913021.6571569"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "125"
+            endingLineNumber = "125"
+            landmarkName = "handleConnection(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Carthage/Checkouts/swifter/Sources/HttpServerIO.swift"
+            timestampString = "554913150.212702"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "114"
+            endingLineNumber = "114"
+            landmarkName = "dispatch(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Carthage/Checkouts/swifter/Sources/HttpServerIO.swift"
+            timestampString = "554913179.766475"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "175"
+            endingLineNumber = "175"
+            landmarkName = "respond(_:response:keepAlive:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Carthage/Checkouts/swifter/Sources/HttpServerIO.swift"
+            timestampString = "554913182.207837"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "146"
+            endingLineNumber = "146"
+            landmarkName = "InnerWriteContext"
+            landmarkType = "14">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
