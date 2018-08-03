@@ -26,7 +26,7 @@ class UVIndexViewController: UIViewController {
         fatalError("init(coder:) is not supported")
     }
     
-    init(viewModel:UVIndexViewModel, locationManager:CLLocationManager = CLLocationManager()) {
+    init(viewModel:UVIndexViewModelProtocol, locationManager:CLLocationManager = CLLocationManager()) {
         self.viewModel = viewModel
         self.locationManager = locationManager
         super.init(nibName: "UVIndexViewController", bundle: nil)
@@ -78,7 +78,9 @@ class UVIndexViewController: UIViewController {
             self.dateLabel.text = newValue
         }
         viewModel.uvIndexColorObservable.bind { [unowned self] (newValue) in
-            self.ultravioletIndexLabel.textColor = UIColor(named: newValue)!
+            if let color = UIColor(named: newValue) {
+                self.ultravioletIndexLabel.textColor = color
+            }            
         }
         viewModel.locationObservable.bind { [unowned self] (newValue) in
             var locations = Array<MKPointAnnotation>()

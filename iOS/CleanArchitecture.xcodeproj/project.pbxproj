@@ -37,6 +37,10 @@
 		C33EE73D2091FB5A00712672 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33EE73C2091FB5A00712672 /* Kingfisher.framework */; };
 		C343D5F920DA7F140072CE0D /* WeatherTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C343D5F720DA7F140072CE0D /* WeatherTableViewCell.swift */; };
 		C343D5FA20DA7F150072CE0D /* WeatherTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C343D5F820DA7F140072CE0D /* WeatherTableViewCell.xib */; };
+		C36A44FF21144C3D0001EE3F /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C32634F82111FDDD0023E58C /* Colors.xcassets */; };
+		C36A450021144C3E0001EE3F /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C32634F82111FDDD0023E58C /* Colors.xcassets */; };
+		C36A450121144C410001EE3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3FA42392087AEC200B63221 /* Assets.xcassets */; };
+		C36A450221144C410001EE3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3FA42392087AEC200B63221 /* Assets.xcassets */; };
 		C36DD7832090C7A30045E114 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36DD7822090C7A30045E114 /* Constants.swift */; };
 		C3793FFE20E11296004C723B /* WeatherPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3793FFD20E11296004C723B /* WeatherPresenter.swift */; };
 		C379400020E11483004C723B /* WeatherViewControllerBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3793FFF20E11483004C723B /* WeatherViewControllerBuilder.swift */; };
@@ -768,6 +772,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C36A450221144C410001EE3F /* Assets.xcassets in Resources */,
+				C36A44FF21144C3D0001EE3F /* Colors.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -794,8 +800,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				C3F1C19821133C680007DF50 /* uvindex-success.json in Resources */,
+				C36A450021144C3E0001EE3F /* Colors.xcassets in Resources */,
 				C33884BB20A0A07400ED3D49 /* nearby-success.json in Resources */,
 				C3E24B2220A1BE250062D4E7 /* nearby-success-noplaces.json in Resources */,
+				C36A450121144C410001EE3F /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

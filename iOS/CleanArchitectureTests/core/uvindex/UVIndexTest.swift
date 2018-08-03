@@ -38,15 +38,25 @@ class UVIndexTest: XCTestCase {
         sut = UVIndex(locationWorker: locationWorker, uvIndexWorker: uvIndexWorker)
         sut!.UVIndex(output: spy!)
         wait(for: [expectation], timeout: 0.1)
-        XCTAssertEqual(spy?.ultravioletIndex?.date, uvIndex.date)
-        XCTAssertEqual(spy?.ultravioletIndex?.timestamp, uvIndex.timestamp)
-        XCTAssertEqual(spy?.ultravioletIndex?.uvIndex, uvIndex.uvIndex)
-        XCTAssertEqual(spy?.ultravioletIndex?.location.latitude, uvIndex.location.latitude)
-        XCTAssertEqual(spy?.ultravioletIndex?.location.longitude, uvIndex.location.longitude)
+        XCTAssertNil(spy!.error)
+        XCTAssertEqual(spy!.ultravioletIndex!.date, uvIndex.date)
+        XCTAssertEqual(spy!.ultravioletIndex!.timestamp, uvIndex.timestamp)
+        XCTAssertEqual(spy!.ultravioletIndex!.uvIndex, uvIndex.uvIndex)
+        XCTAssertEqual(spy!.ultravioletIndex!.location.latitude, uvIndex.location.latitude)
+        XCTAssertEqual(spy!.ultravioletIndex!.location.longitude, uvIndex.location.longitude)
     }
     
     func testGivenLocationAndServerErrorWhenGetUVIndexThenMatchError() {
-        //TODO:
+        let expectation = XCTestExpectation(description: "testGivenLocationAndServerErrorWhenGetUVIndexThenMatchError")
+        spy = SpyUVIndex.Output(expectation: expectation)
+        let error = UVIndexError.noNetwork
+        let locationWorker = MockLocation.Success(location: Location(latitude: 43.0, longitude: -8.0))
+        let uvIndexWorker = MockUVIndex.Errored(error: error)
+        sut = UVIndex(locationWorker: locationWorker, uvIndexWorker: uvIndexWorker)
+        sut!.UVIndex(output: spy!)
+        wait(for: [expectation], timeout: 0.1)
+        XCTAssertNil(spy!.ultravioletIndex)
+        XCTAssertEqual(spy!.error?.code, error.code)
     }
 }
 
@@ -60,7 +70,15 @@ private class MockUVIndex {
             resolve(self, ultravioletIndex)
         }
     }
-    
+    internal class Errored:Worker{
+        var error:Error
+        init(error:Error) {
+            self.error = error
+        }
+        func run(params: Any?, resolve: @escaping ResolvableWorker, reject: @escaping RejectableWorker) throws {
+            reject(self, error)
+        }
+    }
 }
 
 private class SpyUVIndex{
