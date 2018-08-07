@@ -25,7 +25,7 @@ class Weather:WeatherProtocol {
 }
 
 enum WeatherError:Error, Equatable {
-    case noNetwork, decoding, timeout, empty, unauthorized
+    case noNetwork, decoding, timeout, empty, unauthorized, other
 }
 
 protocol WeatherProtocol {
@@ -42,7 +42,7 @@ struct InstantWeather {
     let description:String
     let icon:String
     let temp:Double
-    let pressure:Int
+    let pressure:Double
     let humidity:Double
     let windSpeed:Double
     let windDegrees:Double

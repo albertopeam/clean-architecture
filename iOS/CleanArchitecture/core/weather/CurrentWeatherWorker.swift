@@ -18,15 +18,25 @@ class CurrentWeatherWorker:NSObject, Worker {
     func run(params: Any?, resolve: @escaping ResolvableWorker, reject: @escaping RejectableWorker) throws {
         let url = URL(string: targetUrl)
         URLSession.shared.dataTask(with: url!) { (data, response, error) in
-            if error != nil {
-                print(error!.localizedDescription)
-                self.rejectIt(reject: reject, error: error!)
+            if (response as! HTTPURLResponse).statusCode > 299 {
+                self.rejectIt(reject: reject, error: WeatherError.other)
+            } else if error != nil {
+                switch error!.code {
+                case NSURLErrorNotConnectedToInternet:
+                    self.rejectIt(reject: reject, error: WeatherError.noNetwork)
+                    break
+                case NSURLErrorTimedOut:
+                    self.rejectIt(reject: reject, error: WeatherError.timeout)
+                    break
+                default:
+                    self.rejectIt(reject: reject, error: WeatherError.other)
+                }
             }else{
                 let result:CloudResponse? = try? JSONDecoder().decode(CloudResponse.self, from: data!)
                 if result?.cod == 200 {
                     let cr:CloudWeatherResponse? = try? JSONDecoder().decode(CloudWeatherResponse.self, from: data!)
                     if cr != nil {
-                        let weather = InstantWeather(name: cr!.name, description: cr!.weather[0].description, icon: cr!.weather[0].icon, temp: cr!.main.temp, pressure: 0/*cr!.main.pressure*/, humidity: cr!.main.humidity, windSpeed: cr!.wind.speed, windDegrees: cr!.wind.deg, datetime: cr!.dt)
+                        let weather = InstantWeather(name: cr!.name, description: cr!.weather[0].description, icon: cr!.weather[0].icon, temp: cr!.main.temp, pressure: cr!.main.pressure, humidity: cr!.main.humidity, windSpeed: cr!.wind.speed, windDegrees: cr!.wind.deg, datetime: cr!.dt)
                         self.resolveIt(resolve: resolve, data: weather)
                     }else{
                         self.rejectIt(reject: reject, error: WeatherError.decoding)
