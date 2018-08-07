@@ -7,7 +7,6 @@
 //
 
 import XCTest
-import Swifter
 @testable import CleanArchitecture
 
 class PlacesWorkerTest: NetworkTestCase {

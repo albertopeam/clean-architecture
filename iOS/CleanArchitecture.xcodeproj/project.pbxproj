@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C3156C5021199EC50059A537 /* current-weather-success.json in Resources */ = {isa = PBXBuildFile; fileRef = C3156C4F21199EC50059A537 /* current-weather-success.json */; };
 		C317820C208DF45600CB8FAE /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = C317820B208DF45500CB8FAE /* README.md */; };
 		C32634D72111C08F0023E58C /* UVIndexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32634D52111C08F0023E58C /* UVIndexViewController.swift */; };
 		C32634D82111C08F0023E58C /* UVIndexViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C32634D62111C08F0023E58C /* UVIndexViewController.xib */; };
@@ -189,6 +190,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C3156C4F21199EC50059A537 /* current-weather-success.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "current-weather-success.json"; sourceTree = "<group>"; };
 		C317820B208DF45500CB8FAE /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		C32634D52111C08F0023E58C /* UVIndexViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UVIndexViewController.swift; sourceTree = "<group>"; };
 		C32634D62111C08F0023E58C /* UVIndexViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UVIndexViewController.xib; sourceTree = "<group>"; };
@@ -480,6 +482,7 @@
 		C3E352452105C3480091CFDD /* weather */ = {
 			isa = PBXGroup;
 			children = (
+				C3156C4F21199EC50059A537 /* current-weather-success.json */,
 				C3F1C19D211352AA0007DF50 /* WeatherTest.swift */,
 				C3F1C19F211352B70007DF50 /* CurrentWeatherWorkerTest.swift */,
 			);
@@ -803,6 +806,7 @@
 				C36A450021144C3E0001EE3F /* Colors.xcassets in Resources */,
 				C33884BB20A0A07400ED3D49 /* nearby-success.json in Resources */,
 				C3E24B2220A1BE250062D4E7 /* nearby-success-noplaces.json in Resources */,
+				C3156C5021199EC50059A537 /* current-weather-success.json in Resources */,
 				C36A450121144C410001EE3F /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
