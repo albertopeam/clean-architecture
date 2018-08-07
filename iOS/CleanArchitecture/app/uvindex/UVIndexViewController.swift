@@ -49,57 +49,58 @@ class UVIndexViewController: UIViewController {
     }
     
     private func bind(){
-        viewModel.uvIndexObservable.bind { [unowned self] (newValue) in
-            self.ultravioletIndexLabel.text = newValue
+        viewModel.uvIndexObservable.bind { [weak self] (newValue) in
+            self?.ultravioletIndexLabel?.text = newValue
         }
-        viewModel.viewStateObservable.bind { [unowned self] (newValue) in
+        viewModel.viewStateObservable.bind { [weak self] (newValue) in
             switch newValue {
             case .success:
-                self.errorView.isHidden = true
-                self.successView.isHidden = false
-                self.activityIndicator.stopAnimating()
+                self?.errorView.isHidden = true
+                self?.successView.isHidden = false
+                self?.activityIndicator.stopAnimating()
                 break
             case .error:
-                self.errorView.isHidden = false
-                self.successView.isHidden = true
-                self.activityIndicator.stopAnimating()
+                self?.errorView.isHidden = false
+                self?.successView.isHidden = true
+                self?.activityIndicator.stopAnimating()
                 break
             case .loading:
-                self.errorView.isHidden = true
-                self.successView.isHidden = true
-                self.activityIndicator.startAnimating()
+                self?.errorView.isHidden = true
+                self?.successView.isHidden = true
+                self?.activityIndicator.startAnimating()
                 break
             }
         }
-        viewModel.descriptionObservable.bind { [unowned self] (newValue) in
-            self.descriptionLabel.text = newValue
+        viewModel.descriptionObservable.bind { [weak self] (newValue) in
+            self?.descriptionLabel.text = newValue
         }
-        viewModel.dateObservable.bind { [unowned self] (newValue) in
-            self.dateLabel.text = newValue
+        viewModel.dateObservable.bind { [weak self] (newValue) in
+            self?.dateLabel.text = newValue
         }
-        viewModel.uvIndexColorObservable.bind { [unowned self] (newValue) in
+        viewModel.uvIndexColorObservable.bind { [weak self] (newValue) in
             if let color = UIColor(named: newValue) {
-                self.ultravioletIndexLabel.textColor = color
+                self?.ultravioletIndexLabel.textColor = color
             }            
         }
-        viewModel.locationObservable.bind { [unowned self] (newValue) in
+        viewModel.locationObservable.bind { [weak self] (newValue) in
             var locations = Array<MKPointAnnotation>()
             let location = MKPointAnnotation()
             location.coordinate = CLLocationCoordinate2D(latitude: newValue.latitude, longitude: newValue.longitude)
             locations.append(location)
-            self.mapView.addAnnotation(location)
-            self.mapView.removeAnnotations(self.mapView.annotations)
-            self.mapView.showAnnotations(locations, animated: true)
+            self?.mapView.addAnnotation(location)
+            let annotations = self?.mapView.annotations
+            self?.mapView.removeAnnotations(annotations!)
+            self?.mapView.showAnnotations(locations, animated: true)
         }
-        viewModel.locationPermissionObservable.bind { [unowned self] (newValue) in
+        viewModel.locationPermissionObservable.bind { [weak self] (newValue) in
             if !newValue {
-                self.locationManager.delegate = self
-                self.locationManager.requestWhenInUseAuthorization()
+                self?.locationManager.delegate = self
+                self?.locationManager.requestWhenInUseAuthorization()
             }
         }
-        viewModel.errorObservable.bind { [unowned self] (newValue) in
+        viewModel.errorObservable.bind { [weak self] (newValue) in
             if !newValue.isEmpty {
-                self.errorMessageLabel.text = newValue
+                self?.errorMessageLabel.text = newValue
             }
         }
     }
