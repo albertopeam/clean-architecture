@@ -19,6 +19,7 @@
                 <outlet property="errorView" destination="Cgv-CA-KoG" id="96B-CH-n4j"/>
                 <outlet property="mapView" destination="rWH-pf-g5x" id="x5M-j4-M0w"/>
                 <outlet property="successView" destination="0qL-BF-LYw" id="Q8e-s2-Xu0"/>
+                <outlet property="twoWayBindTextField" destination="ipz-Ak-2bS" id="fCb-BT-vRc"/>
                 <outlet property="ultravioletIndexLabel" destination="H5n-eT-Myo" id="hvN-Yl-Z1p"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -34,6 +35,15 @@
                         <constraint firstAttribute="height" constant="400" id="wJd-C1-b87"/>
                     </constraints>
                 </mapView>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Two Way Binding(only logs)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ipz-Ak-2bS">
+                    <rect key="frame" x="16" y="60" width="343" height="30"/>
+                    <nil key="textColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="SLt-wG-Nfy"/>
+                    </connections>
+                </textField>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aeJ-SH-emR">
                     <rect key="frame" x="0.0" y="400" width="375" height="412"/>
                     <subviews>
@@ -150,9 +160,12 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="aeJ-SH-emR" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" constant="34" id="EWU-mL-hPw"/>
+                <constraint firstItem="ipz-Ak-2bS" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="HJp-xY-p3Q"/>
                 <constraint firstItem="aeJ-SH-emR" firstAttribute="top" secondItem="rWH-pf-g5x" secondAttribute="bottom" id="M8Y-zp-68n"/>
                 <constraint firstItem="rWH-pf-g5x" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="PKy-YV-ZKq"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="ipz-Ak-2bS" secondAttribute="trailing" constant="16" id="PQf-AV-8Xl"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="aeJ-SH-emR" secondAttribute="trailing" id="STp-F5-anv"/>
+                <constraint firstItem="ipz-Ak-2bS" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="16" id="a0T-xb-ycO"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="rWH-pf-g5x" secondAttribute="trailing" id="cSv-hg-2kI"/>
                 <constraint firstItem="aeJ-SH-emR" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="qMH-Vd-Jia"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="top" secondItem="rWH-pf-g5x" secondAttribute="top" constant="44" id="qNS-yB-baR"/>
