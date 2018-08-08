@@ -19,8 +19,9 @@ class UVIndexViewController: UIViewController {
     @IBOutlet weak var errorView: UIView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var twoWayBindTextField: UITextField!
     private let locationManager:CLLocationManager
-    private let viewModel:UVIndexViewModelProtocol
+    private var viewModel:UVIndexViewModelProtocol
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) is not supported")
@@ -111,5 +112,14 @@ extension UVIndexViewController:CLLocationManagerDelegate{
         if status == .authorizedWhenInUse {
             loadUVIndex()
         }
+    }
+}
+
+extension UVIndexViewController:UITextFieldDelegate{
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if let text = textField.text {
+            self.viewModel.twoWayBinding = text
+        }
+        return true
     }
 }

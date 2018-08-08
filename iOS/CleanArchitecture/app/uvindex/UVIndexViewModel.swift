@@ -20,6 +20,7 @@ protocol UVIndexViewModelProtocol {
     var locationObservable:Observable<Location> { get }
     var locationPermissionObservable:Observable<Bool> { get }
     var errorObservable:Observable<String> { get }
+    var twoWayBinding:String { get set }
     func loadUVIndex()
 }
 
@@ -33,6 +34,11 @@ class UVIndexViewModel:UVIndexViewModelProtocol, UVIndexOutputProtocol {
     let locationObservable = Observable<Location>(value: Location(latitude: 0.0, longitude: 0.0))
     let locationPermissionObservable = Observable<Bool>(value: true)
     let errorObservable = Observable<String>(value: "")
+    var twoWayBinding = String() {
+        didSet {
+            print("two way binding: \(twoWayBinding)")
+        }
+    }
     
     let uvIndex:UVIndexProtocol
     
