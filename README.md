@@ -13,6 +13,8 @@ So, be carefull, this is a WORK IN PROGRESS...
         * [Legacy](#swift:-Legacy)
         * [Serial](#swift:-Serial-work)
         * [Parallel](#swift:-Parallel-work)
+    2. [MVVM](#mvvm)
+5. [Testing](#testing)
 
 ## Before start
 * iOS
@@ -180,11 +182,11 @@ A promise represents the eventual result of an asynchronous operation; we can ch
 ```swift
 class Places:PlacesProtocol {
 
-    private let locationGateway:Worker
+    private let locationWorker:Worker
     private let placesGateway:Worker
     
     func nearby(output: PlacesOutputProtocol) {
-        Promises.once(worker: locationGateway, params: nil)
+        Promises.once(worker: locationWorker, params: nil)
         .then(completable: { (location) -> PromiseProtocol in
             return Promises.once(worker: self.placesGateway, params:location)
         }).then(finalizable: { (places) in
@@ -251,7 +253,166 @@ class Weather:WeatherProtocol {
 
 * UML
 
-     ![Alt layer](art/PROMISE.png)
+     ![Alt promise](art/PROMISE.png)
+    
+### MVVM(model view view-model)
+* Problem: 
+
+Coupling between the view and the model. Sometimes the view has many responsabilities, so we ending with a view that knows the model and how to format the data that it contains, so this produce views with more than one responsability.
+
+```swift
+class UVIndexViewController: UIViewController {
+
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!    
+
+    ...
+
+    func onUVIndex(ultravioletIndex: UltravioletIndex) { 
+        //ViewController knows the model and how to format the data that the model contains
+        let date = Date(timeIntervalSince1970:Double(ultravioletIndex.timestamp))
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .full
+        dateFormatter.timeStyle = .medium
+        dateFormatter.locale = Locale.current
+        dateFormatter.timeZone = TimeZone.init(identifier: "UTC")
+        var formattedDate = dateFormatter.string(from: date)         
+        self.dateLabel.text = formattedDate
+
+        var description = "Unknown"
+        if ultravioletIndex.uvIndex >= 0 && ultravioletIndex.uvIndex < 3 {
+            description = "Low"
+        } else if ultravioletIndex.uvIndex >= 3 && ultravioletIndex.uvIndex < 6 {
+            description = "Moderate"
+        } else if ultravioletIndex.uvIndex >= 6 && ultravioletIndex.uvIndex < 8 {
+            description = "High"
+        } else if ultravioletIndex.uvIndex >= 8 && ultravioletIndex.uvIndex < 11 {
+            description = "Very high"
+        } else if ultravioletIndex.uvIndex >= 11 {
+            description = "Extreme"
+        }
+        self.descriptionLabel.text = description  
+    }
+}
+```
+
+* Solution:
+Applying MVVM pattern the presentation logic is handled by the view-model so the view isn't aware of changes on how the data should be presented. To achieve this the view must register against observable properties in the view-model, when those properties are changed by the view-model the view will receive an event indicating that a new value is avaliable.
+
+#### Swift: Observer
+In swift there isn't native library that supports model view view-model, so to achieve this we can use a another pattern called observer. This will be the bridge between the view and view-model
+```swift
+class Observable<T> {
+    
+    typealias Observer = (T) -> Void
+    private var observer:Observer?
+    
+    var value:T {
+        didSet{
+            observer?(value)
+        }
+    }
+    
+    init(value:T) {
+        self.value = value
+    }
+    
+    func bind(observer:@escaping Observer) {
+        self.observer = observer
+        observer(value)
+    }
+}
+```
+
+#### Swift: View-model
+```swift
+class UVIndexViewModel:UVIndexViewModelProtocol, UVIndexOutputProtocol {
+
+    let descriptionObservable = Observable<String>(value: "")
+    let dateObservable = Observable<String>(value: "")
+    
+    ...
+
+    func onUVIndex(ultravioletIndex: UltravioletIndex) {        
+        let date = Date(timeIntervalSince1970:Double(ultravioletIndex.timestamp))
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .full
+        dateFormatter.timeStyle = .medium
+        dateFormatter.locale = Locale.current
+        dateFormatter.timeZone = TimeZone.init(identifier: "UTC")
+        dateObservable.value = dateFormatter.string(from: date)         
+
+        var description = "Unknown"
+        if ultravioletIndex.uvIndex >= 0 && ultravioletIndex.uvIndex < 3 {
+            description = "Low"
+        } else if ultravioletIndex.uvIndex >= 3 && ultravioletIndex.uvIndex < 6 {
+            description = "Moderate"
+        } else if ultravioletIndex.uvIndex >= 6 && ultravioletIndex.uvIndex < 8 {
+            description = "High"
+        } else if ultravioletIndex.uvIndex >= 8 && ultravioletIndex.uvIndex < 11 {
+            description = "Very high"
+        } else if ultravioletIndex.uvIndex >= 11 {
+            description = "Extreme"
+        }
+        descriptionObservable.value = description        
+    }
+}
+```
+
+#### Swift: View
+```swift
+class UVIndexViewController: UIViewController {
+
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!    
+    private let viewModel:UVIndexViewModelProtocol
+    
+    ...
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        bind()
+    }
+
+    private func bind(){        
+        viewModel.descriptionObservable.bind { [weak self] (newValue) in
+            self?.descriptionLabel.text = newValue
+        }
+        viewModel.dateObservable.bind { [weak self] (newValue) in
+            self?.dateLabel.text = newValue
+        }
+    }
+}
+
+```
+
+* Usefull links:
+  
+    * [Code: View Controller](https://github.com/albertopeam/clean-architecture/blob/master/iOS/CleanArchitecture/app/uvindex/UVIndexViewController.swift)
+    * [Code: View Model](https://github.com/albertopeam/clean-architecture/blob/master/iOS/CleanArchitecture/app/uvindex/UVIndexViewModel.swift)
+    * [Testing: View Model](https://github.com/albertopeam/clean-architecture/blob/master/iOS/CleanArchitectureTests/app/uvindex/UVIndexViewModelTest.swift)
+    * [Testing: View Controller](https://github.com/albertopeam/clean-architecture/blob/master/iOS/CleanArchitectureUITests/app/uvindex/UVIndexViewControllerTest.swift)
+ 
+  
+| *PROS* | *CONS* | 
+| :---         | :---           | 
+| Decouple model and view | It can be an problem if the view-model has tons of properties |
+| Decouple presentation logic from the view |  |
+| Respect single responsability principle |  |
+| Simplified view, very dumb one | |
+
+* UML
+
+     ![Alt mvvm](art/MVVM.png)
+
+## Testing
+* under development
+    * UNIT docu
+    * UI: docu
+        * pending:
+            KIF+Snapshot 
+            https://github.com/kif-framework/KIF
+            https://github.com/uber/ios-snapshot-test-case/
 
 ## License
 Copyright (c) 2018 Alberto Penas Amor

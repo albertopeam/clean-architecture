@@ -9,6 +9,6 @@
 class PlacesComponent {
     static func assemble(apiKey:String) -> PlacesProtocol {
         let url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=\(apiKey)&radius=150&types=restaurant&location={{location}}"
-        return Places(locationGateway: LocationGateway(), placesGateway: PlacesGateway(url: url))
+        return Places(locationWorker: LocationWorker(), placesGateway: PlacesWorker(url: url))
     }
 }

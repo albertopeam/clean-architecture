@@ -1,5 +1,5 @@
 //
-//  LocationGateway.swift
+//  LocationWorker.swift
 //  CleanArchitecture
 //
 //  Created by Penas Amor, Alberto on 18/4/18.
@@ -7,7 +7,7 @@
 //
 import CoreLocation
 
-class LocationGateway: NSObject, Worker {
+class LocationWorker: NSObject, Worker {
     
     private var resolve:ResolvableWorker?
     private var reject:RejectableWorker?
@@ -36,6 +36,8 @@ class LocationGateway: NSObject, Worker {
                 }else{
                     reject(self, LocationError.deniedLocationUsage)
                 }
+            }else{
+                reject(self, LocationError.deniedLocationUsage)
             }
             return
         case .authorizedAlways:
@@ -50,7 +52,7 @@ class LocationGateway: NSObject, Worker {
     }
 }
 
-extension LocationGateway:CLLocationManagerDelegate{
+extension LocationWorker:CLLocationManagerDelegate{
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if locations.count > 0 {
             locationManager.stopUpdatingLocation()
@@ -63,8 +65,10 @@ extension LocationGateway:CLLocationManagerDelegate{
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         locationManager.stopUpdatingLocation()
         locationManager.delegate = nil
-        if error.code == 0 && error.domain == "kCLErrorDomain"{
+        if error.code == 0 && error.domain == "kCLErrorDomain" {
             reject?(self, LocationError.noLocation)
+        }else{
+            reject?(self, error)
         }
     }
 }
