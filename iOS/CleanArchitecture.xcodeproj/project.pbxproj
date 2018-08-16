@@ -94,6 +94,28 @@
 		C3C74A3221020AA10037C598 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36DD7822090C7A30045E114 /* Constants.swift */; };
 		C3C74A342102100B0037C598 /* UITestTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C74A332102100B0037C598 /* UITestTool.swift */; };
 		C3C74A4121022ED00037C598 /* WeatherPresenterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C74A4021022ED00037C598 /* WeatherPresenterTest.swift */; };
+		C3C9CA7B2125C0DD0096970A /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3C9CA7A2125C0DD0096970A /* NotificationCenter.framework */; };
+		C3C9CA7E2125C0DD0096970A /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C9CA7D2125C0DD0096970A /* TodayViewController.swift */; };
+		C3C9CA812125C0DD0096970A /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3C9CA7F2125C0DD0096970A /* MainInterface.storyboard */; };
+		C3C9CA862125C0DD0096970A /* UltravioletIndexWidget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C3C9CA792125C0DD0096970A /* UltravioletIndexWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		C3C9CA8A2125C1E40096970A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3FA42552087AF6A00B63221 /* MapKit.framework */; };
+		C3C9CA8B2125C4CE0096970A /* JsonDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32634EB2111CE1F0023E58C /* JsonDecoder.swift */; };
+		C3C9CA8C2125C4D10096970A /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3332EE82088A86E00FF73FF /* Error.swift */; };
+		C3C9CA8D2125C4D50096970A /* UVIndexComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32634DC2111C0C30023E58C /* UVIndexComponent.swift */; };
+		C3C9CA8E2125C4D70096970A /* UVIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32634E12111C1510023E58C /* UVIndex.swift */; };
+		C3C9CA8F2125C4D90096970A /* UVIndexWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32634DF2111C11F0023E58C /* UVIndexWorker.swift */; };
+		C3C9CA902125C4DC0096970A /* Promises.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D9D98820D14CAB004EC19A /* Promises.swift */; };
+		C3C9CA912125C4DF0096970A /* PromiseOnce.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D9D98C20D14D59004EC19A /* PromiseOnce.swift */; };
+		C3C9CA922125C4E10096970A /* PromiseAll.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FC18C120D9292A00393EBB /* PromiseAll.swift */; };
+		C3C9CA932125C4E40096970A /* LocationWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FA42622087AFEC00B63221 /* LocationWorker.swift */; };
+		C3C9CA942125C4E60096970A /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E24B2920A1D7420062D4E7 /* LocationManager.swift */; };
+		C3C9CA952125C4E90096970A /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32634E32111C2570023E58C /* Location.swift */; };
+		C3C9CA962125C4EB0096970A /* LocationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32634E72111C7500023E58C /* LocationError.swift */; };
+		C3C9CA972125C4F20096970A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36DD7822090C7A30045E114 /* Constants.swift */; };
+		C3C9CA982125C4F60096970A /* UVIndexViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32634D92111C0A10023E58C /* UVIndexViewModel.swift */; };
+		C3C9CA992125C4F80096970A /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32634F12111E0D50023E58C /* Observable.swift */; };
+		C3C9CA9A2125CD230096970A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3FA42392087AEC200B63221 /* Assets.xcassets */; };
+		C3C9CA9B2125CD290096970A /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C32634F82111FDDD0023E58C /* Colors.xcassets */; };
 		C3CC23F520A09C0000BA01F6 /* Swifter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3CC23F420A09C0000BA01F6 /* Swifter.framework */; };
 		C3CC23FA20A09C3100BA01F6 /* PlacesWorkerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CC23F920A09C3100BA01F6 /* PlacesWorkerTest.swift */; };
 		C3D2893520ECDBBF001DE077 /* MockWorkers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D2893420ECDBBF001DE077 /* MockWorkers.swift */; };
@@ -167,6 +189,13 @@
 			remoteGlobalIDString = C3FA422E2087AEC200B63221;
 			remoteInfo = CleanArchitecture;
 		};
+		C3C9CA832125C0DD0096970A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C3FA42272087AEC200B63221 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C3C9CA782125C0DD0096970A;
+			remoteInfo = UltravioletIndexWidget;
+		};
 		C3FA42442087AEC200B63221 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C3FA42272087AEC200B63221 /* Project object */;
@@ -177,6 +206,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		C3C9CA852125C0DD0096970A /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				C3C9CA862125C0DD0096970A /* UltravioletIndexWidget.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C3CC23F620A09C0A00BA01F6 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -229,6 +269,11 @@
 		C3C74A0F210204E20037C598 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C3C74A332102100B0037C598 /* UITestTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestTool.swift; sourceTree = "<group>"; };
 		C3C74A4021022ED00037C598 /* WeatherPresenterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherPresenterTest.swift; sourceTree = "<group>"; };
+		C3C9CA792125C0DD0096970A /* UltravioletIndexWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = UltravioletIndexWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		C3C9CA7A2125C0DD0096970A /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		C3C9CA7D2125C0DD0096970A /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		C3C9CA802125C0DD0096970A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		C3C9CA822125C0DD0096970A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C3CC23F420A09C0000BA01F6 /* Swifter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Swifter.framework; path = Carthage/Build/iOS/Swifter.framework; sourceTree = "<group>"; };
 		C3CC23F920A09C3100BA01F6 /* PlacesWorkerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacesWorkerTest.swift; sourceTree = "<group>"; };
 		C3D2893420ECDBBF001DE077 /* MockWorkers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockWorkers.swift; sourceTree = "<group>"; };
@@ -281,6 +326,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				C3C74A2521020A6C0037C598 /* Kingfisher.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C3C9CA762125C0DD0096970A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C3C9CA8A2125C1E40096970A /* MapKit.framework in Frameworks */,
+				C3C9CA7B2125C0DD0096970A /* NotificationCenter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -445,6 +499,16 @@
 			path = weather;
 			sourceTree = "<group>";
 		};
+		C3C9CA7C2125C0DD0096970A /* UltravioletIndexWidget */ = {
+			isa = PBXGroup;
+			children = (
+				C3C9CA7D2125C0DD0096970A /* TodayViewController.swift */,
+				C3C9CA7F2125C0DD0096970A /* MainInterface.storyboard */,
+				C3C9CA822125C0DD0096970A /* Info.plist */,
+			);
+			path = UltravioletIndexWidget;
+			sourceTree = "<group>";
+		};
 		C3D56B4B2113084300947F2D /* uvindex */ = {
 			isa = PBXGroup;
 			children = (
@@ -545,6 +609,7 @@
 				C3FA42312087AEC200B63221 /* CleanArchitecture */,
 				C3FA42462087AEC200B63221 /* CleanArchitectureTests */,
 				C3C74A0C210204E20037C598 /* CleanArchitectureUITests */,
+				C3C9CA7C2125C0DD0096970A /* UltravioletIndexWidget */,
 				C3FA42302087AEC200B63221 /* Products */,
 				C3FA42542087AF6900B63221 /* Frameworks */,
 			);
@@ -556,6 +621,7 @@
 				C3FA422F2087AEC200B63221 /* CleanArchitecture.app */,
 				C3FA42432087AEC200B63221 /* CleanArchitectureTests.xctest */,
 				C3C74A0B210204E20037C598 /* CleanArchitectureUITests.xctest */,
+				C3C9CA792125C0DD0096970A /* UltravioletIndexWidget.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -589,6 +655,7 @@
 				C3CC23F420A09C0000BA01F6 /* Swifter.framework */,
 				C33EE73C2091FB5A00712672 /* Kingfisher.framework */,
 				C3FA42552087AF6A00B63221 /* MapKit.framework */,
+				C3C9CA7A2125C0DD0096970A /* NotificationCenter.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -686,6 +753,23 @@
 			productReference = C3C74A0B210204E20037C598 /* CleanArchitectureUITests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		C3C9CA782125C0DD0096970A /* UltravioletIndexWidget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C3C9CA892125C0DD0096970A /* Build configuration list for PBXNativeTarget "UltravioletIndexWidget" */;
+			buildPhases = (
+				C3C9CA752125C0DD0096970A /* Sources */,
+				C3C9CA762125C0DD0096970A /* Frameworks */,
+				C3C9CA772125C0DD0096970A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = UltravioletIndexWidget;
+			productName = UltravioletIndexWidget;
+			productReference = C3C9CA792125C0DD0096970A /* UltravioletIndexWidget.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		C3FA422E2087AEC200B63221 /* CleanArchitecture */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C3FA424C2087AEC200B63221 /* Build configuration list for PBXNativeTarget "CleanArchitecture" */;
@@ -694,10 +778,12 @@
 				C3FA422C2087AEC200B63221 /* Frameworks */,
 				C3FA422D2087AEC200B63221 /* Resources */,
 				C33EE73B2091FB0300712672 /* ShellScript */,
+				C3C9CA852125C0DD0096970A /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				C3C9CA842125C0DD0096970A /* PBXTargetDependency */,
 			);
 			name = CleanArchitecture;
 			productName = CleanArchitecture;
@@ -738,6 +824,10 @@
 						ProvisioningStyle = Manual;
 						TestTargetID = C3FA422E2087AEC200B63221;
 					};
+					C3C9CA782125C0DD0096970A = {
+						CreatedOnToolsVersion = 9.4.1;
+						ProvisioningStyle = Automatic;
+					};
 					C3FA422E2087AEC200B63221 = {
 						CreatedOnToolsVersion = 9.2;
 						LastSwiftMigration = 0920;
@@ -766,6 +856,7 @@
 				C3FA422E2087AEC200B63221 /* CleanArchitecture */,
 				C3FA42422087AEC200B63221 /* CleanArchitectureTests */,
 				C3C74A0A210204E20037C598 /* CleanArchitectureUITests */,
+				C3C9CA782125C0DD0096970A /* UltravioletIndexWidget */,
 			);
 		};
 /* End PBXProject section */
@@ -777,6 +868,16 @@
 			files = (
 				C36A450221144C410001EE3F /* Assets.xcassets in Resources */,
 				C36A44FF21144C3D0001EE3F /* Colors.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C3C9CA772125C0DD0096970A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C3C9CA9B2125CD290096970A /* Colors.xcassets in Resources */,
+				C3C9CA9A2125CD230096970A /* Assets.xcassets in Resources */,
+				C3C9CA812125C0DD0096970A /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -877,6 +978,29 @@
 				C3E35257210623E10091CFDD /* NearbyPlaceCell.swift in Sources */,
 				C3C74A3221020AA10037C598 /* Constants.swift in Sources */,
 				C3D56B5421130B9500947F2D /* UVIndexWorker.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C3C9CA752125C0DD0096970A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C3C9CA992125C4F80096970A /* Observable.swift in Sources */,
+				C3C9CA932125C4E40096970A /* LocationWorker.swift in Sources */,
+				C3C9CA912125C4DF0096970A /* PromiseOnce.swift in Sources */,
+				C3C9CA8B2125C4CE0096970A /* JsonDecoder.swift in Sources */,
+				C3C9CA942125C4E60096970A /* LocationManager.swift in Sources */,
+				C3C9CA8C2125C4D10096970A /* Error.swift in Sources */,
+				C3C9CA902125C4DC0096970A /* Promises.swift in Sources */,
+				C3C9CA7E2125C0DD0096970A /* TodayViewController.swift in Sources */,
+				C3C9CA8E2125C4D70096970A /* UVIndex.swift in Sources */,
+				C3C9CA962125C4EB0096970A /* LocationError.swift in Sources */,
+				C3C9CA8D2125C4D50096970A /* UVIndexComponent.swift in Sources */,
+				C3C9CA8F2125C4D90096970A /* UVIndexWorker.swift in Sources */,
+				C3C9CA972125C4F20096970A /* Constants.swift in Sources */,
+				C3C9CA952125C4E90096970A /* Location.swift in Sources */,
+				C3C9CA922125C4E10096970A /* PromiseAll.swift in Sources */,
+				C3C9CA982125C4F60096970A /* UVIndexViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -986,6 +1110,11 @@
 			target = C3FA422E2087AEC200B63221 /* CleanArchitecture */;
 			targetProxy = C3C74A10210204E20037C598 /* PBXContainerItemProxy */;
 		};
+		C3C9CA842125C0DD0096970A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C3C9CA782125C0DD0096970A /* UltravioletIndexWidget */;
+			targetProxy = C3C9CA832125C0DD0096970A /* PBXContainerItemProxy */;
+		};
 		C3FA42452087AEC200B63221 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = C3FA422E2087AEC200B63221 /* CleanArchitecture */;
@@ -994,6 +1123,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		C3C9CA7F2125C0DD0096970A /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C3C9CA802125C0DD0096970A /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
 		C3FA42362087AEC200B63221 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1060,6 +1197,44 @@
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CleanArchitecture.app/CleanArchitecture";
+			};
+			name = Release;
+		};
+		C3C9CA872125C0DD0096970A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = UltravioletIndexWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.albertopeam.CleanArchitecture.UltravioletIndexWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C3C9CA882125C0DD0096970A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = UltravioletIndexWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.albertopeam.CleanArchitecture.UltravioletIndexWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -1173,6 +1348,7 @@
 		C3FA424D2087AEC200B63221 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Manual;
@@ -1195,6 +1371,7 @@
 		C3FA424E2087AEC200B63221 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Manual;
@@ -1265,6 +1442,15 @@
 			buildConfigurations = (
 				C3C74A13210204E20037C598 /* Debug */,
 				C3C74A14210204E20037C598 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C3C9CA892125C0DD0096970A /* Build configuration list for PBXNativeTarget "UltravioletIndexWidget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C3C9CA872125C0DD0096970A /* Debug */,
+				C3C9CA882125C0DD0096970A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

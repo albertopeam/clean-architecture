@@ -22,7 +22,7 @@ class UVIndexWorker: Worker {
         self.url = url.replacingOccurrences(of: "{{lon}}", with: "\(location.longitude)")
         let targetUrl = URL(string: self.url);
         URLSession.shared.dataTask(with: targetUrl!) { (data, response, error) in
-            if (response as! HTTPURLResponse).statusCode > 299 {
+            if response == nil || (response as! HTTPURLResponse).statusCode > 299 {
                 self.rejectIt(reject: reject, error: UVIndexError.other)
             } else if error != nil {
                 switch error!.code {
