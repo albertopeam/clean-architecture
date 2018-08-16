@@ -386,7 +386,7 @@ class UVIndexViewController: UIViewController {
 
 ```
 
-* Usefull links:
+* Useful links:
   
     * [Code: View Controller](https://github.com/albertopeam/clean-architecture/blob/master/iOS/CleanArchitecture/app/uvindex/UVIndexViewController.swift)
     * [Code: View Model](https://github.com/albertopeam/clean-architecture/blob/master/iOS/CleanArchitecture/app/uvindex/UVIndexViewModel.swift)
