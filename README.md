@@ -48,13 +48,12 @@ So, be carefull, this is a WORK IN PROGRESS...
 ## What do you expect to see soon?
 ### Next
 * iOS    
-    * create a core module to show how to do it. The idea is avoid publishing internal dependencies
-    * add architecture explanation, guidelines
-    * example with promises all. rewrite promise once        
-    * ViewModel to reduce complexity between view-presenter
-    * ViewStateMachine for complex UIs
-    * observer
-    * UI testing    
+    * Framework usage to avoid all the code to seen as public
+    * View State pattern for complex UIs
+    * Repository pattern
+    * MVP pattern
+    * Travis
+    * SonarQube
 
 ## Architecture
 
