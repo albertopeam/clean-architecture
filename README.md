@@ -14,6 +14,8 @@ So, be carefull, this is a WORK IN PROGRESS...
         * [Serial](#swift:-Serial-work)
         * [Parallel](#swift:-Parallel-work)
     2. [MVVM](#mvvm)
+        * [View-Model](#Swift:-Observer)
+        * [Widget](#Swift:-Reusing-View-Model-in-TodayExtension)
 5. [Testing](#testing)
 
 ## Before start
@@ -234,10 +236,10 @@ class Weather:WeatherProtocol {
 ```
 
 * Usefull links:
-    * [Serial promises: places component](https://github.com/albertopeam/clean-architecture/blob/master/iOS/CleanArchitecture/core/places/Places.swift)
-    * [Parallel promises: weather component](https://github.com/albertopeam/clean-architecture/blob/master/iOS/CleanArchitecture/core/weather/Weather.swift)
-    * [How to test: places component](https://github.com/albertopeam/clean-architecture/blob/master/iOS/CleanArchitectureTests/core/places/PlacesTest.swift)
-
+    * [Code: Serial promises](https://github.com/albertopeam/clean-architecture/blob/master/iOS/CleanArchitecture/core/places/Places.swift)
+    * [Code: Parallel promises](https://github.com/albertopeam/clean-architecture/blob/master/iOS/CleanArchitecture/core/weather/Weather.swift)
+    * [Test: UseCase](https://github.com/albertopeam/clean-architecture/blob/master/iOS/CleanArchitectureTests/core/places/PlacesTest.swift)
+    * [Test: Worker](https://github.com/albertopeam/clean-architecture/blob/master/iOS/CleanArchitectureTests/core/places/PlacesWorkerTest.swift)
 
 | *PROS* | *CONS* | 
 | :---         | :---           | 
@@ -386,10 +388,42 @@ class UVIndexViewController: UIViewController {
 
 ```
 
+#### Swift: Reusing View-Model in TodayExtension
+```swift
+class TodayViewController: UIViewController {
+        
+    @IBOutlet weak var ultravioletIndexLabel: UILabel!    
+    var viewModel:UVIndexViewModel?
+    var completion:Completion?
+    
+    ...
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()        
+        bind()
+    }
+    
+    private func bind(){        
+        viewModel?.uvIndexObservable.bind { [weak self] (newValue) in
+            self?.ultravioletIndexLabel?.text = newValue
+            self?.completion?(NCUpdateResult.newData)
+        }      
+    }    
+}
+
+extension TodayViewController:NCWidgetProviding{
+    func widgetPerformUpdate(completionHandler: (@escaping (NCUpdateResult) -> Void)) {
+        viewModel?.loadUVIndex()
+        completion = completionHandler
+    }
+}
+```
+
 * Useful links:
   
     * [Code: View Controller](https://github.com/albertopeam/clean-architecture/blob/master/iOS/CleanArchitecture/app/uvindex/UVIndexViewController.swift)
     * [Code: View Model](https://github.com/albertopeam/clean-architecture/blob/master/iOS/CleanArchitecture/app/uvindex/UVIndexViewModel.swift)
+    * [Code: Widget](https://github.com/albertopeam/clean-architecture/blob/master/iOS/UltravioletIndexWidget/TodayViewController.swift)
     * [Testing: View Model](https://github.com/albertopeam/clean-architecture/blob/master/iOS/CleanArchitectureTests/app/uvindex/UVIndexViewModelTest.swift)
     * [Testing: View Controller](https://github.com/albertopeam/clean-architecture/blob/master/iOS/CleanArchitectureUITests/app/uvindex/UVIndexViewControllerTest.swift)
  
@@ -399,7 +433,8 @@ class UVIndexViewController: UIViewController {
 | Decouple model and view | It can be an problem if the view-model has tons of properties |
 | Decouple presentation logic from the view |  |
 | Respect single responsability principle |  |
-| Simplified view, very dumb one | |
+| Simplified view, it only does UI operations | |
+| Reusability of the view-model in other views | |
 
 * UML
 
