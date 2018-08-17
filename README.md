@@ -2,8 +2,6 @@
 
 The intention of this repository is to show some of the more common practices when building a mobile app using clean architecture.
 
-So, be carefull, this is a WORK IN PROGRESS...
-
 ## Table of Contents
 1. [Before start](#before-start)
 2. [What do you expect to see soon?](#what-do-you-expect-to-see-soon?)
