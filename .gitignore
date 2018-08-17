@@ -65,5 +65,5 @@ iOS/fastlane/Preview.html
 iOS/fastlane/screenshots
 iOS/fastlane/test_output
 
-# google api key
-iOS/CleanArchitecture/app/Constants.swift
+# google api key - removed because travis need the file to do the build
+# iOS/CleanArchitecture/app/Constants.swift
