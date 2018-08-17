@@ -15,7 +15,7 @@ The intention of this repository is to show some of the more common practices wh
         * [View-Model](#Swift:-Observer)
         * [Widget](#Swift:-Reusing-View-Model-in-TodayExtension)
 5. [Testing](#testing)
-
+ 
 ## Before start
 * iOS
     * Resolve Carthage dependencies. For more [info](https://github.com/Carthage/Carthage)
