@@ -12,11 +12,12 @@ import MapKit
 
 internal typealias Completion = (NCUpdateResult) -> Void
 
-class TodayViewController: UIViewController, NCWidgetProviding {
+class TodayViewController: UIViewController {
         
     @IBOutlet weak var ultravioletIndexLabel: UILabel!
     @IBOutlet weak var ultravioletIndexDescLabel: UILabel!
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var errorLabel: UILabel!
     var viewModel:UVIndexViewModel?
     var completion:Completion?
     
@@ -28,15 +29,24 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.extensionContext?.widgetLargestAvailableDisplayMode = .expanded
         bind()
     }
     
-    func widgetPerformUpdate(completionHandler: (@escaping (NCUpdateResult) -> Void)) {
-        viewModel?.loadUVIndex()
-        completion = completionHandler
-    }
-    
     private func bind(){
+        viewModel?.viewStateObservable.bind { [weak self] (newValue) in
+            switch newValue {
+            case .success:
+                self?.errorLabel.isHidden = true
+                break
+            case .error:
+                self?.errorLabel.isHidden = false
+                break
+            case .loading:
+                break
+            }
+            self?.completion?(NCUpdateResult.newData)
+        }
         viewModel?.uvIndexObservable.bind { [weak self] (newValue) in
             self?.ultravioletIndexLabel?.text = newValue
             self?.completion?(NCUpdateResult.newData)
@@ -63,8 +73,21 @@ class TodayViewController: UIViewController, NCWidgetProviding {
             self?.completion?(NCUpdateResult.newData)
         }
         viewModel?.errorObservable.bind { [weak self] (newValue) in
+            self?.errorLabel.text = newValue
             self?.completion?(NCUpdateResult.failed)
         }
     }
     
+}
+
+extension TodayViewController:NCWidgetProviding{
+    func widgetPerformUpdate(completionHandler: (@escaping (NCUpdateResult) -> Void)) {
+        viewModel?.loadUVIndex()
+        completion = completionHandler
+    }
+    
+    func widgetActiveDisplayModeDidChange(_ activeDisplayMode: NCWidgetDisplayMode, withMaximumSize maxSize: CGSize) {
+        let expanded = activeDisplayMode == .expanded
+        self.preferredContentSize = expanded ? CGSize(width: maxSize.width, height: 200) : maxSize
+    }
 }
