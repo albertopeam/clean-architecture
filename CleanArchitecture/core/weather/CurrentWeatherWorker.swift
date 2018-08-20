@@ -18,7 +18,7 @@ class CurrentWeatherWorker:NSObject, Worker {
     func run(params: Any?, resolve: @escaping ResolvableWorker, reject: @escaping RejectableWorker) throws {
         let url = URL(string: targetUrl)
         URLSession.shared.dataTask(with: url!) { (data, response, error) in
-            if (response as! HTTPURLResponse).statusCode > 299 {
+            if response == nil || (response as! HTTPURLResponse).statusCode > 299 {
                 self.rejectIt(reject: reject, error: WeatherError.other)
             } else if error != nil {
                 switch error!.code {
