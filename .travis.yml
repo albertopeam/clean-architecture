@@ -19,3 +19,6 @@ before_script:
   - carthage update --cache-builds
   # explanation for bootstrap vs update: https://github.com/Carthage/Carthage/issues/848
 
+after_success:
+  - bash <(curl -s https://codecov.io/bash) -J 'CleanArchitecture'
+
