@@ -1,5 +1,5 @@
 # Clean Architecture
-
+ 
 The intention of this repository is to show some of the more common practices when building a mobile app using clean architecture.
 
 ## Table of Contents
