@@ -1,6 +1,7 @@
 # Clean Architecture
 
 [![Build Status](https://travis-ci.org/albertopeam/clean-architecture.svg?branch=master)](https://travis-ci.org/albertopeam/clean-architecture)
+[![codecov](https://codecov.io/gh/albertopeam/clean-architecture/branch/master/graph/badge.svg)](https://codecov.io/gh/albertopeam/clean-architecture)
  
 The intention of this repository is to show some of the more common practices when building a mobile app using clean architecture.
 
