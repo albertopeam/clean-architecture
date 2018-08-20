@@ -1,6 +1,21 @@
 language: objective-c
 osx_image: xcode9.4
-xcode_project: ./iOS/CleanArchitecture.xcodeproj # path to your xcodeproj folder
+xcode_project: CleanArchitecture.xcodeproj # path to your xcodeproj folder
 xcode_scheme: CleanArchitecture
-xcode_destination: platform=iOS Simulator,OS=11.4.1,name=iPhone X
+xcode_destination: platform=iOS Simulator,OS=11.4,name=iPhone X
+
+cache:
+  directories:
+  - Carthage
+
+before_install:
+  - brew install carthage || true
+  - brew outdated carthage || brew upgrade carthage
+
+before_script:
+  # Build dependencies(only build)
+  # - carthage bootstrap --platform iOS --no-use-binaries --cache-builds
+  # When adding new dependencies or want to download latest versions
+  - carthage update --cache-builds
+  # explanation for bootstrap vs update: https://github.com/Carthage/Carthage/issues/848
 

@@ -1,5 +1,7 @@
 # Clean Architecture
 
+[![Build Status](https://travis-ci.org/albertopeam/clean-architecture.svg?branch=master)](https://travis-ci.org/albertopeam/clean-architecture)
+ 
 The intention of this repository is to show some of the more common practices when building a mobile app using clean architecture.
 
 ## Table of Contents
@@ -233,10 +235,10 @@ class Weather:WeatherProtocol {
 ```
 
 * Usefull links:
-    * [Code: Serial promises](https://github.com/albertopeam/clean-architecture/blob/master/iOS/CleanArchitecture/core/places/Places.swift)
-    * [Code: Parallel promises](https://github.com/albertopeam/clean-architecture/blob/master/iOS/CleanArchitecture/core/weather/Weather.swift)
-    * [Test: UseCase](https://github.com/albertopeam/clean-architecture/blob/master/iOS/CleanArchitectureTests/core/places/PlacesTest.swift)
-    * [Test: Worker](https://github.com/albertopeam/clean-architecture/blob/master/iOS/CleanArchitectureTests/core/places/PlacesWorkerTest.swift)
+    * [Code: Serial promises](https://github.com/albertopeam/clean-architecture/blob/master/CleanArchitecture/core/places/Places.swift)
+    * [Code: Parallel promises](https://github.com/albertopeam/clean-architecture/blob/master/CleanArchitecture/core/weather/Weather.swift)
+    * [Test: UseCase](https://github.com/albertopeam/clean-architecture/blob/master/CleanArchitectureTests/core/places/PlacesTest.swift)
+    * [Test: Worker](https://github.com/albertopeam/clean-architecture/blob/master/CleanArchitectureTests/core/places/PlacesWorkerTest.swift)
 
 | *PROS* | *CONS* | 
 | :---         | :---           | 
@@ -418,11 +420,11 @@ extension TodayViewController:NCWidgetProviding{
 
 * Useful links:
   
-    * [Code: View Controller](https://github.com/albertopeam/clean-architecture/blob/master/iOS/CleanArchitecture/app/uvindex/UVIndexViewController.swift)
-    * [Code: View Model](https://github.com/albertopeam/clean-architecture/blob/master/iOS/CleanArchitecture/app/uvindex/UVIndexViewModel.swift)
-    * [Code: Widget](https://github.com/albertopeam/clean-architecture/blob/master/iOS/UltravioletIndexWidget/TodayViewController.swift)
-    * [Testing: View Model](https://github.com/albertopeam/clean-architecture/blob/master/iOS/CleanArchitectureTests/app/uvindex/UVIndexViewModelTest.swift)
-    * [Testing: View Controller](https://github.com/albertopeam/clean-architecture/blob/master/iOS/CleanArchitectureUITests/app/uvindex/UVIndexViewControllerTest.swift)
+    * [Code: View Controller](https://github.com/albertopeam/clean-architecture/blob/master/CleanArchitecture/app/uvindex/UVIndexViewController.swift)
+    * [Code: View Model](https://github.com/albertopeam/clean-architecture/blob/master/CleanArchitecture/app/uvindex/UVIndexViewModel.swift)
+    * [Code: Widget](https://github.com/albertopeam/clean-architecture/blob/master/UltravioletIndexWidget/TodayViewController.swift)
+    * [Testing: View Model](https://github.com/albertopeam/clean-architecture/blob/master/CleanArchitectureTests/app/uvindex/UVIndexViewModelTest.swift)
+    * [Testing: View Controller](https://github.com/albertopeam/clean-architecture/blob/master/CleanArchitectureUITests/app/uvindex/UVIndexViewControllerTest.swift)
  
   
 | *PROS* | *CONS* | 

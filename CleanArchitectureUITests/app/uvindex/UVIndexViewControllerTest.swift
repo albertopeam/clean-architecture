@@ -73,6 +73,7 @@ private class Mock {
         var locationObservable: Observable<Location> = Observable<Location>(value: Location(latitude:0, longitude:0))
         var locationPermissionObservable: Observable<Bool> = Observable<Bool>(value: true)
         var errorObservable: Observable<String> = Observable<String>(value: "")
+        var twoWayBinding = String()
         func loadUVIndex() {}
     }
 }

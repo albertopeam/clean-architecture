@@ -3,41 +3,41 @@
 # gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
 
 ## Build generated
-iOS/build/
-iOS/DerivedData/
+build/
+DerivedData/
 
 ## Various settings
-iOS/*.pbxuser
-iOS/!default.pbxuser
-iOS/*.mode1v3
-iOS/!default.mode1v3
-iOS/*.mode2v3
-iOS/!default.mode2v3
-iOS/*.perspectivev3
-iOS/!default.perspectivev3
-iOS/xcuserdata/
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+xcuserdata/
 
 ## Other
-iOS/*.moved-aside
-iOS/*.xccheckout
-iOS/*.xcscmblueprint
+*.moved-aside
+*.xccheckout
+*.xcscmblueprint
 
 ## Obj-C/Swift specific
-iOS/*.hmap
-iOS/*.ipa
-iOS/*.dSYM.zip
-iOS/*.dSYM
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
 
 ## Playgrounds
-iOS/timeline.xctimeline
-iOS/playground.xcworkspace
+timeline.xctimeline
+playground.xcworkspace
 
 # Swift Package Manager
 #
 # Add this line if you want to avoid checking in source code from Swift Package Manager dependencies.
 # Packages/
 # Package.pins
-iOS/.build/
+.build/
 
 # CocoaPods
 #
@@ -50,8 +50,8 @@ iOS/.build/
 # Carthage
 #
 # Add this line if you want to avoid checking in source code from Carthage dependencies.
-iOS/Carthage/Checkouts
-iOS/Carthage/Build
+Carthage/Checkouts
+Carthage/Build
 
 # fastlane
 #
@@ -60,10 +60,10 @@ iOS/Carthage/Build
 # For more information about the recommended setup visit:
 # https://docs.fastlane.tools/best-practices/source-control/#source-control
 
-iOS/fastlane/report.xml
-iOS/fastlane/Preview.html
-iOS/fastlane/screenshots
-iOS/fastlane/test_output
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots
+fastlane/test_output
 
-# google api key
-iOS/CleanArchitecture/app/Constants.swift
+# google api key - removed because travis need the file to do the build
+# iOS/CleanArchitecture/app/Constants.swift
