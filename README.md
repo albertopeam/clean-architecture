@@ -20,27 +20,26 @@ The intention of this repository is to show some of the more common practices wh
 5. [Testing](#testing)
   
 ## Before start
-* iOS
-    * Resolve Carthage dependencies. For more [info](https://github.com/Carthage/Carthage)
-    ```
-    carthage update --platform iOS
-    ```
-    * To run the project you should create a file called Constants with your own Google and OpenWeather Api Key. For more [Google info](https://developers.google.com/places/web-service/search), for more [Open weather info](https://openweathermap.org/appid)
-    ```
-        class Constants {
-            static let googleApiKey = "add-your-own-key"
-            static let openWeatherApiKey = "add-your-own-key"
-        }
-    ```
+
+* Resolve Carthage dependencies. For more [info](https://github.com/Carthage/Carthage)
+```
+carthage update --platform iOS
+```
+ * To run the project you should create a file called Constants with your own Google and OpenWeather Api Key. For more [Google info](https://developers.google.com/places/web-service/search), for more [Open weather info](https://openweathermap.org/appid)
+```
+    class Constants {
+        static let googleApiKey = "add-your-own-key"
+        static let openWeatherApiKey = "add-your-own-key"
+    }
+```
 
 ### App
-* iOS:
-    * app/places: shows a list of places near your current location
-    * app/weather: shows the weather in a list of places.
+* app/places: shows a list of places near your current location
+* app/weather: shows the weather in a list of places.
+* app/uvindex: shows the ultraviolet index in your current location.
 
 ### Testing
-* iOS
-    * The tests currently cover promises and places component  
+* You can check the coverage on [codecov](https://codecov.io/gh/albertopeam/clean-architecture)
 
 <!---
 ## Project structure
@@ -48,13 +47,12 @@ The intention of this repository is to show some of the more common practices wh
 --->
 ## What do you expect to see soon?
 ### Next
-* iOS    
-    * Framework usage to avoid all the code to seen as public
-    * View State pattern for complex UIs
-    * Repository pattern
-    * MVP pattern
-    * Travis
-    * SonarQube
+* Framework usage to avoid all the code to seen as public
+* View State pattern for complex UIs
+* Repository pattern
+* MVP pattern
+* Travis
+* SonarQube
 
 ## Architecture
 
