@@ -47,6 +47,7 @@ carthage update --platform iOS
 --->
 ## What do you expect to see soon?
 ### Next
+* Inject Constants from Environment instead of hardcode it in the app
 * Framework usage to avoid all the code to seen as public
 * View State pattern for complex UIs
 * Repository pattern
