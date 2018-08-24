@@ -7,14 +7,14 @@
 //
 
 protocol WeatherViewProtocol {
-    func newState(viewModel:WeatherViewModel)
+    func newState(viewState:WeatherViewState)
 }
 
 protocol WeatherPresenterProtocol {
     func weathers()
 }
 
-struct WeatherViewModel {
+struct WeatherViewState {
     var loading:Bool
     var weathers:Array<InstantWeather>?
     var error:String?
@@ -23,12 +23,12 @@ struct WeatherViewModel {
 class WeatherPresenter: WeatherPresenterProtocol, WeatherOutputProtocol {
     
     private let weather:WeatherProtocol
-    private var viewModel:WeatherViewModel
+    private var viewState:WeatherViewState
     var view:WeatherViewProtocol?
     
-    init(weather:WeatherProtocol, viewModel:WeatherViewModel, view:WeatherViewProtocol? = nil) {
+    init(weather:WeatherProtocol, viewState:WeatherViewState, view:WeatherViewProtocol? = nil) {
         self.weather = weather
-        self.viewModel = viewModel
+        self.viewState = viewState
         self.view = view
     }
     
@@ -37,17 +37,17 @@ class WeatherPresenter: WeatherPresenterProtocol, WeatherOutputProtocol {
     }
     
     func onWeather(items: Array<InstantWeather>) {
-        viewModel.loading = false
-        viewModel.weathers = items
-        viewModel.error = nil
-        view?.newState(viewModel: viewModel)
+        viewState.loading = false
+        viewState.weathers = items
+        viewState.error = nil
+        view?.newState(viewState: viewState)
     }
     
     func onWeatherError(error: Error) {
-        viewModel.loading = false
-        viewModel.weathers = nil
-        viewModel.error = error.domain
-        view?.newState(viewModel: viewModel)
+        viewState.loading = false
+        viewState.weathers = nil
+        viewState.error = error.domain
+        view?.newState(viewState: viewState)
     }
 
 }

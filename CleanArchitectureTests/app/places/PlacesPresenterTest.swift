@@ -97,8 +97,8 @@ private class Spy {
         
         var vm:NearbyPlacesViewState?
         
-        func newState(viewModel: NearbyPlacesViewState) {
-            self.vm = viewModel
+        func newState(viewState: NearbyPlacesViewState) {
+            self.vm = viewState
         }
         
     }

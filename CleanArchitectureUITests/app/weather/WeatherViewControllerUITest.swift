@@ -28,12 +28,12 @@ class WeatherViewControllerUITest: XCTestCase {
         let presenter = Mock.WeatherPresenter()
         let weather = InstantWeather(name: "name", description: "description", icon: "icon", temp: 12.0, pressure: 1024, humidity: 75.0, windSpeed: 5.1, windDegrees: 30, datetime: 1)
         let weathers = [weather]
-        presenter.vm = WeatherViewModel(loading: true, weathers: nil, error: nil)
+        presenter.vs = WeatherViewState(loading: true, weathers: nil, error: nil)
         sut = WeatherViewController(presenter: presenter)
         presenter.view = sut!
         testTool.setUp(withViewController: sut!)
         XCTAssertFalse(sut!.activityIndicator.isHidden)
-        presenter.vm = WeatherViewModel(loading: false, weathers: weathers, error: nil)
+        presenter.vs = WeatherViewState(loading: false, weathers: weathers, error: nil)
         presenter.weathers()
         let tableview = sut!.tableView!
         XCTAssertTrue(sut!.activityIndicator.isHidden)
@@ -53,10 +53,10 @@ private class Mock {
     internal class WeatherPresenter:WeatherPresenterProtocol {
         
         var view:WeatherViewProtocol?
-        var vm:WeatherViewModel?
+        var vs:WeatherViewState?
         
         func weathers() {
-            view?.newState(viewModel: vm!)
+            view?.newState(viewState: vs!)
         }
     }
 }

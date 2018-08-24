@@ -31,17 +31,17 @@ class WeatherViewController: UIViewController, WeatherViewProtocol {
         presenter.weathers()
     }
     
-    func newState(viewModel: WeatherViewModel) {
-        if viewModel.loading {
+    func newState(viewState: WeatherViewState) {
+        if viewState.loading {
             activityIndicator.isHidden = false
         }else{
             activityIndicator.isHidden = true
         }
-        if let weathers = viewModel.weathers {
+        if let weathers = viewState.weathers {
             self.items = weathers
             tableView.reloadData()
         }
-        if let error = viewModel.error {
+        if let error = viewState.error {
             let alert = UIAlertController(title: "Error", message: error, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
             self.present(alert, animated: true, completion: nil)

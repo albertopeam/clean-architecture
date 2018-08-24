@@ -56,7 +56,7 @@ private class Mock {
         var vs:NearbyPlacesViewState?
         
         func nearbyPlaces() {
-            view?.newState(viewModel: vs!)
+            view?.newState(viewState: vs!)
         }
     }
     

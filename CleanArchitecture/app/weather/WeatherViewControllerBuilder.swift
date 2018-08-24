@@ -9,9 +9,9 @@ import UIKit
 
 class WeatherViewControllerBuilder {
     static func assemble() -> UIViewController {
-        let viewModel = WeatherViewModel(loading:true, weathers: nil, error: nil)
+        let viewState = WeatherViewState(loading:true, weathers: nil, error: nil)
         let weather = WeatherComponent.assemble(apiKey: Constants.openWeatherApiKey, cities: ["A Coruña", "Lugo", "Ourense", "Pontevedra"])
-        let presenter = WeatherPresenter(weather: weather, viewModel: viewModel)
+        let presenter = WeatherPresenter(weather: weather, viewState: viewState)
         let controller = WeatherViewController(presenter: presenter)
         presenter.view = controller
         return controller
