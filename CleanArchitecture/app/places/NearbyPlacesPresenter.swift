@@ -11,10 +11,10 @@ protocol NearbyPlacesPresenterProtocol {
 }
 
 protocol NearbyPlacesViewProtocol {
-    func newState(viewModel:NearbyPlacesViewModel)
+    func newState(viewState:NearbyPlacesViewState)
 }
 
-struct NearbyPlacesViewModel {
+struct NearbyPlacesViewState {
     var places:Array<Place>?
     var error:String?
     var requestPermission:Bool
@@ -23,12 +23,12 @@ struct NearbyPlacesViewModel {
 class NearbyPlacesPresenter:NearbyPlacesPresenterProtocol, PlacesOutputProtocol {
     
     let places:PlacesProtocol
-    var viewModel:NearbyPlacesViewModel
+    var viewState:NearbyPlacesViewState
     var view:NearbyPlacesViewProtocol?
     
-    init(places:PlacesProtocol, viewModel:NearbyPlacesViewModel, view:NearbyPlacesViewProtocol? = nil) {
+    init(places:PlacesProtocol, viewModel:NearbyPlacesViewState, view:NearbyPlacesViewProtocol? = nil) {
         self.places = places
-        self.viewModel = viewModel
+        self.viewState = viewModel
         self.view = view
     }
     
@@ -37,49 +37,49 @@ class NearbyPlacesPresenter:NearbyPlacesPresenterProtocol, PlacesOutputProtocol 
     }
     
     func onNearby(places: Array<Place>) {
-        viewModel.error = nil
-        viewModel.requestPermission = false
-        viewModel.places = places
-        view?.newState(viewModel: viewModel)
+        viewState.error = nil
+        viewState.requestPermission = false
+        viewState.places = places
+        view?.newState(viewState: viewState)
     }
     
     func onNearbyError(error: Error) {
-        viewModel.requestPermission = false
-        viewModel.error = nil
+        viewState.requestPermission = false
+        viewState.error = nil
         switch error{
             case LocationError.noLocationPermission:
-                viewModel.requestPermission = true
+                viewState.requestPermission = true
                 break
             case LocationError.deniedLocationUsage:
-                viewModel.error = "Denied location usage"
+                viewState.error = "Denied location usage"
                 break
             case LocationError.restrictedLocationUsage:
-                viewModel.error = "Restricted location usage"
+                viewState.error = "Restricted location usage"
                 break
             case LocationError.noLocationEnabled:
-                viewModel.error = "No location enabled"
+                viewState.error = "No location enabled"
                 break
             case LocationError.noLocation:
-                viewModel.error = "No location available"
+                viewState.error = "No location available"
                 break
             case PlacesError.noNetwork:
-                viewModel.error = "No network"
+                viewState.error = "No network"
                 break
             case PlacesError.decoding:
-                viewModel.error = "Internal error"
+                viewState.error = "Internal error"
                 break
             case PlacesError.timeout:
-                viewModel.error = "Try again, timeout"
+                viewState.error = "Try again, timeout"
                 break
             case PlacesError.noPlaces:
-                viewModel.error = "No results"
+                viewState.error = "No results"
                 break
             case PlacesError.badStatus:
-                viewModel.error = "Interal problem, Google API request denied"
+                viewState.error = "Interal problem, Google API request denied"
                 break
         default:
             break
         }
-        view?.newState(viewModel: viewModel)
+        view?.newState(viewState: viewState)
     }
 }

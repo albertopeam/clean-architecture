@@ -29,7 +29,7 @@ class PlacesViewControllerUITest: XCTestCase {
         let presenter = Mock.PlacesPresenter()
         let place = Place(id: "id", placeId: "placeId", name: "name", icon: "icon", openNow: true, rating: 4.5, location: Location(latitude: 43.0, longitude: -8.0))
         let places = [place]
-        presenter.vm = NearbyPlacesViewModel(places: places, error: nil, requestPermission: false)
+        presenter.vs = NearbyPlacesViewState(places: places, error: nil, requestPermission: false)
         sut = NearbyPlacesViewController(presenter: presenter, locationManager: Mock.LocationManager())
         presenter.view = sut!
         testTool.setUp(withViewController: sut!)
@@ -53,10 +53,10 @@ private class Mock {
     internal class PlacesPresenter:NearbyPlacesPresenterProtocol {
         
         var view:NearbyPlacesViewProtocol?
-        var vm:NearbyPlacesViewModel?
+        var vs:NearbyPlacesViewState?
         
         func nearbyPlaces() {
-            view?.newState(viewModel: vm!)
+            view?.newState(viewState: vs!)
         }
     }
     

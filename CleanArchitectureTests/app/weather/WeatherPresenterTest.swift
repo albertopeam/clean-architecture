@@ -12,28 +12,28 @@ import XCTest
 class WeatherPresenterTest: XCTestCase {
     
     private var sut:WeatherPresenter?
-    private var vm:WeatherViewModel?
+    private var vs:WeatherViewState?
     private var spyView:Spy.WeatherView?
     
     override func setUp() {
         super.setUp()
         continueAfterFailure = false
-        vm = WeatherViewModel(loading: true, weathers: nil, error: nil)
+        vs = WeatherViewState(loading: true, weathers: nil, error: nil)
         spyView = Spy.WeatherView()
     }
     
     override func tearDown() {
         super.tearDown()
         sut = nil
-        vm = nil
+        vs = nil
         spyView = nil
     }
     
     func testGivenSuccessEnvWhenGetWeatherThenVMHasInstantWeatherAndNoError() {
-        sut = WeatherPresenter(weather: Mock.SuccessWeather(), viewModel:vm!, view:spyView!)
+        sut = WeatherPresenter(weather: Mock.SuccessWeather(), viewState:vs!, view:spyView!)
         sut?.weathers()
-        XCTAssertNotNil(spyView!.vm)
-        let targets = spyView!.vm!
+        XCTAssertNotNil(spyView!.vs)
+        let targets = spyView!.vs!
         XCTAssertFalse(targets.loading)
         XCTAssertNil(targets.error)
         XCTAssertNotNil(targets.weathers)
@@ -52,10 +52,10 @@ class WeatherPresenterTest: XCTestCase {
     }
     
     func testGivenSuccessEnvWhenGetWeatherThenVMHasErrorAndNoInstantWeather() {
-        sut = WeatherPresenter(weather: Mock.ErrorWeather(), viewModel:vm!, view:spyView!)
+        sut = WeatherPresenter(weather: Mock.ErrorWeather(), viewState:vs!, view:spyView!)
         sut?.weathers()
-        XCTAssertNotNil(spyView!.vm)
-        let targets = spyView!.vm!
+        XCTAssertNotNil(spyView!.vs)
+        let targets = spyView!.vs!
         XCTAssertNotNil(targets.error)
         XCTAssertNil(targets.weathers)
         let error = targets.error!
@@ -82,10 +82,10 @@ private class Mock{
 private class Spy{
     internal class WeatherView:WeatherViewProtocol{
         
-        var vm:WeatherViewModel?
+        var vs:WeatherViewState?
         
-        func newState(viewModel: WeatherViewModel) {
-            self.vm = viewModel
+        func newState(viewState: WeatherViewState) {
+            self.vs = viewState
         }
         
     }

@@ -10,7 +10,7 @@ import UIKit
 
 class NearbyPlacesViewControllerBuilder {
     static func assemble() -> UIViewController {
-        let viewModel = NearbyPlacesViewModel(places: nil, error: nil, requestPermission: false)
+        let viewModel = NearbyPlacesViewState(places: nil, error: nil, requestPermission: false)
         let places = PlacesComponent.assemble(apiKey: Constants.googleApiKey)
         let presenter = NearbyPlacesPresenter(places: places, viewModel: viewModel)
         let controller = NearbyPlacesViewController(presenter: presenter)
