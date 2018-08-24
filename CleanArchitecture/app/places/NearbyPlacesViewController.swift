@@ -40,8 +40,8 @@ class NearbyPlacesViewController: UIViewController, NearbyPlacesViewProtocol {
         presenter.nearbyPlaces()
     }
     
-    func newState(viewModel: NearbyPlacesViewModel) {
-        if let places = viewModel.places {
+    func newState(viewState: NearbyPlacesViewState) {
+        if let places = viewState.places {
             self.places = places
             var locations = Array<MKPointAnnotation>()
             for place in places {
@@ -56,12 +56,12 @@ class NearbyPlacesViewController: UIViewController, NearbyPlacesViewProtocol {
             mapView.delegate = self
             placesTableView.reloadData()
         }
-        if let error = viewModel.error {
+        if let error = viewState.error {
             let alert = UIAlertController(title: "Error", message: error, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
-        if viewModel.requestPermission {
+        if viewState.requestPermission {
             locationManager.delegate = self
             locationManager.requestWhenInUseAuthorization()
         }

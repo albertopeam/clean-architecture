@@ -12,13 +12,13 @@ import XCTest
 class PlacesPresenterTest: XCTestCase {
     
     private var sut:NearbyPlacesPresenter?
-    private var vm:NearbyPlacesViewModel?
+    private var vm:NearbyPlacesViewState?
     private var spyView:Spy.NearbyPlacesView?
     
     override func setUp() {
         super.setUp()
         continueAfterFailure = false
-        vm = NearbyPlacesViewModel(places: nil, error: nil, requestPermission: false)
+        vm = NearbyPlacesViewState(places: nil, error: nil, requestPermission: false)
         spyView = Spy.NearbyPlacesView()
     }
     
@@ -95,9 +95,9 @@ private class Mock{
 private class Spy {
     internal class NearbyPlacesView:NearbyPlacesViewProtocol {
         
-        var vm:NearbyPlacesViewModel?
+        var vm:NearbyPlacesViewState?
         
-        func newState(viewModel: NearbyPlacesViewModel) {
+        func newState(viewModel: NearbyPlacesViewState) {
             self.vm = viewModel
         }
         

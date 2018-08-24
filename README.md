@@ -3,8 +3,10 @@
 [![Build Status](https://travis-ci.org/albertopeam/clean-architecture.svg?branch=master)](https://travis-ci.org/albertopeam/clean-architecture)
 [![codecov](https://codecov.io/gh/albertopeam/clean-architecture/branch/master/graph/badge.svg)](https://codecov.io/gh/albertopeam/clean-architecture)
 [![Maintainability](https://api.codeclimate.com/v1/badges/574acc8910d2d786349b/maintainability)](https://codeclimate.com/github/albertopeam/clean-architecture/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/574acc8910d2d786349b/test_coverage)](https://codeclimate.com/github/albertopeam/clean-architecture/test_coverage)
 [![Swift Version](https://img.shields.io/badge/Swift-4.0-F16D39.svg?style=flat)](https://developer.apple.com/swift)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+<!-- TODO: pending [![Test Coverage](https://api.codeclimate.com/v1/badges/574acc8910d2d786349b/test_coverage)](https://codeclimate.com/github/albertopeam/clean-architecture/test_coverage) -->
+
  
 The intention of this repository is to show some of the more common practices when building a mobile app using clean architecture.
 
@@ -20,6 +22,7 @@ The intention of this repository is to show some of the more common practices wh
     2. [MVVM](#mvvm)
         * [View-Model](#Swift:-Observer)
         * [Widget](#Swift:-Reusing-View-Model-in-TodayExtension)
+    3. [MVP](#mvp)
 5. [Testing](#testing)
   
 ## Before start
@@ -28,7 +31,7 @@ The intention of this repository is to show some of the more common practices wh
 ```
 carthage update --platform iOS
 ```
- * To run the project you should create a file called Constants with your own Google and OpenWeather Api Key. For more [Google info](https://developers.google.com/places/web-service/search), for more [Open weather info](https://openweathermap.org/appid)
+ * To run the project you should fill the Constants with your own Google Api Key and OpenWeather Api Key. For more [Google info](https://developers.google.com/places/web-service/search), for more [Open weather info](https://openweathermap.org/appid)
 ```
     class Constants {
         static let googleApiKey = "add-your-own-key"
@@ -40,6 +43,9 @@ carthage update --platform iOS
 * app/places: shows a list of places near your current location
 * app/weather: shows the weather in a list of places.
 * app/uvindex: shows the ultraviolet index in your current location.
+
+### Extensions
+* UltravioletIndexWidget: shows the ultraviolet index in your current location on a widget.
 
 ### Testing
 * You can check the coverage on [codecov](https://codecov.io/gh/albertopeam/clean-architecture)
@@ -54,9 +60,7 @@ carthage update --platform iOS
 * Framework usage to avoid all the code to seen as public
 * View State pattern for complex UIs
 * Repository pattern
-* MVP pattern
-* Travis
-* SonarQube
+* Robots Pattern(Testing) <!-- https://academy.realm.io/posts/kau-jake-wharton-testing-robots/ -->
 
 ## Architecture
 
@@ -426,9 +430,8 @@ extension TodayViewController:NCWidgetProviding{
     * [Code: View Controller](https://github.com/albertopeam/clean-architecture/blob/master/CleanArchitecture/app/uvindex/UVIndexViewController.swift)
     * [Code: View Model](https://github.com/albertopeam/clean-architecture/blob/master/CleanArchitecture/app/uvindex/UVIndexViewModel.swift)
     * [Code: Widget](https://github.com/albertopeam/clean-architecture/blob/master/UltravioletIndexWidget/TodayViewController.swift)
-    * [Testing: View Model](https://github.com/albertopeam/clean-architecture/blob/master/CleanArchitectureTests/app/uvindex/UVIndexViewModelTest.swift)
     * [Testing: View Controller](https://github.com/albertopeam/clean-architecture/blob/master/CleanArchitectureUITests/app/uvindex/UVIndexViewControllerTest.swift)
- 
+    * [Testing: View Model](https://github.com/albertopeam/clean-architecture/blob/master/CleanArchitectureTests/app/uvindex/UVIndexViewModelTest.swift)
   
 | *PROS* | *CONS* | 
 | :---         | :---           | 
@@ -437,16 +440,220 @@ extension TodayViewController:NCWidgetProviding{
 | Respect single responsability principle |  |
 | Simplified view, it only does UI operations | |
 | Reusability of the view-model in other views | |
+| Easy to test objects with only one responsabilty | |
 
 * UML
 
      ![Alt mvvm](art/MVVM.png)
 
+### MVP(model view presenter)
+* Problem: 
+    *  Sometimes the presentation logic is coupled to the view, as result of this the view has at least two responsabilities: manipulate the view and know how to format the data.
+
+```swift
+class NearbyPlacesViewController: UIViewController, NearbyPlacesViewProtocol {
+
+    @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var placesTableView: UITableView!
+
+    ...
+    
+    func onNearby(result: Array<Place>) {
+        if let places = result {
+            var locations = Array<MKPointAnnotation>()
+            for place in places {
+                let location = MKPointAnnotation()
+                location.coordinate = CLLocationCoordinate2D(latitude: place.location.latitude, longitude: place.location.longitude)
+                location.title = place.name
+                mapView.addAnnotation(location)
+                locations.append(location)
+            }
+            mapView.removeAnnotations(mapView.annotations)
+            mapView.showAnnotations(locations, animated: true)
+            mapView.delegate = self
+            placesTableView.reloadData()
+        }else{
+            ...
+        }
+    }
+    
+    func onNearbyError(err: Error) {
+        var requestPermission = false
+        var error:String? = nil
+        switch err {
+            case LocationError.noLocationPermission:
+                requestPermission = true
+                break
+            case LocationError.deniedLocationUsage:
+                error = "Denied location usage"
+                break
+            case LocationError.restrictedLocationUsage:
+                error = "Restricted location usage"
+                break
+            case LocationError.noLocationEnabled:
+                error = "No location enabled"
+                break
+            case LocationError.noLocation:
+                error = "No location available"
+                break
+            case PlacesError.noNetwork:
+                error = "No network"
+                break
+            case PlacesError.decoding:
+                error = "Internal error"
+                break
+            case PlacesError.timeout:
+                error = "Try again, timeout"
+                break
+            case PlacesError.noPlaces:
+                error = "No results"
+                break
+            case PlacesError.badStatus:
+                error = "Interal problem, Google API request denied"
+                break
+            default:
+                break
+        }
+        if error != nil {
+            let alert = UIAlertController(title: "Error", message: error, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }else if requestPermission {
+            locationManager.delegate = self
+            locationManager.requestWhenInUseAuthorization()
+        }
+    }
+}
+
+```
+
+* Solution:
+    * Provide a mediator, the presenter. It will act as middleware between the model and the view and it will handle the presentation logic.
+
+#### Swift: View
+```swift
+class NearbyPlacesViewController: UIViewController, NearbyPlacesViewProtocol {
+
+    @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var placesTableView: UITableView!
+    @IBOutlet weak var reloadNearbyButton: UIButton!
+   
+    ...
+    
+    func newState(viewState: NearbyPlacesViewState) {
+        if let places = viewState.places {
+            self.places = places
+            var locations = Array<MKPointAnnotation>()
+            for place in places {
+                let location = MKPointAnnotation()
+                location.coordinate = CLLocationCoordinate2D(latitude: place.location.latitude, longitude: place.location.longitude)
+                location.title = place.name
+                mapView.addAnnotation(location)
+                locations.append(location)
+            }
+            mapView.removeAnnotations(mapView.annotations)
+            mapView.showAnnotations(locations, animated: true)
+            mapView.delegate = self
+            placesTableView.reloadData()
+        }
+        if let error = viewState.error {
+            let alert = UIAlertController(title: "Error", message: error, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+        if viewState.requestPermission {
+            locationManager.delegate = self
+            locationManager.requestWhenInUseAuthorization()
+        }
+    }
+}
+```
+
+#### Swift: Presenter
+```swift
+struct NearbyPlacesViewState {
+    var places:Array<Place>?
+    var error:String?
+    var requestPermission:Bool
+}
+
+class NearbyPlacesPresenter:NearbyPlacesPresenterProtocol, PlacesOutputProtocol {
+    
+    ...
+    
+    func onNearby(places: Array<Place>) {
+        viewState.error = nil
+        viewState.requestPermission = false
+        viewState.places = places
+        view?.newState(viewState: viewState)
+    }
+    
+    func onNearbyError(error: Error) {
+        viewState.requestPermission = false
+        viewState.error = nil
+        switch error {
+            case LocationError.noLocationPermission:
+                viewState.requestPermission = true
+                break
+            case LocationError.deniedLocationUsage:
+                viewState.error = "Denied location usage"
+                break
+            case LocationError.restrictedLocationUsage:
+                viewState.error = "Restricted location usage"
+                break
+            case LocationError.noLocationEnabled:
+                viewState.error = "No location enabled"
+                break
+            case LocationError.noLocation:
+                viewState.error = "No location available"
+                break
+            case PlacesError.noNetwork:
+                viewState.error = "No network"
+                break
+            case PlacesError.decoding:
+                viewState.error = "Internal error"
+                break
+            case PlacesError.timeout:
+                viewState.error = "Try again, timeout"
+                break
+            case PlacesError.noPlaces:
+                viewState.error = "No results"
+                break
+            case PlacesError.badStatus:
+                viewState.error = "Interal problem, Google API request denied"
+                break
+        default:
+            break
+        }
+        view?.newState(viewState: viewState)
+    }
+}
+```
+
+* Useful links:
+    * [Code: View Controller](https://github.com/albertopeam/clean-architecture/blob/master/CleanArchitecture/app/places/NearbyPlacesViewController.swift)
+    * [Code: Presenter](https://github.com/albertopeam/clean-architecture/blob/master/CleanArchitecture/app/places/NearbyPlacesPresenter.swift)    
+    * [Testing: View Controller](https://github.com/albertopeam/clean-architecture/blob/master/CleanArchitectureUITests/app/places/PlacesViewControllerUITest.swift)
+    * [Testing: Presenter](https://github.com/albertopeam/clean-architecture/blob/master/CleanArchitectureTests/app/places/PlacesPresenterTest.swift)
+
+* UML
+    
+    ![Alt mvvm](art/MVP.png)
+  
+| *PROS* | *CONS* | 
+| :---         | :---           | 
+| Decouple presentation logic and view | |
+| Transfer of the the state in one shot | One model more to mantain: ViewState |
+| Avoid protocol between presenter-view that has lots of methods to change the state of the view | |
+| Produce one responsability objects| |
+| Easy to test objects with only one responsabilty | |
+    
 ## Testing
 * under development
     * UNIT docu
     * UI: docu
         * pending:
+            Nimble
             KIF+Snapshot 
             https://github.com/kif-framework/KIF
             https://github.com/uber/ios-snapshot-test-case/
