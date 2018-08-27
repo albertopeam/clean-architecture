@@ -35,6 +35,10 @@
 		C33884B920A09C9800ED3D49 /* Swifter.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C3CC23F420A09C0000BA01F6 /* Swifter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C33884BB20A0A07400ED3D49 /* nearby-success.json in Resources */ = {isa = PBXBuildFile; fileRef = C33884BA20A0A07400ED3D49 /* nearby-success.json */; };
 		C33EE73D2091FB5A00712672 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33EE73C2091FB5A00712672 /* Kingfisher.framework */; };
+		C34326F221303E6100EF224B /* Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34326F121303E6100EF224B /* Async.swift */; };
+		C34326F8213046F100EF224B /* AirQualityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34326F6213046F100EF224B /* AirQualityViewController.swift */; };
+		C34326F9213046F100EF224B /* AirQualityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C34326F7213046F100EF224B /* AirQualityViewController.xib */; };
+		C34326FB21304A0B00EF224B /* Await.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34326FA21304A0B00EF224B /* Await.swift */; };
 		C343D5F920DA7F140072CE0D /* WeatherTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C343D5F720DA7F140072CE0D /* WeatherTableViewCell.swift */; };
 		C343D5FA20DA7F150072CE0D /* WeatherTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C343D5F820DA7F140072CE0D /* WeatherTableViewCell.xib */; };
 		C36A44FF21144C3D0001EE3F /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C32634F82111FDDD0023E58C /* Colors.xcassets */; };
@@ -252,6 +256,10 @@
 		C3332EF52088F0B800FF73FF /* NearbyPlaceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearbyPlaceCell.swift; sourceTree = "<group>"; };
 		C33884BA20A0A07400ED3D49 /* nearby-success.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "nearby-success.json"; sourceTree = "<group>"; };
 		C33EE73C2091FB5A00712672 /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
+		C34326F121303E6100EF224B /* Async.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Async.swift; sourceTree = "<group>"; };
+		C34326F6213046F100EF224B /* AirQualityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirQualityViewController.swift; sourceTree = "<group>"; };
+		C34326F7213046F100EF224B /* AirQualityViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AirQualityViewController.xib; sourceTree = "<group>"; };
+		C34326FA21304A0B00EF224B /* Await.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Await.swift; sourceTree = "<group>"; };
 		C343D5F720DA7F140072CE0D /* WeatherTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherTableViewCell.swift; sourceTree = "<group>"; };
 		C343D5F820DA7F140072CE0D /* WeatherTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeatherTableViewCell.xib; sourceTree = "<group>"; };
 		C36DD7822090C7A30045E114 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -429,6 +437,15 @@
 				C3332EF32088EBD700FF73FF /* NearbyPlaceCell.xib */,
 			);
 			path = places;
+			sourceTree = "<group>";
+		};
+		C34326F3213046B600EF224B /* airquality */ = {
+			isa = PBXGroup;
+			children = (
+				C34326F6213046F100EF224B /* AirQualityViewController.swift */,
+				C34326F7213046F100EF224B /* AirQualityViewController.xib */,
+			);
+			path = airquality;
 			sourceTree = "<group>";
 		};
 		C38421C62113386E0051E28B /* uvindex */ = {
@@ -667,6 +684,7 @@
 				C3332EEC2088E1E300FF73FF /* places */,
 				C3FC18DE20D962ED00393EBB /* weather */,
 				C32634D42111C0530023E58C /* uvindex */,
+				C34326F3213046B600EF224B /* airquality */,
 				C3FA42582087AF8B00B63221 /* AppDelegate.swift */,
 				C36DD7822090C7A30045E114 /* Constants.swift */,
 			);
@@ -685,6 +703,8 @@
 				C3D9D98820D14CAB004EC19A /* Promises.swift */,
 				C3D9D98C20D14D59004EC19A /* PromiseOnce.swift */,
 				C3FC18C120D9292A00393EBB /* PromiseAll.swift */,
+				C34326F121303E6100EF224B /* Async.swift */,
+				C34326FA21304A0B00EF224B /* Await.swift */,
 			);
 			path = core;
 			sourceTree = "<group>";
@@ -886,6 +906,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C3FA423D2087AEC200B63221 /* LaunchScreen.storyboard in Resources */,
+				C34326F9213046F100EF224B /* AirQualityViewController.xib in Resources */,
 				C32634F92111FDDD0023E58C /* Colors.xcassets in Resources */,
 				C3332EEE2088E43C00FF73FF /* NearbyPlacesView.xib in Resources */,
 				C3FA423A2087AEC200B63221 /* Assets.xcassets in Resources */,
@@ -1012,6 +1033,7 @@
 				C3E24B2A20A1D7420062D4E7 /* LocationManager.swift in Sources */,
 				C379400020E11483004C723B /* WeatherViewControllerBuilder.swift in Sources */,
 				C32634E22111C1510023E58C /* UVIndex.swift in Sources */,
+				C34326F221303E6100EF224B /* Async.swift in Sources */,
 				C3332EF22088E4D300FF73FF /* PlacesComponent.swift in Sources */,
 				C391460B20DA564E00013336 /* Item.swift in Sources */,
 				C3FA425B2087AF8B00B63221 /* NearbyPlacesViewController.swift in Sources */,
@@ -1022,10 +1044,12 @@
 				C3FA42642087AFEC00B63221 /* LocationWorker.swift in Sources */,
 				C3FA425A2087AF8B00B63221 /* AppDelegate.swift in Sources */,
 				C3D9D98920D14CAB004EC19A /* Promises.swift in Sources */,
+				C34326F8213046F100EF224B /* AirQualityViewController.swift in Sources */,
 				C3D9D98D20D14D59004EC19A /* PromiseOnce.swift in Sources */,
 				C343D5F920DA7F140072CE0D /* WeatherTableViewCell.swift in Sources */,
 				C3332EF62088F0B800FF73FF /* NearbyPlaceCell.swift in Sources */,
 				C32634E82111C7500023E58C /* LocationError.swift in Sources */,
+				C34326FB21304A0B00EF224B /* Await.swift in Sources */,
 				C3FC18D620D946B000393EBB /* Weather.swift in Sources */,
 				C3DA814F208F419500AF9ABE /* main.swift in Sources */,
 				C32634D72111C08F0023E58C /* UVIndexViewController.swift in Sources */,

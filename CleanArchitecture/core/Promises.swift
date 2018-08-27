@@ -7,6 +7,10 @@
 //
 
 public class Promises {
+    static func once(worker:Worker) -> PromiseProtocol {
+        return PromiseOnce(worker: worker, params: nil)
+    }
+    
     static func once(worker:Worker, params:Any?) -> PromiseProtocol {
         return PromiseOnce(worker: worker, params: params)
     }
