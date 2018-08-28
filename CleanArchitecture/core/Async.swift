@@ -9,18 +9,17 @@
 //TODO: promises in main thread won't work. Please create a way to handle in a RunLoop or whatever,,, especial case is LocationManager.
 import Foundation
 
-public struct Queue {
+struct Queue {
     static let async = DispatchQueue(label: "com.github.albertopeam.async-queue", attributes: .concurrent)
-    //static let await = DispatchQueue(label: "com.github.albertopeam.await-queue", attributes: .concurrent)
     static let main = DispatchQueue.main
 }
 
-func async(body: @escaping () throws -> Any) -> Async {
-    let asyncOperation = AsyncOperation()
+func async<T>(body: @escaping () throws -> T) -> Async<T> {
+    let asyncOperation = Async<T>()
     Queue.main.async {
         Queue.async.async {
             do{
-                let result = try body()
+                let result:T = try body()
                 Queue.main.async {
                     asyncOperation.successBlock?(result)
                 }
@@ -34,19 +33,14 @@ func async(body: @escaping () throws -> Any) -> Async {
     return asyncOperation
 }
 
-protocol Async {
-    typealias Result = (Any) -> Void
-    typealias Reject = (Error) -> Void
-    func success(result:@escaping Result) -> Async
-    func error(reject:@escaping Reject)
-}
+class Async<T> {
 
-class AsyncOperation: Async {
-    typealias T = Any
-    var successBlock:Result?
-    var errorBlock:Reject?
+    typealias Result = (T) -> Void
+    typealias Reject = (Error) -> Void
+    fileprivate var successBlock:Result?
+    fileprivate var errorBlock:Reject?
     
-    func success(result: @escaping (Any) -> Void) -> Async {
+    func success(result: @escaping Async.Result) -> Async<T> {
         self.successBlock = result
         return self
     }

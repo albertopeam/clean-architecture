@@ -32,7 +32,7 @@ class ItemsTableViewController: UITableViewController {
         items = [Item(name: "Nearby places", target: NearbyPlacesViewControllerBuilder.assemble()),
                  Item(name: "Weather", target: WeatherViewControllerBuilder.assemble()),
                  Item(name: "UV index", target: UVIndexViewControllerBuilder.assemble()),
-                 Item(name: "Air quality", target: AirQualityViewController())]
+                 Item(name: "Air quality index", target: AirQualityViewControllerBuilder.assemble())]
         self.tableView.reloadData()
     }
 

@@ -47,7 +47,6 @@ class WeatherViewController: UIViewController, WeatherViewProtocol {
             self.present(alert, animated: true, completion: nil)
         }
     }
-
 }
 
 extension WeatherViewController:UITableViewDataSource{

@@ -10,6 +10,6 @@ import Foundation
 
 class JsonDecoder<OUT : Codable> {
     static func decode(data:Data) -> OUT? {
-        return try? JSONDecoder().decode(OUT.self, from:data)
+        return try! JSONDecoder().decode(OUT.self, from:data)
     }
 }

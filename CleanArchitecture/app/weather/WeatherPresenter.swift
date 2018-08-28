@@ -15,9 +15,9 @@ protocol WeatherPresenterProtocol {
 }
 
 struct WeatherViewState {
-    var loading:Bool
-    var weathers:Array<InstantWeather>?
-    var error:String?
+    let loading:Bool
+    let weathers:Array<InstantWeather>?
+    let error:String?
 }
 
 class WeatherPresenter: WeatherPresenterProtocol, WeatherOutputProtocol {
@@ -32,22 +32,16 @@ class WeatherPresenter: WeatherPresenterProtocol, WeatherOutputProtocol {
         self.view = view
     }
     
-    func weathers() {
+    func weathers() {        
         weather.current(output: self)
     }
     
     func onWeather(items: Array<InstantWeather>) {
-        viewState.loading = false
-        viewState.weathers = items
-        viewState.error = nil
-        view?.newState(viewState: viewState)
+        view?.newState(viewState: WeatherViewState(loading: false, weathers: items, error: nil))
     }
     
     func onWeatherError(error: Error) {
-        viewState.loading = false
-        viewState.weathers = nil
-        viewState.error = error.domain
-        view?.newState(viewState: viewState)
+        view?.newState(viewState: WeatherViewState(loading: false, weathers: nil, error: error.domain))
     }
 
 }
