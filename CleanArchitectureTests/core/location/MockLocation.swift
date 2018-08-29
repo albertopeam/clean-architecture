@@ -13,8 +13,16 @@ class MockLocation {
             self.location = location
         }
         func run(params: Any?, resolve: @escaping ResolvableWorker, reject: @escaping RejectableWorker) throws {
-            resolve(self, location
-            )
+            resolve(self, location)
+        }
+    }
+    class Err: Worker {
+        let error:Error
+        init(error:Error) {
+            self.error = error
+        }
+        func run(params: Any?, resolve: @escaping ResolvableWorker, reject: @escaping RejectableWorker) throws {
+            reject(self, error)
         }
     }
 }

@@ -37,7 +37,7 @@ class ItemsTableViewControllerNavigationUITest: XCTestCase {
             if type(of: vcs[1]) != type(of: sut.items[row].target) {
                 XCTFail("ViewController is not the expected type")
             }
-            navigation.popViewController(animated: false)
+            _ = navigation.popViewController(animated: false)
         }
     }
 }

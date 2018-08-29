@@ -38,4 +38,16 @@ class MockWorkers {
     class NoAction:Worker{
         func run(params: Any?, resolve: @escaping ResolvableWorker, reject: @escaping RejectableWorker) throws {}
     }
+    class SuccessWithValue:Worker {
+        
+        let value:Any
+        
+        init(value:Any) {
+            self.value = value
+        }
+        
+        func run(params: Any?, resolve: @escaping ResolvableWorker, reject: @escaping RejectableWorker) throws {
+            resolve(self, value)
+        }
+    }
 }

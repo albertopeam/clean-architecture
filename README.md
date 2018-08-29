@@ -483,34 +483,24 @@ class NearbyPlacesViewController: UIViewController, NearbyPlacesViewProtocol {
         switch err {
             case LocationError.noLocationPermission:
                 requestPermission = true
-                break
             case LocationError.deniedLocationUsage:
                 error = "Denied location usage"
-                break
             case LocationError.restrictedLocationUsage:
                 error = "Restricted location usage"
-                break
             case LocationError.noLocationEnabled:
                 error = "No location enabled"
-                break
             case LocationError.noLocation:
                 error = "No location available"
-                break
             case PlacesError.noNetwork:
                 error = "No network"
-                break
             case PlacesError.decoding:
                 error = "Internal error"
-                break
             case PlacesError.timeout:
                 error = "Try again, timeout"
-                break
             case PlacesError.noPlaces:
                 error = "No results"
-                break
             case PlacesError.badStatus:
                 error = "Interal problem, Google API request denied"
-                break
             default:
                 break
         }
@@ -572,9 +562,9 @@ class NearbyPlacesViewController: UIViewController, NearbyPlacesViewProtocol {
 #### Swift: Presenter
 ```swift
 struct NearbyPlacesViewState {
-    var places:Array<Place>?
-    var error:String?
-    var requestPermission:Bool
+    let places:Array<Place>?
+    let error:String?
+    let requestPermission:Bool
 }
 
 class NearbyPlacesPresenter:NearbyPlacesPresenterProtocol, PlacesOutputProtocol {
@@ -582,50 +572,39 @@ class NearbyPlacesPresenter:NearbyPlacesPresenterProtocol, PlacesOutputProtocol 
     ...
     
     func onNearby(places: Array<Place>) {
-        viewState.error = nil
-        viewState.requestPermission = false
-        viewState.places = places
-        view?.newState(viewState: viewState)
+        view?.newState(viewState: NearbyPlacesViewState(places: places, error: nil, requestPermission: false))
     }
     
     func onNearbyError(error: Error) {
-        viewState.requestPermission = false
-        viewState.error = nil
-        switch error {
-            case LocationError.noLocationPermission:
-                viewState.requestPermission = true
-                break
-            case LocationError.deniedLocationUsage:
-                viewState.error = "Denied location usage"
-                break
-            case LocationError.restrictedLocationUsage:
-                viewState.error = "Restricted location usage"
-                break
-            case LocationError.noLocationEnabled:
-                viewState.error = "No location enabled"
-                break
-            case LocationError.noLocation:
-                viewState.error = "No location available"
-                break
-            case PlacesError.noNetwork:
-                viewState.error = "No network"
-                break
-            case PlacesError.decoding:
-                viewState.error = "Internal error"
-                break
-            case PlacesError.timeout:
-                viewState.error = "Try again, timeout"
-                break
-            case PlacesError.noPlaces:
-                viewState.error = "No results"
-                break
-            case PlacesError.badStatus:
-                viewState.error = "Interal problem, Google API request denied"
-                break
+        let parsedError = parseError(error: error)
+        view?.newState(viewState: NearbyPlacesViewState(places: nil, error: parsedError.error, requestPermission: parsedError.reqPermission))
+    }
+    
+    func parseError(error:Error) -> (reqPermission:Bool, error:String?) {
+        switch error{
+        case LocationError.noLocationPermission:
+            return (true, nil)
+        case LocationError.deniedLocationUsage:
+            return (false, "Denied location usage")
+        case LocationError.restrictedLocationUsage:
+            return (false, "Restricted location usage")
+        case LocationError.noLocationEnabled:
+            return (false, "No location enabled")
+        case LocationError.noLocation:
+            return (false, "No location available")
+        case PlacesError.noNetwork:
+            return (false, "No network")
+        case PlacesError.decoding:
+            return (false, "Internal error")
+        case PlacesError.timeout:
+            return (false, "Try again, timeout")
+        case PlacesError.noPlaces:
+            return (false, "No results")
+        case PlacesError.badStatus:
+            return (false, "Interal problem, Google API request denied")
         default:
-            break
+            return (false, "Unkown error")
         }
-        view?.newState(viewState: viewState)
     }
 }
 ```
@@ -644,8 +623,8 @@ class NearbyPlacesPresenter:NearbyPlacesPresenterProtocol, PlacesOutputProtocol 
 | :---         | :---           | 
 | Decouple presentation logic and view | |
 | Transfer of the the state in one shot | One model more to mantain: ViewState |
-| Avoid protocol between presenter-view that has lots of methods to change the state of the view | |
-| Produce one responsability objects| |
+| Using a ViewState model we can avoid long API interfaces between presenter and view that do micro changes in the state of the view | |
+| Produce one responsability object | |
 | Easy to test objects with only one responsabilty | |
     
 ## Testing

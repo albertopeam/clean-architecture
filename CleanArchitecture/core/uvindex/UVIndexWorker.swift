@@ -20,7 +20,7 @@ class UVIndexWorker: Worker {
         let location:Location = params as! Location
         self.url = url.replacingOccurrences(of: "{{lat}}", with: "\(location.latitude)")
         self.url = url.replacingOccurrences(of: "{{lon}}", with: "\(location.longitude)")
-        let targetUrl = URL(string: self.url);
+        let targetUrl = URL(string: self.url)
         URLSession.shared.dataTask(with: targetUrl!) { (data, response, error) in
             if response == nil || (response as! HTTPURLResponse).statusCode > 299 {
                 self.rejectIt(reject: reject, error: UVIndexError.other)
@@ -46,19 +46,6 @@ class UVIndexWorker: Worker {
             }
         }.resume()
     }
-
-    private func rejectIt(reject: @escaping RejectableWorker, error:Error) {
-        DispatchQueue.main.sync {
-            reject(self, error)
-        }
-    }
-    
-    private func resolveIt(resolve: @escaping ResolvableWorker, data:Any) {
-        DispatchQueue.main.sync {
-            resolve(self, data)
-        }
-    }
-
 }
 
 private struct CloudUltravioletIndex:Codable{

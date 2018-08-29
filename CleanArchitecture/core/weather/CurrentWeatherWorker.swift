@@ -51,20 +51,6 @@ class CurrentWeatherWorker:NSObject, Worker {
             }
         }.resume()
     }
-    
-    
-    private func rejectIt(reject: @escaping RejectableWorker, error:Error) {
-        DispatchQueue.main.sync {
-            reject(self, error)
-        }
-    }
-    
-    private func resolveIt(resolve: @escaping ResolvableWorker, data:Any) {
-        DispatchQueue.main.sync {
-            resolve(self, data)
-        }
-    }
-    
 }
 
 struct CloudResponse:Codable  {
