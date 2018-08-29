@@ -34,6 +34,7 @@
 		C31F64E62136A33600539450 /* AirQualityTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31F64E52136A33600539450 /* AirQualityTest.swift */; };
 		C31F64E82136A34200539450 /* AirQualityEntityTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31F64E72136A34200539450 /* AirQualityEntityTest.swift */; };
 		C31F64EA2136B8AD00539450 /* airquality-success.json in Resources */ = {isa = PBXBuildFile; fileRef = C31F64E92136B8AD00539450 /* airquality-success.json */; };
+		C31F64EC2136DED300539450 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31F64EB2136DED300539450 /* UIViewController.swift */; };
 		C32634D72111C08F0023E58C /* UVIndexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32634D52111C08F0023E58C /* UVIndexViewController.swift */; };
 		C32634D82111C08F0023E58C /* UVIndexViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C32634D62111C08F0023E58C /* UVIndexViewController.xib */; };
 		C32634DA2111C0A10023E58C /* UVIndexViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32634D92111C0A10023E58C /* UVIndexViewModel.swift */; };
@@ -272,6 +273,7 @@
 		C31F64E52136A33600539450 /* AirQualityTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirQualityTest.swift; sourceTree = "<group>"; };
 		C31F64E72136A34200539450 /* AirQualityEntityTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirQualityEntityTest.swift; sourceTree = "<group>"; };
 		C31F64E92136B8AD00539450 /* airquality-success.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "airquality-success.json"; sourceTree = "<group>"; };
+		C31F64EB2136DED300539450 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		C32634D52111C08F0023E58C /* UVIndexViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UVIndexViewController.swift; sourceTree = "<group>"; };
 		C32634D62111C08F0023E58C /* UVIndexViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UVIndexViewController.xib; sourceTree = "<group>"; };
 		C32634D92111C0A10023E58C /* UVIndexViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UVIndexViewModel.swift; sourceTree = "<group>"; };
@@ -765,6 +767,7 @@
 				C3FC18DE20D962ED00393EBB /* weather */,
 				C32634D42111C0530023E58C /* uvindex */,
 				C34326F3213046B600EF224B /* airquality */,
+				C31F64EB2136DED300539450 /* UIViewController.swift */,
 				C3FA42582087AF8B00B63221 /* AppDelegate.swift */,
 				C36DD7822090C7A30045E114 /* Constants.swift */,
 			);
@@ -1134,6 +1137,7 @@
 				C374D34B213401EC009B9A7D /* AirQuality.swift in Sources */,
 				C3FA42672087B04200B63221 /* Places.swift in Sources */,
 				C36DD7832090C7A30045E114 /* Constants.swift in Sources */,
+				C31F64EC2136DED300539450 /* UIViewController.swift in Sources */,
 				C3FA42642087AFEC00B63221 /* LocationWorker.swift in Sources */,
 				C3FA425A2087AF8B00B63221 /* AppDelegate.swift in Sources */,
 				C3D9D98920D14CAB004EC19A /* Promises.swift in Sources */,

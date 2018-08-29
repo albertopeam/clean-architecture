@@ -57,9 +57,7 @@ class NearbyPlacesViewController: UIViewController, NearbyPlacesViewProtocol {
             placesTableView.reloadData()
         }
         if let error = viewState.error {
-            let alert = UIAlertController(title: "Error", message: error, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
+            presentAlert(title: "Error", message: error, button: "Ok")
         }
         if viewState.requestPermission {
             locationManager.delegate = self

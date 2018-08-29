@@ -53,18 +53,8 @@ class UVIndexViewModel:UVIndexViewModelProtocol, UVIndexOutputProtocol {
     
     func onUVIndex(ultravioletIndex: UltravioletIndex) {
         viewStateObservable.value = .success
-        let date = Date(timeIntervalSince1970:Double(ultravioletIndex.timestamp))
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .full
-        dateFormatter.timeStyle = .medium
-        dateFormatter.locale = Locale.current
-        dateFormatter.timeZone = TimeZone.init(identifier: "UTC")
-        dateObservable.value = dateFormatter.string(from: date)
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .decimal
-        formatter.maximumFractionDigits = 1
-        formatter.locale = Locale(identifier: Locale.current.identifier)
-        uvIndexObservable.value = formatter.string(for: ultravioletIndex.uvIndex)!
+        dateObservable.value = formatDate(timestamp: ultravioletIndex.timestamp)
+        uvIndexObservable.value = formatNumber(number: ultravioletIndex.uvIndex)
         var description = "Unknown"
         var color = "Black"
         if ultravioletIndex.uvIndex >= 0 && ultravioletIndex.uvIndex < 3 {
@@ -86,6 +76,24 @@ class UVIndexViewModel:UVIndexViewModelProtocol, UVIndexOutputProtocol {
         descriptionObservable.value = description        
         uvIndexColorObservable.value = color
         locationObservable.value = ultravioletIndex.location
+    }
+    
+    private func formatDate(timestamp:Int) -> String {
+        let date = Date(timeIntervalSince1970:Double(timestamp))
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .full
+        dateFormatter.timeStyle = .medium
+        dateFormatter.locale = Locale.current
+        dateFormatter.timeZone = TimeZone.init(identifier: "UTC")
+        return dateFormatter.string(from: date)
+    }
+    
+    private func formatNumber(number:Double) -> String {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.maximumFractionDigits = 1
+        formatter.locale = Locale(identifier: Locale.current.identifier)
+        return formatter.string(for: number)!
     }
     
     func onUVIndexError(error: Error) {
