@@ -9,11 +9,6 @@
 import UIKit
 import CoreLocation
 
-//TODO: promise in main thread, pe LocationManager in main, it could not work
-//TODO: generics
-//TODO: remove try! from await, it should be captured by async block
-//TODO: async should be 'ínvisible', if possible
-
 class AirQualityViewController: UIViewController, AirQualityViewProtocol {
     
     @IBOutlet weak var no2Label: UILabel!
