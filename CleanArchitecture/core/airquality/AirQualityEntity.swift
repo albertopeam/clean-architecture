@@ -9,17 +9,13 @@ import Foundation
 
 class AirQualityEntity {
     
-    private let airQualityDatas:Array<AirQualityData>
     private let no2Matrix = [(min:0,max:50, value: AQIName.vl), (min:50, max:100, value: AQIName.l), (min:100, max:200, value: AQIName.m), (min:200, max:400, value: AQIName.h), (min:400, max:Int.max, value: AQIName.vh)]
     private let o3Matrix = [(min:0,max:60, value: AQIName.vl), (min:60, max:120, value: AQIName.l), (min:120, max:180, value: AQIName.m), (min:180, max:240, value: AQIName.h), (min:240, max:Int.max, value: AQIName.vh)]
     private let pm10Matrix = [(min:0,max:25, value: AQIName.vl), (min:25, max:50, value: AQIName.l), (min:50, max:90, value: AQIName.m), (min:90, max:180, value: AQIName.h), (min:180, max:Int.max, value: AQIName.vh)]
     private let pm2_5Matrix = [(min:0,max:15, value: AQIName.vl), (min:15, max:30, value: AQIName.l), (min:30, max:55, value: AQIName.m), (min:55, max:110, value: AQIName.h), (min:110, max:Int.max, value: AQIName.vh)]
     
-    init(airQualityDatas:Array<AirQualityData>) {
-        self.airQualityDatas = airQualityDatas
-    }
-    
-    func process() -> AirQualityResult {
+
+    func process(airQualityDatas: Array<AirQualityData>) -> AirQualityResult {
         let no2 = airQualityDatas.first { $0.type == "no2" }
         let o3 = airQualityDatas.first { $0.type == "o3" }
         let pm10 = airQualityDatas.first { $0.type == "pm10" }

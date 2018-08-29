@@ -22,17 +22,17 @@ class AirQualityWorker: Worker {
         let targetUrl = URL(string: self.url)
         URLSession.shared.dataTask(with: targetUrl!) { (data, response, error) in
             if response == nil || (response as! HTTPURLResponse).statusCode > 299 {
-                self.rejectIt(reject: reject, error: UVIndexError.other)
+                self.rejectIt(reject: reject, error: AirQualityError.other)
             } else if error != nil {
                 switch error!.code {
                 case NSURLErrorNotConnectedToInternet:
-                    self.rejectIt(reject: reject, error: UVIndexError.noNetwork)
+                    self.rejectIt(reject: reject, error: AirQualityError.noNetwork)
                     break
                 case NSURLErrorTimedOut:
-                    self.rejectIt(reject: reject, error: UVIndexError.timeout)
+                    self.rejectIt(reject: reject, error: AirQualityError.timeout)
                     break
                 default:
-                    self.rejectIt(reject: reject, error: UVIndexError.other)
+                    self.rejectIt(reject: reject, error: AirQualityError.other)
                 }
             } else {
                 let response = JsonDecoder<Welcome>.decode(data: data!)
@@ -42,7 +42,7 @@ class AirQualityWorker: Worker {
                     })
                     self.resolveIt(resolve: resolve, data: airQualityDatas.first!)
                 }else{
-                    self.rejectIt(reject: reject, error: UVIndexError.decoding)
+                    self.rejectIt(reject: reject, error: AirQualityError.decoding)
                 }
             }
             }.resume()

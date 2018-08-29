@@ -17,7 +17,8 @@ class AirQualityComponent {
             airQualityWorkers.append(airQualityWorker)
         }
         let locationWorker = LocationWorker()
-        return AirQuality(locationWorker: locationWorker, airQualityWorkers: airQualityWorkers)
+        let airQualityEntity = AirQualityEntity()
+        return AirQuality(locationWorker: locationWorker, airQualityWorkers: airQualityWorkers, airQualityEntity: airQualityEntity)
     }
 }
 
@@ -28,7 +29,7 @@ struct AirQualityData {
     let measure:Measure
 }
 
-struct AirQualityResult {
+struct AirQualityResult:Equatable {
     let location:Location
     let date:Date
     let aqi:AQIName
@@ -36,11 +37,23 @@ struct AirQualityResult {
     let o3:Measure
     let pm10:Measure
     let pm2_5:Measure
+    static func == (lhs: AirQualityResult, rhs: AirQualityResult) -> Bool {
+        return lhs.location == rhs.location &&
+            lhs.date == rhs.date &&
+            lhs.aqi == rhs.aqi &&
+            lhs.no2 == rhs.no2 &&
+            lhs.o3 == rhs.o3 &&
+            lhs.pm10 == rhs.pm10 &&
+            lhs.pm2_5 == rhs.pm2_5;
+    }
 }
 
 struct Measure {
     let value:Double
     let unit:String
+    static func == (lhs: Measure, rhs: Measure) -> Bool {
+        return lhs.value == rhs.value && lhs.unit == rhs.unit
+    }
 }
 
 enum AQIName:Int {
@@ -63,20 +76,21 @@ protocol AirQualityOutputProtocol {
 
 class AirQuality:AirQualityProtocol {
     
-    private let locationWorker:LocationWorker
+    private let locationWorker:Worker
     private let airQualityWorkers:Array<Worker>
+    private let airQualityEntity:AirQualityEntity
     
-    init(locationWorker:LocationWorker, airQualityWorkers:Array<Worker>) {
+    init(locationWorker:Worker, airQualityWorkers:Array<Worker>, airQualityEntity:AirQualityEntity) {
         self.locationWorker = locationWorker
         self.airQualityWorkers = airQualityWorkers
+        self.airQualityEntity = airQualityEntity
     }
     
     func getAirQuality(output:AirQualityOutputProtocol) {
         async {
             let location = try await(promise: Promises.once(worker: self.locationWorker)) as! Location
             let airQualityDatas:Array<AirQualityData> = try await(promise: Promises.all(workers: self.airQualityWorkers, params: location)) as! Array<AirQualityData>
-            let airQualityEntity = AirQualityEntity(airQualityDatas: airQualityDatas)
-            return airQualityEntity.process()
+            return self.airQualityEntity.process(airQualityDatas: airQualityDatas)
         }.success { (airQualityResult) in
             output.onGetAirQuality(airQuality: airQualityResult)
         }.error { (error) in

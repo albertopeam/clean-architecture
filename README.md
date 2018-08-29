@@ -623,8 +623,8 @@ class NearbyPlacesPresenter:NearbyPlacesPresenterProtocol, PlacesOutputProtocol 
 | :---         | :---           | 
 | Decouple presentation logic and view | |
 | Transfer of the the state in one shot | One model more to mantain: ViewState |
-| Avoid protocol between presenter-view that has lots of methods to change the state of the view | |
-| Produce one responsability objects| |
+| Using a ViewState model we can avoid long API interfaces between presenter and view that do micro changes in the state of the view | |
+| Produce one responsability object | |
 | Easy to test objects with only one responsabilty | |
     
 ## Testing
