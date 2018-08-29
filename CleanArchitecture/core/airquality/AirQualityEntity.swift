@@ -31,6 +31,6 @@ class AirQualityEntity {
         let aqiName = [no2AQIName, o3AQIName, pm10AQIName, pm25AQIName].sorted { $0.rawValue < $1.rawValue }.last!
         let latitude = (no2!.location.latitude + o3!.location.latitude + pm10!.location.latitude + pm2_5!.location.latitude)/4
         let longitude = (no2!.location.longitude + o3!.location.longitude + pm10!.location.longitude + pm2_5!.location.longitude)/4
-        return AirQualityResult(location: Location(latitude: latitude, longitude: longitude), date: Date(), aqi:aqiName, no2:no2!.measure , o3: o3!.measure, pm10: pm10!.measure, pm25: pm2_5!.measure)
+        return AirQualityResult(location: Location(latitude: latitude, longitude: longitude), date: Date(), aqi:aqiName, no2:no2!.measure , o3: o3!.measure, pm10: pm10!.measure, pm2_5: pm2_5!.measure)
     }
 }

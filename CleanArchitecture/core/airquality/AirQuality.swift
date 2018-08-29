@@ -35,7 +35,7 @@ struct AirQualityResult {
     let no2:Measure
     let o3:Measure
     let pm10:Measure
-    let pm25:Measure
+    let pm2_5:Measure
 }
 
 struct Measure {

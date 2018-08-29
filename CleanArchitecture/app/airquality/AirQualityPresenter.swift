@@ -59,7 +59,7 @@ class AirQualityPresenter:AirQualityPresenterProtocol, AirQualityOutputProtocol 
         let formatter = DateFormatter()
         formatter.dateFormat = "dd.MM.yyyy hh:mm"
         let parsedResponse = parseResponse(airQuality: airQuality)
-        let aqiViewModel = AirQualityResultViewModel(latitude: airQuality.location.latitude, longitude: airQuality.location.longitude, date: formatter.string(from: airQuality.date), aqi: "AQI name: \(parsedResponse.description)", aqiColor: parsedResponse.color, no2: "NO2: \(airQuality.no2.value) \(airQuality.no2.unit)", o3: "O3: \(airQuality.o3.value) \(airQuality.o3.unit)", pm10: "PM10: \(airQuality.pm10.value) \(airQuality.pm10.unit)", pm2_5: "PM2.5: \(airQuality.pm25.value) \(airQuality.pm25.unit)")
+        let aqiViewModel = AirQualityResultViewModel(latitude: airQuality.location.latitude, longitude: airQuality.location.longitude, date: formatter.string(from: airQuality.date), aqi: "AQI name: \(parsedResponse.description)", aqiColor: parsedResponse.color, no2: "NO2: \(airQuality.no2.value) \(airQuality.no2.unit)", o3: "O3: \(airQuality.o3.value) \(airQuality.o3.unit)", pm10: "PM10: \(airQuality.pm10.value) \(airQuality.pm10.unit)", pm2_5: "PM2.5: \(airQuality.pm2_5.value) \(airQuality.pm2_5.unit)")
         view?.newState(airQualityViewState: AirQualityViewState(status: .success, airQuality: aqiViewModel, error: nil, reqPermission: false))
     }
     
