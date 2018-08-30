@@ -37,7 +37,7 @@ class UVIndexTest: XCTestCase {
         spy = SpyUVIndex.Output(expectation: expectation)
         sut = UVIndex(locationWorker: locationWorker, uvIndexWorker: uvIndexWorker)
         sut!.UVIndex(output: spy!)
-        wait(for: [expectation], timeout: 0.1)
+        wait(for: [expectation], timeout: TestConstants.timeout)
         XCTAssertNil(spy!.error)
         XCTAssertEqual(spy!.ultravioletIndex!.date, uvIndex.date)
         XCTAssertEqual(spy!.ultravioletIndex!.timestamp, uvIndex.timestamp)
@@ -54,7 +54,7 @@ class UVIndexTest: XCTestCase {
         let uvIndexWorker = MockUVIndex.Errored(error: error)
         sut = UVIndex(locationWorker: locationWorker, uvIndexWorker: uvIndexWorker)
         sut!.UVIndex(output: spy!)
-        wait(for: [expectation], timeout: 0.1)
+        wait(for: [expectation], timeout: TestConstants.timeout)
         XCTAssertNil(spy!.ultravioletIndex)
         XCTAssertEqual(spy!.error?.code, error.code)
     }

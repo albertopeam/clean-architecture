@@ -39,7 +39,7 @@ class AirQualityTest: XCTestCase {
         let result = AirQualityResult(location: mockLocation, date: Date(), aqi: .vl, no2: mockNO2Measure, o3: mockO3Measure, pm10: mockPM10Measure, pm2_5: mockPM2_5Measure)
         sut = AirQuality(locationWorker: MockLocation.Success(location: mockLocation), airQualityWorkers: [MockWorkers.SuccessWithValue(value: mockNO2), MockWorkers.SuccessWithValue(value: mockO3), MockWorkers.SuccessWithValue(value: mockPM10), MockWorkers.SuccessWithValue(value: mockPM25)], airQualityEntity: MockAirQualityEntity(result: result))
         sut!.getAirQuality(output: spy!)
-        wait(for: [spy!.expectation], timeout: 1)
+        wait(for: [spy!.expectation], timeout: TestConstants.timeout)
         XCTAssertNotNil(spy!.airQualityResult)
         XCTAssertEqual(spy!.airQualityResult!, result)
     }
@@ -49,7 +49,7 @@ class AirQualityTest: XCTestCase {
         spy = Spy.AirQualityOutput(expectation: XCTestExpectation(description: "testGivenErrorEnvironmentWhenGetAirQualityThenMatchError"))
         sut = AirQuality(locationWorker: MockLocation.Err(error: mockError), airQualityWorkers: [], airQualityEntity: MockAirQualityEntity(result: nil))
         sut!.getAirQuality(output: spy!)
-        wait(for: [spy!.expectation], timeout: 1)
+        wait(for: [spy!.expectation], timeout: TestConstants.timeout)
         XCTAssertNil(spy!.airQualityResult)
         XCTAssertNotNil(spy!.error)
         XCTAssertEqual(spy!.error!.code,  mockError.code)

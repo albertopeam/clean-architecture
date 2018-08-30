@@ -30,7 +30,7 @@ class PlacesTest: XCTestCase {
         let expectation = XCTestExpectation(description: "testGivenNoLocationPermissionWhenGetNearbyThrowError")
         sut = Places(locationWorker:MockNoLocationPermissionWork(expectation: expectation), placesGateway:MockSuccessPlacesWork(expectation: XCTestExpectation(description: "not used expectation")))
         sut!.nearby(output: spy!)
-        wait(for: [expectation], timeout: 0.1)
+        wait(for: [expectation], timeout: TestConstants.timeout)
         XCTAssertNil(spy!.places)
         XCTAssertNotNil(spy!.error!)
         if case LocationError.noLocationPermission = spy!.error! {
@@ -45,7 +45,7 @@ class PlacesTest: XCTestCase {
         let expectationNearby = XCTestExpectation(description: "testGivenNoLocationPermissionWhenGetNearbyThrowError - nearby")
         sut = Places(locationWorker:MockSuccessLocationWork(expectation: expectationLocation), placesGateway:MockSuccessPlacesWork(expectation: expectationNearby))
         sut!.nearby(output: spy!)
-        wait(for: [expectationLocation, expectationNearby], timeout: 0.1)
+        wait(for: [expectationLocation, expectationNearby], timeout: TestConstants.timeout)
         XCTAssertNil(spy!.error)
         XCTAssertNotNil(spy!.places)
         XCTAssertEqual(spy?.places?.count, 1)

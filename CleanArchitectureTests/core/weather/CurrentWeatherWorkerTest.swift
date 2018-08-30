@@ -44,7 +44,7 @@ class CurrentWeatherWorkerTest: NetworkTestCase {
         }) { (worker, error) in
             XCTFail("testGivenSuccessEnvWhenGetWeatherThenMatchResult rejected")
         }
-        wait(for: [expectation], timeout: 1)
+        wait(for: [expectation], timeout: TestConstants.timeout)
     }
     
     func testGivenErrorEnvWhenGetWeatherThenMatchError() throws {
@@ -59,6 +59,6 @@ class CurrentWeatherWorkerTest: NetworkTestCase {
             XCTAssertEqual(error.code, WeatherError.other.code)
             expectation.fulfill()
         }
-        wait(for: [expectation], timeout: 1)
+        wait(for: [expectation], timeout: TestConstants.timeout)
     }
 }

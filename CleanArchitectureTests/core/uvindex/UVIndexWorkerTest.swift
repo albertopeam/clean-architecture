@@ -41,7 +41,7 @@ class UVIndexWorkerTest: NetworkTestCase {
         }, reject: { (worker, error) in
             XCTFail("testGivenSuccessServerWhenGetUVIndexThenMatchParseIsCorrect rejected")
         })
-        wait(for: [expectation], timeout: 1)
+        wait(for: [expectation], timeout: TestConstants.timeout)
     }
     
     func testGivenNetworkErrorWhenGetUVIndexThenMatchReject() throws {
@@ -56,6 +56,6 @@ class UVIndexWorkerTest: NetworkTestCase {
             XCTAssertTrue(error.code == UVIndexError.other.code)
             expectation.fulfill()
         })
-        wait(for: [expectation], timeout: 1)
+        wait(for: [expectation], timeout: TestConstants.timeout)
     }
 }

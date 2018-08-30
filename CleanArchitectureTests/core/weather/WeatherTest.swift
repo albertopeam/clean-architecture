@@ -31,7 +31,7 @@ class WeatherTest: XCTestCase {
         spy = SpyWeather(expectation: expectation)
         sut = Weather(currentWeatherWorkers: [worker])
         sut!.current(output: spy!)
-        wait(for: [expectation], timeout: 0.1)
+        wait(for: [expectation], timeout: TestConstants.timeout)
         XCTAssertEqual(spy!.items?.count, 1)
         let target:InstantWeather = spy!.items![0]
         XCTAssertEqual(target.name, weather.name)
@@ -51,7 +51,7 @@ class WeatherTest: XCTestCase {
         spy = SpyWeather(expectation: expectation)
         sut = Weather(currentWeatherWorkers: [worker])
         sut!.current(output: spy!)
-        wait(for: [expectation], timeout: 0.1)
+        wait(for: [expectation], timeout: TestConstants.timeout)
         XCTAssertNil(spy!.items)
         XCTAssertNotNil(spy!.error)
     }

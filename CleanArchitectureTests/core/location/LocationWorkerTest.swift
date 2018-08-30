@@ -40,7 +40,7 @@ class LocationWorkerTest: XCTestCase {
         }) { (worker, error) in
             XCTFail("testGivenLocationAvailableWhenStartThenReceiveLocation rejected")
         }
-        wait(for: [expectation], timeout: 0.1)
+        wait(for: [expectation], timeout: TestConstants.timeout)
     }
     
     func testGivenNoLocationPermissionWhenStartThenReceiveError() throws {
@@ -57,7 +57,7 @@ class LocationWorkerTest: XCTestCase {
             }
             expectation.fulfill()
         }
-        wait(for: [expectation], timeout: 0.1)
+        wait(for: [expectation], timeout: TestConstants.timeout)
     }
     
     func testGivenNoLocationWhenStartThenReceiveError() throws {
@@ -75,7 +75,7 @@ class LocationWorkerTest: XCTestCase {
             }
             expectation.fulfill()
         }
-        wait(for: [expectation], timeout: 0.1)
+        wait(for: [expectation], timeout: TestConstants.timeout)
     }
     
     class MockLocationManager: LocationManager {

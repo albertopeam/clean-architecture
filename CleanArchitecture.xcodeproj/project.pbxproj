@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C30654F82138092900E02FF5 /* TestConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30654F72138092900E02FF5 /* TestConstants.swift */; };
 		C3156C5021199EC50059A537 /* current-weather-success.json in Resources */ = {isa = PBXBuildFile; fileRef = C3156C4F21199EC50059A537 /* current-weather-success.json */; };
 		C31F64C521367D5200539450 /* AirQualityPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31F64C121367D5200539450 /* AirQualityPresenter.swift */; };
 		C31F64C621367D5200539450 /* AirQualityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31F64C221367D5200539450 /* AirQualityViewController.swift */; };
@@ -262,6 +263,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C30654F72138092900E02FF5 /* TestConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestConstants.swift; sourceTree = "<group>"; };
 		C3156C4F21199EC50059A537 /* current-weather-success.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "current-weather-success.json"; sourceTree = "<group>"; };
 		C31F64C121367D5200539450 /* AirQualityPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirQualityPresenter.swift; sourceTree = "<group>"; };
 		C31F64C221367D5200539450 /* AirQualityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirQualityViewController.swift; sourceTree = "<group>"; };
@@ -697,6 +699,7 @@
 			isa = PBXGroup;
 			children = (
 				C3F1C1A321135D1B0007DF50 /* MockExpectation.swift */,
+				C30654F72138092900E02FF5 /* TestConstants.swift */,
 			);
 			path = test;
 			sourceTree = "<group>";
@@ -1183,6 +1186,7 @@
 				C379400220E1198B004C723B /* WeatherPresenter.swift in Sources */,
 				C31F64CD21367DFA00539450 /* AirQualityViewControllerBuilder.swift in Sources */,
 				C3D2893520ECDBBF001DE077 /* MockWorkers.swift in Sources */,
+				C30654F82138092900E02FF5 /* TestConstants.swift in Sources */,
 				C3FC18E220D9630800393EBB /* WeatherViewController.swift in Sources */,
 				C31F64C921367DF100539450 /* AirQualityPresenter.swift in Sources */,
 				C31F64CF21367E0B00539450 /* AirQuality.swift in Sources */,
