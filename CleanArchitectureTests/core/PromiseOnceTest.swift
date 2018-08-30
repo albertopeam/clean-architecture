@@ -33,7 +33,7 @@ class PromiseOnceTest: XCTestCase {
         }).error { (error) in
             XCTAssert(false, "testGivenSuccessWorkerWhenPromiseOnceCompleteInvokeFinally throw an error")
         }
-        wait(for: [expectation], timeout: 0.1)
+        wait(for: [expectation], timeout: TestConstants.timeout)
     }
     
     func testGivenSuccessWorkWhenPromisesCompleteThenInvokeFinally() {
@@ -49,7 +49,7 @@ class PromiseOnceTest: XCTestCase {
         }).error { (error) in
             XCTAssert(false, "testGivenSuccessWorkWhenPromisesCompleteThenInvokeFinally throw an error")
         }
-        wait(for: [expectation], timeout: 0.1)
+        wait(for: [expectation], timeout: TestConstants.timeout)
     }
     
     func testGivenErrorWorkWhenPromiseFailThenInvokeError() {
@@ -66,7 +66,7 @@ class PromiseOnceTest: XCTestCase {
             XCTAssertEqual(theError.domain, "MockWorkers.Reject")
             expectation.fulfill()
         }
-        wait(for: [expectation], timeout: 0.1)
+        wait(for: [expectation], timeout: TestConstants.timeout)
     }
     
     
@@ -85,7 +85,7 @@ class PromiseOnceTest: XCTestCase {
         }).error { (error) in
             XCTAssert(false, "testGivenWorkThatInvokeTwiceFinallyWhenPromiseCompleteThenInvokeFinallyOnce throw an error")
         }
-        wait(for: [expectation], timeout: 0.1)
+        wait(for: [expectation], timeout: TestConstants.timeout)
     }
     
     func testGivenWorkThatInvokeTwiceFinallyWhenPromiseErrorThenInvokeErrorOnce(){
@@ -107,7 +107,7 @@ class PromiseOnceTest: XCTestCase {
             XCTAssertEqual(theError.domain, "MockWorkers.Reject")
             expectation.fulfill()
         }
-        wait(for: [expectation], timeout: 0.1)
+        wait(for: [expectation], timeout: TestConstants.timeout)
     }
     
     func testGivenWorkThatThrowsWhenPromiseErrorThenInvokeError(){
@@ -123,7 +123,7 @@ class PromiseOnceTest: XCTestCase {
             XCTAssertEqual("MockWorkers.Throw", throwed.domain)
             expectation.fulfill()
         }
-        wait(for: [expectation], timeout: 0.1)
+        wait(for: [expectation], timeout: TestConstants.timeout)
     }
     
     func testGivenSuccessWorksWhenChainTwoThensAndPromiseCompleteThenInvokeFinally() {
@@ -142,6 +142,6 @@ class PromiseOnceTest: XCTestCase {
         }).error { (error) in
             XCTAssert(false, "testGivenSuccessWorksWhenChainTwoThensAndPromiseCompleteInvokeFinally throw an error")
         }
-        wait(for: [expectation], timeout: 0.1)
+        wait(for: [expectation], timeout: TestConstants.timeout)
     }
 }

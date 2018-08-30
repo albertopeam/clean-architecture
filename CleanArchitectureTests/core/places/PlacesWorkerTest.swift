@@ -46,7 +46,7 @@ class PlacesWorkerTest: NetworkTestCase {
         }, reject: { (worker, error) in
             XCTFail("testGivenValidInputWhenGetNearbyThenReturnSuccess rejected")
         })
-        wait(for: [expectation], timeout: 1)
+        wait(for: [expectation], timeout: TestConstants.timeout)
     }
     
     func testGivenInvalidInputWhenGetNearbyThenReturnNoPlaces() throws {
@@ -66,6 +66,6 @@ class PlacesWorkerTest: NetworkTestCase {
             }
             expectation.fulfill()
         });
-        wait(for: [expectation], timeout: 1)
+        wait(for: [expectation], timeout: TestConstants.timeout)
     }
 }

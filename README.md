@@ -19,10 +19,10 @@ The intention of this repository is to show some of the more common practices wh
         * [Legacy](#swift:-Legacy)
         * [Serial](#swift:-Serial-work)
         * [Parallel](#swift:-Parallel-work)
-    2. [MVVM](#mvvm)
+    2. [MVVM](#mvvm(model-view-view-model))
         * [View-Model](#Swift:-Observer)
         * [Widget](#Swift:-Reusing-View-Model-in-TodayExtension)
-    3. [MVP](#mvp)
+    3. [MVP](#mvp(model-view-presenter))
 5. [Testing](#testing)
   
 ## Before start
@@ -505,9 +505,7 @@ class NearbyPlacesViewController: UIViewController, NearbyPlacesViewProtocol {
                 break
         }
         if error != nil {
-            let alert = UIAlertController(title: "Error", message: error, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
+            presentAlert(title: "Error", message: error, button: "Ok")
         }else if requestPermission {
             locationManager.delegate = self
             locationManager.requestWhenInUseAuthorization()
@@ -547,9 +545,7 @@ class NearbyPlacesViewController: UIViewController, NearbyPlacesViewProtocol {
             placesTableView.reloadData()
         }
         if let error = viewState.error {
-            let alert = UIAlertController(title: "Error", message: error, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
+            presentAlert(title: "Error", message: error, button: "Ok")
         }
         if viewState.requestPermission {
             locationManager.delegate = self

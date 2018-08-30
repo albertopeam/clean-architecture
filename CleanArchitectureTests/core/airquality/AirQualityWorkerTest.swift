@@ -43,7 +43,7 @@ class AirQualityWorkerTest: NetworkTestCase {
         }) { (worker, error) in
             XCTFail("testGivenSuccessResponseWhenFetchThenMatchExpectedData rejected")
         }
-        wait(for: [expectation], timeout: 1)
+        wait(for: [expectation], timeout: TestConstants.timeout)
     }
     
 }

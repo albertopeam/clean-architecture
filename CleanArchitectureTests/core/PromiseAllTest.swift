@@ -38,7 +38,7 @@ class PromiseAllTest: XCTestCase {
         }).error { (error) in
             XCTAssert(false, "testGivenSuccessWorkerWhenPromiseAllCompleteWorkerThenInvokeFinally throw an error")
         }
-        wait(for: [expectation], timeout: 0.1)
+        wait(for: [expectation], timeout: TestConstants.timeout)
     }
     
     //double success
@@ -56,7 +56,7 @@ class PromiseAllTest: XCTestCase {
         }).error { (error) in
             XCTAssert(false, "testGivenSuccessWorkersWhenPromiseAllCompletesWorkersThenInvokeFinally throw an error")
         }
-        wait(for: [expectation], timeout: 0.1)
+        wait(for: [expectation], timeout: TestConstants.timeout)
     }
     
     //chain of doubles
@@ -81,7 +81,7 @@ class PromiseAllTest: XCTestCase {
         }).error { (error) in
             XCTAssert(false, "testGivenSuccessWorkersWhenPromisesCompletesThenInvokeFinally throw an error")
         }
-        wait(for: [expectation], timeout: 0.1)
+        wait(for: [expectation], timeout: TestConstants.timeout)
     }
     
     //chain of doubles with two completables
@@ -113,7 +113,7 @@ class PromiseAllTest: XCTestCase {
         }).error { (error) in
             XCTAssert(false, "testGivenSuccessWorkersWhenTwoPromisesCompletesThenInvokeFinally throw an error")
         }
-        wait(for: [expectation], timeout: 0.1)
+        wait(for: [expectation], timeout: TestConstants.timeout)
     }
     
     //chain with one rejectable
@@ -129,7 +129,7 @@ class PromiseAllTest: XCTestCase {
             XCTAssertEqual(theError.domain, "MockWorkers.Reject")
             expectation.fulfill()
         }
-        wait(for: [expectation], timeout: 0.1)
+        wait(for: [expectation], timeout: TestConstants.timeout)
     }
     
     //chain with one rejectable worker that invokes twice reject
@@ -149,7 +149,7 @@ class PromiseAllTest: XCTestCase {
             XCTAssertEqual(theError.domain, "MockWorkers.Reject")
             expectation.fulfill()
         }
-        wait(for: [expectation], timeout: 0.1)
+        wait(for: [expectation], timeout: TestConstants.timeout)
     }
     
     //chain with two success workers that invokes twice success
@@ -166,7 +166,7 @@ class PromiseAllTest: XCTestCase {
         }).error { (error) in
             XCTAssert(false, "testGivenTwoSuccessWorkersWhenSuccessTwiceThenInvokeErrorOnlyOne invoked error")
         }
-        wait(for: [expectation], timeout: 0.1)
+        wait(for: [expectation], timeout: TestConstants.timeout)
     }
     
     //worker that throws
@@ -185,7 +185,7 @@ class PromiseAllTest: XCTestCase {
             XCTAssertEqual("MockWorkers.Throw", throwed.domain)
             expectation.fulfill()
         }
-        wait(for: [expectation], timeout: 0.1)
+        wait(for: [expectation], timeout: TestConstants.timeout)
     }
 
 }
