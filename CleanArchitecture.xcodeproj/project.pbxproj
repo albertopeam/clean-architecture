@@ -10,6 +10,7 @@
 		C30654F82138092900E02FF5 /* TestConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30654F72138092900E02FF5 /* TestConstants.swift */; };
 		C30A033121383D0D00821CB6 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C30A033021383D0D00821CB6 /* Nimble.framework */; };
 		C30A033221383D1F00821CB6 /* Nimble.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C30A033021383D0D00821CB6 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C31127FB213924EA007F6E59 /* KIF.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C31127F82139244F007F6E59 /* KIF.framework */; };
 		C3156C5021199EC50059A537 /* current-weather-success.json in Resources */ = {isa = PBXBuildFile; fileRef = C3156C4F21199EC50059A537 /* current-weather-success.json */; };
 		C31F64C521367D5200539450 /* AirQualityPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31F64C121367D5200539450 /* AirQualityPresenter.swift */; };
 		C31F64C621367D5200539450 /* AirQualityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31F64C221367D5200539450 /* AirQualityViewController.swift */; };
@@ -295,6 +296,7 @@
 /* Begin PBXFileReference section */
 		C30654F72138092900E02FF5 /* TestConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestConstants.swift; sourceTree = "<group>"; };
 		C30A033021383D0D00821CB6 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
+		C31127F82139244F007F6E59 /* KIF.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KIF.framework; path = Carthage/Build/iOS/KIF.framework; sourceTree = "<group>"; };
 		C3156C4F21199EC50059A537 /* current-weather-success.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "current-weather-success.json"; sourceTree = "<group>"; };
 		C31F64C121367D5200539450 /* AirQualityPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirQualityPresenter.swift; sourceTree = "<group>"; };
 		C31F64C221367D5200539450 /* AirQualityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirQualityViewController.swift; sourceTree = "<group>"; };
@@ -417,6 +419,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C31127FB213924EA007F6E59 /* KIF.framework in Frameworks */,
 				C3C74A2521020A6C0037C598 /* Kingfisher.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -885,6 +888,7 @@
 		C3FA42542087AF6900B63221 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C31127F82139244F007F6E59 /* KIF.framework */,
 				C30A033021383D0D00821CB6 /* Nimble.framework */,
 				C3CC23F420A09C0000BA01F6 /* Swifter.framework */,
 				C33EE73C2091FB5A00712672 /* Kingfisher.framework */,
