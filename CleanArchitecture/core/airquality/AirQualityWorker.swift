@@ -51,7 +51,7 @@ class AirQualityWorker: Worker {
 
 private struct Welcome: Codable {
     let meta: Meta
-    let results: [Result]
+    let results: [ResultLocation]
 }
 
 private struct Meta: Codable {
@@ -59,7 +59,7 @@ private struct Meta: Codable {
     let page, limit, found: Int
 }
 
-private struct Result: Codable {
+private struct ResultLocation: Codable {
     let location, parameter: String
     let date: DateClass
     let value: Double

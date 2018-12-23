@@ -22,6 +22,7 @@ class Weather:WeatherProtocol {
             output.onWeatherError(error: error)
         })
     }
+        
 }
 
 enum WeatherError:Error, Equatable {

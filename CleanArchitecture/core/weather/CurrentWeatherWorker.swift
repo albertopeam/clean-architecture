@@ -57,24 +57,24 @@ struct CloudResponse:Codable  {
     var cod:Int
 }
 
-fileprivate struct CloudWeatherResponse:Codable  {
-    fileprivate var cod:Int
-    fileprivate var name:String
-    fileprivate var dt:Int
-    fileprivate var weather:Array<CloudWeather>
-    fileprivate var main:CloudMain
-    fileprivate var wind:CloudWind
-    fileprivate struct CloudWeather:Codable  {
-        fileprivate var description:String
-        fileprivate var icon:String
+struct CloudWeatherResponse:Codable  {
+    var cod:Int
+    var name:String
+    var dt:Int
+    var weather:Array<CloudWeather>
+    var main:CloudMain
+    var wind:CloudWind
+    struct CloudWeather:Codable  {
+        var description:String
+        var icon:String
     }
-    fileprivate struct CloudMain:Codable{
-        fileprivate var temp:Double
-        fileprivate var pressure:Double
-        fileprivate var humidity:Double
+    struct CloudMain:Codable{
+        var temp:Double
+        var pressure:Double
+        var humidity:Double
     }
-    fileprivate struct CloudWind:Codable{
-        fileprivate var speed:Double
-        fileprivate var deg:Double
+    struct CloudWind:Codable{
+        var speed:Double
+        var deg:Double
     }
 }

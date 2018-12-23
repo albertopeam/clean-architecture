@@ -11,7 +11,7 @@ import UIKit
 class ItemsTableViewController: UITableViewController {
     
     var items:Array<Item> = []
-    var tableview: UITableView?
+    var tableview: UITableView?    
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) is not supported")
@@ -30,7 +30,8 @@ class ItemsTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         items = [Item(name: "Nearby places", target: NearbyPlacesViewControllerBuilder.assemble()),
-                 Item(name: "Weather", target: WeatherViewControllerBuilder.assemble()),
+                 Item(name: "Galician Weather", target: WeatherViewControllerBuilder.assemble()),
+                 Item(name: "Current Location Weather", target: CurrentWeatherViewBuilder.build()),
                  Item(name: "UV index", target: UVIndexViewControllerBuilder.assemble()),
                  Item(name: "Air quality index", target: AirQualityViewControllerBuilder.assemble())]
         self.tableView.reloadData()

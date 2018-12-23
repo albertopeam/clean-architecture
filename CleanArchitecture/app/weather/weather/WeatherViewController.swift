@@ -26,7 +26,7 @@ class WeatherViewController: UIViewController, WeatherViewProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Weather"
+        title = "Galician Weather"
         tableView.register(UINib(nibName: "WeatherTableViewCell", bundle: nil), forCellReuseIdentifier: "weather_cell")
         presenter.weathers()
     }

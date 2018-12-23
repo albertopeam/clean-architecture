@@ -12,7 +12,7 @@ protocol AirQualityPresenterProtocol {
     func getAirQuality()
 }
 
-protocol AirQualityViewProtocol {
+protocol AirQualityViewProtocol: class {
     func newState(airQualityViewState:AirQualityViewState)
 }
 
@@ -43,7 +43,7 @@ class AirQualityPresenter:AirQualityPresenterProtocol, AirQualityOutputProtocol 
     
     private let airQuality:AirQualityProtocol
     private let airQualityState:AirQualityViewState
-    var view:AirQualityViewProtocol?
+    weak var view:AirQualityViewProtocol?
     
     init(airQuality:AirQualityProtocol, airQualityState:AirQualityViewState) {
         self.airQuality = airQuality
