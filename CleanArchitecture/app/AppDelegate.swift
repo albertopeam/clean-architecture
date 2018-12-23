@@ -8,6 +8,7 @@
 
 import UIKit
 
+@UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
@@ -16,7 +17,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().tintColor = .black
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.black]
         UINavigationBar.appearance().isTranslucent = false
-        let navController = UINavigationController(rootViewController: ItemsTableViewController())
+        var navController: UINavigationController?
+        if NSClassFromString("XCTest") == nil {
+            navController = UINavigationController(rootViewController: ItemsTableViewController())
+        } else {
+            navController = UINavigationController(rootViewController: UIViewController())
+        }
         window!.rootViewController = navController
         window!.makeKeyAndVisible()
         return true

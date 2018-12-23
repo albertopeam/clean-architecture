@@ -24,6 +24,10 @@ class CurrentWeatherViewController: UIViewController {
     @IBOutlet weak var windSpeedLabel: UILabel!
     @IBOutlet weak var loadingView: UIActivityIndicatorView!
     
+    enum AccessibilityIdentifiers {
+        static let loading = "CurrentWeatherViewController.loading"
+    }
+    
     init(presenter: CurrentWeatherPresenter) {
         self.presenter = presenter
         super.init(nibName: "CurrentWeatherViewController", bundle: nil)
@@ -36,6 +40,7 @@ class CurrentWeatherViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        loadingView.accessibilityIdentifier = AccessibilityIdentifiers.loading
         title = "Current Location Weather"
         reloadButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.refresh,
                                        target: self,

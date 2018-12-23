@@ -127,6 +127,8 @@
 		C3B5E75921CFD53A00596978 /* CurrentWeatherPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3772C8221CE5F1700193660 /* CurrentWeatherPresenter.swift */; };
 		C3B5E75A21CFD53D00596978 /* CurrentWeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B5E73E21CF971100596978 /* CurrentWeatherViewModel.swift */; };
 		C3B5E75C21CFFCB700596978 /* UIRobot.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B5E75B21CFFCB700596978 /* UIRobot.swift */; };
+		C3B5E75F21CFFE7400596978 /* KIF+Tester.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B5E75E21CFFE7400596978 /* KIF+Tester.swift */; };
+		C3B5E76221CFFF0200596978 /* CurrentWeatherViewControllerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B5E76121CFFF0200596978 /* CurrentWeatherViewControllerUITests.swift */; };
 		C3C13D9F21CE27DD007A538C /* CurrentWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C1CEED21CC578000705B77 /* CurrentWeather.swift */; };
 		C3C13DA021CE27DD007A538C /* CurrentWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C1CEED21CC578000705B77 /* CurrentWeather.swift */; };
 		C3C1CEEC21CC54AE00705B77 /* Future.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C1CEEB21CC54AE00705B77 /* Future.swift */; };
@@ -193,7 +195,6 @@
 		C3D8AD8C20A05DE000868FF9 /* PlacesTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D8AD8B20A05DE000868FF9 /* PlacesTest.swift */; };
 		C3D9D98920D14CAB004EC19A /* Promises.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D9D98820D14CAB004EC19A /* Promises.swift */; };
 		C3D9D98D20D14D59004EC19A /* PromiseOnce.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D9D98C20D14D59004EC19A /* PromiseOnce.swift */; };
-		C3DA814F208F419500AF9ABE /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DA814E208F419500AF9ABE /* main.swift */; };
 		C3E24B2020A19CB10062D4E7 /* PlacesWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FA42632087AFEC00B63221 /* PlacesWorker.swift */; };
 		C3E24B2220A1BE250062D4E7 /* nearby-success-noplaces.json in Resources */ = {isa = PBXBuildFile; fileRef = C3E24B2120A1BE250062D4E7 /* nearby-success-noplaces.json */; };
 		C3E24B2420A1CC330062D4E7 /* LocationWorkerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E24B2320A1CC330062D4E7 /* LocationWorkerTest.swift */; };
@@ -356,6 +357,8 @@
 		C3B5E74221CFB4EE00596978 /* Await.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Await.swift; sourceTree = "<group>"; };
 		C3B5E74721CFD41500596978 /* PromiseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromiseTests.swift; sourceTree = "<group>"; };
 		C3B5E75B21CFFCB700596978 /* UIRobot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIRobot.swift; sourceTree = "<group>"; };
+		C3B5E75E21CFFE7400596978 /* KIF+Tester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KIF+Tester.swift"; sourceTree = "<group>"; };
+		C3B5E76121CFFF0200596978 /* CurrentWeatherViewControllerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherViewControllerUITests.swift; sourceTree = "<group>"; };
 		C3C1CEEB21CC54AE00705B77 /* Future.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Future.swift; sourceTree = "<group>"; };
 		C3C1CEED21CC578000705B77 /* CurrentWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeather.swift; sourceTree = "<group>"; };
 		C3C74A0B210204E20037C598 /* CleanArchitectureUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CleanArchitectureUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -375,7 +378,6 @@
 		C3D8AD8B20A05DE000868FF9 /* PlacesTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesTest.swift; sourceTree = "<group>"; };
 		C3D9D98820D14CAB004EC19A /* Promises.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Promises.swift; sourceTree = "<group>"; };
 		C3D9D98C20D14D59004EC19A /* PromiseOnce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromiseOnce.swift; sourceTree = "<group>"; };
-		C3DA814E208F419500AF9ABE /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		C3E24B2120A1BE250062D4E7 /* nearby-success-noplaces.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "nearby-success-noplaces.json"; sourceTree = "<group>"; };
 		C3E24B2320A1CC330062D4E7 /* LocationWorkerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationWorkerTest.swift; sourceTree = "<group>"; };
 		C3E24B2920A1D7420062D4E7 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
@@ -384,6 +386,7 @@
 		C3E3524A2105FF2F0091CFDD /* ItemsTableViewControllerNavigationUITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsTableViewControllerNavigationUITest.swift; sourceTree = "<group>"; };
 		C3E3524F2106066A0091CFDD /* PlacesPresenterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesPresenterTest.swift; sourceTree = "<group>"; };
 		C3E35252210618380091CFDD /* PlacesViewControllerUITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesViewControllerUITest.swift; sourceTree = "<group>"; };
+		C3EFE87321D0092200E24296 /* CleanArchitectureUITests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CleanArchitectureUITests-Bridging-Header.h"; sourceTree = "<group>"; };
 		C3F1C19721133C680007DF50 /* uvindex-success.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "uvindex-success.json"; sourceTree = "<group>"; };
 		C3F1C19B21133F460007DF50 /* NetworkTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTestCase.swift; sourceTree = "<group>"; };
 		C3F1C19D211352AA0007DF50 /* WeatherTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherTest.swift; sourceTree = "<group>"; };
@@ -682,15 +685,49 @@
 			path = lib;
 			sourceTree = "<group>";
 		};
-		C3C74A0C210204E20037C598 /* CleanArchitectureUITests */ = {
+		C3B5E75D21CFFE5100596978 /* tools */ = {
+			isa = PBXGroup;
+			children = (
+				C3B5E76021CFFE8100596978 /* legacy */,
+				C3B5E75B21CFFCB700596978 /* UIRobot.swift */,
+				C3B5E75E21CFFE7400596978 /* KIF+Tester.swift */,
+			);
+			path = tools;
+			sourceTree = "<group>";
+		};
+		C3B5E76021CFFE8100596978 /* legacy */ = {
 			isa = PBXGroup;
 			children = (
 				C3C74A332102100B0037C598 /* UITestTool.swift */,
 				C3E352462105F1FD0091CFDD /* UITestNavigationTool.swift */,
 				C3E352482105F8F80091CFDD /* UITestNavigationViewController.swift */,
+			);
+			path = legacy;
+			sourceTree = "<group>";
+		};
+		C3B5E76321CFFF0E00596978 /* current */ = {
+			isa = PBXGroup;
+			children = (
+				C3B5E76121CFFF0200596978 /* CurrentWeatherViewControllerUITests.swift */,
+			);
+			path = current;
+			sourceTree = "<group>";
+		};
+		C3B5E76421CFFF1300596978 /* weather */ = {
+			isa = PBXGroup;
+			children = (
+				C3F2B31B2110AE9800239458 /* WeatherViewControllerUITest.swift */,
+			);
+			path = weather;
+			sourceTree = "<group>";
+		};
+		C3C74A0C210204E20037C598 /* CleanArchitectureUITests */ = {
+			isa = PBXGroup;
+			children = (
+				C3B5E75D21CFFE5100596978 /* tools */,
 				C3C74A15210205150037C598 /* app */,
 				C3C74A0F210204E20037C598 /* Info.plist */,
-				C3B5E75B21CFFCB700596978 /* UIRobot.swift */,
+				C3EFE87321D0092200E24296 /* CleanArchitectureUITests-Bridging-Header.h */,
 			);
 			path = CleanArchitectureUITests;
 			sourceTree = "<group>";
@@ -791,7 +828,8 @@
 		C3E3524C2106062D0091CFDD /* weather */ = {
 			isa = PBXGroup;
 			children = (
-				C3F2B31B2110AE9800239458 /* WeatherViewControllerUITest.swift */,
+				C3B5E76421CFFF1300596978 /* weather */,
+				C3B5E76321CFFF0E00596978 /* current */,
 			);
 			path = weather;
 			sourceTree = "<group>";
@@ -869,7 +907,6 @@
 				C3FA425C2087AF9800B63221 /* core */,
 				C3FA42572087AF7500B63221 /* app */,
 				C3FA423E2087AEC200B63221 /* Info.plist */,
-				C3DA814E208F419500AF9ABE /* main.swift */,
 			);
 			path = CleanArchitecture;
 			sourceTree = "<group>";
@@ -980,6 +1017,7 @@
 				C3C74A07210204E20037C598 /* Sources */,
 				C3C74A08210204E20037C598 /* Frameworks */,
 				C3C74A09210204E20037C598 /* Resources */,
+				C3EFE87721D0099700E24296 /* Carthage copy phase */,
 			);
 			buildRules = (
 			);
@@ -1059,6 +1097,7 @@
 				TargetAttributes = {
 					C3C74A0A210204E20037C598 = {
 						CreatedOnToolsVersion = 9.4;
+						LastSwiftMigration = 0940;
 						ProvisioningStyle = Manual;
 						TestTargetID = C3FA422E2087AEC200B63221;
 					};
@@ -1170,6 +1209,22 @@
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks";
 		};
+		C3EFE87721D0099700E24296 /* Carthage copy phase */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/KIF.framework",
+			);
+			name = "Carthage copy phase";
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/KIF.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1216,6 +1271,7 @@
 				C3C74A1D21020A0D0037C598 /* NearbyPlacesViewController.swift in Sources */,
 				C3C74A2E21020A940037C598 /* LocationManager.swift in Sources */,
 				C3B5E75521CFD51E00596978 /* Await.swift in Sources */,
+				C3B5E76221CFFF0200596978 /* CurrentWeatherViewControllerUITests.swift in Sources */,
 				C3C74A17210207750037C598 /* ItemsTableViewController.swift in Sources */,
 				C31F64CA21367DF200539450 /* AirQualityPresenter.swift in Sources */,
 				C3C74A2721020A880037C598 /* Weather.swift in Sources */,
@@ -1226,6 +1282,7 @@
 				C3D56B4E21130B8300947F2D /* LocationError.swift in Sources */,
 				C3E3524B2105FF2F0091CFDD /* ItemsTableViewControllerNavigationUITest.swift in Sources */,
 				C3C74A3021020A9C0037C598 /* PromiseOnce.swift in Sources */,
+				C3B5E75F21CFFE7400596978 /* KIF+Tester.swift in Sources */,
 				C3E352492105F8F80091CFDD /* UITestNavigationViewController.swift in Sources */,
 				C31F64D021367E0B00539450 /* AirQuality.swift in Sources */,
 				C3C74A0E210204E20037C598 /* ItemsTableViewControllerUITest.swift in Sources */,
@@ -1296,7 +1353,6 @@
 				C3FC18D620D946B000393EBB /* Weather.swift in Sources */,
 				C3772C7821CE49E300193660 /* CurrentWeatherViewController.swift in Sources */,
 				C3772C8321CE5F1700193660 /* CurrentWeatherPresenter.swift in Sources */,
-				C3DA814F208F419500AF9ABE /* main.swift in Sources */,
 				C32634D72111C08F0023E58C /* UVIndexViewController.swift in Sources */,
 				C31F64C721367D5200539450 /* AirQualityViewControllerBuilder.swift in Sources */,
 				C31F64C621367D5200539450 /* AirQualityViewController.swift in Sources */,
@@ -1452,6 +1508,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
@@ -1467,6 +1524,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.albertopeam.CleanArchitectureUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "CleanArchitectureUITests/CleanArchitectureUITests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CleanArchitecture.app/CleanArchitecture";
@@ -1477,6 +1536,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
@@ -1492,6 +1552,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.albertopeam.CleanArchitectureUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "CleanArchitectureUITests/CleanArchitectureUITests-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CleanArchitecture.app/CleanArchitecture";
