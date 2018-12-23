@@ -106,7 +106,7 @@
 		C3B5E73F21CF971100596978 /* CurrentWeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B5E73E21CF971100596978 /* CurrentWeatherViewModel.swift */; };
 		C3B5E74121CFB4CC00596978 /* Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B5E74021CFB4CC00596978 /* Async.swift */; };
 		C3B5E74321CFB4EE00596978 /* Await.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B5E74221CFB4EE00596978 /* Await.swift */; };
-		C3B5E74821CFD41500596978 /* FutureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B5E74721CFD41500596978 /* FutureTests.swift */; };
+		C3B5E74821CFD41500596978 /* PromiseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B5E74721CFD41500596978 /* PromiseTests.swift */; };
 		C3B5E74921CFD47C00596978 /* Await.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B5E74221CFB4EE00596978 /* Await.swift */; };
 		C3B5E74A21CFD47F00596978 /* Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B5E74021CFB4CC00596978 /* Async.swift */; };
 		C3B5E74B21CFD48100596978 /* Future.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C1CEEB21CC54AE00705B77 /* Future.swift */; };
@@ -125,6 +125,7 @@
 		C3B5E75821CFD53800596978 /* CurrentWeatherViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3772C8021CE5E6500193660 /* CurrentWeatherViewBuilder.swift */; };
 		C3B5E75921CFD53A00596978 /* CurrentWeatherPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3772C8221CE5F1700193660 /* CurrentWeatherPresenter.swift */; };
 		C3B5E75A21CFD53D00596978 /* CurrentWeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B5E73E21CF971100596978 /* CurrentWeatherViewModel.swift */; };
+		C3B5E75C21CFFCB700596978 /* UIRobot.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B5E75B21CFFCB700596978 /* UIRobot.swift */; };
 		C3C13D9F21CE27DD007A538C /* CurrentWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C1CEED21CC578000705B77 /* CurrentWeather.swift */; };
 		C3C13DA021CE27DD007A538C /* CurrentWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C1CEED21CC578000705B77 /* CurrentWeather.swift */; };
 		C3C1CEEC21CC54AE00705B77 /* Future.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C1CEEB21CC54AE00705B77 /* Future.swift */; };
@@ -351,7 +352,8 @@
 		C3B5E73E21CF971100596978 /* CurrentWeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherViewModel.swift; sourceTree = "<group>"; };
 		C3B5E74021CFB4CC00596978 /* Async.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Async.swift; sourceTree = "<group>"; };
 		C3B5E74221CFB4EE00596978 /* Await.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Await.swift; sourceTree = "<group>"; };
-		C3B5E74721CFD41500596978 /* FutureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FutureTests.swift; sourceTree = "<group>"; };
+		C3B5E74721CFD41500596978 /* PromiseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromiseTests.swift; sourceTree = "<group>"; };
+		C3B5E75B21CFFCB700596978 /* UIRobot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIRobot.swift; sourceTree = "<group>"; };
 		C3C1CEEB21CC54AE00705B77 /* Future.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Future.swift; sourceTree = "<group>"; };
 		C3C1CEED21CC578000705B77 /* CurrentWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeather.swift; sourceTree = "<group>"; };
 		C3C74A0B210204E20037C598 /* CleanArchitectureUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CleanArchitectureUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -672,7 +674,7 @@
 		C3B5E74621CFD3CF00596978 /* lib */ = {
 			isa = PBXGroup;
 			children = (
-				C3B5E74721CFD41500596978 /* FutureTests.swift */,
+				C3B5E74721CFD41500596978 /* PromiseTests.swift */,
 			);
 			path = lib;
 			sourceTree = "<group>";
@@ -685,6 +687,7 @@
 				C3E352482105F8F80091CFDD /* UITestNavigationViewController.swift */,
 				C3C74A15210205150037C598 /* app */,
 				C3C74A0F210204E20037C598 /* Info.plist */,
+				C3B5E75B21CFFCB700596978 /* UIRobot.swift */,
 			);
 			path = CleanArchitectureUITests;
 			sourceTree = "<group>";
@@ -1178,6 +1181,7 @@
 				C3B5E75921CFD53A00596978 /* CurrentWeatherPresenter.swift in Sources */,
 				C32634E62111C4E50023E58C /* Location.swift in Sources */,
 				C3D56B5221130B9300947F2D /* UVIndex.swift in Sources */,
+				C3B5E75C21CFFCB700596978 /* UIRobot.swift in Sources */,
 				C3C74A3121020A9C0037C598 /* PromiseAll.swift in Sources */,
 				C3C74A2221020A1D0037C598 /* WeatherPresenter.swift in Sources */,
 				C38421C221130CF20051E28B /* UVIndexViewControllerBuilder.swift in Sources */,
@@ -1379,7 +1383,7 @@
 				C3B5E74E21CFD4C100596978 /* CurrentWeatherViewController.swift in Sources */,
 				C3B5E74B21CFD48100596978 /* Future.swift in Sources */,
 				C379400920E11CAE004C723B /* PlacesComponent.swift in Sources */,
-				C3B5E74821CFD41500596978 /* FutureTests.swift in Sources */,
+				C3B5E74821CFD41500596978 /* PromiseTests.swift in Sources */,
 				C379400420E119B9004C723B /* NearbyPlacesViewControllerBuilder.swift in Sources */,
 				C31F64E82136A34200539450 /* AirQualityEntityTest.swift in Sources */,
 				C3D56B5321130B9500947F2D /* UVIndexWorker.swift in Sources */,

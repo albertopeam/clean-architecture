@@ -9,6 +9,7 @@
 import UIKit.UIViewController
 import CoreLocation
 //TODO: tests: logic, future/promise
+//TODO: check not responding more than once, NOW it does
 //TODO: move tests dir weather/weather-current
 //TODO: KIF tests y vemos...
 class CurrentWeatherViewController: UIViewController {
