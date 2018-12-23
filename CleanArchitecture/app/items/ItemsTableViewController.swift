@@ -31,7 +31,7 @@ class ItemsTableViewController: UITableViewController {
         super.viewWillAppear(animated)
         items = [Item(name: "Nearby places", target: NearbyPlacesViewControllerBuilder.assemble()),
                  Item(name: "Galician Weather", target: WeatherViewControllerBuilder.assemble()),
-                 Item(name: "Current Location Weather", target: CurrentWeatherViewBuilder.build()),
+                 Item(name: "Current Location Weather", target: CurrentWeatherViewBuilder().build()),
                  Item(name: "UV index", target: UVIndexViewControllerBuilder.assemble()),
                  Item(name: "Air quality index", target: AirQualityViewControllerBuilder.assemble())]
         self.tableView.reloadData()

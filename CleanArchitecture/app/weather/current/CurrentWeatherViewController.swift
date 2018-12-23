@@ -8,10 +8,9 @@
 
 import UIKit.UIViewController
 import CoreLocation
-//TODO: tests: logic, future/promise
-//TODO: check not responding more than once, NOW it does
-//TODO: move tests dir weather/weather-current
-//TODO: KIF tests y vemos...
+//TODO: tests: interactor+presenter
+//TODO: future/promise + tests
+    //TODO: check not responding more than once, NOW it does
 class CurrentWeatherViewController: UIViewController {
     
     private var presenter: CurrentWeatherPresenter
@@ -26,6 +25,12 @@ class CurrentWeatherViewController: UIViewController {
     
     enum AccessibilityIdentifiers {
         static let loading = "CurrentWeatherViewController.loading"
+        static let city = "CurrentWeatherViewController.city"
+        static let description = "CurrentWeatherViewController.description"
+        static let temperature = "CurrentWeatherViewController.temperature"
+        static let pressure = "CurrentWeatherViewController.pressure"
+        static let humidity = "CurrentWeatherViewController.humidity"
+        static let windSpeed = "CurrentWeatherViewController.windspeed"
     }
     
     init(presenter: CurrentWeatherPresenter) {
@@ -41,6 +46,12 @@ class CurrentWeatherViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         loadingView.accessibilityIdentifier = AccessibilityIdentifiers.loading
+        cityLabel.accessibilityIdentifier = AccessibilityIdentifiers.city
+        descriptionLabel.accessibilityIdentifier = AccessibilityIdentifiers.description
+        temperatureLabel.accessibilityIdentifier = AccessibilityIdentifiers.temperature
+        pressureLabel.accessibilityIdentifier = AccessibilityIdentifiers.pressure
+        humidityLabel.accessibilityIdentifier = AccessibilityIdentifiers.humidity
+        windSpeedLabel.accessibilityIdentifier = AccessibilityIdentifiers.windSpeed
         title = "Current Location Weather"
         reloadButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.refresh,
                                        target: self,
@@ -56,7 +67,12 @@ class CurrentWeatherViewController: UIViewController {
 extension CurrentWeatherViewController: CurrentWeatherViewProtocol {
 
     func show(viewModel: CurrentWeatherViewModel) {
-        cityLabel.text = viewModel.city
+        cityLabel.isHidden = false
+        descriptionLabel.isHidden = false
+        temperatureLabel.isHidden = false
+        pressureLabel.isHidden = false
+        humidityLabel.isHidden = false
+        windSpeedLabel.isHidden = false
         descriptionLabel.text = viewModel.description
         temperatureLabel.text = viewModel.temperature
         pressureLabel.text = viewModel.pressure
@@ -65,6 +81,12 @@ extension CurrentWeatherViewController: CurrentWeatherViewProtocol {
     }
     
     func error(message: String) {
+        cityLabel.isHidden = true
+        descriptionLabel.isHidden = true
+        temperatureLabel.isHidden = true
+        pressureLabel.isHidden = true
+        humidityLabel.isHidden = true
+        windSpeedLabel.isHidden = true
         presentAlert(title: "Error", message: message, button: "Ok")
     }
     

@@ -10,9 +10,20 @@ import UIKit.UIViewController
 
 class CurrentWeatherViewBuilder {
     
-    static func build() -> UIViewController {
-        let locationJob = LocationJob(noPermissionError: LocationError.noLocationPermission)
-        let weatherJob = CurrentWeatherJob(urlSession: URLSession.shared)
+    private var weatherJob: CurrentWeatherJob = CurrentWeatherJob(urlSession: URLSession.shared)
+    private var locationJob: LocationJob = LocationJob()
+    
+    func withLocationJob(locationJob: LocationJob) -> CurrentWeatherViewBuilder {
+        self.locationJob = locationJob
+        return self
+    }
+    
+    func withWeatherJob(weatherJob: CurrentWeatherJob) -> CurrentWeatherViewBuilder {
+        self.weatherJob = weatherJob
+        return self
+    }
+    
+    func build() -> UIViewController {
         let currentWeather = CurrentWeather(locationJob: locationJob, weatherJob: weatherJob)
         let presenter = CurrentWeatherPresenter(currentWeather: currentWeather)
         let vc = CurrentWeatherViewController(presenter: presenter)

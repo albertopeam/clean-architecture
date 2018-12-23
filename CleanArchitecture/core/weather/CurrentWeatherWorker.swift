@@ -9,15 +9,18 @@ import Foundation
 
 class CurrentWeatherWorker:NSObject, Worker {
     
-    let targetUrl:String
+    private let targetUrl: String
+    private let urlSession: URLSession
     
-    init(url:String) {
+    init(urlSession: URLSession = URLSession.shared,
+         url: String) {
+        self.urlSession = urlSession
         self.targetUrl = url
     }
     
     func run(params: Any?, resolve: @escaping ResolvableWorker, reject: @escaping RejectableWorker) throws {
         let url = URL(string: targetUrl)
-        URLSession.shared.dataTask(with: url!) { (data, response, error) in
+        urlSession.dataTask(with: url!) { (data, response, error) in
             if response == nil || (response as! HTTPURLResponse).statusCode > 299 {
                 self.rejectIt(reject: reject, error: WeatherError.other)
             } else if error != nil {
