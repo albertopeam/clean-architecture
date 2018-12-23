@@ -116,6 +116,15 @@
 		C3B5E74F21CFD4C400596978 /* CurrentWeatherViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3772C8021CE5E6500193660 /* CurrentWeatherViewBuilder.swift */; };
 		C3B5E75021CFD4C600596978 /* CurrentWeatherPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3772C8221CE5F1700193660 /* CurrentWeatherPresenter.swift */; };
 		C3B5E75121CFD4C900596978 /* CurrentWeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B5E73E21CF971100596978 /* CurrentWeatherViewModel.swift */; };
+		C3B5E75221CFD4F500596978 /* LocationJob.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3772C8421CE822E00193660 /* LocationJob.swift */; };
+		C3B5E75321CFD4FB00596978 /* CurrentWeatherJob.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3772C8621CE826900193660 /* CurrentWeatherJob.swift */; };
+		C3B5E75421CFD50400596978 /* Future.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C1CEEB21CC54AE00705B77 /* Future.swift */; };
+		C3B5E75521CFD51E00596978 /* Await.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B5E74221CFB4EE00596978 /* Await.swift */; };
+		C3B5E75621CFD52000596978 /* Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B5E74021CFB4CC00596978 /* Async.swift */; };
+		C3B5E75721CFD53400596978 /* CurrentWeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3772C7721CE49E300193660 /* CurrentWeatherViewController.swift */; };
+		C3B5E75821CFD53800596978 /* CurrentWeatherViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3772C8021CE5E6500193660 /* CurrentWeatherViewBuilder.swift */; };
+		C3B5E75921CFD53A00596978 /* CurrentWeatherPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3772C8221CE5F1700193660 /* CurrentWeatherPresenter.swift */; };
+		C3B5E75A21CFD53D00596978 /* CurrentWeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B5E73E21CF971100596978 /* CurrentWeatherViewModel.swift */; };
 		C3C13D9F21CE27DD007A538C /* CurrentWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C1CEED21CC578000705B77 /* CurrentWeather.swift */; };
 		C3C13DA021CE27DD007A538C /* CurrentWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C1CEED21CC578000705B77 /* CurrentWeather.swift */; };
 		C3C1CEEC21CC54AE00705B77 /* Future.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C1CEEB21CC54AE00705B77 /* Future.swift */; };
@@ -1162,8 +1171,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				C31F64D221367E0F00539450 /* AirQualityWorker.swift in Sources */,
+				C3B5E75821CFD53800596978 /* CurrentWeatherViewBuilder.swift in Sources */,
 				C3C74A2921020A8F0037C598 /* WeatherComponent.swift in Sources */,
 				C3C74A2121020A190037C598 /* WeatherTableViewCell.swift in Sources */,
+				C3B5E75721CFD53400596978 /* CurrentWeatherViewController.swift in Sources */,
+				C3B5E75921CFD53A00596978 /* CurrentWeatherPresenter.swift in Sources */,
 				C32634E62111C4E50023E58C /* Location.swift in Sources */,
 				C3D56B5221130B9300947F2D /* UVIndex.swift in Sources */,
 				C3C74A3121020A9C0037C598 /* PromiseAll.swift in Sources */,
@@ -1173,6 +1185,8 @@
 				C3C74A1A2102083D0037C598 /* AppDelegate.swift in Sources */,
 				C3C74A342102100B0037C598 /* UITestTool.swift in Sources */,
 				C3F2B31C2110AE9800239458 /* WeatherViewControllerUITest.swift in Sources */,
+				C3B5E75421CFD50400596978 /* Future.swift in Sources */,
+				C3B5E75621CFD52000596978 /* Async.swift in Sources */,
 				C3C74A2821020A8B0037C598 /* CurrentWeatherWorker.swift in Sources */,
 				C3C74A2D21020A940037C598 /* LocationWorker.swift in Sources */,
 				C3E3525121060FA50091CFDD /* WeatherViewControllerBuilder.swift in Sources */,
@@ -1180,16 +1194,20 @@
 				C3C74A2B21020A940037C598 /* PlacesComponent.swift in Sources */,
 				C3C74A2621020A840037C598 /* Error.swift in Sources */,
 				C31F64CC21367DF600539450 /* AirQualityViewController.swift in Sources */,
+				C3B5E75A21CFD53D00596978 /* CurrentWeatherViewModel.swift in Sources */,
 				C31F64D421367E1100539450 /* AirQualityEntity.swift in Sources */,
+				C3B5E75321CFD4FB00596978 /* CurrentWeatherJob.swift in Sources */,
 				C38421C521130CF90051E28B /* Observable.swift in Sources */,
 				C3E35253210618380091CFDD /* PlacesViewControllerUITest.swift in Sources */,
 				C31F64DC213681D000539450 /* AirQualityViewControllerUITest.swift in Sources */,
+				C3B5E75221CFD4F500596978 /* LocationJob.swift in Sources */,
 				C3C74A2F21020A9C0037C598 /* Promises.swift in Sources */,
 				C38421C8211338900051E28B /* UVIndexViewControllerTest.swift in Sources */,
 				C3C74A2C21020A940037C598 /* PlacesWorker.swift in Sources */,
 				C3C74A1C21020A080037C598 /* WeatherViewController.swift in Sources */,
 				C3C74A1D21020A0D0037C598 /* NearbyPlacesViewController.swift in Sources */,
 				C3C74A2E21020A940037C598 /* LocationManager.swift in Sources */,
+				C3B5E75521CFD51E00596978 /* Await.swift in Sources */,
 				C3C74A17210207750037C598 /* ItemsTableViewController.swift in Sources */,
 				C31F64CA21367DF200539450 /* AirQualityPresenter.swift in Sources */,
 				C3C74A2721020A880037C598 /* Weather.swift in Sources */,
