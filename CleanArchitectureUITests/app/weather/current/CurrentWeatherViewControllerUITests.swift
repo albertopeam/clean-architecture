@@ -24,12 +24,15 @@ class CurrentWeatherViewControllerUITests: XCTestCase {
     }
     
     func test_given_no_response_weather_when_ask_current_weather_then_show_loading() {
-        robot.present(vc: CurrentWeatherViewBuilder().build())
+        let vc = CurrentWeatherViewBuilder()
+            .withLocationJob(locationJob: DummyLocationJob())
+            .build()
+        robot.present(vc: vc)
             .assertLoading()
     }
     
     func test_given_success_response_weather_when_ask_current_weather_then_show_weather() {
-        let mockSession = MockURLSession(data: weatherData(), response: MockURLResponse())
+        let mockSession = MockURLSession(data: weatherData())
         let vc = CurrentWeatherViewBuilder()
             .withLocationJob(locationJob: MockLocationJob(mockLocation: Location(latitude: 0.0, longitude: 0.0)))
             .withWeatherJob(weatherJob: CurrentWeatherJob(urlSession: mockSession))
@@ -76,12 +79,24 @@ final class CurrentWeatherRobot: UIRobot {
     @discardableResult
     func assertLoading() -> CurrentWeatherRobot {
         tester!.waitForView(withAccessibilityIdentifier: CurrentWeatherViewController.AccessibilityIdentifiers.loading)
+        tester!.waitForAbsenceOfView(withAccessibilityIdentifier: CurrentWeatherViewController.AccessibilityIdentifiers.city)
+        tester!.waitForAbsenceOfView(withAccessibilityIdentifier: CurrentWeatherViewController.AccessibilityIdentifiers.description)
+        tester!.waitForAbsenceOfView(withAccessibilityIdentifier: CurrentWeatherViewController.AccessibilityIdentifiers.humidity)
+        tester!.waitForAbsenceOfView(withAccessibilityIdentifier: CurrentWeatherViewController.AccessibilityIdentifiers.pressure)
+        tester!.waitForAbsenceOfView(withAccessibilityIdentifier: CurrentWeatherViewController.AccessibilityIdentifiers.pressure)
+        tester!.waitForAbsenceOfView(withAccessibilityIdentifier: CurrentWeatherViewController.AccessibilityIdentifiers.windSpeed)
         return self
     }
     
     @discardableResult
     func assertWeather() -> CurrentWeatherRobot {
-        tester!.waitForView(withAccessibilityIdentifier: "")
+        tester!.waitForAbsenceOfView(withAccessibilityIdentifier: CurrentWeatherViewController.AccessibilityIdentifiers.loading)
+        tester!.waitForView(withAccessibilityIdentifier: CurrentWeatherViewController.AccessibilityIdentifiers.city)
+        tester!.waitForView(withAccessibilityIdentifier: CurrentWeatherViewController.AccessibilityIdentifiers.description)
+        tester!.waitForView(withAccessibilityIdentifier: CurrentWeatherViewController.AccessibilityIdentifiers.humidity)
+        tester!.waitForView(withAccessibilityIdentifier: CurrentWeatherViewController.AccessibilityIdentifiers.pressure)
+        tester!.waitForView(withAccessibilityIdentifier: CurrentWeatherViewController.AccessibilityIdentifiers.pressure)
+        tester!.waitForView(withAccessibilityIdentifier: CurrentWeatherViewController.AccessibilityIdentifiers.windSpeed)
         return self
     }
     
@@ -101,48 +116,8 @@ private final class MockLocationJob: LocationJob {
     
 }
 
-//Sundell https://medium.com/@johnsundell/mocking-in-swift-56a913ee7484
-class MockURLSession: URLSession {
-    
-    typealias CompletionHandler = (Data?, URLResponse?, Error?) -> Void
-    
-    var data: Data?
-    var error: Error?
-    var response: URLResponse?
-    
-    init(data: Data, response: URLResponse) {
-        self.data = data
-        self.response = response
-    }
-    
-    init(error: Error, response: URLResponse) {
-        self.error = error
-        self.response = response
-    }
-    
-    override func dataTask(with url: URL,
-                           completionHandler: @escaping CompletionHandler) -> URLSessionDataTask {
-        let data = self.data
-        let error = self.error
-        return MockURLSessionDataTask {
-            completionHandler(data, nil, error)
-        }
-    }
-    
-}
-
-//Sundell https://medium.com/@johnsundell/mocking-in-swift-56a913ee7484
-class MockURLSessionDataTask: URLSessionDataTask {
-    
-    private let closure: () -> Void
-    
-    init(closure: @escaping () -> Void) {
-        self.closure = closure
-    }
-    
-    override func resume() {
-        closure()
+private final class DummyLocationJob: LocationJob {
+    override func location() -> Promise<Location> {
+        return Promise<Location>()
     }
 }
-
-class MockURLResponse: URLResponse {}

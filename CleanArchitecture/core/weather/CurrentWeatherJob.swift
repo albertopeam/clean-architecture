@@ -21,7 +21,9 @@ class CurrentWeatherJob {
         if let url = urlForWeather(location: location, apiKey: Constants.openWeatherApiKey) {
             urlSession.dataTask(with: url) { (data, response, error) in
                 DispatchQueue.main.async {
-                    if response == nil || (response as! HTTPURLResponse).statusCode > 299 {
+                    if response == nil {
+                        promise.reject(with: WeatherError.other)
+                    } else if let response = response as? HTTPURLResponse, response.statusCode > 299 {
                         promise.reject(with: WeatherError.other)
                     } else if let error = error {
                         switch error.code {

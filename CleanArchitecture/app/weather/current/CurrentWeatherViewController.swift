@@ -9,7 +9,7 @@
 import UIKit.UIViewController
 import CoreLocation
 //TODO: tests: interactor+presenter
-//TODO: future/promise + tests
+//TODO: future/promise: añadir más tests
     //TODO: check not responding more than once, NOW it does
 class CurrentWeatherViewController: UIViewController {
     

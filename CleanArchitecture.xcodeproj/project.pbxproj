@@ -218,6 +218,8 @@
 		C3F1C1A421135D1B0007DF50 /* MockExpectation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F1C1A321135D1B0007DF50 /* MockExpectation.swift */; };
 		C3F1C1A621135E670007DF50 /* JsonDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32634EB2111CE1F0023E58C /* JsonDecoder.swift */; };
 		C3F2B31C2110AE9800239458 /* WeatherViewControllerUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F2B31B2110AE9800239458 /* WeatherViewControllerUITest.swift */; };
+		C3F4353D21D1685600BA980A /* MockUrlSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F4353C21D1685600BA980A /* MockUrlSession.swift */; };
+		C3F4353F21D1689400BA980A /* MockURLSessionDataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F4353E21D1689400BA980A /* MockURLSessionDataTask.swift */; };
 		C3FA42382087AEC200B63221 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3FA42362087AEC200B63221 /* Main.storyboard */; };
 		C3FA423A2087AEC200B63221 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3FA42392087AEC200B63221 /* Assets.xcassets */; };
 		C3FA423D2087AEC200B63221 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3FA423B2087AEC200B63221 /* LaunchScreen.storyboard */; };
@@ -394,6 +396,8 @@
 		C3F1C1A1211357370007DF50 /* MockLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockLocation.swift; sourceTree = "<group>"; };
 		C3F1C1A321135D1B0007DF50 /* MockExpectation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockExpectation.swift; sourceTree = "<group>"; };
 		C3F2B31B2110AE9800239458 /* WeatherViewControllerUITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewControllerUITest.swift; sourceTree = "<group>"; };
+		C3F4353C21D1685600BA980A /* MockUrlSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUrlSession.swift; sourceTree = "<group>"; };
+		C3F4353E21D1689400BA980A /* MockURLSessionDataTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLSessionDataTask.swift; sourceTree = "<group>"; };
 		C3FA422F2087AEC200B63221 /* CleanArchitecture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CleanArchitecture.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3FA42372087AEC200B63221 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C3FA42392087AEC200B63221 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -688,6 +692,7 @@
 		C3B5E75D21CFFE5100596978 /* tools */ = {
 			isa = PBXGroup;
 			children = (
+				C3F4353B21D1683C00BA980A /* network */,
 				C3B5E76021CFFE8100596978 /* legacy */,
 				C3B5E75B21CFFCB700596978 /* UIRobot.swift */,
 				C3B5E75E21CFFE7400596978 /* KIF+Tester.swift */,
@@ -874,6 +879,15 @@
 				C30654F72138092900E02FF5 /* TestConstants.swift */,
 			);
 			path = test;
+			sourceTree = "<group>";
+		};
+		C3F4353B21D1683C00BA980A /* network */ = {
+			isa = PBXGroup;
+			children = (
+				C3F4353C21D1685600BA980A /* MockUrlSession.swift */,
+				C3F4353E21D1689400BA980A /* MockURLSessionDataTask.swift */,
+			);
+			path = network;
 			sourceTree = "<group>";
 		};
 		C3FA42262087AEC200B63221 = {
@@ -1269,6 +1283,7 @@
 				C3C74A2C21020A940037C598 /* PlacesWorker.swift in Sources */,
 				C3C74A1C21020A080037C598 /* WeatherViewController.swift in Sources */,
 				C3C74A1D21020A0D0037C598 /* NearbyPlacesViewController.swift in Sources */,
+				C3F4353F21D1689400BA980A /* MockURLSessionDataTask.swift in Sources */,
 				C3C74A2E21020A940037C598 /* LocationManager.swift in Sources */,
 				C3B5E75521CFD51E00596978 /* Await.swift in Sources */,
 				C3B5E76221CFFF0200596978 /* CurrentWeatherViewControllerUITests.swift in Sources */,
@@ -1277,6 +1292,7 @@
 				C3C74A2721020A880037C598 /* Weather.swift in Sources */,
 				C3C13D9F21CE27DD007A538C /* CurrentWeather.swift in Sources */,
 				C3C74A1F21020A120037C598 /* NearbyPlacesViewControllerBuilder.swift in Sources */,
+				C3F4353D21D1685600BA980A /* MockUrlSession.swift in Sources */,
 				C3C74A18210207790037C598 /* Item.swift in Sources */,
 				C38421C121130CF00051E28B /* UVIndexViewController.swift in Sources */,
 				C3D56B4E21130B8300947F2D /* LocationError.swift in Sources */,
