@@ -16,7 +16,7 @@ before_script:
   # Build dependencies(only build)
   # - carthage bootstrap --platform iOS --no-use-binaries --cache-builds
   # When adding new dependencies or want to download latest versions
-  - carthage update --cache-builds
+  - carthage update --platform ios --cache-builds
   # explanation for bootstrap vs update: https://github.com/Carthage/Carthage/issues/848
 
 after_success:
