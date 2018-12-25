@@ -57,7 +57,7 @@ public class CurrentWeather: CurrentWeatherProtocol {
                     case .noLocation:
                         output.weatherError(error: .noLocation)
                     }
-                } else if error is WeatherError {
+                } else {
                     output.weatherError(error: .error)
                 }
             }

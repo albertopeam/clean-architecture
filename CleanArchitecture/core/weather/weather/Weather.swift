@@ -38,7 +38,7 @@ protocol WeatherOutputProtocol {
     func onWeatherError(error:Error)
 }
 
-struct InstantWeather {
+struct InstantWeather: Equatable {
     let name:String
     let description:String
     let icon:String
