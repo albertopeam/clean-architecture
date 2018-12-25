@@ -4,8 +4,8 @@
 //
 //  Created by Alberto on 20/12/2018.
 //  Copyright © 2018 Alberto. All rights reserved.
-//  Read the blog post at https://swiftbysundell.com/posts/under-the-hood-of-futures-and-promises-in-swift
 //
+//https://swiftbysundell.com/posts/under-the-hood-of-futures-and-promises-in-swift
 
 import Foundation
 
@@ -38,10 +38,12 @@ class Promise<Value>: Future<Value> {
         result = value.map(Result.value)
     }
     
+    //TODO: state to skip n calls
     func resolve(with value: Value) {
         result = .value(value)
     }
     
+    //TODO: state to skip n calls
     func reject(with error: Error) {
         result = .error(error)
     }

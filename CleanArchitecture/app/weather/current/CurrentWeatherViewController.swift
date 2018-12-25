@@ -11,6 +11,11 @@ import CoreLocation
 //TODO: tests: interactor+presenter
 //TODO: future/promise: añadir más tests
     //TODO: check not responding more than once, NOW it does
+//TODO: CI build?
+//TODO: readme
+    //TODO: sundell promises
+    //TODO: UITESTS
+//TODO: swiftlint
 class CurrentWeatherViewController: UIViewController {
     
     private var presenter: CurrentWeatherPresenter
