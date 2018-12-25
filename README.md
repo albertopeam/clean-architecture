@@ -19,11 +19,15 @@ The intention of this repository is to show some of the more common practices wh
         * [Legacy](#swift:-Legacy)
         * [Serial](#swift:-Serial-work)
         * [Parallel](#swift:-Parallel-work)
+        * [by Sundell](#swift-Sundell)
     2. [MVVM](#mvvm(model-view-view-model))
         * [View-Model](#Swift:-Observer)
         * [Widget](#Swift:-Reusing-View-Model-in-TodayExtension)
     3. [MVP](#mvp(model-view-presenter))
 5. [Testing](#testing)
+   1. [Unit testing](#Unit-testing)
+   2. [Integration testing](#Integration-testing)
+   3. [UI/Functional testing](#UI/Functional-testing)
   
 ## Before start
 
@@ -41,8 +45,10 @@ carthage update --platform iOS
 
 ### App
 * app/places: shows a list of places near your current location
-* app/weather: shows the weather in a list of places.
+* app/weather/weather: shows the weather in a list of places.
+* app/weather/current: shows the weather in your current location.
 * app/uvindex: shows the ultraviolet index in your current location.
+* app/airquality: shows the air quality index in your current location.
 
 ### Extensions
 * UltravioletIndexWidget: shows the ultraviolet index in your current location on a widget.
@@ -241,11 +247,30 @@ class Weather:WeatherProtocol {
 }
 ```
 
+#### Swift: Sundell
+Same flavour but this time an original work by [Sundell](https://www.swiftbysundell.com/posts/under-the-hood-of-futures-and-promises-in-swift)
+
+You could see that in this example we are using *chained* instead of *then* and *observe* for final result or error.
+```swift
+    locationJob.location().chained { (location) -> Future<InstantWeather> in
+        return self.weatherJob.weather(location: location)
+    }.observe { (result) in
+        switch result {
+        case .value(let weather):
+            output.weather(weather: weather)
+        case .error(let error):                
+            output.weatherError(error: .error)                
+        }
+    }
+```
+
 * Usefull links:
-    * [Code: Serial promises](https://github.com/albertopeam/clean-architecture/blob/master/CleanArchitecture/core/places/Places.swift)
-    * [Code: Parallel promises](https://github.com/albertopeam/clean-architecture/blob/master/CleanArchitecture/core/weather/Weather.swift)
-    * [Test: UseCase](https://github.com/albertopeam/clean-architecture/blob/master/CleanArchitectureTests/core/places/PlacesTest.swift)
-    * [Test: Worker](https://github.com/albertopeam/clean-architecture/blob/master/CleanArchitectureTests/core/places/PlacesWorkerTest.swift)
+    * [Code: Serial promise](https://github.com/albertopeam/clean-architecture/blob/master/CleanArchitecture/core/places/Places.swift)    
+    * [Test: Serial promise UseCase](https://github.com/albertopeam/clean-architecture/blob/master/CleanArchitectureTests/core/places/PlacesTest.swift)
+    * [Test: Serial promise Worker](https://github.com/albertopeam/clean-architecture/blob/master/CleanArchitectureTests/core/places/PlacesWorkerTest.swift)
+    * [Code: Parallel promises](https://github.com/albertopeam/clean-architecture/blob/master/CleanArchitecture/core/weather/weather/Weather.swift)
+    * [Code: Sundell promises](https://github.com/albertopeam/clean-architecture/blob/master/CleanArchitecture/core/weather/current/CurrentWeather.swift)
+    * [Test: Sundell promises](https://github.com/albertopeam/clean-architecture/blob/master/CleanArchitectureTests/core/weather/current/CurrentWeatherTests.swift)
 
 | *PROS* | *CONS* | 
 | :---         | :---           | 
@@ -258,6 +283,7 @@ class Weather:WeatherProtocol {
 | Custom solution(this is a pattern) that avoid the usage of third party lib | |
 | Produce easy and complete testable code | |
 | Helps for decoupling between use cases and data gateways | |
+| Low technical debt | |
 
 * UML
 
@@ -624,14 +650,85 @@ class NearbyPlacesPresenter:NearbyPlacesPresenterProtocol, PlacesOutputProtocol 
 | Easy to test objects with only one responsabilty | |
     
 ## Testing
-* under development
-    * UNIT docu
-    * UI: docu
-        * pending:
-            Nimble
-            KIF+Snapshot 
-            https://github.com/kif-framework/KIF
-            https://github.com/uber/ios-snapshot-test-case/
+
+### Unit testing
+ * Is a method by which individual or sets units of source code are tested to determine whether they are fit for use.
+ * When we are doing tests sometimes is needed to have smaller scope to reduce the complexity of the test, then we will need to use test doubles. A test double is only a collaborator with predefined behaviour that will help us during the testing.
+   * Test doubles by [Martin Fowler](https://martinfowler.com/bliki/TestDouble.html): 
+     * Dummy: not used directly, needed to fill parameters.
+     * Fake: it has working implementation, but it provides a shortcut that is not available in production.
+     * Stubs: provide canned answers to calls made during the test.
+     * Spies: record information based on how they were called.
+     * Mocks: provide pre-programmed answers to the calls that they expect to receive. Can thrown exceptions if they execute code that is not supposed to. 
+
+#### How to start?
+ * When you create a XCode project it gives you the posibility to create a unit testing target. If you haven't created one, you can create from srcatch a unit test target.
+ * As a good practice we will try to follow the next rules when coding tests:
+   * Mantaining the sources of code and the tests in the same directories in both targets.
+   * Name test class with the name of the source plus *Tests*
+   * Use *sut* as name of the unit being tested.
+   * Use *given/when/then* convention to name the test functions.
+   * Try to find all equivalences classes. It divides the input data of a software unit into partitions of equivalent data from which test cases can be derived.
+   * Always make at least one assertion, if not the test doesn't add value. XCTest framework will help us to do it.
+   
+#### Swift: unit test without dependencies
+
+Sample is a simple class that only returns empty if content is nil or the current content if not nil. There are a couple of test cases that cover all equivalence classes.
+
+```swift
+class Sample {
+
+    var content: String?
+
+    func run() -> String {
+        if let notNullContent = content {
+            return notNullContent
+        } else {
+            return ""
+        }
+    }
+}
+
+import XCTest
+class SampleTests: XCTestCase {
+
+    func test_given_nil_content_when_run_then_return_empty() {
+        var sut = Sample()
+        
+        let result = sut.run()
+        
+        XCTAssertEqual(result, "")
+    }
+    
+    func test_given_nil_content_when_run_then_return_empty() {
+        var sut = Sample()
+        sut.content = "some content"
+        
+        let result = sut.run()
+        
+        XCTAssertEqual(result, sut.content)
+    }
+    
+}
+```
+
+#### Swift: unit test with dependencies
+```swift
+```
+
+* There are some tools that could help us during test development
+  * [Nimble](https://github.com/Quick/Nimble) is used to express the expected outcomes of Swift expressions, it is very intuitive and provides a lot of matchers to easily do different kinds of assertions. It would save us when working with asynchronous code.
+
+### Integration testing
+?
+
+### UI/Functional testing
+* Tools: 
+    [KIF functional testing](https://github.com/kif-framework/KIF)
+
+### Snapshot testing
+* Tools: 
+    [Snapshot](https://github.com/uber/ios-snapshot-test-case/)            
 
 ## License
 Copyright (c) 2018 Alberto Penas Amor
