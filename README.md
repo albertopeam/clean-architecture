@@ -704,7 +704,7 @@ class SampleTests: XCTestCase {
         XCTAssertEqual(result, "")
     }
     
-    func test_given_nil_content_when_run_then_return_empty() {
+    func test_given_not_nil_content_when_run_then_return_not_empty() {
         var sut = Sample()
         sut.content = "some content"
         
@@ -718,7 +718,7 @@ class SampleTests: XCTestCase {
 
 #### Swift: unit test with dependencies(Mock)
 
-text?????
+Sometimes we will need to inject collborators instead of the objects used in production. This will help us recreating equivalence classes and simplify the test.
 
 ```swift
 
@@ -803,13 +803,108 @@ private final class MockContent: Content {
 
 #### Swift: unit test with dependencies(Spy)
 
-??? spy
+Sometimes the async nature of the code leads us to use spies to check if the result of the operation is what we expect.
 
-* There are some tools that could help us during test development
-  * [Nimble](https://github.com/Quick/Nimble) is used to express the expected outcomes of Swift expressions, it is very intuitive and provides a lot of matchers to easily do different kinds of assertions. It would save us when working with asynchronous code.
+There are some tools that will help us while we are testing async code.
+  * [Nimble](https://github.com/Quick/Nimble) is used to express the expected outcomes of Swift expressions, it is very intuitive and provides a lot of matchers to easily do different kinds of assertions. 
+
+```swift
+class Sample {
+    
+    var content: String?
+    
+    func run(completion: @escaping (_ result: String) -> Void) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            if let notNullContent = self.content {
+                completion(notNullContent)
+            } else {
+                completion("")
+            }
+        }
+    }
+    
+}
+```
+
+Spy using function blocks. Nimble will help us to wait until the async operation is complete or timeout (default 1 second) completes.
+
+```swift
+import XCTest
+import Nimble
+
+class SampleTests: XCTestCase {
+    
+    func test_given_nil_content_when_run_then_return_empty() {
+        let sut = Sample()
+        sut.content = nil
+        
+        var result: String?
+        sut.run { (res) in
+            result = res
+        }
+        
+        expect(result).toEventually(beEmpty())
+    }
+    
+    func test_given_not_nil_content_when_run_then_return_not_empty() {
+        let content = "sample"
+        let sut = Sample()
+        sut.content = content
+        
+        var result: String?
+        sut.run { (res) in
+            result = res
+        }
+        
+        expect(result).toEventually(equal(content))
+    }
+    
+}
+```
+
+Spy using a class. Nimble will help us to wait until the async operation is complete or timeout (default 1 second) completes.
+
+```swift
+import XCTest
+import Nimble
+
+class SampleTests: XCTestCase {
+    
+    func test_given_nil_content_when_run_then_return_empty() {
+        let spy = Spy()
+        let sut = Sample()
+        sut.content = nil
+        
+        sut.run(completion: spy.spy)
+        
+        expect(spy.result).toEventually(beEmpty())
+    }
+    
+    func test_given_not_nil_content_when_run_then_return_not_empty() {
+        let spy = Spy()
+        let content = "sample"
+        let sut = Sample()
+        sut.content = content
+        
+        sut.run(completion: spy.spy)
+        
+        expect(spy.result).toEventually(equal(content))
+    }
+    
+}
+
+private final class Spy {
+    
+    var result: String!
+    
+    func spy(_ result: String) {
+        self.result = result
+    }
+}
+```
 
 ### Integration testing
-? Prefs/DDBB/MOCK SERVER
+? Prefs/DDBB/
 
 ### UI/Functional testing
 * Tools: 
