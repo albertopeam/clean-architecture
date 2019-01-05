@@ -653,7 +653,7 @@ class NearbyPlacesPresenter:NearbyPlacesPresenterProtocol, PlacesOutputProtocol 
 
 ### Unit testing
  * Is a method by which individual or sets units of source code are tested to determine whether they are fit for use.
- * When we are doing tests sometimes is needed to have smaller scope to reduce the complexity of the test, then we will need to use test doubles. A test double is only a collaborator with predefined behaviour that will help us during the testing.
+ * When we are doing tests we usually need to have small scopes to reduce the complexity of the test, then we will need to use test doubles. A test double is only a collaborator with predefined behaviour that will help us during the testing.
    * Test doubles by [Martin Fowler](https://martinfowler.com/bliki/TestDouble.html): 
      * Dummy: not used directly, needed to fill parameters.
      * Fake: it has working implementation, but it provides a shortcut that is not available in production.
@@ -673,7 +673,7 @@ class NearbyPlacesPresenter:NearbyPlacesPresenterProtocol, PlacesOutputProtocol 
    
 #### Swift: unit test without dependencies
 
-Sample is a simple class that only returns empty if content is nil or the current content if not nil. There are a couple of test cases that cover all equivalence classes.
+Sample is a simple class that only returns empty if content is nil or the current content if not nil.
 
 ```swift
 class Sample {
@@ -688,7 +688,11 @@ class Sample {
         }
     }
 }
+```
 
+There are a couple of test cases that cover all equivalence classes.
+
+```swift
 import XCTest
 class SampleTests: XCTestCase {
 
@@ -712,15 +716,100 @@ class SampleTests: XCTestCase {
 }
 ```
 
-#### Swift: unit test with dependencies
+#### Swift: unit test with dependencies(Mock)
+
+text?????
+
 ```swift
+
+class Content {
+    
+    private let content: String?
+    
+    init(content: String? = nil) {
+        self.content = content
+    }
+    
+    func get() throws -> String {
+        guard let text = content else {
+            throw NSError()
+        }
+        return text
+    }
+    
+}
+
+class Sample {
+    
+    let content: Content
+    
+    init(content: Content) {
+        self.content = content
+    }
+    
+    func run() -> String {
+        do {
+            return try content.get()
+        } catch {
+            return ""
+        }
+    }
+    
+}
 ```
+
+There are a couple of test cases that cover all equivalence classes. Also a Mock object to avoid using the production *Content* and configure it to cover all the cases.
+
+```swift
+class SampleTests: XCTestCase {
+    
+    func test_given_nil_content_when_run_then_return_empty() {
+        let mockContent = MockContent()
+        mockContent.closure = {
+            throw NSError()
+        }
+        
+        let sut = Sample(content: mockContent)
+        let result = sut.run()
+        
+        XCTAssertEqual(result, "")
+    }
+    
+    func test_given_not_nil_content_when_run_then_return_not_empty() {
+        let mockContent = MockContent()
+        let content = "sample"
+        mockContent.closure = {
+            return content
+        }
+        
+        let sut = Sample(content: mockContent)
+        let result = sut.run()
+        
+        XCTAssertEqual(result, content)
+    }
+    
+}
+
+private final class MockContent: Content {
+    
+    var closure: (() throws -> String)!
+    
+    override func get() throws -> String {
+        return try closure()
+    }
+    
+}
+```
+
+#### Swift: unit test with dependencies(Spy)
+
+??? spy
 
 * There are some tools that could help us during test development
   * [Nimble](https://github.com/Quick/Nimble) is used to express the expected outcomes of Swift expressions, it is very intuitive and provides a lot of matchers to easily do different kinds of assertions. It would save us when working with asynchronous code.
 
 ### Integration testing
-?
+? Prefs/DDBB/MOCK SERVER
 
 ### UI/Functional testing
 * Tools: 
