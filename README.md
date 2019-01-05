@@ -651,16 +651,22 @@ class NearbyPlacesPresenter:NearbyPlacesPresenterProtocol, PlacesOutputProtocol 
     
 ## Testing
 
-### Unit testing
+### Unit testing 
  * Is a method by which individual or sets units of source code are tested to determine whether they are fit for use.
- * When we are doing tests we usually need to have small scopes to reduce the complexity of the test, then we will need to use test doubles. A test double is only a collaborator with predefined behaviour that will help us during the testing.
+ * Testing usually is tricky, most of the time the pieces of code that we test are composed by tons of dependencies. To avoid test a big system with a lot of dependencies we should focus on small bytes of code(usually one class), to do this we use test doubles to have a controlled environment for the dependencies that the class under test is using.
    * Test doubles by [Martin Fowler](https://martinfowler.com/bliki/TestDouble.html): 
      * Dummy: not used directly, needed to fill parameters.
      * Fake: it has working implementation, but it provides a shortcut that is not available in production.
      * Stubs: provide canned answers to calls made during the test.
      * Spies: record information based on how they were called.
      * Mocks: provide pre-programmed answers to the calls that they expect to receive. Can thrown exceptions if they execute code that is not supposed to. 
-
+ * To summarize on how to proceed to create a test:
+   * Choose a class to test
+   * Create test class
+   * Instanciate the subject under test
+   * Resolve sut dependencies through the using of test doubles
+   * Create test cases covering all equivalence classes using test doubles
+ 
 #### How to start?
  * When you create a XCode project it gives you the posibility to create a unit testing target. If you haven't created one, you can create from srcatch a unit test target.
  * As a good practice we will try to follow the next rules when coding tests:
@@ -670,10 +676,14 @@ class NearbyPlacesPresenter:NearbyPlacesPresenterProtocol, PlacesOutputProtocol 
    * Use *given/when/then* convention to name the test functions.
    * Try to find all equivalences classes. It divides the input data of a software unit into partitions of equivalent data from which test cases can be derived.
    * Always make at least one assertion, if not the test doesn't add value. XCTest framework will help us to do it.
+   * Private methods must be tested indirectly through the public API interface of the subject under test, to achieve this goal easily we can use test doubles.
+   * Never test systems through network calls or systems that can provide failures due to external factors.
    
 #### Swift: unit test without dependencies
 
-Sample is a simple class that only returns empty if content is nil or the current content if not nil.
+This kind of tests usually are the ones that don't have dependencies, so we don't need to resolve external dependencies with test doubles. We only need to focus on the public API interface to create the test cases.
+
+The next sample is very small and covers a small class called *Sample*, it is a simple one that only returns empty if content is nil or the current content if not nil.
 
 ```swift
 class Sample {
@@ -690,7 +700,7 @@ class Sample {
 }
 ```
 
-There are a couple of test cases that cover all equivalence classes.
+There are a couple of test cases that cover all equivalence classes. The first one covers nil content(else branch of the *run* method for *Sample* class) and the second covers the not nil content.
 
 ```swift
 import XCTest
@@ -716,9 +726,10 @@ class SampleTests: XCTestCase {
 }
 ```
 
-#### Swift: unit test with dependencies(Mock)
+#### Swift: unit test with dependencies(Mock/Stub/Fake/Dummy)
 
 Sometimes we will need to inject collborators instead of the objects used in production. This will help us recreating equivalence classes and simplify the test.
+In this case we will have two main clases *Content* and *Sample*, doing the tests for *Sample* we will use a a *Mock* to replace *Content*.
 
 ```swift
 
@@ -759,6 +770,7 @@ class Sample {
 ```
 
 There are a couple of test cases that cover all equivalence classes. Also a Mock object to avoid using the production *Content* and configure it to cover all the cases.
+Please take note that *MockContent* uses a tricky technique to do the replacemet, we have a public var called *closure* that will be executed when the *get* function will be invoked, this way we can inject the desired behaviour through a functional approach.
 
 ```swift
 class SampleTests: XCTestCase {
@@ -808,6 +820,10 @@ Sometimes the async nature of the code leads us to use spies to check if the res
 There are some tools that will help us while we are testing async code.
   * [Nimble](https://github.com/Quick/Nimble) is used to express the expected outcomes of Swift expressions, it is very intuitive and provides a lot of matchers to easily do different kinds of assertions. 
 
+XCTest framework also provides API's to test async code, but is a bit more verbose than Nimble, feel free to check the framework [XCTest expectations](https://developer.apple.com/documentation/xctest/asynchronous_tests_and_expectations)
+
+Now the *Sample* class uses a block function to return the result of the call. The Queue is only needed for this example to recreate an async operation. The behaviour is the same as the previous examples.
+
 ```swift
 class Sample {
     
@@ -826,7 +842,7 @@ class Sample {
 }
 ```
 
-Spy using function blocks. Nimble will help us to wait until the async operation is complete or timeout (default 1 second) completes.
+In the next tests we are doing the Spying using function blocks. Nimble will help us to wait until the async operation is complete or timeout (default 1 second) finishes.
 
 ```swift
 import XCTest
@@ -862,7 +878,7 @@ class SampleTests: XCTestCase {
 }
 ```
 
-Spy using a class. Nimble will help us to wait until the async operation is complete or timeout (default 1 second) completes.
+In this example we are doing the Spying using a class. The test is more readable but the quantity of code to write is bigger. This technique is used frequently when using protocols as a way to respond as response to an async operation. Nimble will help us to wait until the async operation is complete or timeout (default 1 second) finishes.
 
 ```swift
 import XCTest
@@ -900,11 +916,17 @@ private final class Spy {
     func spy(_ result: String) {
         self.result = result
     }
+    
 }
 ```
 
 ### Integration testing
-? Prefs/DDBB/
+
+Testing performed to expose defects in the interfaces and in the interactions between integrated components or systems. We usually use modules or frameworks to help us during the development, we mustn't test this systems, but our software must be tested along with them. To achieve this we have two options: 
+1. Hide the library implementation behind an abstraction and use test doubles during testing.
+2. Use the library implementation during the test.
+
+??
 
 ### UI/Functional testing
 * Tools: 
@@ -915,7 +937,7 @@ private final class Spy {
     [Snapshot](https://github.com/uber/ios-snapshot-test-case/)            
 
 ## License
-Copyright (c) 2018 Alberto Penas Amor
+Copyright (c) 2019 Alberto Penas Amor
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
