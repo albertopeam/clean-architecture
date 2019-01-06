@@ -920,19 +920,193 @@ private final class Spy {
 }
 ```
 
-### Integration testing
+### HTTP testing
 
-Testing performed to expose defects in the interfaces and in the interactions between integrated components or systems. We usually use modules or frameworks to help us during the development, we mustn't test this systems, but our software must be tested along with them. To achieve this we have two options: 
-1. Hide the library implementation behind an abstraction and use test doubles during testing.
-2. Use the library implementation during the test.
+TODO: OHHTTPStubs sample with URLSession
 
-??
+* Tools:
+  * [Optional Mock Server](https://github.com/AliSoftware/OHHTTPStubs)
 
-### UI/Functional testing
+### UI testing
+
+TODO: UI+Presenter+Mock Interactor
+
 * Tools: 
     [KIF functional testing](https://github.com/kif-framework/KIF)
+    [Nimble](https://github.com/Quick/Nimble)
+
+### Functional testing
+
+Functional testing is a powerfull tool that give us the ability to test the system against the functional specifications. This kind of tests are hard to develop and mantain, but they are worthy when you need to test a system against their specs. The usual way to do this tests is manually, but it can be automated. To automate this kind of tests be should be very carefull with the outter systems which we are interacting, we want to test the system itself no other external systems that we are dependent of, so in a ideal way, we should put some boundaries when doing this kind of tests. Thinks like communications with other machines through the network, this is the most common problem in this kind of tests, there are other like localization services or hardware sensors. The way we have to avoid this is to leave the system as it is except for this kind of interaction, we can use libraries or mock ourselves the external systems.
+
+In the next example we are going to test a feature that given the current location we want to show the current weather for this location. 
+We are only covering the happy path. We don't want to create a excessive number of this kind of tests.
+
+The next two snippets are used to mock localization services and network layer. As we said we don't want to handle external systems that could lead to errors not expected during the execution of the test.
+
+```swift
+private final class MockLocationJob: LocationJob {
+    
+    private let mockLocation: Location
+    
+    init(mockLocation: Location) {
+        self.mockLocation = mockLocation
+    }
+    
+    override func location() -> Promise<Location> {
+        return Promise<Location>(value: mockLocation)
+    }
+    
+}
+```
+
+We are using *URLSession* to handle our network requests, so we can use a mocked one to inject the expected response. It is a bit tricky, we need to override *dataTask* method in *URLSession* and return a mocked *URLSessionDataTask* that is not going to make any request when the *resume* method will be invoked, it only is going to respond directly with the response that we inject in the mocked *URLSession*.
+
+```swift
+class MockURLSession: URLSession {
+    
+    typealias CompletionHandler = (Data?, URLResponse?, Error?) -> Void
+    
+    var data: Data?
+    var error: Error?
+    var response: URLResponse = DummyURLResponse()
+    
+    init(data: Data) {
+        self.data = data
+    }
+
+    override func dataTask(with url: URL,
+                           completionHandler: @escaping CompletionHandler) -> URLSessionDataTask {
+        let data = self.data
+        let error = self.error
+        let response = self.response
+        return MockURLSessionDataTask {
+            completionHandler(data, response, error)
+        }
+    }
+    
+}
+
+class MockURLSessionDataTask: URLSessionDataTask {
+    
+    private let closure: () -> Void
+    
+    init(closure: @escaping () -> Void) {
+        self.closure = closure
+    }
+    
+    override func resume() {
+        closure()
+    }
+}
+```
+
+This is the happy path test. We are using a pattern called Robot to split the code of the test itself(setup and test doubles) and the needed interactions with the software.
+
+```swift
+import XCTest
+@testable import CleanArchitecture
+
+class CurrentWeatherViewControllerUITests: XCTestCase {
+    
+    private var robot: CurrentWeatherRobot!
+    
+    override func setUp() {
+        super.setUp()
+        robot = CurrentWeatherRobot(test: self)
+    }
+    
+    override func tearDown() {
+        robot = nil
+        super.tearDown()
+    }
+    
+    func test_given_success_response_weather_when_ask_current_weather_then_show_weather() {
+        let mockSession = MockURLSession(data: weatherData())
+        let vc = CurrentWeatherViewBuilder()
+            .withLocationJob(locationJob: MockLocationJob(mockLocation: Location(latitude: 0.0, longitude: 0.0)))
+            .withWeatherJob(weatherJob: CurrentWeatherJob(urlSession: mockSession))
+            .build()        
+        robot.present(vc: vc)
+            .assertWeather()
+    }
+    
+    private func weatherData() -> Data {
+        let js: [String: Any] = [
+            "cod": 200,
+            "name": "Perillo",
+            "dt": 1545605544,
+            "weather": [[
+                "description": "description",
+                "icon": "icon"
+                ]],
+            "main": [
+                "temp": 20.0,
+                "pressure":1024.0,
+                "humidity":75
+            ],
+            "wind": [
+                "speed": 20,
+                "deg": 90
+            ]
+        ]
+        if let data = try? JSONSerialization.data(withJSONObject: js, options: .prettyPrinted) {
+            return data
+        }
+        preconditionFailure("cannot convert to data")
+    }
+    
+}
+```
+
+The Robot is a proxy to use KIF library, it contains all the intereactions with the user interface.
+
+```swift
+final class CurrentWeatherRobot: UIRobot {
+ 
+    @discardableResult
+    func present(vc: UIViewController) -> CurrentWeatherRobot {
+        present(viewController: vc)
+        return self
+    }
+    
+    @discardableResult
+    func assertLoading() -> CurrentWeatherRobot {
+        tester!.waitForView(withAccessibilityIdentifier: CurrentWeatherViewController.AccessibilityIdentifiers.loading)
+        tester!.waitForAbsenceOfView(withAccessibilityIdentifier: CurrentWeatherViewController.AccessibilityIdentifiers.city)
+        tester!.waitForAbsenceOfView(withAccessibilityIdentifier: CurrentWeatherViewController.AccessibilityIdentifiers.description)
+        tester!.waitForAbsenceOfView(withAccessibilityIdentifier: CurrentWeatherViewController.AccessibilityIdentifiers.humidity)
+        tester!.waitForAbsenceOfView(withAccessibilityIdentifier: CurrentWeatherViewController.AccessibilityIdentifiers.pressure)
+        tester!.waitForAbsenceOfView(withAccessibilityIdentifier: CurrentWeatherViewController.AccessibilityIdentifiers.pressure)
+        tester!.waitForAbsenceOfView(withAccessibilityIdentifier: CurrentWeatherViewController.AccessibilityIdentifiers.windSpeed)
+        return self
+    }
+    
+    @discardableResult
+    func assertWeather() -> CurrentWeatherRobot {
+        tester!.waitForAbsenceOfView(withAccessibilityIdentifier: CurrentWeatherViewController.AccessibilityIdentifiers.loading)
+        tester!.waitForView(withAccessibilityIdentifier: CurrentWeatherViewController.AccessibilityIdentifiers.city)
+        tester!.waitForView(withAccessibilityIdentifier: CurrentWeatherViewController.AccessibilityIdentifiers.description)
+        tester!.waitForView(withAccessibilityIdentifier: CurrentWeatherViewController.AccessibilityIdentifiers.humidity)
+        tester!.waitForView(withAccessibilityIdentifier: CurrentWeatherViewController.AccessibilityIdentifiers.pressure)
+        tester!.waitForView(withAccessibilityIdentifier: CurrentWeatherViewController.AccessibilityIdentifiers.pressure)
+        tester!.waitForView(withAccessibilityIdentifier: CurrentWeatherViewController.AccessibilityIdentifiers.windSpeed)
+        return self
+    }
+    
+}
+```
+
+* Tools:
+    * [KIF functional testing](https://github.com/kif-framework/KIF)
+    * [Nimble expectations](https://github.com/Quick/Nimble)
 
 ### Snapshot testing
+
+Snapshot testing help us or the designers to check wether the current user interface matches the design. The idea is to put the user interface of the software in a determinate state and take a screenshot, this will be compared to another reference that is the expected one.
+
+TODO: make example 
+
 * Tools: 
     [Snapshot](https://github.com/uber/ios-snapshot-test-case/)            
 
