@@ -12,6 +12,8 @@ class CurrentWeatherViewBuilder {
     
     private var weatherJob: CurrentWeatherJob = CurrentWeatherJob(urlSession: URLSession.shared)
     private var locationJob: LocationJob = LocationJob()
+    private lazy var currentWeather: CurrentWeatherProtocol = CurrentWeather(locationJob: locationJob,
+                                                                             weatherJob: weatherJob)
     
     func withLocationJob(locationJob: LocationJob) -> CurrentWeatherViewBuilder {
         self.locationJob = locationJob
@@ -23,8 +25,12 @@ class CurrentWeatherViewBuilder {
         return self
     }
     
+    func withCurrentWeather(currentWeather: CurrentWeatherProtocol) -> CurrentWeatherViewBuilder {
+        self.currentWeather = currentWeather
+        return self
+    }
+    
     func build() -> UIViewController {
-        let currentWeather = CurrentWeather(locationJob: locationJob, weatherJob: weatherJob)
         let presenter = CurrentWeatherPresenter(currentWeather: currentWeather)
         let vc = CurrentWeatherViewController(presenter: presenter)
         presenter.view = vc

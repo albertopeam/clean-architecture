@@ -41,6 +41,27 @@ class CurrentWeatherViewControllerUITests: XCTestCase {
             .assertWeather()
     }
     
+    func test_given_weather_data_when_load_view_then_match_wheater_is_loading() {
+        let weather = InstantWeather(name: "Perillo",
+                                     description: "description",
+                                     icon: "icon",
+                                     temp: 20.0,
+                                     pressure: 1024.0,
+                                     humidity: 75,
+                                     windSpeed: 20,
+                                     windDegrees: 90,
+                                     datetime: 1545605544)
+        let mockWeather = SuccessCurrentWeather()
+        mockWeather.closure = { output in output.weather(weather: weather) }
+        
+        let vc = CurrentWeatherViewBuilder()
+            .withCurrentWeather(currentWeather: mockWeather)
+            .build()
+        
+        robot.present(vc: vc)
+            .assertWeather()
+    }
+    
     private func weatherData() -> Data {
         let js: [String: Any] = [
             "cod": 200,
@@ -120,4 +141,14 @@ private final class DummyLocationJob: LocationJob {
     override func location() -> Promise<Location> {
         return Promise<Location>()
     }
+}
+
+private final class SuccessCurrentWeather: CurrentWeatherProtocol {
+    
+    var closure: ((_ output: CurrentWeatherOutputProtocol) -> Void)!
+    
+    func current(output: CurrentWeatherOutputProtocol) {
+        closure(output)
+    }
+
 }

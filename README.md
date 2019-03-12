@@ -920,6 +920,10 @@ private final class Spy {
 }
 ```
 
+### Acceptance testing
+
+TODO: how to match acceptance criteria in unit tests, maybe is not a complete section, only a sub....
+
 ### HTTP testing
 
 TODO: OHHTTPStubs sample with URLSession
@@ -929,7 +933,53 @@ TODO: OHHTTPStubs sample with URLSession
 
 ### UI testing
 
-TODO: UI+Presenter+Mock Interactor
+UI testing gives us the ability to assert that our interface matches to the state that we expect in each scenario, the easier way to acomplish this is to use test doubles in some parts of the system. Usually we can use a double for the business logic and leave the presentation do its stuff to handle the UI.
+This kind of tests have a big scope and are slow, but they provide value to test the state of our user interface.
+
+First we need to use a test double to handle the business logic.
+
+```swift
+private final class SuccessCurrentWeather: CurrentWeatherProtocol {
+    
+    var closure: ((_ output: CurrentWeatherOutputProtocol) -> Void)!
+    
+    func current(output: CurrentWeatherOutputProtocol) {
+        closure(output)
+    }
+
+}
+```
+
+Now we create a test that assert the happy path, checks the UI for showing the current weather. For this case we use the mock created in the previous step and make the wiring for create the view controller. The final step is to assert the state of the view using KIF assertions.
+```swift
+import XCTest
+@testable import CleanArchitecture
+
+class CurrentWeatherViewControllerUITests: XCTestCase {
+
+        func test_given_weather_data_when_load_view_then_match_wheater_is_loading() {
+        let weather = InstantWeather(name: "Perillo",
+                                     description: "description",
+                                     icon: "icon",
+                                     temp: 20.0,
+                                     pressure: 1024.0,
+                                     humidity: 75,
+                                     windSpeed: 20,
+                                     windDegrees: 90,
+                                     datetime: 1545605544)
+        let mockWeather = SuccessCurrentWeather()
+        mockWeather.closure = { output in output.weather(weather: weather) }
+        
+        let vc = CurrentWeatherViewBuilder()
+            .withCurrentWeather(currentWeather: mockWeather)
+            .build()
+        
+        robot.present(vc: vc)
+            .assertWeather()
+    }
+
+}
+```
 
 * Tools: 
     [KIF functional testing](https://github.com/kif-framework/KIF)
