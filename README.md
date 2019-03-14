@@ -933,10 +933,10 @@ TODO: OHHTTPStubs sample with URLSession
 
 ### UI testing
 
-UI testing gives us the ability to assert that our interface matches to the state that we expect in each scenario, the easier way to acomplish this is to use test doubles in some parts of the system. Usually we can use a double for the business logic and leave the presentation do its stuff to handle the UI.
+UI testing gives us the ability to assert that our interface matches to the state that we expect in each scenario, the easier way to acomplish this is to use test doubles in some parts of the system. Usually we can use a double for the business logic and leave the presentation do its stuff when handling the UI.
 This kind of tests have a big scope and are slow, but they provide value to test the state of our user interface.
 
-First we need to use a test double to handle the business logic.
+First we need to use a test double to handle the business logic. This one uses a inyected closure to mock the behaviour, you can see it in action in the test.
 
 ```swift
 private final class SuccessCurrentWeather: CurrentWeatherProtocol {
@@ -983,14 +983,13 @@ class CurrentWeatherViewControllerUITests: XCTestCase {
 
 * Tools: 
     [KIF functional testing](https://github.com/kif-framework/KIF)
-    [Nimble](https://github.com/Quick/Nimble)
 
 ### Functional testing
 
-Functional testing is a powerfull tool that give us the ability to test the system against the functional specifications. This kind of tests are hard to develop and mantain, but they are worthy when you need to test a system against their specs. The usual way to do this tests is manually, but it can be automated. To automate this kind of tests be should be very carefull with the outter systems which we are interacting, we want to test the system itself no other external systems that we are dependent of, so in a ideal way, we should put some boundaries when doing this kind of tests. Thinks like communications with other machines through the network, this is the most common problem in this kind of tests, there are other like localization services or hardware sensors. The way we have to avoid this is to leave the system as it is except for this kind of interaction, we can use libraries or mock ourselves the external systems.
+Functional testing is a powerfull tool that give us the ability to test the system against the functional specifications. This kind of tests are hard to develop and mantain, but they are worthy when you need to test a system against their specs. The usual way to do this tests is manually, but it can be automated. To automate this kind of tests you should be very carefull with the outter systems which we are interacting, we want to test the system itself, no other external systems that we are dependent of. So in a ideal way, we should put some boundaries when doing this kind of tests. Thinks like communications through the network, this is the most common problem in this kind of tests, there are other like localization services or hardware sensors. The way we have to avoid this is to leave the system as it is except for this kind of interaction, we can use libraries or mock ourselves the external systems.
 
-In the next example we are going to test a feature that given the current location we want to show the current weather for this location. 
-We are only covering the happy path. We don't want to create a excessive number of this kind of tests.
+In the next example we are going to test a feature that given the current location we want to show the current weather for it. 
+We are only covering the happy path. We don't want to create a excessive number of this kind of tests, because as we said are hard to mantain and very flaky when running due to timing, animations, etc...
 
 The next two snippets are used to mock localization services and network layer. As we said we don't want to handle external systems that could lead to errors not expected during the execution of the test.
 
@@ -1121,18 +1120,6 @@ final class CurrentWeatherRobot: UIRobot {
     }
     
     @discardableResult
-    func assertLoading() -> CurrentWeatherRobot {
-        tester!.waitForView(withAccessibilityIdentifier: CurrentWeatherViewController.AccessibilityIdentifiers.loading)
-        tester!.waitForAbsenceOfView(withAccessibilityIdentifier: CurrentWeatherViewController.AccessibilityIdentifiers.city)
-        tester!.waitForAbsenceOfView(withAccessibilityIdentifier: CurrentWeatherViewController.AccessibilityIdentifiers.description)
-        tester!.waitForAbsenceOfView(withAccessibilityIdentifier: CurrentWeatherViewController.AccessibilityIdentifiers.humidity)
-        tester!.waitForAbsenceOfView(withAccessibilityIdentifier: CurrentWeatherViewController.AccessibilityIdentifiers.pressure)
-        tester!.waitForAbsenceOfView(withAccessibilityIdentifier: CurrentWeatherViewController.AccessibilityIdentifiers.pressure)
-        tester!.waitForAbsenceOfView(withAccessibilityIdentifier: CurrentWeatherViewController.AccessibilityIdentifiers.windSpeed)
-        return self
-    }
-    
-    @discardableResult
     func assertWeather() -> CurrentWeatherRobot {
         tester!.waitForAbsenceOfView(withAccessibilityIdentifier: CurrentWeatherViewController.AccessibilityIdentifiers.loading)
         tester!.waitForView(withAccessibilityIdentifier: CurrentWeatherViewController.AccessibilityIdentifiers.city)
@@ -1149,7 +1136,6 @@ final class CurrentWeatherRobot: UIRobot {
 
 * Tools:
     * [KIF functional testing](https://github.com/kif-framework/KIF)
-    * [Nimble expectations](https://github.com/Quick/Nimble)
 
 ### Snapshot testing
 
