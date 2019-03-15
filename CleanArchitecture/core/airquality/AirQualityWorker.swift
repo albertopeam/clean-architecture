@@ -40,7 +40,11 @@ class AirQualityWorker: Worker {
                     let airQualityDatas =  response.results.map({ (result) -> AirQualityData in
                         return AirQualityData(location: Location(latitude: result.coordinates.latitude, longitude: result.coordinates.longitude), date: result.date.utc, type: result.parameter, measure: Measure(value: result.value, unit: result.unit))
                     })
-                    self.resolveIt(resolve: resolve, data: airQualityDatas.first!)
+                    if let first = airQualityDatas.first {
+                        self.resolveIt(resolve: resolve, data: first)
+                    } else {
+                        self.rejectIt(reject: reject, error: AirQualityError.other)
+                    }
                 }else{
                     self.rejectIt(reject: reject, error: AirQualityError.decoding)
                 }

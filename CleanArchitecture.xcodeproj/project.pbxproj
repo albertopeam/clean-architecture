@@ -59,7 +59,6 @@
 		C3332EF22088E4D300FF73FF /* PlacesComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3332EF12088E4D300FF73FF /* PlacesComponent.swift */; };
 		C3332EF42088EBD700FF73FF /* NearbyPlaceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3332EF32088EBD700FF73FF /* NearbyPlaceCell.xib */; };
 		C3332EF62088F0B800FF73FF /* NearbyPlaceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3332EF52088F0B800FF73FF /* NearbyPlaceCell.swift */; };
-		C33884B920A09C9800ED3D49 /* Swifter.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C3CC23F420A09C0000BA01F6 /* Swifter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C33884BB20A0A07400ED3D49 /* nearby-success.json in Resources */ = {isa = PBXBuildFile; fileRef = C33884BA20A0A07400ED3D49 /* nearby-success.json */; };
 		C33EE73D2091FB5A00712672 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33EE73C2091FB5A00712672 /* Kingfisher.framework */; };
 		C343D5F920DA7F140072CE0D /* WeatherTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C343D5F720DA7F140072CE0D /* WeatherTableViewCell.swift */; };
@@ -181,7 +180,6 @@
 		C3C9CA992125C4F80096970A /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32634F12111E0D50023E58C /* Observable.swift */; };
 		C3C9CA9A2125CD230096970A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3FA42392087AEC200B63221 /* Assets.xcassets */; };
 		C3C9CA9B2125CD290096970A /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C32634F82111FDDD0023E58C /* Colors.xcassets */; };
-		C3CC23F520A09C0000BA01F6 /* Swifter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3CC23F420A09C0000BA01F6 /* Swifter.framework */; };
 		C3CC23FA20A09C3100BA01F6 /* PlacesWorkerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CC23F920A09C3100BA01F6 /* PlacesWorkerTest.swift */; };
 		C3D2893520ECDBBF001DE077 /* MockWorkers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D2893420ECDBBF001DE077 /* MockWorkers.swift */; };
 		C3D56B4D2113086D00947F2D /* UVIndexViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D56B4C2113086D00947F2D /* UVIndexViewModelTest.swift */; };
@@ -232,6 +230,9 @@
 		C3FA42642087AFEC00B63221 /* LocationWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FA42622087AFEC00B63221 /* LocationWorker.swift */; };
 		C3FA42652087AFEC00B63221 /* PlacesWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FA42632087AFEC00B63221 /* PlacesWorker.swift */; };
 		C3FA42672087B04200B63221 /* Places.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FA42662087B04200B63221 /* Places.swift */; };
+		C3FA7237223B901A0058CB4E /* Optional+Unwrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FA7236223B901A0058CB4E /* Optional+Unwrap.swift */; };
+		C3FA723B223B96470058CB4E /* OHHTTPStubs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3665B6C223B0F7300F5D99B /* OHHTTPStubs.framework */; };
+		C3FA723C223B98990058CB4E /* OHHTTPStubs.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C3665B6C223B0F7300F5D99B /* OHHTTPStubs.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C3FC18BF20D9265300393EBB /* Promises.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D9D98820D14CAB004EC19A /* Promises.swift */; };
 		C3FC18C020D9265600393EBB /* PromiseOnce.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D9D98C20D14D59004EC19A /* PromiseOnce.swift */; };
 		C3FC18C220D9292A00393EBB /* PromiseAll.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FC18C120D9292A00393EBB /* PromiseAll.swift */; };
@@ -292,8 +293,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				C3FA723C223B98990058CB4E /* OHHTTPStubs.framework in CopyFiles */,
 				C30A033221383D1F00821CB6 /* Nimble.framework in CopyFiles */,
-				C33884B920A09C9800ED3D49 /* Swifter.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -338,6 +339,7 @@
 		C33EE73C2091FB5A00712672 /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
 		C343D5F720DA7F140072CE0D /* WeatherTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherTableViewCell.swift; sourceTree = "<group>"; };
 		C343D5F820DA7F140072CE0D /* WeatherTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeatherTableViewCell.xib; sourceTree = "<group>"; };
+		C3665B6C223B0F7300F5D99B /* OHHTTPStubs.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OHHTTPStubs.framework; path = Carthage/Build/iOS/OHHTTPStubs.framework; sourceTree = "<group>"; };
 		C36DD7822090C7A30045E114 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C3721043212716E9001BFE0B /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		C374D34A213401EC009B9A7D /* AirQuality.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirQuality.swift; sourceTree = "<group>"; };
@@ -417,6 +419,7 @@
 		C3FA42622087AFEC00B63221 /* LocationWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationWorker.swift; path = CleanArchitecture/core/location/LocationWorker.swift; sourceTree = SOURCE_ROOT; };
 		C3FA42632087AFEC00B63221 /* PlacesWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlacesWorker.swift; path = CleanArchitecture/core/places/PlacesWorker.swift; sourceTree = SOURCE_ROOT; };
 		C3FA42662087B04200B63221 /* Places.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Places.swift; path = CleanArchitecture/core/places/Places.swift; sourceTree = SOURCE_ROOT; };
+		C3FA7236223B901A0058CB4E /* Optional+Unwrap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+Unwrap.swift"; sourceTree = "<group>"; };
 		C3FC18C120D9292A00393EBB /* PromiseAll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromiseAll.swift; sourceTree = "<group>"; };
 		C3FC18D520D946B000393EBB /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		C3FC18D820D9595700393EBB /* CurrentWeatherWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherWorker.swift; sourceTree = "<group>"; };
@@ -460,7 +463,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C30A033121383D0D00821CB6 /* Nimble.framework in Frameworks */,
-				C3CC23F520A09C0000BA01F6 /* Swifter.framework in Frameworks */,
+				C3FA723B223B96470058CB4E /* OHHTTPStubs.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -883,6 +886,7 @@
 			children = (
 				C3F1C1A321135D1B0007DF50 /* MockExpectation.swift */,
 				C30654F72138092900E02FF5 /* TestConstants.swift */,
+				C3FA7236223B901A0058CB4E /* Optional+Unwrap.swift */,
 			);
 			path = test;
 			sourceTree = "<group>";
@@ -999,6 +1003,7 @@
 		C3FA42542087AF6900B63221 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C3665B6C223B0F7300F5D99B /* OHHTTPStubs.framework */,
 				C31127F82139244F007F6E59 /* KIF.framework */,
 				C30A033021383D0D00821CB6 /* Nimble.framework */,
 				C3CC23F420A09C0000BA01F6 /* Swifter.framework */,
@@ -1124,7 +1129,7 @@
 				C3FA422B2087AEC200B63221 /* Sources */,
 				C3FA422C2087AEC200B63221 /* Frameworks */,
 				C3FA422D2087AEC200B63221 /* Resources */,
-				C33EE73B2091FB0300712672 /* ShellScript */,
+				C33EE73B2091FB0300712672 /* Carthage */,
 				C3C9CA852125C0DD0096970A /* Embed App Extensions */,
 			);
 			buildRules = (
@@ -1145,6 +1150,7 @@
 				C3FA42402087AEC200B63221 /* Frameworks */,
 				C3FA42412087AEC200B63221 /* Resources */,
 				C3CC23F620A09C0A00BA01F6 /* CopyFiles */,
+				C3FA723D223BA1160058CB4E /* Carthage */,
 			);
 			buildRules = (
 			);
@@ -1266,7 +1272,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		C33EE73B2091FB0300712672 /* ShellScript */ = {
+		C33EE73B2091FB0300712672 /* Carthage */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1274,11 +1280,12 @@
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/Kingfisher.framework",
 			);
+			name = Carthage;
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
 		};
 		C3EFE87721D0099700E24296 /* Carthage copy phase */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1291,6 +1298,28 @@
 			name = "Carthage copy phase";
 			outputPaths = (
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/KIF.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+		C3FA723D223BA1160058CB4E /* Carthage */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/OHHTTPStubs.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Nimble.framework",
+			);
+			name = Carthage;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/OHHTTPStubs.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Nimble.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1470,6 +1499,7 @@
 				C3FC18E220D9630800393EBB /* WeatherViewController.swift in Sources */,
 				C31F64C921367DF100539450 /* AirQualityPresenter.swift in Sources */,
 				C31F64CF21367E0B00539450 /* AirQuality.swift in Sources */,
+				C3FA7237223B901A0058CB4E /* Optional+Unwrap.swift in Sources */,
 				C3E24B2720A1D4180062D4E7 /* LocationWorker.swift in Sources */,
 				C3B5E74921CFD47C00596978 /* Await.swift in Sources */,
 				C3FC18E920D9643100393EBB /* ItemsTableViewController.swift in Sources */,

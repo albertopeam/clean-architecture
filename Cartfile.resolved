@@ -1,4 +1,4 @@
-github "Quick/Nimble" "v7.3.1"
-github "glock45/swifter" "1.4.0"
+github "AliSoftware/OHHTTPStubs" "7.0.0"
+github "Quick/Nimble" "v8.0.1"
 github "kif-framework/KIF" "v3.7.4"
 github "onevcat/Kingfisher" "4.8.1"
