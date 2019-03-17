@@ -21,9 +21,7 @@ class AirQualityWorker: Worker {
         self.url = url.replacingOccurrences(of: "{{lon}}", with: "\(location.longitude)")
         let targetUrl = URL(string: self.url)
         URLSession.shared.dataTask(with: targetUrl!) { (data, response, error) in
-            if response == nil || (response as! HTTPURLResponse).statusCode > 299 {
-                self.rejectIt(reject: reject, error: AirQualityError.other)
-            } else if error != nil {
+            if error != nil {
                 switch error!.code {
                 case NSURLErrorNotConnectedToInternet:
                     self.rejectIt(reject: reject, error: AirQualityError.noNetwork)
@@ -34,6 +32,8 @@ class AirQualityWorker: Worker {
                 default:
                     self.rejectIt(reject: reject, error: AirQualityError.other)
                 }
+            } else if response == nil || (response as! HTTPURLResponse).statusCode > 299 {
+                self.rejectIt(reject: reject, error: AirQualityError.other)
             } else {
                 let response = JsonDecoder<Welcome>.decode(data: data!)
                 if let response = response {
@@ -49,7 +49,7 @@ class AirQualityWorker: Worker {
                     self.rejectIt(reject: reject, error: AirQualityError.decoding)
                 }
             }
-            }.resume()
+        }.resume()
     }
 }
 
