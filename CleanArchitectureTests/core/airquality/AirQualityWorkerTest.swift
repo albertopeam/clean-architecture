@@ -28,6 +28,7 @@ class AirQualityWorkerTest: XCTestCase {
     override func setUp() {
         super.setUp()
         sut = AirQualityWorker(url: url)
+        OHHTTPStubs .removeAllStubs()
         OHHTTPStubs.onStubActivation { (request, stub, _) in
             print("** OHHTTPStubs: \(request.url!.absoluteString) stubbed by \(stub.name!). **")
         }
@@ -76,6 +77,24 @@ class AirQualityWorkerTest: XCTestCase {
         
         expect(result).toNotEventually(beNil())
         expect(result).to(equal(AirQualityError.noNetwork))
+    }
+    
+    func testGiven400WhenFetchThenMatchError() throws {
+        stub(condition: isMethodGET() && isHost(host) && isPath(path) && containsQueryParams(params)) { (request) -> OHHTTPStubsResponse in
+            let BadRequest = NSError(domain: NSURLErrorDomain,
+                                     code: 400,
+                                     userInfo: ["NSLocalizedDescription": "Bad Request"])
+            return OHHTTPStubsResponse(error: BadRequest)
+        }.name = "air quality no network request"
+        
+        var result: AirQualityError?
+        try sut.run(params: location, resolve: { (worker, res) in }) {
+            (worker, error) in
+            result = error as? AirQualityError
+        }
+        
+        expect(result).toNotEventually(beNil())
+        expect(result).to(equal(AirQualityError.other))
     }
     
 }
