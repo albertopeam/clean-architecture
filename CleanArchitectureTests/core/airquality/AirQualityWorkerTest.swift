@@ -55,6 +55,11 @@ import Nimble
 
 class AirQualityWorkerTest: XCTestCase {
     
+    override func tearDown() {
+        OHHTTPStubs .removeAllStubs()
+        super.tearDown()
+    }
+    
     private lazy var endpoint = "https://\(host)/"
     private let host = "any"
     
