@@ -11,18 +11,13 @@ import XCTest
 
 class AirQualityTest: XCTestCase {
     
-    private var spy:Spy.AirQualityOutput?
-    private var sut:AirQuality?
-    
-    override func setUp() {
-        super.setUp()
-        continueAfterFailure = false
-    }
+    private var spy: Spy.AirQualityOutput!
+    private var sut: AirQuality!
     
     override func tearDown() {
-        super.tearDown()
         sut = nil
         spy = nil
+        super.tearDown()
     }
     
     func testGivenSuccesfullyEnvironmentWhenGetAirQualityThenMatchResult() {
