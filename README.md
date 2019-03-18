@@ -11,23 +11,44 @@
 The intention of this repository is to show some of the more common practices when building a mobile app using clean architecture.
 
 ## Table of Contents
-1. [Before start](#before-start)
-2. [What do you expect to see soon?](#what-do-you-expect-to-see-soon?)
-3. [Architecture](#architecture)
-4. [Patterns](#patterns)
-    1. [Promises](#promises)
-        * [Legacy](#swift:-Legacy)
-        * [Serial](#swift:-Serial-work)
-        * [Parallel](#swift:-Parallel-work)
-        * [by Sundell](#swift-Sundell)
-    2. [MVVM](#mvvm(model-view-view-model))
-        * [View-Model](#Swift:-Observer)
-        * [Widget](#Swift:-Reusing-View-Model-in-TodayExtension)
-    3. [MVP](#mvp(model-view-presenter))
-5. [Testing](#testing)
-   1. [Unit testing](#Unit-testing)
-   2. [Integration testing](#Integration-testing)
-   3. [UI/Functional testing](#UI/Functional-testing)
+- [Clean Architecture](#clean-architecture)
+  - [Table of Contents](#table-of-contents)
+  - [Before start](#before-start)
+    - [App](#app)
+    - [Extensions](#extensions)
+    - [Testing](#testing)
+  - [Project structure](#project-structure)
+  - [What do you expect to see soon?](#what-do-you-expect-to-see-soon)
+    - [Next](#next)
+  - [Architecture](#architecture)
+    - [Packaging](#packaging)
+    - [<u>Package by component</u>](#upackage-by-componentu)
+  - [Patterns](#patterns)
+    - [Promises](#promises)
+      - [Swift: Legacy](#swift-legacy)
+      - [Swift: Serial work](#swift-serial-work)
+      - [Swift: Parallel work](#swift-parallel-work)
+      - [Swift: Sundell](#swift-sundell)
+    - [MVVM(model view view-model)](#mvvmmodel-view-view-model)
+      - [Swift: Observer](#swift-observer)
+      - [Swift: View-model](#swift-view-model)
+      - [Swift: View](#swift-view)
+      - [Swift: Reusing View-Model in TodayExtension](#swift-reusing-view-model-in-todayextension)
+    - [MVP(model view presenter)](#mvpmodel-view-presenter)
+      - [Swift: View](#swift-view-1)
+      - [Swift: Presenter](#swift-presenter)
+  - [Testing](#testing-1)
+    - [Unit testing](#unit-testing)
+      - [How to start?](#how-to-start)
+      - [Swift: unit test without dependencies](#swift-unit-test-without-dependencies)
+      - [Swift: unit test with dependencies(Mock/Stub/Fake/Dummy)](#swift-unit-test-with-dependenciesmockstubfakedummy)
+      - [Swift: unit test with dependencies(Spy)](#swift-unit-test-with-dependenciesspy)
+    - [Acceptance testing](#acceptance-testing)
+    - [HTTP testing](#http-testing)
+    - [UI testing](#ui-testing)
+    - [Functional testing](#functional-testing)
+    - [Snapshot testing](#snapshot-testing)
+  - [License](#license)
   
 ## Before start
 
@@ -926,10 +947,85 @@ TODO: how to match acceptance criteria in unit tests, maybe is not a complete se
 
 ### HTTP testing
 
-TODO: OHHTTPStubs sample with URLSession
+Http requests(the logic involved to parse the data, mappings, handle error cases, etc..) is an important part when doing unit testing, asserting that our app can handle correcly diferent network responses is very important to avoid unexpected scenarios. In this case is important to be sure that our app can handle successful requests(2xx and some 3xx) and the error ones, such as: no network, timeouts, 4xx, 5xx.
+
+In next example we are going to test the happy path for a object that makes a GET request. 
+
+The first step is to stub our network, to achieve that we are going to use OHTTPStubs, a great library to create network stubs. 
+We want to be very assertive when stubing our requests, because we want to be sure that the request that is being made matches the technical criteria. In the next one we are asserting: `HTTP method`, `Host`, `Path` and `Query Params`. If all of these matches then the stub server will respond with the json data that we specify, if not we won't have any response from the server and the test will fail.
+
+```swift
+stub(condition: isMethodGET() && isHost(host) && isPath(path) && containsQueryParams(params)) { (request) -> OHHTTPStubsResponse in
+        return OHHTTPStubsResponse(fileAtPath: OHPathForFile("airquality-success.json", type(of: self))!,
+                                    statusCode: 200,
+                                    headers: ["Content-Type":"application/json"])
+}.name = "air quality success request"
+```
+
+The next snippet is the complete test with setup and teardown fases. 
+Is **important** to remove all stubs after each of our test cases to be sure they don't interfere with other test cases.
+Is **interesting** to log the requests that are being stubbed per test.
+
+```swift
+class AirQualityWorkerTest: XCTestCase {
+
+    private lazy var url = "https://\(host)\(path)?coordinates={{lat}},{{lon}}&limit=1&parameter=no2&has_geo=true"
+    private let host = "any"
+    private let path = "/v1/measurements"
+    private let location = Location(latitude: 43.0, longitude: -8.1)
+    private var sut: AirQualityWorker!
+    private lazy var params = [
+        "coordinates": "\(location.latitude),\(location.longitude)",
+        "limit": "1",
+        "parameter": "no2",
+        "has_geo": "true"
+    ]
+
+    override func setUp() {
+        super.setUp()
+        sut = AirQualityWorker(url: url)
+        OHHTTPStubs .removeAllStubs()
+        OHHTTPStubs.onStubActivation { (request, stub, _) in
+            print("** OHHTTPStubs: \(request.url!.absoluteString) stubbed by \(stub.name!). **")
+        }
+    }
+
+    override func tearDown() {
+        OHHTTPStubs.removeAllStubs()
+        super.tearDown()
+    }
+
+    func testGivenSuccessResponseWhenFetchThenMatchExpected() throws {
+        stub(condition: isMethodGET() && isHost(host) && isPath(path) && containsQueryParams(params)) { (request) -> OHHTTPStubsResponse in
+            return OHHTTPStubsResponse(fileAtPath: OHPathForFile("airquality-success.json", type(of: self))!,
+                                        statusCode: 200,
+                                        headers: ["Content-Type":"application/json"])
+        }.name = "air quality success request"
+        
+        var result: AirQualityData?
+        try sut.run(params: location, resolve: { (worker, res) in
+            result = res as? AirQualityData
+        }) { (worker, error) in }
+        
+        expect(result).toNotEventually(beNil())
+        let unwrapped = try result.unwrap()
+        expect(unwrapped.type).to(equal("no2"))
+        expect(unwrapped.date).to(equal("utc-date"))
+        expect(unwrapped.location.latitude).to(equal(43.0))
+        expect(unwrapped.location.longitude).to(equal(-8.1))
+        expect(unwrapped.measure.value).to(equal(10))
+        expect(unwrapped.measure.unit).to(equal("µg/m³"))
+    }
+
+}
+```
+
+* Usefull links:
+    * [Code: Worker Tests](https://github.com/albertopeam/clean-architecture/blob/master/CleanArchitectureTests/core/airquality/AirQualityWorkerTest.swift)   
+    * [Code: Worker](https://github.com/albertopeam/clean-architecture/blob/master/CleanArchitecture/core/airquality/AirQualityWorker.swift)   
 
 * Tools:
-  * [Optional Mock Server](https://github.com/AliSoftware/OHHTTPStubs)
+  * [Mock Server: OHTTPStubs](https://github.com/AliSoftware/OHHTTPStubs)
 
 ### UI testing
 

@@ -28,14 +28,13 @@ class AirQualityWorkerTest: XCTestCase {
     override func setUp() {
         super.setUp()
         sut = AirQualityWorker(url: url)
-        OHHTTPStubs .removeAllStubs()
         OHHTTPStubs.onStubActivation { (request, stub, _) in
             print("** OHHTTPStubs: \(request.url!.absoluteString) stubbed by \(stub.name!). **")
         }
     }
     
     override func tearDown() {
-        OHHTTPStubs .removeAllStubs()
+        OHHTTPStubs.removeAllStubs()
         super.tearDown()
     }
 
