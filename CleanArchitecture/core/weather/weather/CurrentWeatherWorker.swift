@@ -21,9 +21,7 @@ class CurrentWeatherWorker:NSObject, Worker {
     func run(params: Any?, resolve: @escaping ResolvableWorker, reject: @escaping RejectableWorker) throws {
         let url = URL(string: targetUrl)
         urlSession.dataTask(with: url!) { (data, response, error) in
-            if response == nil || (response as! HTTPURLResponse).statusCode > 299 {
-                self.rejectIt(reject: reject, error: WeatherError.other)
-            } else if error != nil {
+            if error != nil {
                 switch error!.code {
                 case NSURLErrorNotConnectedToInternet:
                     self.rejectIt(reject: reject, error: WeatherError.noNetwork)
@@ -34,7 +32,9 @@ class CurrentWeatherWorker:NSObject, Worker {
                 default:
                     self.rejectIt(reject: reject, error: WeatherError.other)
                 }
-            }else{
+            } else if response == nil || (response as! HTTPURLResponse).statusCode > 299 {
+                self.rejectIt(reject: reject, error: WeatherError.other)                
+            } else{
                 let result:CloudResponse? = try? JSONDecoder().decode(CloudResponse.self, from: data!)
                 if result?.cod == 200 {
                     let cr:CloudWeatherResponse? = try? JSONDecoder().decode(CloudWeatherResponse.self, from: data!)

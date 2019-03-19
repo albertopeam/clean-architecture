@@ -44,6 +44,7 @@ The intention of this repository is to show some of the more common practices wh
       - [Swift: unit test with dependencies(Mock/Stub/Fake/Dummy)](#swift-unit-test-with-dependenciesmockstubfakedummy)
       - [Swift: unit test with dependencies(Spy)](#swift-unit-test-with-dependenciesspy)
     - [Acceptance testing](#acceptance-testing)
+    - [Integration testing](#integration-testing)
     - [HTTP testing](#http-testing)
     - [UI testing](#ui-testing)
     - [Functional testing](#functional-testing)
@@ -944,6 +945,13 @@ private final class Spy {
 ### Acceptance testing
 
 TODO: how to match acceptance criteria in unit tests, maybe is not a complete section, only a sub....
+maybe change the name of functional to acceptance?
+
+https://stackoverflow.com/questions/4904096/whats-the-difference-between-unit-functional-acceptance-and-integration-test
+
+### Integration testing
+
+TODO: ?
 
 ### HTTP testing
 

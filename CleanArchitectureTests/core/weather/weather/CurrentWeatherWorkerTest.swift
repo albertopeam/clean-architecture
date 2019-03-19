@@ -2,63 +2,80 @@
 //  CurrentWeatherWorkerTest.swift
 //  CleanArchitectureTests
 //
-//  Created by Alberto on 2/8/18.
+//  Created by Alberto on 19/3/19.
 //  Copyright © 2018 Alberto. All rights reserved.
 //
 
 import XCTest
+import Nimble
+import OHHTTPStubs
 @testable import CleanArchitecture
 
-class CurrentWeatherWorkerTest: NetworkTestCase {
+class CurrentWeatherWorkerTest: XCTestCase {
     
-    private var sut:CurrentWeatherWorker?
+    private lazy var url = "https://\(host)\(path)?q=TestCity&appid=TestApiKey"
+    private let host = "any"
+    private let path = "/v1/weather"
+    private let location = Location(latitude: 43.0, longitude: -8.1)
+    private lazy var params = [
+        "q": "TestCity",
+        "appid": "TestApiKey"
+    ]
+    private var sut: CurrentWeatherWorker!
     
     override func setUp() {
         super.setUp()
-        continueAfterFailure = false
+        sut = CurrentWeatherWorker(url: url)
+        OHHTTPStubs.onStubActivation { (request, stub, _) in
+            print("** OHHTTPStubs: \(request.url!.absoluteString) stubbed by \(stub.name!). **")
+        }
     }
     
     override func tearDown() {
-        super.tearDown()
+        OHHTTPStubs.removeAllStubs()
         sut = nil
+        super.tearDown()
     }
     
     func testGivenSuccessEnvWhenGetWeatherThenMatchResult() throws {
-        let expectation = XCTestExpectation(description: "testGivenSuccessEnvWhenGetWeatherThenMatchResult")
-        let absoluteUrl = "\(serverUrl())weather?q=TestCity&appid=TestApiKey"
-        dispatchResponseToGetRequest(url: absoluteUrl, fileName: "current-weather-success")
-        sut = CurrentWeatherWorker(url: absoluteUrl)
-        try sut!.run(params: nil, resolve: { (worker, result) in
-            XCTAssertNotNil(result)
-            let weather = result as! InstantWeather
-            XCTAssertEqual(weather.name, "London")
-            XCTAssertEqual(weather.description, "light intensity drizzle")
-            XCTAssertEqual(weather.datetime, 1485789600)
-            XCTAssertEqual(weather.humidity, 81.0)
-            XCTAssertEqual(weather.icon, "09d")
-            XCTAssertEqual(weather.pressure, 1012.1)
-            XCTAssertEqual(weather.temp, 280.32)
-            XCTAssertEqual(weather.windDegrees, 80)
-            XCTAssertEqual(weather.windSpeed, 4.1)
-            expectation.fulfill()
-        }) { (worker, error) in
-            XCTFail("testGivenSuccessEnvWhenGetWeatherThenMatchResult rejected")
-        }
-        wait(for: [expectation], timeout: TestConstants.timeout)
+        stub(condition: isMethodGET() && isHost(host) && isPath(path) && containsQueryParams(params)) { (request) -> OHHTTPStubsResponse in
+            return OHHTTPStubsResponse(fileAtPath: OHPathForFile("current-weather-success.json", type(of: self))!,
+                                       statusCode: 200,
+                                       headers: ["Content-Type":"application/json"])
+            }.name = "get weather success request"
+        
+        
+        var result: InstantWeather?
+        try sut.run(params: nil, resolve: { (worker, res) in
+            result = res as? InstantWeather
+        }) { (worker, error) in }
+        
+        expect(result).toNotEventually(beNil())
+        let weather = try result.unwrap()
+        expect(weather.name).toEventually(equal("London"))
+        expect(weather.description).toEventually(equal("light intensity drizzle"))
+        expect(weather.datetime).toEventually(equal(1485789600))
+        expect(weather.humidity).toEventually(equal(81.0))
+        expect(weather.icon).toEventually(equal("09d"))
+        expect(weather.pressure).toEventually(equal(1012.1))
+        expect(weather.temp).toEventually(equal(280.32))
+        expect(weather.windDegrees).toEventually(equal(80))
+        expect(weather.windSpeed).toEventually(equal(4.1))
     }
     
     func testGivenErrorEnvWhenGetWeatherThenMatchError() throws {
-        let expectation = XCTestExpectation(description: "testGivenErrorEnvWhenGetWeatherThenMatchError")
-        let absoluteUrl = "\(serverUrl())weather?q=TestCity&appid=TestApiKey"
-        dispatchErrorResponseToGetRequest(statusCode: 400, status: "Bad Request", url: absoluteUrl)
-        sut = CurrentWeatherWorker(url: absoluteUrl)
-        try sut!.run(params: nil, resolve: { (worker, result) in
-            XCTFail("testGivenErrorEnvWhenGetWeatherThenMatchError rejected")
-        }) { (worker, error) in
-            XCTAssertNotNil(error)
-            XCTAssertEqual(error.code, WeatherError.other.code)
-            expectation.fulfill()
+        stub(condition: isMethodGET() && isHost(host) && isPath(path) && containsQueryParams(params)) { (request) -> OHHTTPStubsResponse in
+            let BadRequest = NSError(domain: NSURLErrorDomain,
+                                     code: 400,
+                                     userInfo: ["NSLocalizedDescription": "Bad Request"])
+            return OHHTTPStubsResponse(error: BadRequest)
+        }.name = "weather error network request"
+        
+        var error: WeatherError?
+        try sut.run(params: nil, resolve: { (worker, result) in }) { (worker, err) in
+            error = err as? WeatherError
         }
-        wait(for: [expectation], timeout: TestConstants.timeout)
+        
+        expect(error).toEventually(equal(WeatherError.other))
     }
 }

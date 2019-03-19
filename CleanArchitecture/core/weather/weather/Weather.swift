@@ -25,7 +25,7 @@ class Weather:WeatherProtocol {
         
 }
 
-enum WeatherError:Error, Equatable {
+enum WeatherError: Error, Equatable {
     case noNetwork, decoding, timeout, empty, unauthorized, other
 }
 

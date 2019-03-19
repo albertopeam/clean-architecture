@@ -47,11 +47,6 @@
                BlueprintName = "CleanArchitectureTests"
                ReferencedContainer = "container:CleanArchitecture.xcodeproj">
             </BuildableReference>
-            <SkippedTests>
-               <Test
-                  Identifier = "PromiseTests">
-               </Test>
-            </SkippedTests>
          </TestableReference>
          <TestableReference
             skipped = "NO">
