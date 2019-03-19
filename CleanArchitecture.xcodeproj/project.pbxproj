@@ -209,7 +209,6 @@
 		C3E35253210618380091CFDD /* PlacesViewControllerUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E35252210618380091CFDD /* PlacesViewControllerUITest.swift */; };
 		C3E35257210623E10091CFDD /* NearbyPlaceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3332EF52088F0B800FF73FF /* NearbyPlaceCell.swift */; };
 		C3F1C19821133C680007DF50 /* uvindex-success.json in Resources */ = {isa = PBXBuildFile; fileRef = C3F1C19721133C680007DF50 /* uvindex-success.json */; };
-		C3F1C19C21133F460007DF50 /* NetworkTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F1C19B21133F460007DF50 /* NetworkTestCase.swift */; };
 		C3F1C19E211352AA0007DF50 /* WeatherTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F1C19D211352AA0007DF50 /* WeatherTest.swift */; };
 		C3F1C1A0211352B70007DF50 /* CurrentWeatherWorkerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F1C19F211352B70007DF50 /* CurrentWeatherWorkerTest.swift */; };
 		C3F1C1A2211357370007DF50 /* MockLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F1C1A1211357370007DF50 /* MockLocation.swift */; };
@@ -378,7 +377,6 @@
 		C3C9CA7D2125C0DD0096970A /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		C3C9CA802125C0DD0096970A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		C3C9CA822125C0DD0096970A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C3CC23F420A09C0000BA01F6 /* Swifter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Swifter.framework; path = Carthage/Build/iOS/Swifter.framework; sourceTree = "<group>"; };
 		C3CC23F920A09C3100BA01F6 /* PlacesWorkerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacesWorkerTest.swift; sourceTree = "<group>"; };
 		C3D2893420ECDBBF001DE077 /* MockWorkers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockWorkers.swift; sourceTree = "<group>"; };
 		C3D56B4C2113086D00947F2D /* UVIndexViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UVIndexViewModelTest.swift; sourceTree = "<group>"; };
@@ -395,7 +393,6 @@
 		C3E35252210618380091CFDD /* PlacesViewControllerUITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesViewControllerUITest.swift; sourceTree = "<group>"; };
 		C3EFE87321D0092200E24296 /* CleanArchitectureUITests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CleanArchitectureUITests-Bridging-Header.h"; sourceTree = "<group>"; };
 		C3F1C19721133C680007DF50 /* uvindex-success.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "uvindex-success.json"; sourceTree = "<group>"; };
-		C3F1C19B21133F460007DF50 /* NetworkTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTestCase.swift; sourceTree = "<group>"; };
 		C3F1C19D211352AA0007DF50 /* WeatherTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherTest.swift; sourceTree = "<group>"; };
 		C3F1C19F211352B70007DF50 /* CurrentWeatherWorkerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherWorkerTest.swift; sourceTree = "<group>"; };
 		C3F1C1A1211357370007DF50 /* MockLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockLocation.swift; sourceTree = "<group>"; };
@@ -809,7 +806,6 @@
 			isa = PBXGroup;
 			children = (
 				C3B5E74421CFD3AE00596978 /* promises */,
-				C3F1C19A21133F1F0007DF50 /* network */,
 				C3E352452105C3480091CFDD /* weather */,
 				C3D8AD8A20A05DBC00868FF9 /* places */,
 				C38421C9211338AF0051E28B /* uvindex */,
@@ -871,14 +867,6 @@
 				C3F1C1A1211357370007DF50 /* MockLocation.swift */,
 			);
 			path = location;
-			sourceTree = "<group>";
-		};
-		C3F1C19A21133F1F0007DF50 /* network */ = {
-			isa = PBXGroup;
-			children = (
-				C3F1C19B21133F460007DF50 /* NetworkTestCase.swift */,
-			);
-			path = network;
 			sourceTree = "<group>";
 		};
 		C3F1C1A521135D520007DF50 /* test */ = {
@@ -1006,7 +994,6 @@
 				C3665B6C223B0F7300F5D99B /* OHHTTPStubs.framework */,
 				C31127F82139244F007F6E59 /* KIF.framework */,
 				C30A033021383D0D00821CB6 /* Nimble.framework */,
-				C3CC23F420A09C0000BA01F6 /* Swifter.framework */,
 				C33EE73C2091FB5A00712672 /* Kingfisher.framework */,
 				C3FA42552087AF6A00B63221 /* MapKit.framework */,
 				C3C9CA7A2125C0DD0096970A /* NotificationCenter.framework */,
@@ -1556,7 +1543,6 @@
 				C379400520E119BC004C723B /* NearbyPlacesViewController.swift in Sources */,
 				C31F64CB21367DF500539450 /* AirQualityViewController.swift in Sources */,
 				C3E24B2820A1D47F0062D4E7 /* Error.swift in Sources */,
-				C3F1C19C21133F460007DF50 /* NetworkTestCase.swift in Sources */,
 				C3E24B2620A1D40F0062D4E7 /* Places.swift in Sources */,
 				C3F1C1A2211357370007DF50 /* MockLocation.swift in Sources */,
 			);
