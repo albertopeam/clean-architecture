@@ -5,8 +5,6 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/574acc8910d2d786349b/maintainability)](https://codeclimate.com/github/albertopeam/clean-architecture/maintainability)
 [![Swift Version](https://img.shields.io/badge/Swift-4.0-F16D39.svg?style=flat)](https://developer.apple.com/swift)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-<!-- TODO: pending [![Test Coverage](https://api.codeclimate.com/v1/badges/574acc8910d2d786349b/test_coverage)](https://codeclimate.com/github/albertopeam/clean-architecture/test_coverage) -->
-
  
 The intention of this repository is to show some of the more common practices when building a mobile app using clean architecture.
 
@@ -43,7 +41,6 @@ The intention of this repository is to show some of the more common practices wh
       - [Swift: unit test without dependencies](#swift-unit-test-without-dependencies)
       - [Swift: unit test with dependencies(Mock/Stub/Fake/Dummy)](#swift-unit-test-with-dependenciesmockstubfakedummy)
       - [Swift: unit test with dependencies(Spy)](#swift-unit-test-with-dependenciesspy)
-    - [Acceptance testing](#acceptance-testing)
     - [Integration testing](#integration-testing)
     - [HTTP testing](#http-testing)
     - [UI testing](#ui-testing)
@@ -942,16 +939,13 @@ private final class Spy {
 }
 ```
 
-### Acceptance testing
-
-TODO: how to match acceptance criteria in unit tests, maybe is not a complete section, only a sub....
-maybe change the name of functional to acceptance?
-
-https://stackoverflow.com/questions/4904096/whats-the-difference-between-unit-functional-acceptance-and-integration-test
-
 ### Integration testing
 
-TODO: ?
+Integration tests build on unit tests by combining the units of code and testing that the resulting combination functions correctly. Those kind of tests can and will use threads, access the database or do whatever is required to ensure that all of the code and the different environment changes will work correctly.
+
+Also, integration tests don't necessarily prove that a complete feature works. The user may not care about the internal details of my programs, but I do!
+
+TODO: WIP!
 
 ### HTTP testing
 
@@ -1245,7 +1239,7 @@ final class CurrentWeatherRobot: UIRobot {
 
 Snapshot testing help us or the designers to check wether the current user interface matches the design. The idea is to put the user interface of the software in a determinate state and take a screenshot, this will be compared to another reference that is the expected one.
 
-TODO: make example 
+TODO: WIP!
 
 * Tools: 
     [Snapshot](https://github.com/uber/ios-snapshot-test-case/)            
