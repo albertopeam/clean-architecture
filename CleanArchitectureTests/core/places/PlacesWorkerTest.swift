@@ -2,70 +2,82 @@
 //  PlacesGatewayTest.swift
 //  CleanArchitectureTests
 //
-//  Created by Penas Amor, Alberto on 7/5/18.
-//  Copyright © 2018 Alberto. All rights reserved.
+//  Created by Penas Amor, Alberto on 19/3/19.
+//  Copyright © 2019 Alberto. All rights reserved.
 //
 
 import XCTest
+import Nimble
+import OHHTTPStubs
 @testable import CleanArchitecture
 
-class PlacesWorkerTest: NetworkTestCase {
+class PlacesWorkerTest: XCTestCase {
     
-    var sut:PlacesWorker?
+    private var sut: PlacesWorker!
+    private lazy var url = "https://\(host)\(path)?key=TestApiKey&radius=150&types=restaurant&location={{location}}"
+    private let host = "any"
+    private let path = "/nearby"
+    private let location = Location(latitude: 43.0, longitude: -8)
+    private lazy var params = [
+        "key": "TestApiKey",
+        "radius": "150",
+        "types": "restaurant",
+        "location": "\(location.latitude),\(location.longitude)",
+    ]
     
     override func setUp(){
         super.setUp()
-        continueAfterFailure = false
+        sut = PlacesWorker(url: url)
+        OHHTTPStubs.onStubActivation { (request, stub, _) in
+            print("** OHHTTPStubs: \(request.url!.absoluteString) stubbed by \(stub.name!). **")
+        }
     }
     
     override func tearDown() {
+        OHHTTPStubs.removeAllStubs()
         sut = nil
         super.tearDown()
     }
     
     func testGivenValidInputWhenGetNearbyThenReturnSuccess() throws {
-        let location = Location(latitude: 43.0, longitude: -8)
-        let absoluteUrl = "\(serverUrl())?key=TestApiKey&radius=150&types=restaurant&location=\(location.latitude),\(location.longitude)"
-        dispatchResponseToGetRequest(url: absoluteUrl, fileName: "nearby-success")
-        sut = PlacesWorker(url: absoluteUrl)
-        let expectation = XCTestExpectation(description: "testGivenValidInputWhenGetNearbyThenReturnSuccess")
-        try sut!.run(params: location, resolve: { (worker, result) in
-            XCTAssertNotNil(result)
-            let result:Array<Place> = result as! Array<Place>
-            XCTAssertEqual(result.count, 1)
-            let place = result.first!
-            XCTAssertEqual("Sporting Club Casino", place.name)
-            XCTAssertEqual("dc84f07c660e036c7bb3608beaabd5b5ae962dce", place.id)
-            XCTAssertEqual("https://maps.gstatic.com/mapfiles/place_api/icons/generic_business-71.png", place.icon)
-            XCTAssertEqual(true, place.openNow)
-            XCTAssertEqual("ChIJLVzReX58Lg0RhwN-s_SrBY4", place.placeId)
-            XCTAssertEqual(4, place.rating)
-            XCTAssertEqual(43.3690192, place.location.latitude)
-            XCTAssertEqual(-8.401833199999999, place.location.longitude)
-            expectation.fulfill()
-        }, reject: { (worker, error) in
-            XCTFail("testGivenValidInputWhenGetNearbyThenReturnSuccess rejected")
-        })
-        wait(for: [expectation], timeout: TestConstants.timeout)
+        stub(condition: isMethodGET() && isHost(host) && isPath(path) && containsQueryParams(params)) { (request) -> OHHTTPStubsResponse in
+            return OHHTTPStubsResponse(fileAtPath: OHPathForFile("nearby-success.json", type(of: self))!,
+                                       statusCode: 200,
+                                       headers: ["Content-Type":"application/json"])
+        }.name = "nearby success request"
+        
+        var result: Array<Place>?
+        try sut.run(params: location, resolve: { (worker, res) in
+            result = res as? Array<Place>
+        }, reject: { (worker, error) in })
+        
+        expect(result).toEventuallyNot(beNil())
+        let places: Array<Place> = try result.unwrap()
+        expect(places).toEventually(haveCount(1))
+        let place = try places.first.unwrap()
+        expect(place.name).toEventually(equal("Sporting Club Casino"))
+        expect(place.id).toEventually(equal("dc84f07c660e036c7bb3608beaabd5b5ae962dce"))
+        expect(place.icon).toEventually(equal("https://maps.gstatic.com/mapfiles/place_api/icons/generic_business-71.png"))
+        expect(place.openNow).toEventually(equal(true))
+        expect(place.placeId).toEventually(equal("ChIJLVzReX58Lg0RhwN-s_SrBY4"))
+        expect(place.rating).toEventually(equal(4))
+        expect(place.location.latitude).toEventually(equal(43.3690192))
+        expect(place.location.longitude).toEventually(equal(-8.401833199999999))
     }
     
     func testGivenInvalidInputWhenGetNearbyThenReturnNoPlaces() throws {
-        let location = Location(latitude: 43.0, longitude: -8)
-        let absoluteUrl = "\(serverUrl())?key=TestApiKey&radius=150&types=restaurant&location=\(location.latitude),\(location.longitude)"
-        dispatchResponseToGetRequest(url: absoluteUrl, fileName: "nearby-success-noplaces")
-        let expectation = XCTestExpectation(description: "testGivenValidInputWhenGetNearbyThenReturnSuccess")
-        sut = PlacesWorker(url: absoluteUrl)
-        try sut!.run(params: location, resolve: { (worker, result) in
-            XCTFail("testGivenInvalidInputWhenGetNearbyThenReturnNoPlaces resolved")
-            expectation.fulfill()
-        }, reject: { (worker, error) in
-            if case PlacesError.noPlaces = error {
-                //ok
-            }else{
-                XCTFail("testGivenInvalidInputWhenGetNearbyThenReturnNoPlaces, expected: PlacesError.noPlaces actual:\(String(describing: error.self))")
-            }
-            expectation.fulfill()
+        stub(condition: isMethodGET() && isHost(host) && isPath(path) && containsQueryParams(params)) { (request) -> OHHTTPStubsResponse in
+            return OHHTTPStubsResponse(fileAtPath: OHPathForFile("nearby-success-noplaces.json", type(of: self))!,
+                                       statusCode: 200,
+                                       headers: ["Content-Type":"application/json"])
+        }.name = "nearby empty results request"
+        
+        var result: PlacesError?
+        try sut.run(params: location, resolve: { (worker, result) in }, reject: { (worker, error) in
+            result = error as? PlacesError
         });
-        wait(for: [expectation], timeout: TestConstants.timeout)
+        
+        expect(result).toEventuallyNot(beNil())
+        expect(result).toEventually(equal(PlacesError.noPlaces))
     }
 }
