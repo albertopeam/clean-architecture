@@ -38,11 +38,10 @@ class CurrentWeatherWorkerTest: XCTestCase {
     }
     
     func testGivenSuccessEnvWhenGetWeatherThenMatchResult() throws {
+        let response = try OHHTTPStubsResponse._200(jsonFileName: "current-weather-success.json", inBundleForClass: type(of: self))
         stub(condition: isMethodGET() && isHost(host) && isPath(path) && containsQueryParams(params)) { (request) -> OHHTTPStubsResponse in
-            return OHHTTPStubsResponse(fileAtPath: OHPathForFile("current-weather-success.json", type(of: self))!,
-                                       statusCode: 200,
-                                       headers: ["Content-Type":"application/json"])
-            }.name = "get weather success request"
+            return response
+        }.name = "get weather success request"
         
         
         var result: InstantWeather?
@@ -65,10 +64,7 @@ class CurrentWeatherWorkerTest: XCTestCase {
     
     func testGivenErrorEnvWhenGetWeatherThenMatchError() throws {
         stub(condition: isMethodGET() && isHost(host) && isPath(path) && containsQueryParams(params)) { (request) -> OHHTTPStubsResponse in
-            let BadRequest = NSError(domain: NSURLErrorDomain,
-                                     code: 400,
-                                     userInfo: ["NSLocalizedDescription": "Bad Request"])
-            return OHHTTPStubsResponse(error: BadRequest)
+            return OHHTTPStubsResponse._400()
         }.name = "weather error network request"
         
         var error: WeatherError?

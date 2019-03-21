@@ -181,6 +181,7 @@
 		C3C9CA9A2125CD230096970A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3FA42392087AEC200B63221 /* Assets.xcassets */; };
 		C3C9CA9B2125CD290096970A /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C32634F82111FDDD0023E58C /* Colors.xcassets */; };
 		C3CC23FA20A09C3100BA01F6 /* PlacesWorkerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CC23F920A09C3100BA01F6 /* PlacesWorkerTest.swift */; };
+		C3CEED3722437A6C00F9E940 /* OHHTTPStubsResponse+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CEED3622437A6C00F9E940 /* OHHTTPStubsResponse+Helper.swift */; };
 		C3D2893520ECDBBF001DE077 /* MockWorkers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D2893420ECDBBF001DE077 /* MockWorkers.swift */; };
 		C3D56B4D2113086D00947F2D /* UVIndexViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D56B4C2113086D00947F2D /* UVIndexViewModelTest.swift */; };
 		C3D56B4E21130B8300947F2D /* LocationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32634E72111C7500023E58C /* LocationError.swift */; };
@@ -378,6 +379,7 @@
 		C3C9CA802125C0DD0096970A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		C3C9CA822125C0DD0096970A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C3CC23F920A09C3100BA01F6 /* PlacesWorkerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacesWorkerTest.swift; sourceTree = "<group>"; };
+		C3CEED3622437A6C00F9E940 /* OHHTTPStubsResponse+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OHHTTPStubsResponse+Helper.swift"; sourceTree = "<group>"; };
 		C3D2893420ECDBBF001DE077 /* MockWorkers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockWorkers.swift; sourceTree = "<group>"; };
 		C3D56B4C2113086D00947F2D /* UVIndexViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UVIndexViewModelTest.swift; sourceTree = "<group>"; };
 		C3D8AD8B20A05DE000868FF9 /* PlacesTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesTest.swift; sourceTree = "<group>"; };
@@ -875,6 +877,7 @@
 				C3F1C1A321135D1B0007DF50 /* MockExpectation.swift */,
 				C30654F72138092900E02FF5 /* TestConstants.swift */,
 				C3FA7236223B901A0058CB4E /* Optional+Unwrap.swift */,
+				C3CEED3622437A6C00F9E940 /* OHHTTPStubsResponse+Helper.swift */,
 			);
 			path = test;
 			sourceTree = "<group>";
@@ -1533,6 +1536,7 @@
 				C3F4354B21D16A6300BA980A /* CurrentWeatherJobTests.swift in Sources */,
 				C3B5E75121CFD4C900596978 /* CurrentWeatherViewModel.swift in Sources */,
 				C3B5E74E21CFD4C100596978 /* CurrentWeatherViewController.swift in Sources */,
+				C3CEED3722437A6C00F9E940 /* OHHTTPStubsResponse+Helper.swift in Sources */,
 				C3B5E74B21CFD48100596978 /* Future.swift in Sources */,
 				C379400920E11CAE004C723B /* PlacesComponent.swift in Sources */,
 				C3B5E74821CFD41500596978 /* PromiseTests.swift in Sources */,

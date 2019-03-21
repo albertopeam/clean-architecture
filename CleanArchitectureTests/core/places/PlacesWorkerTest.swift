@@ -40,10 +40,9 @@ class PlacesWorkerTest: XCTestCase {
     }
     
     func testGivenValidInputWhenGetNearbyThenReturnSuccess() throws {
+        let response = try OHHTTPStubsResponse._200(jsonFileName: "nearby-success.json", inBundleForClass: type(of: self))
         stub(condition: isMethodGET() && isHost(host) && isPath(path) && containsQueryParams(params)) { (request) -> OHHTTPStubsResponse in
-            return OHHTTPStubsResponse(fileAtPath: OHPathForFile("nearby-success.json", type(of: self))!,
-                                       statusCode: 200,
-                                       headers: ["Content-Type":"application/json"])
+            return response
         }.name = "nearby success request"
         
         var result: Array<Place>?
@@ -66,10 +65,9 @@ class PlacesWorkerTest: XCTestCase {
     }
     
     func testGivenInvalidInputWhenGetNearbyThenReturnNoPlaces() throws {
+        let response = try OHHTTPStubsResponse._200(jsonFileName: "nearby-success-noplaces.json", inBundleForClass: type(of: self))
         stub(condition: isMethodGET() && isHost(host) && isPath(path) && containsQueryParams(params)) { (request) -> OHHTTPStubsResponse in
-            return OHHTTPStubsResponse(fileAtPath: OHPathForFile("nearby-success-noplaces.json", type(of: self))!,
-                                       statusCode: 200,
-                                       headers: ["Content-Type":"application/json"])
+            return response
         }.name = "nearby empty results request"
         
         var result: PlacesError?

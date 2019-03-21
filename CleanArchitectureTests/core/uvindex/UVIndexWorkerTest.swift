@@ -38,10 +38,9 @@ class UVIndexWorkerTest: XCTestCase {
     }
     
     func testGivenSuccessServerWhenGetUVIndexThenMatchParseIsCorrect() throws {
+        let response = try OHHTTPStubsResponse._200(jsonFileName: "uvindex-success.json", inBundleForClass: type(of: self))
         stub(condition: isMethodGET() && isHost(host) && isPath(path) && containsQueryParams(params)) { (request) -> OHHTTPStubsResponse in
-            return OHHTTPStubsResponse(fileAtPath: OHPathForFile("uvindex-success.json", type(of: self))!,
-                                       statusCode: 200,
-                                       headers: ["Content-Type":"application/json"])
+            return response
         }.name = "uvi success request"
         
         var result: UltravioletIndex?
