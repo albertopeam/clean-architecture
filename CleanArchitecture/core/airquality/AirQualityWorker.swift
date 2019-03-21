@@ -21,9 +21,7 @@ class AirQualityWorker: Worker {
         self.url = url.replacingOccurrences(of: "{{lon}}", with: "\(location.longitude)")
         let targetUrl = URL(string: self.url)
         URLSession.shared.dataTask(with: targetUrl!) { (data, response, error) in
-            if response == nil || (response as! HTTPURLResponse).statusCode > 299 {
-                self.rejectIt(reject: reject, error: AirQualityError.other)
-            } else if error != nil {
+            if error != nil {
                 switch error!.code {
                 case NSURLErrorNotConnectedToInternet:
                     self.rejectIt(reject: reject, error: AirQualityError.noNetwork)
@@ -34,24 +32,30 @@ class AirQualityWorker: Worker {
                 default:
                     self.rejectIt(reject: reject, error: AirQualityError.other)
                 }
+            } else if response == nil || (response as! HTTPURLResponse).statusCode > 299 {
+                self.rejectIt(reject: reject, error: AirQualityError.other)
             } else {
                 let response = JsonDecoder<Welcome>.decode(data: data!)
                 if let response = response {
                     let airQualityDatas =  response.results.map({ (result) -> AirQualityData in
                         return AirQualityData(location: Location(latitude: result.coordinates.latitude, longitude: result.coordinates.longitude), date: result.date.utc, type: result.parameter, measure: Measure(value: result.value, unit: result.unit))
                     })
-                    self.resolveIt(resolve: resolve, data: airQualityDatas.first!)
+                    if let first = airQualityDatas.first {
+                        self.resolveIt(resolve: resolve, data: first)
+                    } else {
+                        self.rejectIt(reject: reject, error: AirQualityError.other)
+                    }
                 }else{
                     self.rejectIt(reject: reject, error: AirQualityError.decoding)
                 }
             }
-            }.resume()
+        }.resume()
     }
 }
 
 private struct Welcome: Codable {
     let meta: Meta
-    let results: [Result]
+    let results: [ResultLocation]
 }
 
 private struct Meta: Codable {
@@ -59,7 +63,7 @@ private struct Meta: Codable {
     let page, limit, found: Int
 }
 
-private struct Result: Codable {
+private struct ResultLocation: Codable {
     let location, parameter: String
     let date: DateClass
     let value: Double

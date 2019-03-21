@@ -2,60 +2,75 @@
 //  UVIndexWorkerTest.swift
 //  CleanArchitectureTests
 //
-//  Created by Alberto on 2/8/18.
-//  Copyright © 2018 Alberto. All rights reserved.
+//  Created by Alberto on 19/3/19.
+//  Copyright © 2019 Alberto. All rights reserved.
 //
 
 import XCTest
+import Nimble
+import OHHTTPStubs
 @testable import CleanArchitecture
 
-class UVIndexWorkerTest: NetworkTestCase {
+class UVIndexWorkerTest: XCTestCase {
     
-    var sut:UVIndexWorker?
+    private lazy var url = "https://\(host)\(path)?lat={{lat}}&lon={{lon}}&appid=TestApiKey"
+    private let host = "any"
+    private let path = "/v1/uvi"
+    private let location = Location(latitude: 37.75, longitude: -122.37)
+    private var sut: UVIndexWorker!
+    private lazy var params = [
+        "lat": "\(location.latitude)",
+        "lon": "\(location.longitude)",
+        "appid": "TestApiKey"
+    ]
     
     override func setUp() {
         super.setUp()
-        continueAfterFailure = false
+        sut = UVIndexWorker(url: url)
+        OHHTTPStubs.onStubActivation { (request, stub, _) in
+            print("** OHHTTPStubs: \(request.url!.absoluteString) stubbed by \(stub.name!). **")
+        }
     }
     
     override func tearDown() {
-        sut = nil
+        OHHTTPStubs.removeAllStubs()
         super.tearDown()
     }
     
     func testGivenSuccessServerWhenGetUVIndexThenMatchParseIsCorrect() throws {
-        let location = Location(latitude: 37.75, longitude: -122.37)
-        let absoluteUrl = "\(serverUrl())uvi?lat=\(location.latitude)&lon=\(location.longitude)&appid=TestApiKey"
-        dispatchResponseToGetRequest(url: absoluteUrl, fileName: "uvindex-success")
-        sut = UVIndexWorker(url: absoluteUrl)
-        let expectation = XCTestExpectation(description: "testGivenSuccessServerWhenGetUVIndexThenMatchParseIsCorrect")
-        try sut!.run(params: location, resolve: { (worker, result) in
-            XCTAssertNotNil(result)
-            let result = result as! UltravioletIndex
-            XCTAssertEqual(result.uvIndex, 10.06)
-            XCTAssertEqual(result.date, "2017-06-26T12:00:00Z")
-            XCTAssertEqual(result.timestamp, 1498478400)
-            XCTAssertEqual(result.location.latitude, 37.75)
-            XCTAssertEqual(result.location.longitude, -122.37)
-            expectation.fulfill()
-        }, reject: { (worker, error) in
-            XCTFail("testGivenSuccessServerWhenGetUVIndexThenMatchParseIsCorrect rejected")
-        })
-        wait(for: [expectation], timeout: TestConstants.timeout)
+        let response = try OHHTTPStubsResponse._200(jsonFileName: "uvindex-success.json", inBundleForClass: type(of: self))
+        stub(condition: isMethodGET() && isHost(host) && isPath(path) && containsQueryParams(params)) { (request) -> OHHTTPStubsResponse in
+            return response
+        }.name = "uvi success request"
+        
+        var result: UltravioletIndex?
+        try sut.run(params: location, resolve: { (worker, res) in
+            result = res as? UltravioletIndex
+        }, reject: { (worker, error) in})
+        
+        expect(result).toNotEventually(beNil())
+        let uvIndex = try result.unwrap()
+        expect(uvIndex.uvIndex).toEventually(equal(10.06))
+        expect(uvIndex.date).toEventually(equal("2017-06-26T12:00:00Z"))
+        expect(uvIndex.timestamp).toEventually(equal(1498478400))
+        expect(uvIndex.location.latitude).toEventually(equal(37.75))
+        expect(uvIndex.location.longitude).toEventually(equal(-122.37))
     }
     
     func testGivenNetworkErrorWhenGetUVIndexThenMatchReject() throws {
-        let location = Location(latitude: 37.75, longitude: -122.37)
-        let absoluteUrl = "\(serverUrl())uvi?lat=\(location.latitude)&lon=\(location.longitude)&appid=TestApiKey"
-        dispatchErrorResponseToGetRequest(statusCode: 400, status: "Bad Request", url: absoluteUrl)
-        sut = UVIndexWorker(url: absoluteUrl)
-        let expectation = XCTestExpectation(description: "testGivenNetworkErrorWhenGetUVIndexThenMatchReject")
-        try sut!.run(params: location, resolve: { (worker, result) in
-            XCTFail("testGivenNetworkErrorWhenGetUVIndexThenMatchReject rejected")
-        }, reject: { (worker, error) in
-            XCTAssertTrue(error.code == UVIndexError.other.code)
-            expectation.fulfill()
+        stub(condition: isMethodGET() && isHost(host) && isPath(path) && containsQueryParams(params)) { (request) -> OHHTTPStubsResponse in
+            let notConnectedError = NSError(domain: NSURLErrorDomain,
+                                            code: Int(CFNetworkErrors.cfurlErrorNotConnectedToInternet.rawValue),
+                                            userInfo: nil)
+            return OHHTTPStubsResponse(error: notConnectedError)
+        }.name = "uvi error request"
+        
+        var error: UVIndexError?
+        try sut.run(params: location, resolve: { (worker, result) in }, reject: { (worker, err) in
+            error = err as? UVIndexError
         })
-        wait(for: [expectation], timeout: TestConstants.timeout)
+        
+        expect(error).toNotEventually(beNil())
+        expect(error).toEventually(equal(UVIndexError.other))
     }
 }

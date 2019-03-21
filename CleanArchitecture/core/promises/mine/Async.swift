@@ -34,7 +34,7 @@ func async<T>(body: @escaping () throws -> T) -> Async<T> {
 }
 
 class Async<T> {
-
+    
     typealias Result = (T) -> Void
     typealias Reject = (Error) -> Void
     fileprivate var successBlock:Result?
@@ -49,3 +49,4 @@ class Async<T> {
         self.errorBlock = reject
     }
 }
+

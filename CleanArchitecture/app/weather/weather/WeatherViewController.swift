@@ -26,7 +26,7 @@ class WeatherViewController: UIViewController, WeatherViewProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Weather"
+        title = "Galician Weather"
         tableView.register(UINib(nibName: "WeatherTableViewCell", bundle: nil), forCellReuseIdentifier: "weather_cell")
         presenter.weathers()
     }
@@ -50,7 +50,9 @@ class WeatherViewController: UIViewController, WeatherViewProtocol {
 extension WeatherViewController:UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell : WeatherTableViewCell! = tableView.dequeueReusableCell(withIdentifier: "weather_cell", for: indexPath) as! WeatherTableViewCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "weather_cell", for: indexPath) as? WeatherTableViewCell else {
+            fatalError("WeatherTableViewCell not registered")
+        }
         let weather = items[indexPath.row]
         cell.draw(weather: weather)
         return cell

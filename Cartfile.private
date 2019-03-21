@@ -1,1 +1,3 @@
-github "glock45/swifter" == 1.4.0
+github "Quick/Nimble"
+github "kif-framework/KIF"
+github "AliSoftware/OHHTTPStubs" == 7.0.0

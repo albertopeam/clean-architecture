@@ -8,6 +8,7 @@
 
 import XCTest
 import CoreLocation
+
 @testable import CleanArchitecture
 
 class AirQualityViewControllerUITest: XCTestCase {

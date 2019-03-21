@@ -6,7 +6,7 @@
 //  Copyright © 2018 Alberto. All rights reserved.
 //
 
-protocol WeatherViewProtocol {
+protocol WeatherViewProtocol: class {
     func newState(viewState:WeatherViewState)
 }
 
@@ -24,7 +24,7 @@ class WeatherPresenter: WeatherPresenterProtocol, WeatherOutputProtocol {
     
     private let weather:WeatherProtocol
     private var viewState:WeatherViewState
-    var view:WeatherViewProtocol?
+    weak var view:WeatherViewProtocol?
     
     init(weather:WeatherProtocol, viewState:WeatherViewState, view:WeatherViewProtocol? = nil) {
         self.weather = weather

@@ -60,7 +60,7 @@ enum AQIName:Int {
     case vl, l, m, h, vh
 }
 
-enum AirQualityError:Error {
+enum AirQualityError: Error, Equatable {
     case noNetwork, decoding, timeout, unauthorized, other
 }
 

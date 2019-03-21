@@ -24,3 +24,4 @@ func await(promise:PromiseProtocol) throws -> Any {
     }
     return unwrappedResult
 }
+

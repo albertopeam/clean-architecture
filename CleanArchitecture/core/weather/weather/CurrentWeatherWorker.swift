@@ -9,18 +9,19 @@ import Foundation
 
 class CurrentWeatherWorker:NSObject, Worker {
     
-    let targetUrl:String
+    private let targetUrl: String
+    private let urlSession: URLSession
     
-    init(url:String) {
+    init(urlSession: URLSession = URLSession.shared,
+         url: String) {
+        self.urlSession = urlSession
         self.targetUrl = url
     }
     
     func run(params: Any?, resolve: @escaping ResolvableWorker, reject: @escaping RejectableWorker) throws {
         let url = URL(string: targetUrl)
-        URLSession.shared.dataTask(with: url!) { (data, response, error) in
-            if response == nil || (response as! HTTPURLResponse).statusCode > 299 {
-                self.rejectIt(reject: reject, error: WeatherError.other)
-            } else if error != nil {
+        urlSession.dataTask(with: url!) { (data, response, error) in
+            if error != nil {
                 switch error!.code {
                 case NSURLErrorNotConnectedToInternet:
                     self.rejectIt(reject: reject, error: WeatherError.noNetwork)
@@ -31,7 +32,9 @@ class CurrentWeatherWorker:NSObject, Worker {
                 default:
                     self.rejectIt(reject: reject, error: WeatherError.other)
                 }
-            }else{
+            } else if response == nil || (response as! HTTPURLResponse).statusCode > 299 {
+                self.rejectIt(reject: reject, error: WeatherError.other)                
+            } else{
                 let result:CloudResponse? = try? JSONDecoder().decode(CloudResponse.self, from: data!)
                 if result?.cod == 200 {
                     let cr:CloudWeatherResponse? = try? JSONDecoder().decode(CloudWeatherResponse.self, from: data!)
@@ -57,24 +60,24 @@ struct CloudResponse:Codable  {
     var cod:Int
 }
 
-fileprivate struct CloudWeatherResponse:Codable  {
-    fileprivate var cod:Int
-    fileprivate var name:String
-    fileprivate var dt:Int
-    fileprivate var weather:Array<CloudWeather>
-    fileprivate var main:CloudMain
-    fileprivate var wind:CloudWind
-    fileprivate struct CloudWeather:Codable  {
-        fileprivate var description:String
-        fileprivate var icon:String
+struct CloudWeatherResponse:Codable  {
+    var cod:Int
+    var name:String
+    var dt:Int
+    var weather:Array<CloudWeather>
+    var main:CloudMain
+    var wind:CloudWind
+    struct CloudWeather:Codable  {
+        var description:String
+        var icon:String
     }
-    fileprivate struct CloudMain:Codable{
-        fileprivate var temp:Double
-        fileprivate var pressure:Double
-        fileprivate var humidity:Double
+    struct CloudMain:Codable{
+        var temp:Double
+        var pressure:Double
+        var humidity:Double
     }
-    fileprivate struct CloudWind:Codable{
-        fileprivate var speed:Double
-        fileprivate var deg:Double
+    struct CloudWind:Codable{
+        var speed:Double
+        var deg:Double
     }
 }
