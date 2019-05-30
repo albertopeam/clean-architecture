@@ -11,7 +11,7 @@ cache:
 before_install:
   - brew install carthage || true
   - brew outdated carthage || brew upgrade carthage
-
+  - carthage version
 before_script:
   # Build dependencies(only build)
   # - carthage bootstrap --platform iOS --no-use-binaries --cache-builds
