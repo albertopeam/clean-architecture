@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="M4Y-Lb-cyx">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Today View Controller-->
+        <scene sceneID="cwh-vc-ff4">
+            <objects>
+                <viewController id="M4Y-Lb-cyx" customClass="TodayViewController" customModule="UltravioletIndexWidget" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" simulatedAppContext="notificationCenter" id="S3S-Oj-5AN">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="110"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" text="12.8" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="GcN-lo-r42">
+                                <rect key="frame" x="0.0" y="0.0" width="129" height="69"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="129" id="TQg-UB-VJn"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="65"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kcq-Sc-Up8">
+                                <rect key="frame" x="0.0" y="78" width="129" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="fRv-Cf-ld3"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="FXt-4s-nyX">
+                                <rect key="frame" x="129" y="0.0" width="191" height="110"/>
+                            </mapView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error:?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vtq-Rt-0Ig">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="110"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="GcN-lo-r42" firstAttribute="leading" secondItem="ssy-KU-ocm" secondAttribute="leading" symbolic="YES" id="6Vq-gs-PHe"/>
+                            <constraint firstItem="Vtq-Rt-0Ig" firstAttribute="trailing" secondItem="ssy-KU-ocm" secondAttribute="trailing" id="9nV-tu-mPB"/>
+                            <constraint firstItem="Kcq-Sc-Up8" firstAttribute="top" secondItem="GcN-lo-r42" secondAttribute="bottom" constant="9" id="MUH-sf-Olf"/>
+                            <constraint firstItem="Vtq-Rt-0Ig" firstAttribute="top" secondItem="ssy-KU-ocm" secondAttribute="top" id="QXP-cl-a0h"/>
+                            <constraint firstItem="Kcq-Sc-Up8" firstAttribute="leading" secondItem="ssy-KU-ocm" secondAttribute="leading" id="UBp-RP-fci"/>
+                            <constraint firstItem="FXt-4s-nyX" firstAttribute="top" secondItem="ssy-KU-ocm" secondAttribute="top" id="aRu-ub-o70"/>
+                            <constraint firstItem="FXt-4s-nyX" firstAttribute="leading" secondItem="GcN-lo-r42" secondAttribute="trailing" id="dSI-m8-ZEk"/>
+                            <constraint firstItem="Vtq-Rt-0Ig" firstAttribute="leading" secondItem="ssy-KU-ocm" secondAttribute="leading" id="eSA-96-hk9"/>
+                            <constraint firstItem="ssy-KU-ocm" firstAttribute="trailing" secondItem="FXt-4s-nyX" secondAttribute="trailing" id="hrq-ms-E28"/>
+                            <constraint firstItem="GcN-lo-r42" firstAttribute="top" secondItem="ssy-KU-ocm" secondAttribute="top" symbolic="YES" id="mYS-Cv-VNx"/>
+                            <constraint firstItem="Kcq-Sc-Up8" firstAttribute="width" secondItem="GcN-lo-r42" secondAttribute="width" id="nT0-5Z-4SF"/>
+                            <constraint firstItem="Vtq-Rt-0Ig" firstAttribute="bottom" secondItem="ssy-KU-ocm" secondAttribute="bottom" id="nTf-8X-4vK"/>
+                            <constraint firstItem="ssy-KU-ocm" firstAttribute="bottom" secondItem="Kcq-Sc-Up8" secondAttribute="bottom" id="o3Q-66-evI"/>
+                            <constraint firstItem="ssy-KU-ocm" firstAttribute="bottom" secondItem="FXt-4s-nyX" secondAttribute="bottom" id="wNi-Wd-IzG"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ssy-KU-ocm"/>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="110"/>
+                    <connections>
+                        <outlet property="errorLabel" destination="Vtq-Rt-0Ig" id="kBj-PP-w2z"/>
+                        <outlet property="mapView" destination="FXt-4s-nyX" id="1Cm-ff-1en"/>
+                        <outlet property="ultravioletIndexDescLabel" destination="Kcq-Sc-Up8" id="wtE-8y-WX6"/>
+                        <outlet property="ultravioletIndexLabel" destination="GcN-lo-r42" id="L8I-X2-4VY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vXp-U4-Rya" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="91.200000000000003" y="33.283358320839582"/>
+        </scene>
+    </scenes>
+</document>
