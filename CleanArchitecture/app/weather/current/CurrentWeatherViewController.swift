@@ -58,7 +58,7 @@ class CurrentWeatherViewController: UIViewController {
         humidityLabel.accessibilityIdentifier = AccessibilityIdentifiers.humidity
         windSpeedLabel.accessibilityIdentifier = AccessibilityIdentifiers.windSpeed
         title = "Current Location Weather"
-        reloadButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.refresh,
+        reloadButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.refresh,
                                        target: self,
                                        action: #selector(reload))
         reload()

@@ -102,7 +102,7 @@ extension NearbyPlacesViewController:UITableViewDelegate {
 extension NearbyPlacesViewController:MKMapViewDelegate{
 
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        if let i = places.index(where: { $0.name == view.annotation!.title! }) {
+        if let i = places.firstIndex(where: { $0.name == view.annotation!.title! }) {
             placesTableView.selectRow(at: IndexPath(row: i, section: 0), animated: true, scrollPosition: .middle)
         }
     }

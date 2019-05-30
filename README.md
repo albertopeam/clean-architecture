@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/albertopeam/clean-architecture.svg?branch=master)](https://travis-ci.org/albertopeam/clean-architecture)
 [![codecov](https://codecov.io/gh/albertopeam/clean-architecture/branch/master/graph/badge.svg)](https://codecov.io/gh/albertopeam/clean-architecture)
 [![Maintainability](https://api.codeclimate.com/v1/badges/574acc8910d2d786349b/maintainability)](https://codeclimate.com/github/albertopeam/clean-architecture/maintainability)
-[![Swift Version](https://img.shields.io/badge/Swift-4.0-F16D39.svg?style=flat)](https://developer.apple.com/swift)
+[![Swift Version](https://img.shields.io/badge/Swift-5.0-F16D39.svg?style=flat)](https://developer.apple.com/swift)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
  
 The intention of this repository is to show some of the more common practices when building a mobile app using clean architecture.

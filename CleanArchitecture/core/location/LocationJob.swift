@@ -56,8 +56,9 @@ class LocationJob: NSObject, CLLocationManagerDelegate {
         case .authorizedAlways:
             startObservingLocation()
         case .authorizedWhenInUse:
-            startObservingLocation()
-            
+            startObservingLocation()            
+        @unknown default:
+            fatalError()
         }
         return promise
     }
