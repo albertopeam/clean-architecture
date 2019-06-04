@@ -34,6 +34,13 @@ class NearbyPlacesViewController: UIViewController, NearbyPlacesViewProtocol {
         reloadNearbyButton.layer.cornerRadius = 15
         placesTableView.register(UINib(nibName: "NearbyPlaceCell", bundle: nil), forCellReuseIdentifier: "nearby_place_cell")
         nearbyPlaces(reloadNearbyButton)
+        
+        
+        
+        
+        
+        let presenter = Presenter()
+        presenter.performOperation()
     }
     
     @IBAction func nearbyPlaces(_ sender: UIButton) {

@@ -11,11 +11,12 @@ import Foundation
 class WeatherComponent: NSObject {
     
     static func assemble(apiKey:String, cities:Array<String>) -> WeatherProtocol {
-        let url = "https://api.openweathermap.org/data/2.5/weather?q={{city}}&appid=\(apiKey)"
+        //TODO: refactor
+        //let url = "https://api.openweathermap.org/data/2.5/weather?q={{city}}&appid=\(apiKey)"
         var workers = Array<Worker>()
         for city in cities {
-            let targetUrl = url.replacingOccurrences(of: "{{city}}", with: "\(city)").addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
-            workers.append(CurrentWeatherWorker(url: targetUrl))
+            //let targetUrl = url.replacingOccurrences(of: "{{city}}", with: "\(city)").addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
+            workers.append(CurrentWeatherWorker(city: city))
         }
         return Weather(currentWeatherWorkers: workers)
     }
