@@ -96,8 +96,9 @@ enum HTTP {
                 self.dispatch.signal()                
             }
             task?.resume()
-            dispatch.wait()
-            //_ = dispatch.wait(timeout: .now() + 60)
+            //dispatch.wait()
+            //TODO: check if works, now cities are unsorted
+            _ = dispatch.wait(timeout: .now() + 60)
             if let urlResponse = response, urlResponse.statusCode >= 200 && urlResponse.statusCode <= 299, let data = data {
                 return .success(Response(response: urlResponse, data: data))
             } else if let error = error {
@@ -391,3 +392,4 @@ class ArrayDataSource<T>: NSObject, UITableViewDataSource {
 
 //TODO: Decorator
 //TODO: renewal mechanism
+//TODO: Router: push/modal/set emvbed in vc

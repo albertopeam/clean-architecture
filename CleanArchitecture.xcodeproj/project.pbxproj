@@ -66,6 +66,8 @@
 		C33EE73D2091FB5A00712672 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33EE73C2091FB5A00712672 /* Kingfisher.framework */; };
 		C343D5F920DA7F140072CE0D /* WeatherTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C343D5F720DA7F140072CE0D /* WeatherTableViewCell.swift */; };
 		C343D5FA20DA7F150072CE0D /* WeatherTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C343D5F820DA7F140072CE0D /* WeatherTableViewCell.xib */; };
+		C353461622A7A56B0032711F /* UIRefreshControl+Mold.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E1FCCF22A3BA1000E7DE66 /* UIRefreshControl+Mold.swift */; };
+		C353461722A7A56B0032711F /* UIRefreshControl+Mold.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E1FCCF22A3BA1000E7DE66 /* UIRefreshControl+Mold.swift */; };
 		C36A44FF21144C3D0001EE3F /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C32634F82111FDDD0023E58C /* Colors.xcassets */; };
 		C36A450021144C3E0001EE3F /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C32634F82111FDDD0023E58C /* Colors.xcassets */; };
 		C36A450121144C410001EE3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3FA42392087AEC200B63221 /* Assets.xcassets */; };
@@ -1390,6 +1392,7 @@
 				C30A4D2822A165DA0069E857 /* Service.swift in Sources */,
 				C3B5E75321CFD4FB00596978 /* CurrentWeatherJob.swift in Sources */,
 				C38421C521130CF90051E28B /* Observable.swift in Sources */,
+				C353461722A7A56B0032711F /* UIRefreshControl+Mold.swift in Sources */,
 				C3E35253210618380091CFDD /* PlacesViewControllerUITest.swift in Sources */,
 				C31F64DC213681D000539450 /* AirQualityViewControllerUITest.swift in Sources */,
 				C3B5E75221CFD4F500596978 /* LocationJob.swift in Sources */,
@@ -1561,6 +1564,7 @@
 				C3E24B2B20A1D7480062D4E7 /* LocationManager.swift in Sources */,
 				C3F4354921D16A0F00BA980A /* CurrentWeatherTests.swift in Sources */,
 				C3C13DA021CE27DD007A538C /* CurrentWeather.swift in Sources */,
+				C353461622A7A56B0032711F /* UIRefreshControl+Mold.swift in Sources */,
 				C3B5E74A21CFD47F00596978 /* Async.swift in Sources */,
 				C31F64D321367E1100539450 /* AirQualityEntity.swift in Sources */,
 				C3A2590F22A0407C00141A4B /* WeatherServiceTests.swift in Sources */,
