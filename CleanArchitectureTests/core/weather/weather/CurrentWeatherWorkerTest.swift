@@ -14,18 +14,21 @@ import OHHTTPStubs
 class CurrentWeatherWorkerTest: XCTestCase {
     
     private lazy var url = "https://\(host)\(path)?q=TestCity&appid=TestApiKey"
-    private let host = "any"
-    private let path = "/v1/weather"
+    private var host: String { return service!.urlRequest.url!.host! }
+    private let path = "/data/2.5/weather"
     private let location = Location(latitude: 43.0, longitude: -8.1)
+    private let city: String = "TestCity"
     private lazy var params = [
-        "q": "TestCity",
-        "appid": "TestApiKey"
+        "q": self.city,
+        "appid": Constants.openWeatherApiKey
     ]
+    private var service: WeatherService!
     private var sut: CurrentWeatherWorker!
     
     override func setUp() {
         super.setUp()
-        sut = CurrentWeatherWorker(url: url)
+        service = WeatherService(city: city)
+        sut = CurrentWeatherWorker(city: city)
         OHHTTPStubs.onStubActivation { (request, stub, _) in
             print("** OHHTTPStubs: \(request.url!.absoluteString) stubbed by \(stub.name!). **")
         }
@@ -33,6 +36,7 @@ class CurrentWeatherWorkerTest: XCTestCase {
     
     override func tearDown() {
         OHHTTPStubs.removeAllStubs()
+        service = nil
         sut = nil
         super.tearDown()
     }

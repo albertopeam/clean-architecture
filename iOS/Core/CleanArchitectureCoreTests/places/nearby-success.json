@@ -1,0 +1,56 @@
+{
+    "html_attributions": [],
+    "results": [
+                {
+                "geometry": {
+                "location": {
+                "lat": 43.3690192,
+                "lng": -8.401833199999999
+                },
+                "viewport": {
+                "northeast": {
+                "lat": 43.37037868029149,
+                "lng": -8.400494419708497
+                },
+                "southwest": {
+                "lat": 43.3676807197085,
+                "lng": -8.403192380291502
+                }
+                }
+                },
+                "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/generic_business-71.png",
+                "id": "dc84f07c660e036c7bb3608beaabd5b5ae962dce",
+                "name": "Sporting Club Casino",
+                "opening_hours": {
+                "open_now": true,
+                "weekday_text": []
+                },
+                "photos": [
+                           {
+                           "height": 2322,
+                           "html_attributions": [
+                                                 "<a href=\"https://maps.google.com/maps/contrib/113395693595001061007/photos\">Pilar Chao</a>"
+                                                 ],
+                           "photo_reference": "CmRaAAAAy6a5h0wCU6RH8w_8brO04_4K0FW_0naka5eWtVNIDpdQ_kB-GnBkw20Oq0BzAdGmMgW0S_WXATTuafJnMLOWNAuX0VqilzOy_7L0U0vlZ2BtNf8EzEsEEJ9d0hD27L7dEhA2_JwfTZ-Xp_BE2Eg6hmeXGhR9_I9OeLeEUZGlW3VYdZu7CJKwMQ",
+                           "width": 4128
+                           }
+                           ],
+                "place_id": "ChIJLVzReX58Lg0RhwN-s_SrBY4",
+                "rating": 4,
+                "reference": "CmRSAAAADDDmiKE2-65N9H2vhHGz2_M00cRCbBPNdG2T29bjVT68RtmXbaJ2lyFwz3pWr8hgTNNIArGAvY00Xe13hz59pUlUIk4Dhlm_u_NIdb2RyIMwt2wsC-kmjWW0LRv299YnEhCwsSvYAEYYALAjsSAaGes2GhRF97jWR7Fjx19N9A-RWHrib14_1g",
+                "scope": "GOOGLE",
+                "types": [
+                          "physiotherapist",
+                          "cafe",
+                          "doctor",
+                          "store",
+                          "health",
+                          "food",
+                          "point_of_interest",
+                          "establishment"
+                          ],
+                "vicinity": "Rúa Real, 83, A Coruña"
+                }
+                ],
+    "status": "OK"
+}

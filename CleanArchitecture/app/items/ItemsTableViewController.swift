@@ -33,7 +33,8 @@ class ItemsTableViewController: UITableViewController {
                  Item(name: "Galician Weather", target: WeatherViewControllerBuilder.assemble()),
                  Item(name: "Current Location Weather", target: CurrentWeatherViewBuilder().build()),
                  Item(name: "UV index", target: UVIndexViewControllerBuilder.assemble()),
-                 Item(name: "Air quality index", target: AirQualityViewControllerBuilder.assemble())]
+                 Item(name: "Air quality index", target: AirQualityViewControllerBuilder.assemble()),
+                 Item(name: "One", target: OneViewController())]
         self.tableView.reloadData()
     }
 

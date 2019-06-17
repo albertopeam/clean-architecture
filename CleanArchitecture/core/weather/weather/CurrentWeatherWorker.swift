@@ -7,20 +7,20 @@
 //
 import Foundation
 
-class CurrentWeatherWorker:NSObject, Worker {
+class CurrentWeatherWorker: NSObject, Worker {
     
-    private let targetUrl: String
+    private let city: String
     private let urlSession: URLSession
     
     init(urlSession: URLSession = URLSession.shared,
-         url: String) {
+         city: String) {
         self.urlSession = urlSession
-        self.targetUrl = url
+        self.city = city
     }
     
     func run(params: Any?, resolve: @escaping ResolvableWorker, reject: @escaping RejectableWorker) throws {
-        let url = URL(string: targetUrl)
-        urlSession.dataTask(with: url!) { (data, response, error) in
+        let service = WeatherService(city: city)
+        urlSession.dataTask(with: service.urlRequest) { (data, response, error) in
             if error != nil {
                 switch error!.code {
                 case NSURLErrorNotConnectedToInternet:
@@ -33,7 +33,7 @@ class CurrentWeatherWorker:NSObject, Worker {
                     self.rejectIt(reject: reject, error: WeatherError.other)
                 }
             } else if response == nil || (response as! HTTPURLResponse).statusCode > 299 {
-                self.rejectIt(reject: reject, error: WeatherError.other)                
+                self.rejectIt(reject: reject, error: WeatherError.other)
             } else{
                 let result:CloudResponse? = try? JSONDecoder().decode(CloudResponse.self, from: data!)
                 if result?.cod == 200 {

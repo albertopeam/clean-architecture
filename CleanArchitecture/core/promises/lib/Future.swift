@@ -9,44 +9,45 @@
 
 import Foundation
 
-enum Result<Value> {
-    case value(Value)
-    case error(Error)
-}
-
 class Future<Value> {
-    fileprivate var result: Result<Value>? {
+    
+    fileprivate var result: Result<Value, Error>? {
         didSet { result.map(report) }
     }
-    private lazy var callbacks = [(Result<Value>) -> Void]()
+    private lazy var callbacks = [(Result<Value, Error>) -> Void]()
     
-    func observe(with callback: @escaping (Result<Value>) -> Void) {
+    func observe(with callback: @escaping (Result<Value, Error>) -> Void) {
         callbacks.append(callback)
         result.map(callback)
     }
     
-    private func report(result: Result<Value>) {
+    private func report(result: Result<Value, Error>) {
         for callback in callbacks {
             callback(result)
         }
     }
+    
 }
 
 class Promise<Value>: Future<Value> {
-    init(value: Value? = nil) {
+    
+    override init() {}
+    
+    init(value: Value) {
         super.init()
-        result = value.map(Result.value)
+        result = .success(value)
     }
     
     //TODO: state to skip n calls
     func resolve(with value: Value) {
-        result = .value(value)
+        result = .success(value)
     }
     
     //TODO: state to skip n calls
     func reject(with error: Error) {
-        result = .error(error)
+        result = .failure(error)
     }
+    
 }
 
 extension Future {
@@ -55,22 +56,22 @@ extension Future {
         
         observe { result in
             switch result {
-            case .value(let value):
+            case .success(let value):
                 do {
                     let future = try closure(value)
                     
                     future.observe { result in
                         switch result {
-                        case .value(let value):
+                        case .success(let value):
                             promise.resolve(with: value)
-                        case .error(let error):
+                        case .failure(let error):
                             promise.reject(with: error)
                         }
                     }
                 } catch {
                     promise.reject(with: error)
                 }
-            case .error(let error):
+            case .failure(let error):
                 promise.reject(with: error)
             }
         }

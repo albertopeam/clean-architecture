@@ -73,9 +73,9 @@ class PromiseTests: XCTestCase {
         var invoked: Bool? = nil
         sut.observe { (result) in
             switch result {
-            case .value:
+            case .success:
                 invoked = true
-            case .error:
+            case .failure:
                 break
             }
         }
@@ -87,9 +87,9 @@ class PromiseTests: XCTestCase {
         var invoked: Bool? = nil
         sut.observe { (result) in
             switch result {
-            case .value:
+            case .success:
                 break
-            case .error:
+            case .failure:
                 invoked = true
             }
         }
@@ -106,9 +106,9 @@ class PromiseTests: XCTestCase {
             return sut1.run(value: result)
         }.observe { (result) in
             switch result {
-            case .value(let value):
+            case .success(let value):
                 sum = value
-            case .error:
+            case .failure:
                 break
             }
         }
@@ -125,9 +125,9 @@ class PromiseTests: XCTestCase {
             return spy.run()
         }.observe { result in
             switch result {
-            case .value:
+            case .success:
                 break
-            case .error(let error):
+            case .failure(let error):
                 errorResult = error
             }
         }
@@ -145,9 +145,9 @@ class PromiseTests: XCTestCase {
             throw FakeError.anError
         }.observe { result in
             switch result {
-            case .value:
+            case .success:
                 break
-            case .error(let error):
+            case .failure(let error):
                 errorResult = error
             }
         }
@@ -166,9 +166,9 @@ class PromiseTests: XCTestCase {
             return sut1.run()
         }.observe { result in
             switch result {
-            case .value:
+            case .success:
                 break
-            case .error(let error):
+            case .failure(let error):
                 errorResult = error
             }
         }
@@ -186,9 +186,9 @@ class PromiseTests: XCTestCase {
             return input+toSum
         }.observe { (result) in
             switch result {
-            case .value(let value):
+            case .success(let value):
                 sum = value
-            case .error:
+            case .failure:
                 break
             }
         }

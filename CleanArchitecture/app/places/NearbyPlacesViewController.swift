@@ -34,6 +34,13 @@ class NearbyPlacesViewController: UIViewController, NearbyPlacesViewProtocol {
         reloadNearbyButton.layer.cornerRadius = 15
         placesTableView.register(UINib(nibName: "NearbyPlaceCell", bundle: nil), forCellReuseIdentifier: "nearby_place_cell")
         nearbyPlaces(reloadNearbyButton)
+        
+        
+        
+        
+        
+        let presenter = Presenter()
+        presenter.performOperation()
     }
     
     @IBAction func nearbyPlaces(_ sender: UIButton) {
@@ -102,7 +109,7 @@ extension NearbyPlacesViewController:UITableViewDelegate {
 extension NearbyPlacesViewController:MKMapViewDelegate{
 
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        if let i = places.index(where: { $0.name == view.annotation!.title! }) {
+        if let i = places.firstIndex(where: { $0.name == view.annotation!.title! }) {
             placesTableView.selectRow(at: IndexPath(row: i, section: 0), animated: true, scrollPosition: .middle)
         }
     }

@@ -43,8 +43,9 @@ class LocationWorker: NSObject, Worker {
         case .authorizedAlways:
             break
         case .authorizedWhenInUse:
-            break
-        
+            break        
+        @unknown default:
+            fatalError()
         }
         locationManager.delegate = self
         locationManager.desiredAccuracy = accuracy;

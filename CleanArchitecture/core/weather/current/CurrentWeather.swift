@@ -41,9 +41,9 @@ public class CurrentWeather: CurrentWeatherProtocol {
             return self.weatherJob.weather(location: location)
         }.observe { (result) in
             switch result {
-            case .value(let weather):
+            case .success(let weather):
                 output.weather(weather: weather)
-            case .error(let error):
+            case .failure(let error):
                 if let error = error as? LocationError {
                     switch error {
                     case .noLocationPermission:
