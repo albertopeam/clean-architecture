@@ -35,12 +35,12 @@ func async<T>(body: @escaping () throws -> T) -> Async<T> {
 
 class Async<T> {
     
-    typealias Result = (T) -> Void
+    typealias AsyncResult = (T) -> Void
     typealias Reject = (Error) -> Void
-    fileprivate var successBlock:Result?
+    fileprivate var successBlock:AsyncResult?
     fileprivate var errorBlock:Reject?
     
-    func success(result: @escaping Async.Result) -> Async<T> {
+    func success(result: @escaping Async.AsyncResult) -> Async<T> {
         self.successBlock = result
         return self
     }

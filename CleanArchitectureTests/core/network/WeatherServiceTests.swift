@@ -16,7 +16,7 @@ class WeatherServiceTests: XCTestCase {
         let sut = WeatherService(city: "A Coruña")
         
         let request = sut.urlRequest
-        expect(request.url?.absoluteString).to(equal("https://api.openweathermap.org/data/2.5/weather?q=A%20Coru%C3%B1a&appid=1234"))
+        expect(request.url?.absoluteString).to(equal("https://api.openweathermap.org/data/2.5/weather?q=A%20Coru%C3%B1a&appid=\(Constants.openWeatherApiKey)"))
         expect(request.httpMethod).to(equal("GET"))
     }
 
